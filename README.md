@@ -11,7 +11,6 @@ Brindamos un asesoramiento de excelencia, ofreciendo una amplia variedad, con la
 
 
 ## Integrantes
-___
 
 ### María del Carmen Martínez 
 
@@ -35,7 +34,6 @@ ___
 - Estudiante de programación
 
 ## Sitios de referencia
-___
 
 - Estética y funcionalidad
     - [Mercado Libre](https://www.mercadolibre.com.ar/)
@@ -51,5 +49,3 @@ ___
 - Estética y clientes a los que apunta
     - [Samsung]()
     - [Sony]()
-___
-
