@@ -1,6 +1,6 @@
 # SM4rtTech
 
-![logo sm4rttech](./public/images/logo-sm4rttech.png)
+![logo sm4rttech](./wireframes/logo-smarttech.jpg)
 
 ¡Somos el grupo 13!
 Nuestro marketplace SM4rtTech es un e-commerce abocado a la venta de equipos tecnológicos, con proyección a ampliar la variedad de productos.
@@ -37,15 +37,15 @@ Brindamos un asesoramiento de excelencia, ofreciendo una amplia variedad, con la
 
 - Estética y funcionalidad
     - [Mercado Libre](https://www.mercadolibre.com.ar/)
-    - [Frávega]()
+    - [Frávega](https://www.fravega.com/)
 ___
 - Estética
-    - [Compumundo]()
-    - [Musimundo]()
+    - [Compumundo](https://www.compumundo.com.ar/)
+    - [Musimundo](https://www.musimundo.com/)
 ___
 - Estética y organización
-    - [Facebook]()
+    - [Facebook](https://www.facebook.com/)
 ___
 - Estética y clientes a los que apunta
-    - [Samsung]()
-    - [Sony]()
+    - [Samsung](https://www.samsung.com/ar/)
+    - [Sony](https://www.sony.com/en/)
