@@ -1,0 +1,109 @@
+/* Paleta de colores */
+
+:root {
+    --greenWater : #00A99D;
+    --darkWaterGreen : #216965;
+    --lightBlue : #1E55E0;
+    --darkGrey : #2F2F2F;
+    --grey : #C4C4C4;
+}
+
+/* Aca importan los archivos css de las diferentes paginas que hagan */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    background-color: #2f2f2f;
+    display: flex;
+    padding: 0 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main .categorias {
+    width: 100%;
+}
+
+
+.main .logo img {
+    width: 90%;
+    padding: 1rem 0 0 1rem;
+}
+
+.main .search-bar {
+    position: relative;
+    width: fit-content;
+}
+
+.main .search-bar .input-style {
+    border: none;
+    border-radius: 1rem;
+    height: 3rem;
+    display: flex;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.main .search-bar i{
+    color: #c4c4c4;
+    position: absolute;
+    border-left: 1px solid #c4c4c4;
+    padding-left: 10px;
+    top: 2rem;
+    right: 12px;
+}
+.main .categorias {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.main .categorias ul li {
+    display: inline-block;
+    padding: 1px 5px 0px;
+    margin-right: 2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    justify-content: space-around;
+}
+.main .categorias ul li:last-child {
+    margin-right: 0;
+}
+
+.main .options ul li {
+    display: inline-block;
+    padding: 12px;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    border-right: 1px solid white;
+}
+
+.main .logeo ul li:last-child {
+    border-right: none;
+}
+
+.main .iconos {
+    text-align: right;
+    margin-right: 1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.main .iconos i {
+    margin-left: 1rem;
+}
