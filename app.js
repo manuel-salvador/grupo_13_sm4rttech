@@ -10,6 +10,10 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'))
 })
+    
+app.get('/prueba', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/prueba.html'))
+})
 
 /* Servidor */
 app.listen(port, () => {
