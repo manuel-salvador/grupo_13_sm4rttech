@@ -9,6 +9,8 @@ La audiencia objetivo será el publico general que se encuentre en la búsqueda 
 
 Brindamos un asesoramiento de excelencia, ofreciendo una amplia variedad, con la mejor relación calidad/precio. Es nuestro objetivo darles la mejor experiencia de compra, estando en una constante mejora de procesos e ideas, ofreciendo lo mejor de nosotros.
 
+___
+___
 
 ## Integrantes
 
@@ -32,6 +34,9 @@ Brindamos un asesoramiento de excelencia, ofreciendo una amplia variedad, con la
 - 24 años
 - Jugador de voley
 - Estudiante de programación
+
+___
+___
 
 ## Sitios de referencia
 

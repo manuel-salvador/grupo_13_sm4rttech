@@ -1,0 +1,22 @@
+{
+  "name": "grupo_13_sm4rttech",
+  "version": "1.0.0",
+  "description": "Electronic Device E-commerce",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel-salvador/grupo_13_sm4rttech.git"
+  },
+  "author": "Manuel Salvador, Matias Galeano, Mercedes Reynaga, Maria Del Carmen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuel-salvador/grupo_13_sm4rttech/issues"
+  },
+  "homepage": "https://github.com/manuel-salvador/grupo_13_sm4rttech#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
