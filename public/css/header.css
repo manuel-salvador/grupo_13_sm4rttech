@@ -14,77 +14,100 @@ header {
     padding: 0 2rem;
     justify-content: space-between;
     align-items: center;
+    height: 120px;
 }
 
-header.main .categorias {
+header .logo {
+    height: 100px;
+}
+
+header .logo img {
     width: 100%;
+    height: 100%;
 }
 
-
-header.main .logo img {
-    width: 70%;
-    padding: 1rem 0 0 1rem;
+header .nav-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 40%;
+}
+header .search-bar{
+    display: flex;
 }
 
-header.main .search-bar {
-    position: relative;
-    width: fit-content;
-}
-
-header.main .search-bar .input-style {
+header .search-bar .input-style {
     border: none;
-    border-radius: 1rem;
+    border-radius: 1rem 0 0 1rem;
     height: 3rem;
     display: flex;
-    margin-top: 1rem;
-    padding: 1.5rem;
     width: 100%;
+    padding-left: 1rem;
 }
 
-header.main .search-bar i{
+input.input-style::placeholder {
+    font-size: 1rem;
+    color: rgb(179, 179, 179) ;
+}
+
+input.input-style:focus {
+    outline: none;
+}
+
+header .search-bar .search-icon{
+    border-radius: 0 1rem 1rem 0;
+    background-color: #ffffff;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-right: 1rem ;
+}
+
+header .search-bar .search-icon i {
     color: #c4c4c4;
-    position: absolute;
     border-left: 1px solid #c4c4c4;
     padding-left: 10px;
-    top: 2rem;
-    right: 12px;
-}
-header.main .categorias {
-    margin: 0 auto;
-    width: fit-content;
 }
 
-header.main .categorias ul li {
-    display: inline-block;
-    padding: 1px 5px 0px;
-    margin-right: 2rem;
-    margin-bottom: 10px;
+
+header .categorias ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .categorias ul li a{
+    padding: 5px 10px;
     text-transform: uppercase;
-    justify-content: space-around;
-}
-header.main .categorias ul li:last-child {
-    margin-right: 0;
+    border-bottom: 2px solid #2F2F2F;
+    
 }
 
-header.main .options ul li {
+header .categorias ul li a:hover {
+    transition: all .3s ease;
+    border-bottom: 2px solid #3fc5c5;
+    /* box-shadow: 0px 0px 8px #3fc5c5; */
+}
+
+header .options ul li {
     display: inline-block;
     padding: 0 12px;
-    margin-top: 1rem;
     text-transform: uppercase;
     border-right: 1px solid white;
 }
 
-header.main .logeo ul li:last-child {
+header .logeo ul li:last-child {
     border-right: none;
 }
 
-header.main .iconos {
+header .iconos {
     text-align: right;
     margin-right: 1rem;
     margin-bottom: 10px;
     color: white;
 }
 
-header.main .iconos i {
+header .iconos i {
     margin-left: 1rem;
 }
