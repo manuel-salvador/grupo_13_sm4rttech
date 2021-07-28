@@ -1,12 +1,18 @@
 header a {
     text-decoration: none;
-    color: #ffffff;
-    font-size: 0.8rem;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 header ul {
     list-style: none;
 }
+
+header .main .categorias {
+    width: 100%;
+}
+
 
 header {
     background-color: #2f2f2f;
@@ -19,10 +25,11 @@ header {
 
 header .logo {
     height: 100px;
+    width: 15%;  
 }
 
 header .logo img {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
 }
 
@@ -31,7 +38,7 @@ header .nav-center {
     flex-direction: column;
     justify-content: space-evenly;
     height: 100%;
-    width: 40%;
+    width: 50%;
 }
 header .search-bar{
     display: flex;
@@ -78,19 +85,22 @@ header .categorias ul {
 }
 
 header .categorias ul li a{
-    padding: 5px 10px;
+    padding-top: 10px 0;
     text-transform: uppercase;
     border-bottom: 2px solid #2F2F2F;
+    display: flex;
+    width: 100%;
+
     
 }
 
 header .categorias ul li a:hover {
     transition: all .3s ease;
-    border-bottom: 2px solid #3fc5c5;
+    border-bottom: 2px solid #00A99D;
     /* box-shadow: 0px 0px 8px #3fc5c5; */
 }
 
-header .options ul li {
+header .logeo .options ul li {
     display: inline-block;
     padding: 0 12px;
     text-transform: uppercase;
@@ -101,13 +111,13 @@ header .logeo ul li:last-child {
     border-right: none;
 }
 
-header .iconos {
+.main .iconos {
     text-align: right;
     margin-right: 1rem;
     margin-bottom: 10px;
     color: white;
 }
 
-header .iconos i {
+.main .iconos i {
     margin-left: 1rem;
 }
