@@ -1,7 +1,8 @@
 /* Aca importan los archivos css de las diferentes paginas que hagan */
 @import url("header.css");
 @import url('home.css');
-
+@import url("footer.css");
+@import url("header-formularios.css");
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;
