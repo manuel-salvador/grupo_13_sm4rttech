@@ -13,85 +13,322 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo-sm4rttech.png" alt="">
-        </div>
-        <div class="nav-center">
-            <div class="search-bar">
-                <input class="input-style" type="text" name="Search" placeholder="Buscar productos">
-                <div class="search-icon"><i class="fa fa-search"></i></div>
-            </div>
-            <nav class="categorias">
-                <ul>
-                    <li>
-                        <a href="#">novedades</a>
-                    </li>
-                    <li>
-                        <a href="#">televisores</a>
-                    </li>
-                    <li>
-                        <a href="#">celulares</a>
-                    </li>
-                    <li>
-                        <a href="#">tablets</a>
-                    </li>
-                    <li>
-                        <a href="#">gaming</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="logeo">
-            <nav class="options">
-                <ul>
-                    <li><a href="#">inicia sesion</a></li>
-                    <li><a href="#">registrate</a></li>
-                </ul>
-            </nav>
-            <nav class="iconos">
-                <i class="fa fa-bell"></i>
-                <i class="fa fa-heart"></i>
-                <a href=""><i class="fas fa-shopping-cart"></i></a>
-            </nav>
-        </div>
-    </header>
     <main>
         <div class="carousel">
             <ul class="slider">
-                <li>
-                    <a href="prueba"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
-                    <h4>Galaxy S6 Edge</h4>
-                    <p><span class="bold">La mejor opción gama alta</span></p>
-                    <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                <li id="slide1">
+                    <a href="/"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>Galaxy S6 Edge</h4>
+                            <p><span class="bold">La mejor opción gama alta</span></p>
+                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
                 </li>
-                <li>
-                    <a href="prueba"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
-                    <h4>LG K20</h4>
-                    <p><span class="bold">Un gran celular</span></p>
-                    <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de la tecnologia.</p>
+                <li id="slide2">
+                    <a href="/"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>LG K20</h4>
+                            <p><span class="bold">Un gran celular</span></p>
+                            <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de
+                                la tecnologia.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
                 </li>
-                <li>
-                    <a href="prueba"><img src="/images/carousel/galaxy-s6-edge.jpg" alt="Galaxy S6 Edge"></a>
-                    <h4>Galaxy S6 Edge</h4>
-                    <p><span class="bold">La mejor opción gama alta</span></p>
-                    <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                <li id="slide3">
+                    <a href="/"><img src="/images/carousel/galaxy-s6-edge.jpg" alt="Galaxy S6 Edge"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>Galaxy S6 Edge</h4>
+                            <p><span class="bold">La mejor opción gama alta</span></p>
+                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
                 </li>
-                <li>
-                    <a href="prueba"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
-                    <h4>Galaxy S6 Edge</h4>
-                    <p><span class="bold">La mejor opción gama alta</span></p>
-                    <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                <li id="slide4">
+                    <a href="/"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>Galaxy S6 Edge</h4>
+                            <p><span class="bold">La mejor opción gama alta</span></p>
+                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
                 </li>
-                <li>
-                    <a href="prueba"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
-                    <h4>LG K20</h4>
-                    <p><span class="bold">Un gran celular</span></p>
-                    <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de la tecnologia.</p>
+                <li id="slide5">
+                    <a href="/"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>LG K20</h4>
+                            <p><span class="bold">Un gran celular</span></p>
+                            <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de
+                                la
+                                tecnologia.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
+                </li>
+                <li id="slide6">
+                    <a href="/"><img src="./images/carousel/galaxy-s6-edge.jpg" alt="Galaxy S6 Edge"></a>
+                    <div class="inferior">
+                        <i class="fas fa-chevron-left"></i>
+                        <div class="description">
+                            <h4>Galaxy S6 Edge 2</h4>
+                            <p><span class="bold">La mejor opción gama alta</span></p>
+                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="box-filter"></div>
                 </li>
             </ul>
         </div>
+
+        <div class="top-sales">
+            <h2>Los mas vendidos</h2>
+            <section class="articulos">
+                <article>
+                    <a href="/">
+                        <div class="product-img">
+                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Galaxy S6</h3>
+                            <p class="price">$ 5.123</p>
+                        </div>
+                    </a>
+                </article>
+                <article>
+                    <a href="/">
+                        <div class="product-img">
+                            <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Lenovo Tablet M7</h3>
+                            <p class="price">$ 12.525</p>
+                        </div>
+                    </a>
+                </article>
+                <article>
+                    <a href="/">
+                        <div class="product-img">
+                            <img src="/images/carousel/lg-k20.jpg" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>LG K20</h3>
+                            <p class="price">$ 10.123</p>
+                        </div>
+                    </a>
+                </article>
+                <article>
+                    <a href="/">
+                        <div class="product-img">
+                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Galaxy S6</h3>
+                            <p class="price">$ 5.123</p>
+                        </div>
+                    </a>
+                </article>
+            </section>
+        </div>
+
+        <div class="destacados">
+            <h2>Destacados</h2>
+            <section class="articulos-destacados">
+                <div class="izquierda arriba">
+                    <article class="producto">
+                        <a href="/">
+                            <div class="product-img">
+                                <img src="/images/carousel/lg-k20.jpg" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>LG K20</h3>
+                                <p class="price">$ 10.123</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="producto">
+                        <a href="/">
+                            <div class="product-img">
+                                <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>Lenovo Tablet M7</h3>
+                                <p class="price">$ 12.525</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+
+                <article class="producto-principal">
+                    <a href="/">
+                        <div class="product-img">
+                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                        </div>
+                        <div class="description-principal">
+                            <div class="description">
+                                <h3>Galaxy S6</h3>
+                                <p class="price">$ 5.123</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <div class="derecha abajo">
+                    <article class="producto">
+                        <a href="/">
+                            <div class="product-img">
+                                <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>Lenovo Tablet M7</h3>
+                                <p class="price">$ 12.525</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="producto">
+                        <a href="/">
+                            <div class="product-img">
+                                <img src="/images/carousel/lg-k20.jpg" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>LG K20</h3>
+                                <p class="price">$ 10.123</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <div class="ofertas">
+            <h2>Ofertas</h2>
+            <article class="producto">
+                <a href="">
+                    <div class="product-img">
+                        <img src="/images/carousel/lg-k20.jpg" alt="">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <h3>LG K20</h3>
+                            <p class="price">$ 10.123</p>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            <article class="producto">
+                <a href="">
+                    <div class="product-img">
+                        <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <h3>LG K20</h3>
+                            <p class="price">$ 10.123</p>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            <article class="producto">
+                <a href="">
+                    <div class="product-img">
+                        <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <h3>LG K20</h3>
+                            <p class="price">$ 10.123</p>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            <article class="producto">
+                <a href="">
+                    <div class="product-img">
+                        <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <h3>LG K20</h3>
+                            <p class="price">$ 10.123</p>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            <a href="/" class="ver-todas">
+                <p>Ver todas</p><span>></span>
+            </a>
+        </div>
+
+        <div class="marcas-partners">
+            <h2>Marcas con las que trabajamos</h2>
+            <div class="marca">
+                <img src="/images/marcas-partners/aorus.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/apple.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/asus.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/hp.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/lenovo.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/lg.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/samsung.png" alt="">
+            </div>
+            <div class="marca">
+                <img src="/images/marcas-partners/toshiba.png" alt="">
+            </div>
+        </div>
+
+        <div class="info-final">
+            <div class="metodos-de-pago info">
+                <div class="tarjeta">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <p>Métodos de pago</p>
+            </div>
+            <hr>
+            <div class="envios info">
+                <div class="camion">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <p>Envíos a todo el país</p>
+            </div>
+            <hr>
+            <div class="compra-segura info">
+                <div class="seguro">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <p>Compra segura</p>
+            </div>
+        </div>
+
     </main>
 </body>
 
