@@ -66,3 +66,9 @@ ___
 ## Paleta de Colores  
 
 ![paleta de colores](./wireframes/paleta-de-colores.jpg)
+
+___
+___
+
+Plataforma que usamos para organizar el trabajo:
+https://trello.com/b/qZb0mauk/sprints-team-13-c8
