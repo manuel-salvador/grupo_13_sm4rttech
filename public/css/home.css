@@ -1,0 +1,693 @@
+body {
+    width: 100vw;
+}
+
+
+/* ------------- Slider ------------- */
+
+main .carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+main .carousel ul.slider {
+    list-style: none;
+    width: 400%;
+    display: flex;
+    animation: cambio 30s infinite ease-in-out;
+} 
+
+#slide1 {
+    background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
+}
+
+#slide2 {
+    background-image: url(/images/carousel/lg-k20.jpg);
+}
+
+#slide3 {
+    background-image: url(/images/carousel/galaxy-s6-edge.jpg);
+}
+
+#slide4 {
+    background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
+}
+
+#slide5 {
+    display: none;
+}
+
+#slide6 {
+    display: none;
+}
+
+main .carousel ul.slider li {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .carousel ul.slider li a, 
+main .carousel ul.slider li .inferior{
+    position:relative;
+    z-index: 10;
+    color: white;
+}
+
+main .carousel ul.slider li img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+main .carousel ul.slider li .inferior {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .carousel ul.slider li .inferior i {
+    font-size: 2.2rem;
+}
+
+main .carousel ul.slider li .description {
+    padding: 0 1.2rem;
+}
+
+.box-filter {
+    position: absolute;
+    z-index: 1;
+    left: 0rem;
+    top: 0rem;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+@keyframes cambio {
+    0%{margin-left: 0%;}
+    24%{margin-left: 0%;}
+
+    29%{margin-left: -100%;}
+    59%{margin-left: -100%;}
+    
+    64%{margin-left: -200%;}
+    94%{margin-left: -200%;}
+
+    98%{margin-left: -300%;}
+    99.99999999999%{margin-left: -300%;}
+    
+    100%{margin-left: 0%;}
+}
+
+/* ------------- Fin Slider ------------- */
+
+
+/* ------------- Lo mas vendido ------------- */
+
+main div.top-sales {
+    display: flex;
+    width: 100%;
+    padding: 1.2rem 1rem 0;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+main div.top-sales h2 {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+main div.top-sales .articulos {
+    display: flex;
+    width: 400%;
+}
+
+main div.top-sales article {
+    background-color: #c4c4c4;
+    width: 250px;
+    height: 250px;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+main div.top-sales article a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    color: #000;
+    text-decoration: none;
+}
+
+main div.top-sales article a .product-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main div.top-sales article a .product-img img {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 0.5rem;
+}
+
+/* ------------- Fin lo mas vendido ------------- */
+
+
+/* ------------- DESTACADOS ------------- */
+
+main .destacados {
+    padding: 0 1rem;
+}
+
+main .destacados h2 {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+main .destacados article {
+    padding: 1rem;
+    background-color: var(--grey);
+    margin-bottom: 1rem;
+    border-radius: 0.6rem;
+    width: 250px;
+    height: 250px;
+}
+
+main .destacados .arriba,
+main .destacados .abajo {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .destacados article.producto {
+    width: 48%;
+}
+
+main .destacados article a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 250px;
+    width: 100%;
+    color: #000;
+    text-decoration: none;
+}
+
+main .destacados article a .product-img {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .destacados article.producto img {
+    max-width: 100%;
+    max-height: 126px;
+    border-radius: 0.5rem;
+    
+}
+
+main .destacados article a .description h3 {
+    font-size: 0.9rem;
+}
+
+main .destacados .producto-principal {
+    width: 100%;
+}
+
+main .destacados .producto-principal a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+main .destacados .product-img {
+    width: 100%;
+    height: 100%;
+}
+
+main .destacados .description {
+    height: 40%;
+}
+
+main .destacados .producto-principal .description-principal {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+main .destacados .producto-principal .product-img img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 1rem;
+}
+
+/* ------------- Fin DESTACADOS ------------- */
+
+
+/* ------------- OFERTAS ------------- */
+
+main .ofertas {
+    padding: 1.2rem 1rem 0;
+    width: 100%;
+}
+
+main .ofertas h2 {
+    padding: 0.5rem;
+    background-color: #EEE;
+    border-radius: 1rem 1rem 0 0;
+}
+
+main article.producto {
+    background-color: #EEE;
+    padding: 1rem;
+}
+
+main .ofertas article,
+main .ofertas h2 {
+    border-bottom: 1px solid #B8B8B8;
+}
+
+main .ofertas a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+main .ofertas article {
+    height: 250px;
+}
+
+main .ofertas a .product-img {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .ofertas a .product-img img {
+    max-width: 100%;
+    border-radius: 0.4rem;
+}
+
+main .ofertas a .description {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .ofertas a .description h3{
+    font-size: 1rem;
+}
+
+main .ofertas a .description div{
+    width: 75%;
+}
+
+main .ofertas a.ver-todas {
+    display: flex;
+    justify-content: space-between;
+    color: var(--lightBlue);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #EEE;
+    border-radius: 0 0 1rem 1rem;
+}
+
+/* ------------- FIN OFERTAS ------------- */
+/* --------------------------------------- */
+
+
+/* ------------------------------------------------- */
+/* ------------- MARCAS QUE TRABAJAMOS ------------- */
+
+main .marcas-partners {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #1D1D1D;
+    gap: 10px;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+}
+
+main .marcas-partners h2{
+    width: 100%;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+main .marcas-partners .marca {
+    width: 45%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .marcas-partners .marca img {
+    max-width: 80%;
+    max-height: 70px;
+    filter: grayscale(1) brightness(0) invert(1) opacity(.5);
+
+}
+
+
+main .marcas-partners .marca img:hover {
+    filter: brightness(0) invert(.95) drop-shadow(0px 0px 4px rgb(102, 102, 102));
+    /* box-shadow: 0px 10px 10px -10px white; */
+}
+
+/* ------------- FIN MARCAS QUE TRABAJAMOS ------------- */
+/* ----------------------------------------------------- */
+
+
+
+
+/* -------------------------------------- */
+/* ------------- INFO FINAL ------------- */
+
+main .info-final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .info-final .info {
+    display: flex;
+    width: 240px;
+    padding: 1.5rem 0;
+    align-items: center;
+}
+
+main .info-final div p {
+    font-size: 1.1rem;
+    padding-left: 20px;
+}
+
+main .info-final div div {
+    width: 60px;
+    text-align: center;
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+main .info-final hr {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #AFAFAF;
+}
+
+/* ------------- FIN INFO FINAL ------------- */
+/* ------------------------------------------ */
+
+
+
+
+
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+/* --------------- INICIO TABLET --------------- */
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+
+@media screen and (min-width:769px) {  
+
+
+    /* ---------------------------------- */
+    /* ------------- Slider ------------- */
+
+    #slide5 {
+        display: block;
+    }
+
+    #slide6 {
+        display: block;
+    }
+
+    main div.carousel ul.slider {
+        display: flex;
+        justify-content: center;
+        width: 300%;
+        list-style: none;
+        animation: cambio 30s infinite ease-in-out;
+    }
+    
+    main div.carousel ul.slider li {
+        width: 100%;
+        padding: 2rem 1%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(63, 63, 63);
+        color: white;
+    }
+    main div.carousel ul.slider li a {
+        width: 100%;
+    }
+    
+    main div.carousel ul.slider li a img{
+        border-radius: 1rem;
+        width: 100%;
+    }
+    
+    main div.carousel ul.slider li .inferior {
+        width: 100%;
+    }
+    
+    
+    
+        @keyframes cambio {
+            0%{margin-left: -25%;}
+            25%{margin-left: -25%;}
+    
+            33%{margin-left: -75%;}
+            58%{margin-left: -75%;}
+                
+            66%{margin-left: -125%;}
+            91%{margin-left: -125%;}
+            
+            100%{margin-left: -175%;}
+        }
+
+
+    /* ------------- Fin Slider ------------- */
+    /* -------------------------------------- */
+
+
+
+
+
+    /* ------------- Lo mas vendido ------------- */
+    /* ------------------------------------------ */
+        
+    main div.top-sales .articulos {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    main div.top-sales{
+        margin-top: 2rem;
+    }
+
+
+    main div.top-sales .articulos article {
+        margin-right: 1rem;
+        width: 25%;
+    }
+    
+    /* ----------- Fin Lo mas vendido ----------- */
+    /* ------------------------------------------ */
+
+
+
+
+
+    /* ------------------------------------------ */
+    /* --------------- DESTACADO ---------------- */
+
+    main .destacados h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    main .destacados article.producto {
+        width: 285px;
+        height: 285px;
+        margin-bottom: 0;
+    }
+    
+    main .destacados {
+        margin: 4rem auto 0;
+    }
+
+    main .destacados section.articulos-destacados {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    main .destacados article.producto img {
+        max-width: 100%;
+        max-height: 126px;
+    }
+
+    main .articulos-destacados .producto-principal {
+        width: 600px;
+        height: 600px;
+        margin: 0 1rem;    
+    }
+
+    main .articulos-destacados .producto-principal a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;   
+    }
+    
+
+    main .articulos-destacados .producto-principal a .product-img {
+        width: 100%;
+        padding: 0;
+        height: 60%;
+    }
+
+    main .articulos-destacados .producto-principal a .description {
+        height: 40%;
+    }
+
+    main .articulos-destacados .producto-principal a .product-img img{
+        width: max-content;
+        max-height: 284px;
+        max-width: 100%;
+
+    }
+
+    main .destacados .izquierda,
+    main .destacados .derecha {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    main .destacados article.producto .description{
+        padding: 1rem 1rem 0;
+    }
+
+    
+    /* ------------- Fin Destacados ------------- */
+    /* ------------------------------------------ */
+
+
+
+    /* ----------------- OFERTAS ---------------- */
+    main .ofertas article, 
+    main .ofertas h2 {
+        border-bottom: 0;
+    }
+
+    main div.ofertas h2  {
+        background-color: #fff;
+    }
+
+    main div.ofertas .articulos {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+
+    main .ofertas a .product-img img {
+        max-width: 100%;
+        max-height: 160px;
+    }
+
+    main .ofertas a {
+        flex-direction: column;
+    }
+
+    main div.ofertas .articulos article {
+        margin-right: 1rem;
+        width: 25%;
+        border-radius: 1rem;
+    }
+
+    main div.ofertas a.ver-todas{
+        justify-content: flex-start;
+        background-color: #fff;
+    }
+
+    main div.ofertas a.ver-todas p {
+        margin-right: 1rem;
+    }
+
+
+
+
+
+
+    /* PARTNERS */
+
+    main .marcas-partners h2 {
+        padding: 1rem 0 3rem 0;
+    }
+
+    main .marcas-partners .marca {
+        width: 23%;
+    }
+
+
+
+    /* INFO FINAL */
+    main div.info-final {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    main .info-final hr {
+        display: none;
+    }
+    
+    main .info-final div.info {
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        padding: 3rem 0;
+    }
+
+
+
+
+
+
+
+
+
+
+}

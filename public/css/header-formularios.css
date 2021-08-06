@@ -1,19 +1,15 @@
-header {
+.header-formularios {
     background-color: #2F2F2F;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
-header .logo {
-    height: 150px;
-    max-width: 200px;
-    min-width: 200px;
-    width: 15%;  
+.header-formularios .logo{
+    align-items: center;
+    text-align: center;
 }
-
-header .logo img {
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
+.header-formularios .logo img {
+    width: 60%;
+   margin: 10px;
 }
