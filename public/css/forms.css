@@ -1,0 +1,247 @@
+
+@import url("login.css");
+@import url("register.css");
+@import url("editProfile.css");
+:root {
+    --greenWater : #00A99D;
+    --darkWaterGreen : #216965;
+    --lightBlue : #1E55E0;
+    --darkGrey : #2F2F2F;
+    --grey : #C4C4C4;
+   }
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+a{
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+   
+
+   }
+h2{
+    margin-bottom: 0rem;
+    text-align: center;
+}
+h4{ 
+    color: black;
+}
+h5{
+    color:#1E55E0;
+}
+hr{
+    background: linear-gradient(90deg,rgb(24,24,24)white);
+    height: 1px;
+    margin-bottom: 1rem;
+    width: auto;
+    border: none;
+    
+}
+
+
+b{
+    font-family: serif;
+    color:#1E55E0;
+}
+table{
+
+
+    text-align:right;
+}
+div{
+   padding: 0.5rem;
+}
+
+
+/* boton registrar*/
+.registrar{
+    
+    text-transform: uppercase;
+    border-color: var(--greenWater);
+    background-color:var(--greenWater);
+    font-size:0.8rem;
+    font-weight: bold;
+    color:white;
+    margin: 0px 0;
+    height:2.5em;
+    width: 100%;
+    align-items: initial;
+
+
+}
+td{
+    padding: 0.6rem;
+}
+
+
+
+
+.form{
+    
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.form-container{
+
+    background-color:#ebebeb;
+    border-radius: 0px;
+    margin: 0;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+  
+    height: fit-content;
+    height: -moz-fit-content;
+    padding: 1rem;   /* altura*/
+
+
+/*  form input*/
+
+
+
+.form-container{
+    background-color: var(--grey);
+    width: 70%;
+    margin: 10px;
+}
+
+
+
+span.error-message{
+color: red;
+font-size: x-small0.8rem;
+margin: 5px auto 0;
+display: none;
+
+}
+
+
+input.input-style{
+    color: grey;
+    border:none;
+    border-radius:1rem;
+    height:2rem;
+    padding:1rem;
+    width: 100%;
+    text-align:left;
+}
+input.input-style::placeholder{
+    color: rgb(153, 153, 153);
+
+}
+
+.input-file-container{
+    background-color:white ;
+    border-radius: 1rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+select.input-select{
+    border: none;
+    border-radius: 1rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+input.input-style:focus,
+select.input-select:focus{
+    box-shadow: 0 0 6px white;
+    outline: none;
+}
+
+label{
+    font-size: 1rem;
+
+}
+ 
+/*botones*/
+
+
+
+
+.boton{
+    text-transform: uppercase;
+    border-color:var(--darkWaterGreen);
+    background-color:var(--greenWater);
+    font-size: 1rem;
+    font-weight: bold;
+    color:rgb(255, 255, 255);
+    margin: 8px 0;
+    height:2.5rem;
+    width: 9rem;
+    border:none;
+}
+.btn{
+    margin: 5px 0;
+    border-color: var(--lightBlue) ;
+    border-radius: 0rem;
+    font-weight: bold;
+   
+    height:2rem;/*altura*/
+    text-transform: uppercase;
+    width: 9rem;
+    background-color:white;
+    color:var(--lightBlue);
+    
+
+}
+
+.palabra{
+    text-align: left;
+
+}
+
+
+
+ 
+.check {
+    
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-bottom: 0.6rem;
+    width: 85%;
+}
+
+
+.check input[type = "checkbox"]{
+    position: relative;/*matiene el espacio pero no modifica a los otros para abajo*/
+    bottom: 2x;
+}
+
+
+/*media queries para q sea para todos los dispositivos*/
+/*tablet*/
+
+@media(min-width: 768px){
+    main{
+        text-align: center;
+    }
+    .input-container,
+    .button-container{
+       width: 60%;
+
+    }
+    .form-container{
+        display: inline-block;
+    
+        justify-content: center;
+       
+        width: 500px;
+    
+      
+    }
+
+}

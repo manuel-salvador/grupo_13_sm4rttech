@@ -14,6 +14,15 @@ app.get('/', (req, res) => {
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))
 })
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/login.html'))
+})
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/register.html'))
+})
+app.get('/recuperar', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/recuperarcontra.html'))
+})
 
 /* Servidor */
 app.listen(port, () => {
