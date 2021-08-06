@@ -2,6 +2,7 @@ body {
     width: 100vw;
 }
 
+
 /* ------------- Slider ------------- */
 
 main .carousel {
@@ -360,13 +361,13 @@ main .marcas-partners .marca img {
     max-width: 80%;
     max-height: 70px;
     filter: grayscale(1) brightness(0) invert(1) opacity(.5);
+
 }
 
 
 main .marcas-partners .marca img:hover {
     filter: brightness(0) invert(.95) drop-shadow(0px 0px 4px rgb(102, 102, 102));
     /* box-shadow: 0px 10px 10px -10px white; */
-    border-radius: .2rem;
 }
 
 /* ------------- FIN MARCAS QUE TRABAJAMOS ------------- */
@@ -500,6 +501,10 @@ main .info-final hr {
         width: 100%;
     }
 
+    main div.top-sales{
+        margin-top: 2rem;
+    }
+
 
     main div.top-sales .articulos article {
         margin-right: 1rem;
@@ -524,27 +529,27 @@ main .info-final hr {
     main .destacados article.producto {
         width: 285px;
         height: 285px;
+        margin-bottom: 0;
     }
     
     main .destacados {
-        margin: 0 auto;
+        margin: 4rem auto 0;
     }
+
     main .destacados section.articulos-destacados {
         display: flex;
         justify-content: space-evenly;
-    }
-
-    main .destacados .articulos-destacados article a > div{
-        height: 50%;
     }
 
     main .destacados article.producto img {
         max-width: 100%;
         max-height: 126px;
     }
+
     main .articulos-destacados .producto-principal {
         width: 600px;
         height: 600px;
+        margin: 0 1rem;        
     }
 
     
@@ -552,6 +557,11 @@ main .info-final hr {
     main .articulos-destacados .producto-principal a .product-img {
         width: 100%;
         padding: 0;
+        height: 60%;
+    }
+
+    main .articulos-destacados .producto-principal a .description {
+        height: 40%;
     }
 
     main .articulos-destacados .producto-principal a .product-img img{
@@ -575,6 +585,43 @@ main .info-final hr {
     
     /* ------------- Fin Destacados ------------- */
     /* ------------------------------------------ */
+
+
+
+    /* ----------------- OFERTAS ---------------- */
+    main .ofertas article, 
+    main .ofertas h2 {
+        border-bottom: 0;
+    }
+
+    main div.ofertas h2  {
+        background-color: #fff;
+    }
+
+    main div.ofertas .articulos {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+
+    main div.ofertas .articulos article {
+        margin-right: 1rem;
+        width: 25%;
+        border-radius: 1rem;
+    }
+
+    main div.ofertas a.ver-todas{
+        justify-content: flex-start;
+    }
+
+    main div.ofertas a.ver-todas p {
+        margin-right: 1rem;
+    }
+
+
+
+
 
 
     /* PARTNERS */

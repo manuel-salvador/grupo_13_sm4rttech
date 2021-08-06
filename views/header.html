@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,51 +8,110 @@
     <title>HEADER</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
     <header>
-        <div class="logo">
-            <img src="images/logo-sm4rttech.png" alt="">
-        </div>
-        <div class="nav-center">
-            <div class="search-bar">
-                <input class="input-style" type="text" name="Search" placeholder="Buscar productos">
-                <div class="search-icon"><i class="fa fa-search"></i></div>
+        <div class="main-header">
+
+            <div class="logo">
+                <img src="/images/logo-sm4rttech.png" alt="">
             </div>
-            <nav class="categorias">
-                <ul>
-                    <li>
-                        <a href="#">novedades</a>
+
+            <!-- buscador -->
+            <form action="#" class="search-form-mobile" id="search">
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="" placeholder="Buscar productos">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <ul class="categorías">
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                        novedades
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
                     </li>
-                    <li>
-                        <a href="#">televisores</a>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                        televisores
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
                     </li>
-                    <li>
-                        <a href="#">celulares</a>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        celulares
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
                     </li>
-                    <li>
-                        <a href="#">tablets</a>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        tablets
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
                     </li>
-                    <li>
-                        <a href="#">gaming</a>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        gaming
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
                     </li>
                 </ul>
+            </form>
+            <div class="iconos">
+                <i class="fas fa-bars burguer-menu-icon" onclick="dropMenu()"></i>
+                <!-- <i class="fas fa-shopping-cart carrito" onclick="dropMenu()"></i> -->
+            </div>
+            <div class="logeo">
+                <nav class="options">
+                    <ul>
+                        <li oneclick="dropMenu()">inicia sesion</li>
+                        <li oneclick="dropMenu()">registrate</li>
+                    </ul>
+                </nav>
+                <nav class="iconos-desktop">
+                    <i class="fa fa-bell" onclick="dropMenu()"></i>
+                    <i class="fa fa-heart" onclick="dropMenu()"></i>
+                    <i class="fas fa-shopping-cart" onclick="dropMenu()"></i>
+                </nav>
+            </div>
+
+            <!-- Menú de navegación mobile-->
+
+            <!-- Menú de navegación desktop -->
+            <nav class="navigation-bar" id="navigation-bar-desktop">
+                <!-- Lista con los elementos del menú (categorías) -->
+                <ul class="menu">
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                        Escolar
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                        Artística
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        Oficina
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
             </nav>
+
+            <!-- Buscador escritorio -->
+            <form action="#" class="search-form-desktop">
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+
+            <div class="user-icons-desktop">
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
         </div>
 
-        <div class="logeo">
-            <nav class="options">
-                <ul>
-                    <li><a href="#">inicia sesion</a></li>
-                    <li><a href="#">registrate</a></li>
-                </ul>
+        <nav class="nav_menu">
+            <nav class="second-bar">
+                <i class="fa fa-heart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
+                <i class="fas fa-shopping-cart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
             </nav>
-            <nav class="iconos">
-                <i class="fa fa-bell"></i>
-                <i class="fa fa-heart"></i>
-                <a href=""><i class="fas fa-shopping-cart"></i></a>
-            </nav>
-        </div>
+        </nav>
+        <nav class="second-bar-desktop">
+            <p> mi carrito <i class="fas fa-shopping-cart"></i></p>
+        </nav>
+
     </header>
-    
 </body>
+
 </html>
