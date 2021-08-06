@@ -6,6 +6,7 @@
   text-align: left;  
   color: var(--lightBlue);
   text-decoration: none;
+  margin: 0 0.5rem;
 }
 
 imagenes .imagen-principal {
