@@ -13,6 +13,103 @@
 </head>
 
 <body>
+    <header>
+        <div class="main-header">
+
+            <div class="logo">
+            </div>
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="" placeholder="Buscar productos">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <ul class="categorías">
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                        novedades
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                        televisores
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        celulares
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        tablets
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        gaming
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                </ul>
+            </form>
+            <div class="iconos">
+                <i class="fas fa-bars burguer-menu-icon" onclick="dropMenu()"></i>
+                <!-- <i class="fas fa-shopping-cart carrito" onclick="dropMenu()"></i> -->
+            </div>
+            <div class="logeo">
+                <nav class="options">
+                    <ul>
+                        <li oneclick="dropMenu()">inicia sesion</li>
+                        <li oneclick="dropMenu()">registrate</li>
+                    </ul>
+                </nav>
+                <nav class="iconos-desktop">
+                    <i class="fa fa-bell" onclick="dropMenu()"></i>
+                    <i class="fa fa-heart" onclick="dropMenu()"></i>
+                    <i class="fas fa-shopping-cart" onclick="dropMenu()"></i>
+                </nav>
+            </div>
+
+            <!-- Menú de navegación mobile-->
+
+            <!-- Menú de navegación desktop -->
+            <nav class="navigation-bar" id="navigation-bar-desktop">
+                <!-- Lista con los elementos del menú (categorías) -->
+                <ul class="menu">
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                        Escolar
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                        Artística
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        Oficina
+                        <i class="fas fa-chevron-down"></i>
+                    </li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- Buscador escritorio -->
+            <form action="#" class="search-form-desktop">
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+
+            <div class="user-icons-desktop">
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+
+        
+            <nav class="second-bar">
+                <i class="fa fa-heart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
+                <i class="fas fa-shopping-cart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
+            </nav>
+       
+        <nav class="second-bar-desktop">
+            <p> mi carrito <i class="fas fa-shopping-cart"></i></p>
+        </nav>
+
+    </header>
     <main>
         <div class="carousel">
             <ul class="slider">
@@ -332,6 +429,48 @@
         </div>
 
     </main>
+    <footer>
+        <div class="footer">
+                <div class="logo-footer">
+                    <img src="/images/logo-sm4rttech.png" alt="">
+                </div>
+                
+                <div class="listas">
+                    <div class="lista1">
+                        <ul>
+                            <li>Inicio</li>
+                            <li>Sobre nosotros</li>
+                            <li>Ayuda</li>
+                        </ul>
+                    </div>
+                    <div class="lista2">
+                        <ul>
+                            <li>Ofertas</li>
+                            <li>Favoritos</li>
+                            <li>Marcas</li>
+                        </ul>
+                    </div>
+                    <div class="lista3">
+                        <ul>
+                            <li>Recomendados</li>
+                            <li>Smartphones</li>
+                            <li>Tablets</li>
+                            <li>Televisores</li>
+                            <li>Gaming</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="redes">
+                    <i class="fab fa-whatsapp"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook-f"></i><i class="far fa-envelope"></i>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright © 2021 SM4RTTECH S.A.</p>
+                <p>| Todos los derechos reservados | Buenos aires, Argentina</p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
