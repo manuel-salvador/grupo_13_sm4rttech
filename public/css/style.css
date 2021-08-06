@@ -8,6 +8,7 @@
 @import url("forms.css");
 
 
+@import url("detalleProducto.css");
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;

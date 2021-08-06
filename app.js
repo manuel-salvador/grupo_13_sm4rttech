@@ -24,6 +24,10 @@ app.get('/recuperar', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/recuperarcontra.html'))
 })
 
+app.get("/detalleDeProducto",(req, res)=>{
+    res.sendFile(path.join(__dirname,"/views/detalleProducto.html"))
+})
+
 /* Servidor */
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port} \nhttp://localhost:${port}`);
