@@ -16,7 +16,7 @@
     --darkGrey : #2F2F2F;
     --grey : #C4C4C4;
 }
-main{
+.formularios-reg {
     display: flex;
     justify-content: center;
 }

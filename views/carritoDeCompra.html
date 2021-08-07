@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
+
+</head>
+<body>
+    <header >
+        <div class="main-header">
+            <div class="logo">
+                <img src="/images/logo-sm4rttech.png" alt="">
+            </div> 
+            
+            <!-- buscador -->
+            <form action="#" class="search-form-mobile" id="search">
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="" placeholder="Buscar productos">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <ul class="categorías">
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                        novedades
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                        televisores
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        celulares
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        tablets
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                    <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                        gaming
+                        <!-- <i class="fas fa-chevron-down" ></i> -->
+                    </li>
+                </ul>
+            </form>
+            <div class="iconos">
+                <i class="fas fa-bars burguer-menu-icon" onclick="dropMenu()"></i>
+                <!-- <i class="fas fa-shopping-cart carrito" onclick="dropMenu()"></i> -->
+            </div>
+            <div class="logeo">
+                <nav class="options">
+                        <span><a href="/login">inicia sesion</a>
+                        <span><a href="/register">regitrate</a>
+                    
+                </nav>
+                <nav class="iconos-desktop">
+                    <i class="fa fa-bell" onclick="dropMenu()"></i>
+                    <i class="fa fa-heart" onclick="dropMenu()"></i>
+                    <i class="fas fa-shopping-cart" onclick="dropMenu()"></i>
+                </nav>
+            </div>
+
+        <!-- Buscador escritorio -->
+
+            <form action="#" class="search-form-desktop">
+                <div class="search-bar">
+                    <input type="search" name="busqueda" id="">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Iconos header desktop -->
+            <div class="user-icons-desktop">
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-cart"></i>
+            </div>  
+        </div>
+        <nav class="second-bar">
+            <i class="fa fa-heart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
+            <i class="fas fa-shopping-cart" onclick="dropMenu()"> (<input type="tel" name="" value="0" id="">)</i>
+        </nav>
+    
+        <!-- segunda barra para desktop -->
+
+        <nav class="second-bar-desktop">
+            <p> mi carrito <i class="fas fa-shopping-cart"></i></p>
+        </nav>
+
+    </header>
+    <div class="cuerpo">
+        <section class="productos">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/tv.jpg" alt="">
+                    <div class="nombre">
+                        <h3>Smart TV Samsung 32"</h3>
+                        <div class="cantidad">
+                            <button>+</button><input type="tel" min="1" max="99" value="1"><button> - </button>
+                            <a href="productos-similares">Ver productos similares</a>
+                        </div>
+                    </div>
+                    <div class="precio">
+                    <p>
+                        <h3>precio</h3>
+                        <h3>$70.000</h3>
+                    </p>
+                    <div>
+                        <a href="">Eliminar</a>    
+                    </div>
+                    </div>
+        </section>
+        <section class="productos">
+            <article class="producto">
+                <img src="/images/carritoDeCompra/tablet.jpg" alt="">
+                <div class="nombre">
+                    <h3>Tablet Toshiba 32gb 18"</h3>
+                    <div class="cantidad">
+                        <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                        <a href="productos-similares">Ver productos similares</a>
+                    </div>
+                </div>
+                <div class="precio">
+                    <p>
+                        <h3>precio</h3>
+                        <h3>$18.000</h3>
+                    </p>
+                    <div>
+                        <a href="">Eliminar</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="productos">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/notebook.jpg" alt="">
+                <div class="nombre">
+                    <h3>Notebook Lenovo 14" Core i5 4GB 500GB</h3>
+                <div class="cantidad">
+                    <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                    <a href="productos-similares">Ver productos similares</a>
+                </div>
+                </div>
+                <div class="precio">
+                <p>
+                    <h3>precio</h3>
+                    <h3>$55.000</h3>
+                </p>
+                <div>
+                    <a href="">Eliminar</a>
+                </div>
+                </div>
+            </article>
+        </section>
+        <section class="productos">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/celular.jpg" alt="">
+                <div class="nombre">
+                    <h3>Celular Galaxy A51 128GB Blanco</h3>
+                <div class="cantidad">
+                    <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                    <a href="productos-similares">Ver productos similares</a>
+                </div>
+                </div>
+                <div class="precio">
+                <p>
+                    <h3>precio</h3>
+                    <h3>$45.000</h3>
+                </p>
+                <div>
+                    <a href="">Eliminar</a>
+                </div>
+                </div>
+            </article>
+        </section>
+        
+
+        <!-- PRODUCTOS-TABLET -->
+        <section class="productos-tablet">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/tv.jpg" alt="">
+                    <div class="nombre">
+                        <h3>Smart TV Samsung 32"</h3>
+                        <div class="cantidad">
+                            <button>+</button><input type="tel" min="1" max="99" value="1"><button> - </button>
+                        </div>
+                    </div>
+                    <div class="precio">
+                    <p>
+                        <h4>precio</h4>
+                        <h3>$70.000</h3>
+                    </p>
+                    </div>
+                    <div>
+                        <div>
+                            <a href="productos-similares">Ver productos similares</a>    
+                        </div>
+                        <div>
+                            <a href="">Eliminar</a>
+                        </div>
+                    </div>
+        </section>
+        <section class="productos-tablet">
+            <article class="producto">
+                <img src="/images/carritoDeCompra/tablet.jpg" alt="">
+                <div class="nombre">
+                    <h3>Tablet Toshiba 32gb 18"</h3>
+                    <div class="cantidad">
+                        <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                    </div>
+                </div>
+                <div class="precio">
+                    <p>
+                        <h4>precio</h4>
+                        <h3>$18.000</h3>
+                    </p>
+                </div>
+                <div>
+                    <div>
+                        <a href="productos-similares">Ver productos similares</a>    
+                    </div>
+                    <div>
+                        <a href="">Eliminar</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="productos-tablet">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/notebook.jpg" alt="">
+                <div class="nombre">
+                    <h3>Notebook Lenovo 14" Core i5 4GB 500GB</h3>
+                    <div class="cantidad">
+                        <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                    </div>
+                </div>
+                <div class="precio">
+                <p>
+                    <h4>precio</h4>
+                    <h3>$55.000</h3>
+                </p>
+                </div>
+                <div>
+                    <div>
+                        <a href="productos-similares">Ver productos similares</a>
+                    </div>
+                    <div>
+                        <a href="">Eliminar</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="productos-tablet">
+            <article class="producto">
+                    <img src="/images/carritoDeCompra/celular.jpg" alt="">
+                <div class="nombre">
+                    <h3>Celular Galaxy A51 128GB Blanco</h3>
+                    <div class="cantidad">
+                        <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                    </div>
+                </div>
+                <div class="precio">
+                <p>
+                    <h4>precio</h4>
+                    <h3>$45.000</h3>
+                </p>
+                </div>
+                <div>
+                    <div>
+                        <a href="productos-similares">Ver productos similares</a>    
+                    </div>
+                    <div>
+                        <a href="">Eliminar</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+
+        <!-- PRODUCTOS-DESKTOP -->
+        <section class="productos-desktop">
+            <article class="producto">
+                    <div class="imagen">
+                        <img src="/images/carritoDeCompra/tv.jpg" alt="">
+                        <h5><a href="productos-similares">Ver productos similares</a></h5>
+                    </div>
+                    <div class="nombre">
+                        <h3>Smart TV Samsung 32"</h3>
+                    </div>
+                    <div class="cantidad-boton">
+                    <button>+</button><input type="tel" min="1" max="99" value="1"><button> - </button>
+                    </div>
+                    <div class="precio">
+                    <p>
+                        <h4>precio</h4>
+                        <h3>$70.000</h3>
+                    </p>
+                    </div>
+                    <a href="">Eliminar</a>
+        </section>
+        <section class="productos-desktop">
+            <article class="producto">
+                <div  class="imagen">
+                    <img src="/images/carritoDeCompra/tablet.jpg" alt="">
+                    <h5><a href="productos-similares">Ver productos similares</a></h5>
+                </div>
+                <div class="nombre">
+                    <h3>Tablet Toshiba 32gb 18"</h3>
+                </div>
+                <div class="cantidad-boton">
+                    <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                </div>
+                <div class="precio">
+                    <p>
+                        <h4>precio</h4>
+                        <h3>$18.000</h3>
+                    </p>
+                </div>
+                <a href="">Eliminar</a>
+            </article>
+        </section>
+        <section class="productos-desktop">
+            <article class="producto">
+                <div class="imagen">
+                    <img src="/images/carritoDeCompra/notebook.jpg" alt="">
+                    <h5><a href="productos-similares">Ver productos similares</a></h5>
+                </div>
+                <div class="nombre">
+                <h3>Notebook Lenovo 14" Core i5 4GB 500GB</h3>
+                </div>
+                <div class="cantidad-boton">
+                <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                </div>
+                <div class="precio">
+                <p>
+                    <h4>precio</h4>
+                    <h3>$55.000</h3>
+                </p>
+                </div>
+                <div class="enlaces-producto">
+                <a href="">Eliminar</a>
+            </article>
+        </section>
+        <section class="productos-desktop">
+            <article class="producto">
+                <div class="imagen">
+                    <img src="/images/carritoDeCompra/celular.jpg" alt="">
+                    <h5><a href="productos-similares">Ver productos similares</a></h5>
+                </div>
+                <div class="nombre">
+                <h3>Celular Galaxy A51 128GB Blanco</h3>
+                </div>
+                <div class="cantidad-boton">
+                <button>+</button><input type="tel" min="1" max="99" value="1"><button>-</button>
+                </div>
+                <div class="precio">
+                <p>
+                    <h4>precio</h4>
+                    <h3>$45.000</h3>
+                </p>
+                </div>
+                <a href="">Eliminar</a>
+            </article>
+        </section>
+    </div>
+
+
+    <div class="box-compra">
+        <div class="botones">
+            <button class="boton1"><a href="">continuar COMPRANDO</a></button>
+            <button class="boton2"><a href="">FINALIZAR LA COMPRA</a></button>
+        </div>
+        <div class="precio-total">
+            <div class="total-compra">
+                <h2>total de compra</h2>
+                <h2>$188.000</h2>
+            </div>
+            <h4>cuotas</h4>
+            <select name="input" id="" val aria-placeholder="seleccionar cuotas">
+                <option value="0">Seleccionar cuotas</option>
+                <option value="1">3 cuotas de</option>
+                <option value="2">6 cuotas de</option>
+                <option value="3">9 cuotas de</option>
+                <option value="4">12 cuotas de</option>
+            </select>
+        </div>
+        <div class="etiquetas">
+            <p><i class="fas fa-credit-card"></i>metodos de pago</p>
+            <p class="etiqueta2"><i class="fas fa-truck"></i>envios a todo el pais</p>
+            <a href="">calcular costo de envio</a>
+            <p><i class="fas fa-shield-alt"></i>compra segura</p>
+        </div>
+        <div class="etiquetas-desktop">
+            <p><i class="fas fa-credit-card"></i>metodos de pago</p>
+            <p class="etiqueta2"><i class="fas fa-truck"></i>envios a todo el pais</p>
+            <a href="">calcular costo de envio</a>
+            <p><i class="fas fa-shield-alt"></i>compra segura</p>
+        </div>
+        <a href="">calcular costo de envio</a>
+    </div>    
+
+    <footer>
+        <div class="footer">
+                <div class="logo-footer">
+                    <img src="/images/logo-sm4rttech.png" alt="">
+                </div>
+                
+                <div class="listas">
+                    <div class="lista1">
+                        <ul>
+                            <li>Inicio</li>
+                            <li>Sobre nosotros</li>
+                            <li>Ayuda</li>
+                        </ul>
+                    </div>
+                    <div class="lista2">
+                        <ul>
+                            <li>Ofertas</li>
+                            <li>Favoritos</li>
+                            <li>Marcas</li>
+                        </ul>
+                    </div>
+                    <div class="lista3">
+                        <ul>
+                            <li>Recomendados</li>
+                            <li>Smartphones</li>
+                            <li>Tablets</li>
+                            <li>Televisores</li>
+                            <li>Gaming</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="redes">
+                    <i class="fab fa-whatsapp"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook-f"></i><i class="far fa-envelope"></i>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright © 2021 SM4RTTECH S.A.</p>
+                <p>| Todos los derechos reservados | Buenos aires, Argentina</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
