@@ -5,6 +5,7 @@ let port = 3000;
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
+let accountsRouter = require('./routes/accountsRoute');
 
 
 /* view engine setup */        // -------- Esto es nuevo y se necesita! 
@@ -16,21 +17,13 @@ app.use(express.static(path.join(__dirname + '/../public')))
 
 /* Routes */
 app.use('/', indexRouter);
+app.use('/accounts',accountsRouter);
     
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))
 })
 
 
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/login.html'))
-})
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/register.html'))
-})
-app.get('/recuperar', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/recuperarcontra.html'))
-})
 
 
 
