@@ -5,6 +5,7 @@ let port = 3000;
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
+let carritoRouter = require('./routes/carritoRoute')
 
 
 /* view engine setup */        // -------- Esto es nuevo y se necesita! 
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname + '/../public')))
 
 /* Routes */
 app.use('/', indexRouter);
+app.use ('/products', carritoRouter);
     
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))
@@ -36,10 +38,6 @@ app.get('/recuperar', (req, res) => {
 
 app.get("/detalleDeProducto",(req, res)=>{
     res.sendFile(path.join(__dirname,"/views/detalleProducto.html"))
-})
-
-app.get("/carritoDeCompra", (req,res) => {
-    res.sendFile(path.join(__dirname,"/views/carritoDeCompra.html"))
 })
 
 /* Servidor */
