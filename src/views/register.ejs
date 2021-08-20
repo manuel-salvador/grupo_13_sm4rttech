@@ -11,12 +11,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header class="header-formularios">
-        <a href="/" class="logo">
-        
-            <img src="images/logo-sm4rttech.png" alt="">
-        </a>
-    </header>
+    <%- include("partials/header-formularios.ejs") %> 
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
@@ -59,47 +54,6 @@
             </div>
         </section>
 </main>
-    <footer>
-        <div class="footer">
-                <div class="logo-footer">
-                    <img src="images/logo-sm4rttech.png" alt="">
-                </div>
-                
-                <div class="listas">
-                    <div class="lista1">
-                        <ul>
-                            <li>Inicio</li>
-                            <li>Sobre nosotros</li>
-                            <li>Ayuda</li>
-                        </ul>
-                    </div>
-                    <div class="lista2">
-                        <ul>
-                            <li>Ofertas</li>
-                            <li>Favoritos</li>
-                            <li>Marcas</li>
-                        </ul>
-                    </div>
-                    <div class="lista3">
-                        <ul>
-                            <li>Recomendados</li>
-                            <li>Smartphones</li>
-                            <li>Tablets</li>
-                            <li>Televisores</li>
-                            <li>Gaming</li>
-                        </ul>
-                    </div>
-                </div>
-    
-                <div class="redes">
-                    <i class="fab fa-whatsapp"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook-f"></i><i class="far fa-envelope"></i>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>Copyright © 2021 SM4RTTECH S.A.</p>
-                <p>| Todos los derechos reservados | Buenos aires, Argentina</p>
-            </div>
-        </div>
-    </footer>
+    <%- include("partials/footer.ejs") %> 
 </body>
 </html>
