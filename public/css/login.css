@@ -1,3 +1,89 @@
-body{
-    background-color:   --grey  #C4C4C4;
+
+.formularios-reg {
+    display: flex;
+    justify-content: center;
 }
+
+main .caja-central {
+    background-color: var(--grey);
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+}
+
+.caja-central h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ingreso {
+    text-transform: uppercase;
+}
+
+.ingreso .mail{
+    margin: 1rem 0;
+}
+
+.ingreso input {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+}
+.recuperar-contraseña a{
+    text-decoration: none;
+    color: var(--lightBlue);
+    text-transform: uppercase;
+    margin: 0 5px;
+}
+.recordarme {
+    text-transform: uppercase;
+    align-items: center;
+    margin: 1rem;
+}
+.recordarme input {
+    margin-right: 5px;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.botones .boton-ingreso {
+    background-color: var(--greenWater);
+    color: white;
+    border-color: var(--darkWaterGreen);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+    
+}
+.botones .boton-cuenta {
+    background-color: white;
+    color: var(--lightBlue);
+    border-color: var(--lightBlue);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+.botones .boton-cuenta a{
+    text-decoration: none;
+    color: var(--lightBlue);
+}
+span.error-message{
+    color: red;
+    font-size: x-small0.8rem;
+    margin: 5px auto 0;
+    display: none;
+}
+

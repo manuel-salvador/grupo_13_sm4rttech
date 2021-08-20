@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-let controller = require('../controllers/carritoController');
+let controller = require('../controllers/agregarController');
 
 /* GET - Home */
-router.get('/', controller.carrito)
+router.get('/', controller.agregar)
 
 
 module.exports = router;

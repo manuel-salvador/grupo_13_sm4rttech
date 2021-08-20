@@ -12,32 +12,25 @@
 </head>
 <body>
     <%- include("partials/header-formularios.ejs") %> 
-    <main>
-   
-        <section class="form-container">
-            <h2>Recuperar contraseña</h2>
-            <hr>
-            <form action="" method="">
-                <section class="form">
-                    <section class="input-container">
-                        <div class="palabra">Email </div>
+    <main class="formulario-reg">
+        <section class="caja-central-form">
+            <h2>RECUPERAR CONTRASEÑA</h2>
+            <section class="datos-usuarios">
+                    <div class="name">
+                        <h4>e-mail</h4>
                         <input class="input-style" type="email" name="email" placeholder="Ingrese su email">
                         <span class="error-message">Debe ingresar su email</span>
-                    </section>
-                    <br>
-                    <section> 
-                        <button type="submit" class="btn btn-submit"><a href=""><h4>Enviar</h4> </a></button>   
-                    </section>
-                    <br>
-                    <section> 
-                        <button type="submit" class="boton"><a href="/accounts/login">Inicio </a></button>   
-                    </section>
-                </section>        
-                    
-            </form>
-         
+                    </div>
+            </section>
+        <section class="button-crear">
+            <button type="submit" class="registrar">enviar</button>
+            <span class="error-message">Credenciales inválidas</span>                            
         </section>
-        </main>
+            <div class="vuelta-login">
+                <a href="/accounts/login"><h4>Inicio</h4></a>
+            </div>
+        </section>
+</main>
             <%- include("partials/footer.ejs") %> 
 </body>
 </html>

@@ -1,0 +1,173 @@
+.second-bar-admin {
+    background-color: var(--darkWaterGreen);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.formulario-reg {
+    display: flex;
+    justify-content: center;
+}
+
+.caja-central-form {
+    background-color: var(--grey);
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+}
+.caja-central-form a{
+    color: var(--lightBlue);
+}
+.caja-central-form h2 {
+    text-align: center;
+}
+.buscador{
+    display: flex;
+    justify-content: center;
+}
+select {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+}
+table {
+    background-color: var(--darkGrey);
+    color: white;
+    width: 100%;
+    height: 150px;
+}
+
+table .column {
+    display: none;
+}
+
+textarea{
+    width: 100%;
+    outline: none;
+}
+
+.datos-usuarios {
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.datos-usuarios input {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+}
+
+ 
+.form-container2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey);
+}                
+.input-container{
+width: 75%;
+}    
+
+.button-crear {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem 0;
+
+}  
+
+.button-crear .guardar {
+    background-color: var(--greenWater);
+    color: white;
+    border-color: var(--darkWaterGreen);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: 300px;
+    padding: 0 5px;
+    width: 100%;
+}
+.button-crear .quitar {
+    background-color: white;
+    color: var(--lightBlue);
+    border-color: var(--lightBlue);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: 300px;
+    padding: 0 5px;
+    width: 100%;
+}
+
+.vuelta-login{
+    text-align: center;
+    text-transform: uppercase;
+}
+.form-container-desktop {
+    display: none;   
+}
+
+@media (min-width: 768px){
+    .caja-central-form {
+        padding: 2rem;
+        max-width: none;
+    }
+    .img-coment {
+        display: inline-block;
+        width: 90%;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    table .column {
+        display: inherit;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .botones-confirm {
+        display: flex;
+        justify-content: space-around;
+    }
+    .button-crear .guardar {
+        font-size: 25px;
+        max-width: 400px;
+    }
+    .button-crear .quitar {
+        font-size: 25px;
+        max-width: 400px;
+    }
+
+    .datos-usuarios {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .datos-usuarios div {
+        width: 40%;
+    }
+
+}
+
+@media (min-width: 992px){
+    .caja-central-form{
+        padding: 1rem;
+        max-width: none;
+    }
+    
+}

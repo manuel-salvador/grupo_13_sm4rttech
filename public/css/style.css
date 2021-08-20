@@ -7,9 +7,9 @@
 @import url("register.css");
 @import url("forms.css");
 @import url("carritoDeCompra.css");
-
-
 @import url("detalleProducto.css");
+@import url("agregar.css");
+@import url("editar.css");
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;

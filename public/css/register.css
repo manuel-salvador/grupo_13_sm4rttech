@@ -1,11 +1,4 @@
-                                                                                                                                                                                                                    
-:root {
-    --greenWater : #00A99D;
-    --darkWaterGreen : #216965;
-    --lightBlue : #1E55E0;
-    --darkGrey : #2F2F2F;
-    --grey : #C4C4C4;
-}
+
 .formulario-reg {
     display: flex;
     justify-content: center;
@@ -42,10 +35,13 @@
 .check {
     display: flex;
     align-items: center;
+    width: 100%;
 }
+
 .check input{
     margin-right: 5px;
 }
+
 span.error-message{
     color: red;
     font-size: x-small0.8rem;
@@ -53,10 +49,6 @@ span.error-message{
     display: none;
 }
 
-.register .check{
-    width: 100%;      
-    flex-direction:column                                                                                                                                                                                                                                                                                                                                            lumn;
-}     
 .form-container2{
     width: 100%;
     display: flex;
@@ -66,9 +58,7 @@ span.error-message{
 .input-container{
 width: 75%;
 }    
-.check{
-    width: 100%;
-}  
+
 .button-crear {
     display: flex;
     justify-content: center;
@@ -109,6 +99,10 @@ width: 75%;
     }
     .datos-usuarios div {
         width: 40%;
+    }
+
+    .check {
+        padding-left: 2rem;
     }
 
 }

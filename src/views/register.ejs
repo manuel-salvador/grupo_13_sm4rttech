@@ -12,6 +12,7 @@
 </head>
 <body>
     <%- include("partials/header-formularios.ejs") %> 
+    
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
@@ -40,11 +41,11 @@
                         <h4>confirmar contraseña</h4>
                         <input class="input-style" type="password" name="pass" placeholder="confirmar contraseña">
                     </div>
-        </section>
-            <section class="check">
-                <input type="checkbox" name="terms" id=""><p>Acepto los <a href="">Termino y condiciones</a></p>
-                <span class="error-message">Debe aceptar lostérminos y condiciones</span>
-            </section>
+                </section>
+                <section class="check">
+                    <input type="checkbox" name="terms" id=""width="auto"><p>Acepto los <a href="">Termino y condiciones</a></p>
+                    <span class="error-message">Debe aceptar lostérminos y condiciones</span>
+                </section>
         <section class="button-crear">
             <button type="submit" class="registrar">Registrarme</button>
             <span class="error-message">Credenciales inválidas</span>                            

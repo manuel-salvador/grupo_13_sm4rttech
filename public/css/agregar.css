@@ -1,0 +1,121 @@
+.second-bar-admin{
+    background-color: var(--darkWaterGreen);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.formulario-reg {
+    display: flex;
+    justify-content: center;
+}
+
+.caja-central-form {
+    background-color: var(--grey);
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+}
+
+.caja-central-form h2 {
+    text-align: center;
+}
+
+.edit {
+    background-color: white;
+    color: var(--lightBlue);
+    border-color: var(--lightBlue);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: 300px;
+    width: 100%;
+    text-decoration: none;
+    color: var(--lightBlue);
+}
+
+
+select {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+}
+
+textarea{
+    width: 100%;
+    outline: none;
+}
+
+.datos-usuarios {
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.datos-usuarios input {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+}
+
+@media (min-width: 768px){
+    .caja-central-form {
+        padding: 2rem;
+        max-width: none;
+    }
+
+    .botones {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .img-coment {
+        display: inline-block;
+        width: 90%;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .botones-confirm {
+        display: flex;
+        justify-content: space-around;
+    }
+    .button-crear .guardar {
+        font-size: 25px;
+        max-width: 400px;
+    }
+    .button-crear .quitar {
+        font-size: 25px;
+        max-width: 400px;
+    }
+
+    .datos-usuarios {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .datos-usuarios div {
+        width: 40%;
+    }
+
+}
+
+@media (min-width: 992px){
+    .caja-central-form{
+        padding: 1rem;
+        max-width: none;
+    }
+    
+}
