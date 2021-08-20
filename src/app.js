@@ -8,8 +8,8 @@ let indexRouter = require('./routes/indexRoute');
 let accountsRouter = require('./routes/accountsRoute');
 let carritoRouter = require('./routes/carritoRoute')
 let detalleDeProductoRouter = require('./routes/detalleDeproductoRoute');
-let agregarRouter = require('./routes/agregarRoute')
-let editarRouter = require('./routes/editarRoute')
+let adminRouter = require('./routes/adminRoute')
+
 
 
 /* view engine setup */        // -------- Esto es nuevo y se necesita! 
@@ -24,8 +24,7 @@ app.use('/', indexRouter);
 app.use('/accounts',accountsRouter);
 app.use ('/carritoDeCompra', carritoRouter);
 app.use ('/detalleDeProducto', detalleDeProductoRouter);
-app.use('/agregar', agregarRouter)
-app.use('/editar',editarRouter)
+app.use('/admin', adminRouter)
     
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))
