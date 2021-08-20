@@ -1,11 +1,16 @@
 .detalle {
+   
     margin: 10px;
-    width: 80%;
+}
+.detalle p {
+    display: flex;
+    flex-wrap: wrap;
 }
 .detalle a {
   text-align: left;  
   color: var(--lightBlue);
   text-decoration: none;
+  text-transform: capitalize;
   margin: 0 0.5rem;
 }
 
