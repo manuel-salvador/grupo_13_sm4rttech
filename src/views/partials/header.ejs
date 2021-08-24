@@ -13,23 +13,23 @@
                 <button type="submit"><i class="fas fa-search"></i></button>
             </div>
             <ul class="categorías">
-                <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
+                <li class="dropdown-menu">
                     novedades
                     <!-- <i class="fas fa-chevron-down" ></i> -->
                 </li>
-                <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
+                <li class="dropdown-menu">
                     televisores
                     <!-- <i class="fas fa-chevron-down" ></i> -->
                 </li>
-                <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                <li class="dropdown-menu">
                     celulares
                     <!-- <i class="fas fa-chevron-down" ></i> -->
                 </li>
-                <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                <li class="dropdown-menu">
                     tablets
                     <!-- <i class="fas fa-chevron-down" ></i> -->
                 </li>
-                <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
+                <li class="dropdown-menu">
                     gaming
                     <!-- <i class="fas fa-chevron-down" ></i> -->
                 </li>
@@ -37,7 +37,34 @@
         </form>
         <div class="iconos">
             <i class="fas fa-bars burguer-menu-icon" onclick="dropMenu()"></i>
-            <!-- <i class="fas fa-shopping-cart carrito" onclick="dropMenu()"></i> -->
+        </div>
+        <div class="cat" id="navigation-bar-mobile">
+            <div class="user-icons-mobile">
+                <a href="/accounts/login"><i class="fas fa-user"></i></a>
+                <a href="/carritoDeCompra"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <ul class="categorías">
+                <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
+                    novedades
+                    <!-- <i class="fas fa-chevron-down" ></i> -->
+                </li>
+                <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
+                    televisores
+                    <!-- <i class="fas fa-chevron-down" ></i> -->
+                </li>
+                <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
+                    celulares
+                    <!-- <i class="fas fa-chevron-down" ></i> -->
+                </li>
+                <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
+                    tablets
+                    <!-- <i class="fas fa-chevron-down" ></i> -->
+                </li>
+                <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
+                    gaming
+                    <!-- <i class="fas fa-chevron-down" ></i> -->
+                </li>
+            </ul>
         </div>
         <div class="logeo">
             <nav class="options">
@@ -46,9 +73,9 @@
             
             </nav>
             <nav class="iconos-desktop">
-                <i class="fa fa-bell" onclick="dropMenu()"></i>
-                <i class="fa fa-heart" onclick="dropMenu()"></i>
-                <a href="/carritoDeCompra"><i class="fas fa-shopping-cart" onclick="dropMenu()"></i></a>
+                <i class="fa fa-bell"></i>
+                <i class="fa fa-heart"></i>
+                <a href="/carritoDeCompra"><i class="fas fa-shopping-cart"></i></a>
             </nav>
         </div>
 

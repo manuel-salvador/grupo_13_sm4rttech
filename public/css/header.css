@@ -63,6 +63,38 @@ header {
     display: none;
 }
 
+.main-header .cat {
+    display: none;
+    order: 3;
+    width: 21%;
+    padding: 15px;
+}
+
+.main-header .cat .user-icons-mobile {
+    display: flex;
+    justify-content: space-around;
+}
+.main-header .cat a {
+    text-decoration:none;
+    color: white;
+}
+.main-header .cat ul {
+    list-style: none;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+.main-header .cat ul li {
+    padding: 5px 0;
+}
+
+.main-header .cat ul li:hover {
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #00A99D;
+}
+
+
 /* Botón y barra de búsqueda mobile */
 
 /* .search-form-mobile {
@@ -189,6 +221,10 @@ header {
     }
 
     .iconos {
+        display: none;
+    }
+    
+    .main-header .cat {
         display: none;
     }
 
