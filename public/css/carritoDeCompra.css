@@ -50,33 +50,41 @@
 .productos .producto .nombre {
     /* margin: 0 1rem; */
     width: 50%;
+    display: inline;
 }
 
 .productos .producto .cantidad {
     width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.productos .producto .cantidad .counter{
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    max-width: 150px;
+    border: 2px solid var(--greenWater);
+    border-radius: 15px;
     text-align: center;
 }
 
-.productos .producto .cantidad button {
-    width: 20%;
-    max-width: 20px;
-    border: var(--grey);
-    background-color: #c4c4c4;
-    border-radius: 100%;
-    text-align: center;
-    font-size: 1rem;
-    
-}
-
-.productos .producto .cantidad input {
+.productos .producto .cantidad .counter button {
+    background-color: white;
     border: none;
-    background-color: #c4c4c4;
-    margin: 0 5px;
-    text-align: center;
-    width: 20%;
-    max-width: 20px;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--lightBlue);
 }
+
+.productos .producto .productos-similares{
+    width: 100%;
+    text-align: center;
+}
+
 
 .productos .producto a {
     margin: 0 10px;
@@ -340,11 +348,36 @@
         width: 30%;
     }
     
+    .productos-tablet .producto .cantidad {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .productos-tablet .producto .cantidad .counter{
+        display: flex;
+        padding: 5px;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        border: 2px solid var(--greenWater);
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    .productos-tablet .producto .cantidad .counter button {
+        background-color: white;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--lightBlue);
+    }
     
     /* .productos-tablet .producto .cantidad{
         margin-left: 1rem;
     } */
-    .productos-tablet .producto .cantidad button {
+    /* .productos-tablet .producto .cantidad button {
         width: 20%;
         max-width: 20px;
         border: var(--grey);
@@ -364,7 +397,7 @@
         max-width: 20px;
         font-size: 1rem;
     }
-
+ */
     .box-compra{
         padding: 1rem 2rem;
         font-size: 1rem;
@@ -583,11 +616,33 @@
     }
     
     .productos-desktop .producto .nombre {
-        /* margin: 0 1rem; */
         width: 70%;
     }
     
-    .productos-desktop .producto .cantidad-boton {
+    .productos-desktop .producto .cantidad {
+        width: 35%;
+        align-items: center;
+    }
+    
+    .productos-desktop .producto .cantidad .counter{
+        display: flex;
+        padding: 5px;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid var(--greenWater);
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    .productos-desktop .producto .cantidad .counter button {
+        background-color: white;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--lightBlue);
+    }
+    
+    /* .productos-desktop .producto .cantidad-boton {
         width: 50%;
         text-align: center;
     }
@@ -610,7 +665,7 @@
         width: 30px;
         font-size: 20px;
     }
-    
+     */
     .productos-desktop .enlaces-producto {
         text-align: center;
     }

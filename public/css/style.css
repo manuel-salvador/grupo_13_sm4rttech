@@ -10,6 +10,7 @@
 @import url("detalleProducto.css");
 @import url("agregar.css");
 @import url("editar.css");
+@import url("products.css");
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;

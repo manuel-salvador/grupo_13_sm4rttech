@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "name": "Smart TV Samsung 32",
+        "category": "Televisores",
+        "marca": "Samsung",
+        "tamaño": "32''",
+        "smart": "Si", 
+        "precio": "$70000",
+        "image": [
+            "tv.jpg"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Tablet Toshiba 32gb 18",
+        "category": "Tablets",
+        "marca": "Toshiba",
+        "tamaño": "18''",
+        "capacidad": "32GB",
+        "ram":"1.5GB", 
+        "precio": "$18000",
+        "image": [
+            "tablet.jpg"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Notebook Lenovo 14 Core i5 4gb 500gb",
+        "category": "PC",
+        "marca": "Lenovo",
+        "tamaño": "14''",
+        "capacidad": "500GB",
+        "ram":"4GB", 
+        "precio": "$55000",
+        "image": [
+            "Notebook.jpg"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Celular Galaxy A51 128GB Blanco",
+        "category": "Celulares",
+        "marca": "HP",
+        "tamaño": "6''",
+        "smart": "",
+        "capacidad": "128GB",
+        "ram":"", 
+        "precio": "$45000",
+        "image": [
+            "celular.jpg"
+        ]
+    }
+]
