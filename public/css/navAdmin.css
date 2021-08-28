@@ -1,0 +1,74 @@
+
+nav.admin {
+    min-width: 200px;
+    background-color: #232227;
+    color: #fff;
+}
+nav.admin a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav.admin ul {
+    display: flex;
+    flex-direction: column;
+}
+
+nav.admin > ul {
+    list-style: none;
+    width: 100%;
+}
+
+nav.admin > ul > li {
+    width: 100%;
+}
+
+nav.admin ul li .icon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav.admin ul li .icon i {
+    font-weight: 400;
+}
+
+nav.admin ul li .title-item {
+    line-height: 1;
+    height: fit-content;
+}
+
+nav.admin ul li .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 35px;
+    border-left: 2px solid #232227;
+}
+
+nav.admin ul li .nav-link:hover {
+    transition: all .25s ease-out;
+    border-left: 2px solid #ffffff;
+    cursor: pointer;
+}
+
+nav.admin ul li .nav-link .arrow {
+    font-size: 0.7rem;
+    margin-left: auto;
+}
+
+nav.admin ul li .sub-menu {
+    padding: 0.25rem 0 0.8rem 5rem;
+    list-style: disc;
+}
+
+nav.admin ul li .sub-menu li {
+    line-height: 2;
+}
+
+nav.admin ul li .sub-menu li a:hover{
+    transition: all .2s ease;
+    color: #bebebe;
+}

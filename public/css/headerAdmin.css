@@ -1,0 +1,73 @@
+header.admin {
+    height: 60px;
+    width: 100%;
+    background-color: #F4F5F7;
+    display: flex;
+    align-items: center;
+}
+
+header.admin .left {
+    background-color: #232227;
+    min-width: 200px;
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+}
+
+header.admin .left .burger-menu i{
+    font-weight: 100;
+    font-size: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+}
+
+header.admin .left a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header.admin .left a h1 {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #aaaaaa;
+}
+
+
+header.admin .right {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    flex-grow: 1;
+    font-size: 1.3rem;
+    box-shadow: 2px 0px 8px rgb(214, 214, 214);
+}
+
+header.admin .right .hello {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.6rem;
+}
+
+header.admin .right .hello p{
+    margin-right: 5px;
+    text-transform: capitalize;
+}
+
+header.admin .right .hello p:first-child{
+    color: #696969;
+}
+
+header.admin .right ul{
+    list-style: none;
+    display: flex;
+}
+
+header.admin .right ul li{
+    margin-left: 30px;
+}

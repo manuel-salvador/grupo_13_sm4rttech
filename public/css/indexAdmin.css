@@ -1,0 +1,11 @@
+body#admin {
+    background-color: #F4F5F7;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main.admin {
+    display: flex;
+    flex-grow: 1;
+}
