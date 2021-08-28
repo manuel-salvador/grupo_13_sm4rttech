@@ -8,11 +8,32 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>   
 </head>
-<body id="admin">
+<body id="admin" class="admin">
     <%- include('./partials/headerAdmin.ejs') %> 
     <main class="admin">
         <%- include('./partials/navAdmin.ejs') %>
-        <%- include('./partials/inicioAdmin.ejs') %>
+        <section class="sectionInicio">
+            <div class="row">
+                <div class="cardAdmin ventas">
+                    <h3>Ventas</h3>
+                </div>
+                <div class="cardAdmin preguntas">
+                    <h3>Preguntas</h3>
+                </div>
+                <div class="cardAdmin visitas">
+                    <h3>Visitas</h3>
+                </div>
+            </div>
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                <div class="cardAdmin indicadores">
+                    <h3>Performance</h3>
+                    <img src="https://i.ibb.co/fCXyDVm/Indicadores-ventas.jpg" alt="Indicadores">
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

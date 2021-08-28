@@ -10,142 +10,142 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>   
+
 </head>
-<body>
-    <%- include("../partials/header-formularios.ejs") %>
-    <nav class="second-bar-admin">
-        Agregar productos
-    </nav>
-    <main class="formulario-reg">
-        <section class="caja-central-form">
-            <h2>AGREGAR PRODUCTOS</h2>
-        <div class="botones-confirm">
-        <section class="button-crear">
-            <button type="submit" class="guardar" cursor="pointer">agregar producto</button>
-        </section>
-        <section class="button-crear">
-            <a  class="edit"href="/admin/editar"><button type="submit" class="quitar">editar producto</button></a>
-        </section>
-        </div>
+<body class="admin">
+    <%- include('./partials/headerAdmin.ejs') %> 
+    <main class="admin">
+        <%- include('./partials/navAdmin.ejs') %>
+        <section class="formAdmin">
+            <section class="caja-central-form">
+                <h2>AGREGAR PRODUCTOS</h2>
                 
-            <section class="datos-usuarios">
-                <div>
-                    <h4>Categorias</h4>
-                    <select name="" id="">
-                        <option value="">Categorias...</option>
-                        <option value="">Celulares</option>
-                        <option value="">Televisores</option>
-                        <option value="">Tablets</option>
-                        <option value="">Gaming</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>marcas</h4>
-                    <select name="" id="">
-                        <option value="">Marcas...</option>
-                        <option value="">Aorus</option>
-                        <option value="">Apple</option>
-                        <option value="">Asus</option>
-                        <option value="">HP</option>
-                        <option value="">Lenovo</option>
-                        <option value="">LG</option>
-                        <option value="">Samsung</option>
-                        <option value="">Toshiba</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>id del producto</h4>
-                    <input class="input-style" type="text" placeholder="#0000">
-                </div>
-                <div class="name">
-                    <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre">
-                </div>
-                <div>
-                    <h4>Tamaño de pantalla</h4>
-                    <select name="" id="">
-                        <option value="">Pulgadas...</option>
-                        <option value="">7"</option>
-                        <option value="">8.7"</option>
-                        <option value="">10"</option>
-                        <option value="">10.1"</option>
-                        <option value="">10.2"</option>
-                        <option value="">10.3"</option>
-                        <option value="">10.4"</option>
-                        <option value="">10.9"</option>
-                        <option value="">11"</option>
-                        <option value="">11.6"</option>
-                        <option value="">13"</option>
-                        <option value="">13.3"</option>
-                        <option value="">13.4"</option>
-                        <option value="">13.5"</option>
-                        <option value="">13.8"</option>
-                        <option value="">14"</option>
-                        <option value="">14.1"</option>
-                        <option value="">15.6"</option>
-                        <option value="">24"</option>
-                        <option value="">32"</option>
-                        <option value="">40"</option>
-                        <option value="">42"</option>
-                        <option value="">43"</option>
-                        <option value="">49"</option>
-                        <option value="">50"</option>
-                        <option value="">55"</option>
-                        <option value="">58"</option>
-                        <option value="">60"</option>
-                        <option value="">65"</option>
-                        <option value="">70"</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>smart</h4>
-                    <select name="" id="">
-                        <option value="">Seleccionar...</option>
-                        <option value="">Si</option>
-                        <option value="">No</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>capacidad</h4>
-                    <select name="" id="">
-                        <option value="">GB</option>
-                        <option value="">8GB</option>
-                        <option value="">16GB</option>
-                        <option value="">32GB</option>
-                        <option value="">64GB</option>
-                        <option value="">128GB</option>
-                        <option value="">256GB</option>
-                        <option value="">500GB</option>
-                        <option value="">1TB</option>
-                    </select>
-                </div>
-                <div class="apellido">
-                    <h4>RAM</h4>
-                    <select name="" id="">
-                        <option value="">GB</option>
-                        <option value="">1GB</option>
-                        <option value="">1.5GB</option>
-                        <option value="">2GB</option>
-                        <option value="">4GB</option>
-                        <option value="">8GB</option>
-                        <option value="">12GB</option>
-                        <option value="">16GB</option>
-                        <option value="">20GB</option>
-                        <option value="">32GB</option>
-                        <option value="">64GB</option>
-                    </select>
-                </div>
-                <section class="img-coment">
-                <div>
-                    <h4>Imagenes</h4>
-                    <input class="input-file" type="file" multiple="" name="[]" id="">
-                </div>
-                <h4>descripción</h4>
-                <textarea name="detalle" id="" cols="30" rows="10">
-            </textarea>
+                    
+                <section class="datos-usuarios">
+                    <div>
+                        <h4>Categorias</h4>
+                        <select name="" id="">
+                            <option value="">Categorias...</option>
+                            <option value="">Celulares</option>
+                            <option value="">Televisores</option>
+                            <option value="">Tablets</option>
+                            <option value="">Gaming</option>
+                            <option value="">PC</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h4>marcas</h4>
+                        <select name="" id="">
+                            <option value="">Marcas...</option>
+                            <option value="">Aorus</option>
+                            <option value="">Apple</option>
+                            <option value="">Asus</option>
+                            <option value="">HP</option>
+                            <option value="">Lenovo</option>
+                            <option value="">LG</option>
+                            <option value="">Samsung</option>
+                            <option value="">Toshiba</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h4>id del producto</h4>
+                        <input class="input-style" type="text" placeholder="#0000">
+                    </div>
+                    <div class="name">
+                        <h4>nombre del producto</h4>
+                        <input class="input-style" type="text" name="name" placeholder="Nombre">
+                    </div>
+                    <div>
+                        <h4>Tamaño de pantalla</h4>
+                        <select name="" id="">
+                            <option value="">Pulgadas...</option>
+                            <option value="">7"</option>
+                            <option value="">8.7"</option>
+                            <option value="">10"</option>
+                            <option value="">10.1"</option>
+                            <option value="">10.2"</option>
+                            <option value="">10.3"</option>
+                            <option value="">10.4"</option>
+                            <option value="">10.9"</option>
+                            <option value="">11"</option>
+                            <option value="">11.6"</option>
+                            <option value="">13"</option>
+                            <option value="">13.3"</option>
+                            <option value="">13.4"</option>
+                            <option value="">13.5"</option>
+                            <option value="">13.8"</option>
+                            <option value="">14"</option>
+                            <option value="">14.1"</option>
+                            <option value="">15.6"</option>
+                            <option value="">24"</option>
+                            <option value="">32"</option>
+                            <option value="">40"</option>
+                            <option value="">42"</option>
+                            <option value="">43"</option>
+                            <option value="">49"</option>
+                            <option value="">50"</option>
+                            <option value="">55"</option>
+                            <option value="">58"</option>
+                            <option value="">60"</option>
+                            <option value="">65"</option>
+                            <option value="">70"</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h4>smart</h4>
+                        <select name="" id="">
+                            <option value="">Seleccionar...</option>
+                            <option value="">Si</option>
+                            <option value="">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h4>capacidad</h4>
+                        <select name="" id="">
+                            <option value="">GB</option>
+                            <option value="">8GB</option>
+                            <option value="">16GB</option>
+                            <option value="">32GB</option>
+                            <option value="">64GB</option>
+                            <option value="">128GB</option>
+                            <option value="">256GB</option>
+                            <option value="">500GB</option>
+                            <option value="">1TB</option>
+                        </select>
+                    </div>
+                    <div class="apellido">
+                        <h4>RAM</h4>
+                        <select name="" id="">
+                            <option value="">GB</option>
+                            <option value="">1GB</option>
+                            <option value="">1.5GB</option>
+                            <option value="">2GB</option>
+                            <option value="">4GB</option>
+                            <option value="">8GB</option>
+                            <option value="">12GB</option>
+                            <option value="">16GB</option>
+                            <option value="">20GB</option>
+                            <option value="">32GB</option>
+                            <option value="">64GB</option>
+                        </select>
+                    </div>
+                    <section class="img-coment">
+                    <div>
+                        <h4>Imagenes</h4>
+                        <input class="input-file" type="file" multiple="" name="[]" id="">
+                    </div>
+                    <h4>descripción</h4>
+                    <textarea name="detalle" id="" cols="30" rows="10">
+                </textarea>
+            </section>
+            <div class="botones-confirm">
+                <section class="button-crear">
+                    <button type="submit" class="guardar" cursor="pointer">agregar producto</button>
+                </section>
+            </div>
         </section>
-                
-        </div>
+        
     </main>
 
 </body>

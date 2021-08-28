@@ -9,6 +9,7 @@ let accountsRouter = require('./routes/accountsRoute');
 let carritoRouter = require('./routes/carritoRoute')
 let detalleDeProductoRouter = require('./routes/detalleDeproductoRoute');
 let adminRouter = require('./routes/adminRoute')
+let productsRouter = require('./routes/productsRoute')
 
 
 
@@ -18,13 +19,16 @@ app.set('view engine', 'ejs');
 
 /* Middleware */     // -------- Esto lo modifique porque movi app.js a src y se necesita! 
 app.use(express.static(path.join(__dirname + '/../public')))
+app.use(express.urlencoded({ extended : false }));
+app.use(express.json())
 
 /* Routes */
 app.use('/', indexRouter);
 app.use('/accounts',accountsRouter);
 app.use ('/carritoDeCompra', carritoRouter);
 app.use ('/detalleDeProducto', detalleDeProductoRouter);
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
+app.use('/products', productsRouter)
     
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))

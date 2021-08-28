@@ -1,11 +1,9 @@
-body#admin {
-    background-color: #F4F5F7;
+body.admin {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 main.admin {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 2;
+    height: 92%;
 }

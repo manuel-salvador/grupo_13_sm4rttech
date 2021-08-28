@@ -72,3 +72,39 @@ nav.admin ul li .sub-menu li a:hover{
     transition: all .2s ease;
     color: #bebebe;
 }
+
+
+
+.hideNav,
+nav.admin .hideNav,
+.hideNav .title-item,
+.hideNav .arrow{
+    display: none;
+    transition: all .4s ease;
+}
+
+header.admin .closeNav,
+main.admin nav.closeNav{
+    width:70px;
+    min-width: 70px;
+    transition: all .4s ease;
+}
+
+header.admin div.closeNav div.burger-menu i {
+    margin: 0 auto; 
+}
+
+main.admin nav.closeNav .nav-link,
+main.admin nav.closeNav .icon{
+    margin: 0 auto;
+    padding: 0;
+}
+
+main.admin nav.closeNav .nav-link {
+    padding: 15px 0;
+}
+
+header.admin div.closeNav div.girar {
+    transform: rotate(-180deg);
+    transition: all .4s ease;
+}

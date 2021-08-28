@@ -14,9 +14,11 @@
 @import url("navAdmin.css");
 @import url("indexAdmin.css");
 @import url("inicioAdmin.css");
+@import url("formsAdmin.css");
 
 
 
+@import url("products.css");
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;
