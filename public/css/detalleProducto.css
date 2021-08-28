@@ -105,22 +105,22 @@ margin-bottom: 16px;
     text-transform: uppercase;
     margin-top: 1rem;
 }
-.producto img {
+.productos-recomendados img {
     width: 40%;
     
 }
     
-.producto a {
+.productos-recomendados a {
     margin-bottom: 16px;
     color: var(--lightBlue);
     padding: 10px;
 }
-.producto  {
+.productos-recomendados  {
     display: flex;
     text-transform: uppercase;
     align-items: center;
 }
-.producto .nombre {
+.productos-recomendados .nombre {
     width: 100%;
     text-align: left;
     font-weight: 500;
@@ -152,12 +152,12 @@ margin-bottom: 16px;
         justify-content: space-between;
         display: flex;
     }
-    .producto {
+    .productos-recomendados {
         display: inline-block;
 
         width: 30%;
     }
-    .producto img {
+    .productos-recomendados img {
         width: 100%;
     }
     
