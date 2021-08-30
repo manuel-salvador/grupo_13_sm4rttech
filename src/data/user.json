@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "firstname": "Maria",
+        "lastName": "Robledo",
+        "email": "mariarobledo@gmail.com",
+        "password": "mariarobledo",
+        "category": "usuario"
+       
+        
+        
+    },
+    {
+        "id":2,
+        "firstname": "Laura",
+        "lastName": "Gomez",
+        "email": "lauragomez@gmail.com",
+        "password": "lauragomez",
+        "category": "usuario"
+    },
+    {
+        "id": 3,
+        "firstname": "ana",
+        "lastName": "sanchez",
+        "email": "anasanchez@gmail.com",
+        "password": "anasanchez",
+        "category": "usuario"
+    },
+    {
+        "id": 4,
+        "firstname": "alejandro",
+        "lastName": "romero",
+        "email": "alejandroromero@gmail.com",
+        "password": "alejandroromero",
+        "category": "usuario"
+    },
+    {
+        "id": 5,
+        "firstname": "Marcelo",
+        "lastName": "palacios",
+        "email": "marcelopalacios@gmail.com",
+        "password": "marcelopalacios",
+        "category": "usuario"
+    },
+    {
+        "id": 6,
+        "firstname": "Miriam",
+        "lastName": "leguizamon",
+        "email": "miriamleguizamon@gmail.com",
+        "password": "miriamleguizamon",
+        "category": "usuario"
+    },
+    {
+        "id": 7,
+        "firstname": "carlos",
+        "lastName": "peralta",
+        "email": "carlosperalta@gmail.com",
+        "password": "carlosperalta",
+        "category": "usuario"
+    },
+    {
+        "id": 8,
+        "firstname": "marcela",
+        "lastName": "rodriguez",
+        "email": "macelarodriguez@gmail.com",
+        "password": "marcelarodriguez",
+        "category": "usuario"
+    },
+    {
+        "id": 9,
+        "firstname": "Martin",
+        "lastName": "salgado",
+        "email": "martinsalgado@gmail.com",
+        "password": "martinsalgado",
+        "category": "usuario"
+    },
+    {
+        "id": 10,
+        "firstname": "susana",
+        "lastName": "pardo",
+        "email": "susanapardo@gmail.com",
+        "password": "susanapardo",
+        "category": "usuario"
+    }
+    ]
+       
