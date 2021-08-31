@@ -22,7 +22,6 @@ imagenes .imagen-principal {
     width: 100%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
     border-radius: 15px;
-    margin: 0 0 10px 15px;
 }
 .imagenes .imagen-1 {
     display: flex;
@@ -170,33 +169,36 @@ margin-bottom: 16px;
     .detalle {
         margin: 20px;
     }
-.imagenes {
-    width: 65%;
-    display: inline-block;
-}
-.box-1 {
-    width: 30%;
-    float: right;
-    margin-top: 3rem;
-    
-}
-.box-1 .botones .boton2 {
-    font-size: 20px;
-}
-.box-1 .nombre-producto h3 {
-    margin: 10px 0;
-}
-.etiquetas p {
-    text-align: left;
-}
-.especificaciones {
-    margin: 20px;
-}
-.recomendaciones {
-    margin: 20px;
-}
-.recomendaciones .ver-mas {
-    margin: 10px 0;
-}
+    .imagen-principal img {
+        margin: 0 0 10px 15px;
+    }
+    .imagenes {
+        width: 65%;
+        display: inline-block;
+    }
+    .box-1 {
+        width: 30%;
+        float: right;
+        margin-top: 3rem;
+        
+    }
+    .box-1 .botones .boton2 {
+        font-size: 20px;
+    }
+    .box-1 .nombre-producto h3 {
+        margin: 10px 0;
+    }
+    .etiquetas p {
+        text-align: left;
+    }
+    .especificaciones {
+        margin: 20px;
+    }
+    .recomendaciones {
+        margin: 20px;
+    }
+    .recomendaciones .ver-mas {
+        margin: 10px 0;
+    }
 
 }

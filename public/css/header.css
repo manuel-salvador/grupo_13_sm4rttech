@@ -66,7 +66,6 @@ header {
 .main-header .cat {
     display: none;
     order: 3;
-    width: 21%;
     padding: 15px;
 }
 
@@ -226,6 +225,11 @@ header {
     
     .main-header .cat {
         display: none;
+    }
+
+    .cat-tablet a {
+        text-decoration:none;
+        color: white
     }
 
     .main-header .logo {
