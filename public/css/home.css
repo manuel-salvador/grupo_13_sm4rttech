@@ -271,6 +271,8 @@ main .ofertas h2 {
 main article.producto {
     background-color: #EEE;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 main .ofertas article,
@@ -282,33 +284,30 @@ main .ofertas a {
     color: #000;
     text-decoration: none;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: fit-content;
     height: 100%;
-}
-
-main .ofertas article {
-    height: 250px;
 }
 
 main .ofertas a .product-img {
-    width: 100%;
-    height: 100%;
-    max-width: 200px;
+    width: 255px;
+    height: 255px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 main .ofertas a .product-img img {
-    max-width: 100%;
+    max-width: 255px;
+    max-height: 255px;
     border-radius: 0.4rem;
 }
 
 main .ofertas a .description {
-    width: 45%;
+    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 
 main .ofertas a .description h3{
@@ -321,6 +320,8 @@ main .ofertas a .description div{
 
 main .ofertas a.ver-todas {
     display: flex;
+    flex-direction: row;
+    width: 100%;
     justify-content: space-between;
     color: var(--lightBlue);
     font-size: 1.2rem;
@@ -616,6 +617,10 @@ main .info-final hr {
         width: 100%;
     }
 
+    main .ofertas a .product-img {
+        width: 100%;
+        max-width: 100%;
+    }
 
     main .ofertas a .product-img img {
         max-width: 100%;

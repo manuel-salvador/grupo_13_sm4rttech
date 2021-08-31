@@ -1,0 +1,11 @@
+main.admin .formAdmin {
+    padding: 2rem;
+    
+    overflow-y: scroll;
+    scroll-behavior: auto;
+}
+
+main.admin .formAdmin .caja-central-form {
+    margin: 0;
+    width: 100%;
+}

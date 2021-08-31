@@ -10,6 +10,14 @@
 @import url("detalleProducto.css");
 @import url("agregar.css");
 @import url("editar.css");
+@import url("headerAdmin.css");
+@import url("navAdmin.css");
+@import url("indexAdmin.css");
+@import url("inicioAdmin.css");
+@import url("formsAdmin.css");
+
+
+
 @import url("products.css");
 /* Paleta de colores */
 :root {

@@ -1,7 +1,6 @@
 module.exports = {
     admin: (req, res) => {
-        res.render('/admin')
-        
+        res.render('admin/indexAdmin')
     },
     agregar: (req, res) => {
         res.render('admin/agregar')
