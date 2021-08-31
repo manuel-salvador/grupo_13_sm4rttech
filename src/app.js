@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 let port = 3000;
+const methodOverride = require("method-override")
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
@@ -18,9 +19,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 /* Middleware */     // -------- Esto lo modifique porque movi app.js a src y se necesita! 
-app.use(express.static(path.join(__dirname + '/../public')))
+app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.urlencoded({ extended : false }));
-app.use(express.json())
+app.use(express.json());
+app.use(methodOverride('_method'));
 
 /* Routes */
 app.use('/', indexRouter);

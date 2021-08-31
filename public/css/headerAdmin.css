@@ -56,6 +56,7 @@ header.admin .right .hello {
     display: flex;
     flex-wrap: wrap;
     font-size: 1.6rem;
+    width: max-content;
 }
 
 header.admin .right .hello p{
@@ -70,6 +71,7 @@ header.admin .right .hello p:first-child{
 header.admin .right ul{
     list-style: none;
     display: flex;
+
 }
 
 header.admin .right ul li{
