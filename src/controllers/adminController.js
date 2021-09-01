@@ -82,6 +82,7 @@ module.exports = {
     actualizar: (req, res) => {
 
         const {
+       
             category,
             marca,
             price,
@@ -94,26 +95,26 @@ module.exports = {
             description
         } = req.body
 
+       
         /**recorrimos el arrays y modificamos el product */
         products.forEach(product=>{
-            if(product.id== + req.params.id){
-                product.id=id,
-                product.name=name,
-                product.category=category,
-                product.marca=marca,
-                product.tamaño=tamaño,
-                product.smart=smart,
-                product.capacity=capacity,
-                product.ram=ram,
-                product.price=price,
-                product.description=description
+            if(product.id == + req.params.id){
+                product.name= (name == undefined) ? "" : name,
+                product.category= (category == undefined) ? "" : category,
+                product.marca= (marca == undefined) ? "" : marca,
+                product.tamaño= (tamaño == undefined) ? "" : tamaño,
+                product.smart= (smart == undefined) ? "" : smart,
+                product.capacity= (capacity == undefined) ? "" : capacity,
+                product.ram= (ram == undefined) ? "" : ram,
+                product.price= (price == undefined) ? "" : price,
+                product.description= (description == undefined) ? "" : description
 
                 
             }
             
         })
         writeJson(products)
-       
+       res.redirect("/products")
 
     },
     eliminar:(req,res)=>{
