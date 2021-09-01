@@ -110,16 +110,16 @@
   },
   {
     "id": 10,
-    "name": "Celular LG K20 32GB",
+    "name": "Celular LG K20 32GB ",
     "category": "celulares",
     "marca": "LG",
     "tamaño": "5''",
     "smart": "Si",
     "capacity": "32GB",
     "ram": "1RAM",
-    "price": "$10123",
+    "price": "$10123 ",
     "image": ["lgk20.jpg"],
-    "description": ""
+    "description": "cambiando datos"
   },
   {
     "id": 11,
