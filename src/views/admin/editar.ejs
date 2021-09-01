@@ -21,11 +21,12 @@
 
         <section class="caja-central-form">
             <h2>EDITAR PRODUCTOS</h2>
+           
             <section class="datos-usuarios">
                 <div>
                     <h4>Categorias</h4>
                     <select name="category" id="">
-                        <option value="">Categorias...</option>
+                        <option value=""><%= product.category%></option>
                         <option value="celulares">Celulares</option>
                         <option value="televisores">Televisores</option>
                         <option value="tablets">Tablets</option>
@@ -52,7 +53,7 @@
                 </div>
                 <div class="name">
                     <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre">
+                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= product.name%> ">
                 </div>
             </section>
             <div class="buscador">
@@ -70,11 +71,12 @@
                 </table>
                 
             </div>
+            <form action="admin/editar/<%= product.id%>?_method=PUT" method="POST"  enctype="multipart/form-data" >
             <section class="datos-usuarios">
                 <div>
                     <h4>Categorias</h4>
                     <select name="" id="">
-                        <option value="">Categorias...</option>
+                        <option value=""><%= product.category%></option>
                         <option value="">Celulares</option>
                         <option value="">Televisores</option>
                         <option value="">Tablets</option>
@@ -84,7 +86,7 @@
                 <div>
                     <h4>marcas</h4>
                     <select name="" id="">
-                        <option value="">Marcas...</option>
+                        <option value=""><%= product.marca%></option>
                         <option value="">Aorus</option>
                         <option value="">Apple</option>
                         <option value="">Asus</option>
@@ -97,16 +99,16 @@
                 </div>
                 <div>
                     <h4>id del producto</h4>
-                    <input class="input-style" type="text" placeholder="#0000">
+                    <input class="input-style" type="text" placeholder="#0000" value="<%= product.id%> ">
                 </div>
                 <div class="name">
                     <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre">
+                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= product.name%> ">
                 </div>
                 <div>
                     <h4>Tamaño de pantalla</h4>
                     <select name="" id="">
-                        <option value="">Pulgadas...</option>
+                        <option value=""><%= product.tamaño%></option>
                         <option value="">7"</option>
                         <option value="">8.7"</option>
                         <option value="">10"</option>
@@ -142,7 +144,7 @@
                 <div>
                     <h4>smart</h4>
                     <select name="" id="">
-                        <option value="">Seleccionar...</option>
+                        <option value=""><%= product.smart%></option>
                         <option value="">Si</option>
                         <option value="">No</option>
                     </select>
@@ -150,7 +152,7 @@
                 <div>
                     <h4>capacidad</h4>
                     <select name="" id="">
-                        <option value="">GB</option>
+                        <option value=""><%= product.capacity%></option>
                         <option value="">8GB</option>
                         <option value="">16GB</option>
                         <option value="">32GB</option>
@@ -164,7 +166,7 @@
                 <div class="apellido">
                     <h4>RAM</h4>
                     <select name="" id="">
-                        <option value="">GB</option>
+                        <option value=""><%= product.ram%></option>
                         <option value="">1GB</option>
                         <option value="">1.5GB</option>
                         <option value="">2GB</option>
@@ -177,14 +179,19 @@
                         <option value="">64GB</option>
                     </select>
                 </div>
+                <div>
+                    <h4>Precio</h4>
+                    <input class="input-style" type="text" id="price" name="price" value="<%= product.price %> ">
+                                       
+                    </div>
+
                 <section class="img-coment">
                 <div>
                     <h4>Imagenes</h4>
                     <input class="input-file" type="file" multiple="" name="[]" id="">
                 </div>
                 <h4>descripción</h4>
-                <textarea name="detalle" id="" cols="30" rows="10">
-            </textarea>
+                <textarea name="detalle" id="" cols="30" rows="10"><%= product.description%></textarea>
         </section>
                 
             </section>
@@ -198,6 +205,7 @@
                 <span class="error-message">Credenciales inválidas</span>
             </section>
         </div>
+            </form>
         </section>
     </main>
 

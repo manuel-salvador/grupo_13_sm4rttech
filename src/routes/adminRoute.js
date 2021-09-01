@@ -4,7 +4,9 @@ const multer = require('../midlewares/uploadProductsFiles')
 const { admin, 
     agregar,
     store, 
-    editar } = require('../controllers/adminController');
+    editar,
+    actualizar,
+    eliminar } = require('../controllers/adminController');
 
 /* GET - Home */
 router.get('/', admin)
@@ -12,7 +14,13 @@ router.get('/', admin)
 /* agregar */
 router.get('/agregar', agregar),
 router.post('/agregar', multer.single('image'), store)
+/* get muestra form. de edit*/ 
 
-router.get('/editar', editar)
+router.get('/editar/:id', editar)
+router.put("/editar/:id",multer.single('image'), actualizar)
+
+/*delete */
+router.delete("/eliminar",eliminar)
+
 
 module.exports = router;

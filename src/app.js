@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 let port = 3000;
-const methodOverride = require("method-override")
+const methodOverride =  require("method-override")
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
