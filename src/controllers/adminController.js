@@ -85,9 +85,9 @@ module.exports = {
     },
 
 /*traer la vista con el producto a editar*/
-    editar: (req, res) => {
+    /* editar: (req, res) => {
         let productEdit= products.find(products=>{
-            return products.id==req.params.id
+            
         })
       
     
@@ -95,7 +95,13 @@ module.exports = {
             product:productEdit
         })
 
-    },
+    }, */
+    editar: (req, res) => {
+		let product = products.find(product => product.id === +req.params.id)
+		res.render('admin/editar', {
+			product
+		})
+	},
     actualizar: (req, res) => {
 
         const {
@@ -125,7 +131,7 @@ module.exports = {
                 product.ram= (ram == undefined) ? "" : ram,
                 product.price= (price == undefined) ? "" : price,
                 product.description= (description == undefined) ? "" : description
-
+                product.image = req.file ? req.file.filename : product.image
                 
             }
             

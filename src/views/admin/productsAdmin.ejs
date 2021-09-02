@@ -39,8 +39,13 @@
                                         </p>
                                     </div>
                                     <div class="botones">
-                                        <button type="submit" class="boton1">editar</button>
-                                        <button type="submit" class="boton2">Eliminar</button>
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +72,13 @@
                                         </p>
                                     </div>
                                     <div class="botones">
-                                        <button type="submit" class="boton1">editar</button>
-                                        <button type="submit" class="boton2">Eliminar</button>
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -95,9 +105,13 @@
                                         </p>
                                     </div>
                                     <div class="botones">
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
                                         
-                                        <button type="submit" class="boton1"><a href="/admin/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
-                                        <button type="submit" class="boton2">Eliminar</button>
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -124,8 +138,13 @@
                                         </p>
                                     </div>
                                     <div class="botones">
-                                        <button type="submit" class="boton1">editar</button>
-                                        <button type="submit" class="boton2">Eliminar</button>
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +152,6 @@
                             <% }) %>
                     </div>
                 </section>
-            </form>
         </main>
 </body>
 

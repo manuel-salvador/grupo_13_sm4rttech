@@ -13,3 +13,15 @@
     transition: all 1s ease;
     z-index: 1;
 }
+
+.botones .boton-2 {
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--greenWater);
+    border-color: var(--darkWaterGreen);
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2rem;
+    margin: 5px 0;
+    width: 100%;
+}

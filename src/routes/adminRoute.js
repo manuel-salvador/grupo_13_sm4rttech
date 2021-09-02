@@ -23,10 +23,10 @@ router.post('/agregar', multer.single('image'), store)
 
 
 /* get muestra form. de edit*/ 
-router.get('/editar?', filtroEditar)
+router.get('/editar/cualquiera', filtroEditar)
 
 router.get('/editar/:id', editar)
-router.put("/editar/:id",multer.single('image'), actualizar)
+router.put('/editar/:id',multer.single('image'), actualizar)
 
 /*delete */
 
