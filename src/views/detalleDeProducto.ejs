@@ -5,12 +5,12 @@
     <%- include("partials/header.ejs") %> 
     <main>
         <div class="detalle">
-            <p><a href="/">inicio</a>><a href="">categorias</a>><a>televisores</a>><a>samsumg</a></p>
+            <p><a href="/">inicio</a>><a href=""><%= product.category %></a>><a><%= product.marca%></a></p>
 
         </div>
         <article class="imagenes">
             <div class="imagen-principal">
-                <img src="/images/detalleProducto/tv-samsung.jpg" alt="">
+                <img src="/images/products/<%= product.image %>" alt="">
 
             </div>
             <div class="imagen-1">
@@ -27,19 +27,19 @@
             </div>
             <div class="nombre-producto">
                 <h3>
-                    Smart TV Samsung Series 8 UN75TU8000PXPA LED 4K 75" 100V/240V
+                    <%= product.name %>
                 </h3>
-                <h3> $ 240.999</h3>
+                <h3> $ <%= product.price %>  </h3>
             </div>
 
 
             <h4>cuotas</h4>
             <select class="selecciona-cuotas">
                 <option value="0">Seleccionar cuotas</option>
-                <option value="1">3 cuotas de</option>
-                <option value="2">6 cuotas de</option>
-                <option value="3">9 cuotas de</option>
-                <option value="4">12 cuotas de</option>
+                <option value="1">3 cuotas de $<%- ((Number(product.price)*1.1)/3).toFixed(2) %> </option>
+                <option value="2">6 cuotas de $<%- ((Number(product.price)*1.13)/6).toFixed(2) %> </option>
+                <option value="3">9 cuotas de $<%- ((Number(product.price)*1.16)/9).toFixed(2) %> </option>
+                <option value="4">12 cuotas de $<%- ((Number(product.price)*1.20)/12).toFixed(2) %> </option>
             </select>
             <div class="etiquetas">
                 <p><i class="fas fa-credit-card">
@@ -53,57 +53,16 @@
             <div class="especificaciones-tecnicas">
                 <h4>Especificaciones tecnicas</h4>
                 <ul>
-                    <li>Tipo de pantalla: Led</li>
-                    <li>Pulgadas: 75"</li>
-                    <li>Resolucion de video:4K Ultra HD</li>
-                    <li>Tipo de pantalla: Led</li>
-                    <li>Relacion de aspecto: 16:9</li>
-                    <li>Frecuencia de refresco: 60 Hz</li>
-                    <li>Tipo de TV: Smart TV</li>
-                    <li>Formato de Pantalla: Plana</li>
-                    <li>Resolucion: 3840x2160</li>
-                    <li>HDR: si</li>
-                    <li>Norma de Video: PAL-N, PAL-M, NTSC</li>
-
+                    <li>Marca: <%= product.marca %> </li>
+                    <li>Pulgadas: <%= product.tamaño %> </li>
+                    <li>RAM: <%= product.ram %> </li>
+                    <li>Smart: <%= product.smart %> </li>
+                    <li>Capacidad: <%= product.capacity %> </li>
                 </ul>
             </div>
             <div class="descripcion-del-producto">
                 <h4>Descripcion del producto</h4>
-                <p>Samsung es reconocida a nivel mundial como una empresa líder en la industria tecnológica. Todos sus
-                    productos son diseñados con una calidad superior y pensados para contribuir a un futuro mejor. Por
-                    eso,
-                    va a hacer que disfrutes de una experiencia visual incomparable.
-                    Con el Smart TV UN75TU8000 vas a acceder a las aplicaciones en las que se encuentran tus contenidos
-                    favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con
-                    videojuegos.
-
-                    Viví en 4K
-                    La cantidad de pixeles que ofrece es 4 veces mayor que la Full HD, ¿el resultado? Escenas mucho más
-                    realistas y con un nivel de detalle increíble. Ahora vas a conocer una aventura de inmersión que no
-                    va a
-                    dejar de sorprenderte.
-
-                    Un sonido que te envuelve
-                    Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del
-                    mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos van a
-                    cobrar
-                    otro significado.
-
-                    Más allá de ver televisión
-                    Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca
-                    en
-                    la TV. De esta forma vas a poder visualizar todo tipo de contenido: material audiovisual, documentos
-                    de
-                    trabajo, correos electrónicos y más.
-
-                    Conexión invisible
-                    Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el
-                    televisor
-                    se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡vas a notar
-                    la
-                    diferencia!
-
-                </p>
+                <p> <%= product.description %>  </p>
 
             </div>
         </section>
