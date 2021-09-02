@@ -14,10 +14,11 @@
 .sectionInicio .row {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .sectionInicio .row .cardAdmin {
-    width: 300px;
+    width: 200px;
     min-height: 160px;
     background-color: #fff;
     box-shadow: 0 0 8px rgb(214, 214, 214);
