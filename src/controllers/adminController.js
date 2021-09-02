@@ -1,8 +1,22 @@
 let { products, writeJson } =require('../data/dataBase');
+let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
+let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
+let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
+let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
 
 module.exports = {
     admin: (req, res) => {
         res.render('admin/indexAdmin')
+    },
+
+    productsAdmin: (req, res) => {
+        res.render('admin/productsAdmin',{
+        productsTelevisores,
+        productsCelulares,
+        productsGaming,
+        productsTablets,
+        products
+        })
     },
   /*  search:(req,res)=>{
         let result=[]
@@ -53,7 +67,7 @@ module.exports = {
             ram,
             price,
             description,
-            image: req.file ? req.file.filename : ["joystick.jpg"]
+            image: req.file ? req.file.filename : ["logo-sm4rttech.png"]
         }
         
         products.push(newProduct)
@@ -66,11 +80,14 @@ module.exports = {
         res.render('admin/agregar')
     },
 
+    filtroEditar: (req, res) => {
+        res.render('admin/filtroEditar')
+    },
 
 /*traer la vista con el producto a editar*/
-    editar: (req, res) => {
+    /* editar: (req, res) => {
         let productEdit= products.find(products=>{
-            return products.id==req.params.id
+            
         })
       
     
@@ -78,7 +95,13 @@ module.exports = {
             product:productEdit
         })
 
-    },
+    }, */
+    editar: (req, res) => {
+		let product = products.find(product => product.id === +req.params.id)
+		res.render('admin/editar', {
+			product
+		})
+	},
     actualizar: (req, res) => {
 
         const {
@@ -108,7 +131,7 @@ module.exports = {
                 product.ram= (ram == undefined) ? "" : ram,
                 product.price= (price == undefined) ? "" : price,
                 product.description= (description == undefined) ? "" : description
-
+                product.image = req.file ? req.file.filename : product.image
                 
             }
             
@@ -117,8 +140,19 @@ module.exports = {
        res.redirect("/products")
 
     },
-    eliminar:(req,res)=>{
-        res.render("admin/eliminar")
+    //eliminar un producto
+    destroy:(req,res)=>{
+        let product= products.find(product => product.id === +req.params.id)
+        products.forEach(product =>{
+            if(product.id === +req.params.id){
+                let productToDestroy = products.indexOf(product);
+                products.splice(productToDestroy, 1)
+     
+            }
+        })
+        writeJson(products)
+
+        res.send(`has eliminado el producto ${product.name}`)
     }
    
         

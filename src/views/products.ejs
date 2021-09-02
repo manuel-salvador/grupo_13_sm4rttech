@@ -12,7 +12,7 @@
         <div class="card-product">
              <% productsTelevisores.forEach(product => { %>
                 <div class="product">
-                    <a class="detalle-product" href="/detalleDeProducto">
+                    <a class="detalle-product" href="/detalleDeProducto/<%= product.id %>">
                     <img src="/images/products/<%- product.image %> " alt="">
                     <div>
                         <h5><%= product.name.toUpperCase() %></h5>
@@ -38,7 +38,7 @@
         <div class="card-product">
              <% productsCelulares.forEach(product => { %>
                 <div class="product">
-                    <a class="detalle-product" href="/detalleDeProducto">
+                    <a class="detalle-product" href="/detalleDeProducto/<%= product.id %>">
                     <img src="/images/products/<%- product.image %> " alt="">
                     <div>
                         <h5><%= product.name.toUpperCase() %></h5>
@@ -64,7 +64,7 @@
         <div class="card-product">
              <% productsTablets.forEach(product => { %>
                 <div class="product">
-                    <a class="detalle-product" href="/detalleDeProducto">
+                    <a class="detalle-product" href="/detalleDeProducto/<%= product.id %>">
                     <img src="/images/products/<%- product.image %> " alt="">
                     <div>
                         <h5><%= product.name.toUpperCase() %></h5>
@@ -90,7 +90,7 @@
         <div class="card-product">
              <% productsGaming.forEach(product => { %>
                 <div class="product">
-                    <a class="detalle-product" href="/detalleDeProducto">
+                    <a class="detalle-product" href="/detalleDeProducto/<%= product.id %>">
                     <img src="/images/products/<%- product.image %> " alt="">
                     <div>
                         <h5><%= product.name.toUpperCase() %></h5>

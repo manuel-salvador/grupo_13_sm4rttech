@@ -11,16 +11,14 @@
   },
   {
     "id": 2,
-    "name": "Tablet Toshiba 32gb 18 ",
+    "name": "Tablet Toshiba 32gb 18",
     "category": "tablets",
     "marca": "Toshiba",
     "tamaño": "18''",
     "capacity": "32GB",
     "ram": "1.5GB",
-    "price": "$18000 ",
-    "image": ["tablet.jpg"],
-    "smart": "",
-    "description": ""
+    "price": "$18000",
+    "image": ["tablet.jpg"]
   },
   {
     "id": 3,
@@ -242,15 +240,15 @@
   },
   {
     "id": 20,
-    "name": " ",
+    "name": "",
     "category": "PC",
     "marca": "apple",
     "tamaño": "",
     "smart": "si",
     "capacity": "capacity",
     "ram": "1.5",
-    "price": "45 ",
-    "description": "                gjgjgjgj",
+    "price": "45",
+    "description": "                ",
     "image": ["joystick.jpg"]
   }
 ]

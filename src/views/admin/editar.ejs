@@ -10,205 +10,213 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>   
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
+
 <body class="admin">
-    <%- include('./partials/headerAdmin.ejs') %> 
-    <main class="admin">
-        <%- include('./partials/navAdmin.ejs') %>
-        <section class="formAdmin">
+    <%- include('./partials/headerAdmin.ejs') %>
+        <main class="admin">
+            <%- include('./partials/navAdmin.ejs') %>
+                <section class="formAdmin">
 
-        <section class="caja-central-form">
-            <h2>EDITAR PRODUCTOS</h2>
-           
-            <section class="datos-usuarios">
-                <div>
-                    <h4>Categorias</h4>
-                    <select name="category" id="">
-                        <option value=""><%= product.category%></option>
-                        <option value="celulares">Celulares</option>
-                        <option value="televisores">Televisores</option>
-                        <option value="tablets">Tablets</option>
-                        <option value="gaming">Gaming</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>marcas</h4>
-                    <select name="" id="">
-                        <option value="<%= product.marca%>"><%= product.marca%></option>
-                        <option value="Aorus">Aorus</option>
-                        <option value="Aplle">Apple</option>
-                        <option value="Asus">Asus</option>
-                        <option value="HP">HP</option>
-                        <option value="Lenovo">Lenovo</option>
-                        <option value="LG">LG</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Toshiba">Toshiba</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>Id del producto</h4>
-                    <input class="input-style" type="text" placeholder="#0000">
-                </div>
-                <div class="name">
-                    <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= product.name%> ">
-                </div>
-            </section>
-            <div class="buscador">
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <th scope="colum-mobile">ID</th>
-                        <th scope="colum-mobile" >Nomb. producto</th>
-                        <th  class="column" scope="col">Categoria</th><!-- tablet y desktop -->
-                        <th  scope="col">Stock</th>
-                    </thead>
-                    <tbody>
+                    <section class="caja-central-form">
+                        <h2>EDITAR PRODUCTOS</h2>
+                        <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST"
+                            enctype="multipart/form-data">
+                            <section class="datos-usuarios">
+                                <div>
+                                    <h4>Categorias</h4>
+                                    <select name="category" id="">
+                                        <option value="">Categoria</option>
+                                        <option value="celulares" <%- product.category=="celulares" ? "selected" : "" %>
+                                            >Celulares</option>
+                                        <option value="televisores" <%- product.category=="televisores" ? "selected"
+                                            : "" %>>Televisores</option>
+                                        <option value="tablets" <%- product.category=="tablets" ? "selected" : "" %>
+                                            >Tablets</option>
+                                        <option value="gaming" <%- product.category=="gaming" ? "selected" : "" %>
+                                            >Gaming</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>marcas</h4>
+                                    <select name="marca" id="">
+                                        <option value="">Marca...</option>
+                                        <option value="Aorus" <%- product.marca=="Aorus" ? "selected" : "" %>>Aorus
+                                        </option>
+                                        <option value="Aplle" <%- product.marca=="Apple" ? "selected" : "" %>>Apple
+                                        </option>
+                                        <option value="Asus" <%- product.marca=="Asus" ? "selected" : "" %>>Asus
+                                        </option>
+                                        <option value="HP" <%- product.marca=="HP" ? "selected" : "" %>>HP</option>
+                                        <option value="Lenovo" <%- product.marca=="Lenovo" ? "selected" : "" %>>Lenovo
+                                        </option>
+                                        <option value="LG" <%- product.marca=="LG" ? "selected" : "" %>>LG</option>
+                                        <option value="Samsung" <%- product.marca=="Samsung" ? "selected" : "" %>
+                                            >Samsung</option>
+                                        <option value="Toshiba" <%- product.marca=="Toshiba" ? "selected" : "" %>
+                                            >Toshiba</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>id del producto</h4>
+                                    <input class="input-style" type="text" placeholder="#0000"
+                                        value="<%= product.id%> ">
+                                </div>
+                                <div class="name">
+                                    <h4>nombre del producto</h4>
+                                    <input class="input-style" type="text" name="name" placeholder="Nombre"
+                                        value="<%= product.name%>">
+                                </div>
+                                <div>
+                                    <h4>Tamaño de pantalla</h4>
+                                    <select name="tamaño" id="">
+                                        <option value="">Tamaño</option>
+                                        <option value="">7"</option>
+                                        <option value="8.7''" <%- product.tamaño=="8.7''" ? "selected" : "" %>>8.7"
+                                        </option>
+                                        <option value="10''" <%- product.tamaño=="10''" ? "selected" : "" %>>10"
+                                        </option>
+                                        <option value="10.1''" <%- product.tamaño=="10.1''" ? "selected" : "" %>>10.1"
+                                        </option>
+                                        <option value="10.2''" <%- product.tamaño=="10.2''" ? "selected" : "" %>>10.2"
+                                        </option>
+                                        <option value="11.3''" <%- product.tamaño=="11.3''" ? "selected" : "" %>>10.3"
+                                        </option>
+                                        <option value="10.4''" <%- product.tamaño=="10.4''" ? "selected" : "" %>>10.4"
+                                        </option>
+                                        <option value="10.9''" <%- product.tamaño=="10.9''" ? "selected" : "" %>>10.9"
+                                        </option>
+                                        <option value="11''" <%- product.tamaño=="11''" ? "selected" : "" %>>11"
+                                        </option>
+                                        <option value="11.6''" <%- product.tamaño=="11.6''" ? "selected" : "" %>>11.6"
+                                        </option>
+                                        <option value="13''" <%- product.tamaño=="13''" ? "selected" : "" %>>13"
+                                        </option>
+                                        <option value="13.3''" <%- product.tamaño=="13.3''" ? "selected" : "" %>>13.3"
+                                        </option>
+                                        <option value="13.4''" <%- product.tamaño=="13.4''" ? "selected" : "" %>>13.4"
+                                        </option>
+                                        <option value="13.5''" <%- product.tamaño=="13.5''" ? "selected" : "" %>>13.5"
+                                        </option>
+                                        <option value="13.8''" <%- product.tamaño=="13.8''" ? "selected" : "" %>>13.8"
+                                        </option>
+                                        <option value="14''" <%- product.tamaño=="14''" ? "selected" : "" %>>14"
+                                        </option>
+                                        <option value="14.1''" <%- product.tamaño=="14.1''" ? "selected" : "" %>>14.1"
+                                        </option>
+                                        <option value="15.6''" <%- product.tamaño=="15.6''" ? "selected" : "" %>>15.6"
+                                        </option>
+                                        <option value="24''" <%- product.tamaño=="24''" ? "selected" : "" %>>24"
+                                        </option>
+                                        <option value="32''" <%- product.tamaño=="32''" ? "selected" : "" %>>32"
+                                        </option>
+                                        <option value="40''" <%- product.tamaño=="40''" ? "selected" : "" %>>40"
+                                        </option>
+                                        <option value="42''" <%- product.tamaño=="42''" ? "selected" : "" %>>42"
+                                        </option>
+                                        <option value="43''" <%- product.tamaño=="43''" ? "selected" : "" %>>43"
+                                        </option>
+                                        <option value="49''" <%- product.tamaño=="49''" ? "selected" : "" %>>49"
+                                        </option>
+                                        <option value="50''" <%- product.tamaño=="50''" ? "selected" : "" %>>50"
+                                        </option>
+                                        <option value="55''" <%- product.tamaño=="55''" ? "selected" : "" %>>55"
+                                        </option>
+                                        <option value="58''" <%- product.tamaño=="58''" ? "selected" : "" %>>58"
+                                        </option>
+                                        <option value="60''" <%- product.tamaño=="60''" ? "selected" : "" %>>60"
+                                        </option>
+                                        <option value="65''" <%- product.tamaño=="65''" ? "selected" : "" %>>65"
+                                        </option>
+                                        <option value="70''" <%- product.tamaño=="70''" ? "selected" : "" %>>70"
+                                        </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>smart</h4>
+                                    <select name="smart" id="">
+                                        <option value="">smat...</option>
+                                        <option value="Si" <%- product.smart=="Si" ? "selected" : "" %>>Si</option>
+                                        <option value="No" <%- product.smart=="No" ? "selected" : "" %>>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>capacidad</h4>
+                                    <select name="capacity" id="">
+                                        <option value="">GB</option>
+                                        <option value="8GB" <%- product.capacity=="8GB" ? "selected" : "" %>>8GB
+                                        </option>
+                                        <option value="16GB" <%- product.capacity=="16GB" ? "selected" : "" %>>16GB
+                                        </option>
+                                        <option value="32GB" <%- product.capacity=="32GB" ? "selected" : "" %>>32GB
+                                        </option>
+                                        <option value="64GB" <%- product.capacity=="64GB" ? "selected" : "" %>>64GB
+                                        </option>
+                                        <option value="128GB" <%- product.capacity=="128GB" ? "selected" : "" %>>128GB
+                                        </option>
+                                        <option value="256GB" <%- product.capacity=="256GB" ? "selected" : "" %>>256GB
+                                        </option>
+                                        <option value="500GB" <%- product.capacity=="500GB" ? "selected" : "" %>>500GB
+                                        </option>
+                                        <option value="1TB" <%- product.capacity=="1TB" ? "selected" : "" %>>1TB
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="apellido">
+                                    <h4>RAM</h4>
+                                    <select name="ram" id="">
+                                        <option value="">RAM</option>
+                                        <option value="1GB" <%- product.ram=="1GB" ? "selected" : "" %>>1GB</option>
+                                        <option value="1.5GB" <%- product.ram=="1.5GB" ? "selected" : "" %>>1.5GB
+                                        </option>
+                                        <option value="2GB" <%- product.ram=="2GB" ? "selected" : "" %>>2GB</option>
+                                        <option value="4GB" <%- product.ram=="4GB" ? "selected" : "" %>>4GB</option>
+                                        <option value="8GB" <%- product.ram=="8GB" ? "selected" : "" %>>8GB</option>
+                                        <option value="12GB" <%- product.ram=="12GB" ? "selected" : "" %>>12GB</option>
+                                        <option value="16GB" <%- product.ram=="16GB" ? "selected" : "" %>>16GB</option>
+                                        <option value="20GB" <%- product.ram=="20GB" ? "selected" : "" %>>20GB</option>
+                                        <option value="32GB" <%- product.ram=="32GB" ? "selected" : "" %>>32GB</option>
+                                        <option value="64GB" <%- product.ram=="64GB" ? "selected" : "" %>>64GB</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>Precio</h4>
+                                    <input class="input-style" type="text" id="price" name="price"
+                                        value="<%= product.price %>">
+                                </div>
 
-                    </tbody>
-                    
-                </table>
-                
-            </div>
-            <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST"  enctype="multipart/form-data" >
-            <section class="datos-usuarios">
-                <div>
-                    <h4>Categorias</h4>
-                    <select name="category" id="">
-                        <option value="<%= product.category%>"><%= product.category%></option>
-                        <option value="Celulares">Celulares</option>
-                        <option value="Televisores">Televisores</option>
-                        <option value="Tablets">Tablets</option>
-                        <option value="Gaming">Gaming</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>marcas</h4>
-                    <select name="marca" id="">
-                        <option value="<%= product.marca%>"><%= product.marca%></option>
-                        <option value="Aorus">Aorus</option>
-                        <option value="Aplle">Apple</option>
-                        <option value="Asus">Asus</option>
-                        <option value="HP">HP</option>
-                        <option value="Lenovo">Lenovo</option>
-                        <option value="LG">LG</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Toshiba">Toshiba</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>id del producto</h4>
-                    <input class="input-style" type="text" placeholder="#0000" value="<%= product.id%> ">
-                </div>
-                <div class="name">
-                    <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= product.name%> ">
-                </div>
-                <div>
-                    <h4>Tamaño de pantalla</h4>
-                    <select name="tamaño" id="">
-                        <option value="<%= product.tamaño%>"><%= product.tamaño%></option>
-                        <option value="7"">7"</option>
-                        <option value="8.7"">8.7"</option>
-                        <option value="10"">10"</option>
-                        <option value="10.1"">10.1"</option>
-                        <option value="10.2"">10.2"</option>
-                        <option value="11.3"">10.3"</option>
-                        <option value="10.4"">10.4"</option>
-                        <option value="10.9"">10.9"</option>
-                        <option value="11"">11"</option>
-                        <option value="11.6"">11.6"</option>
-                        <option value="13"">13"</option>
-                        <option value="13.3"">13.3"</option>
-                        <option value="13.4"">13.4"</option>
-                        <option value="13.5"">13.5"</option>
-                        <option value="13.8"">13.8"</option>
-                        <option value="14"">14"</option>
-                        <option value="14.1"">14.1"</option>
-                        <option value="15.6"">15.6"</option>
-                        <option value="24"">24"</option>
-                        <option value="32"">32"</option>
-                        <option value="40"">40"</option>
-                        <option value="42"">42"</option>
-                        <option value="43"">43"</option>
-                        <option value="49"">49"</option>
-                        <option value="50"">50"</option>
-                        <option value="55"">55"</option>
-                        <option value="58"">58"</option>
-                        <option value="60"">60"</option>
-                        <option value="65"">65"</option>
-                        <option value="70"">70"</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>smart</h4>
-                    <select name="smart" id="">
-                        <option value="<%= product.smart%>"><%= product.smart%></option>
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>capacidad</h4>
-                    <select name="capacity" id="">
-                        <option value="<%= product.capacity%>"><%= product.capacity%></option>
-                        <option value="8GB">8GB</option>
-                        <option value="16GB">16GB</option>
-                        <option value="32GB">32GB</option>
-                        <option value="64GB">64GB</option>
-                        <option value="128GB">128GB</option>
-                        <option value="256GB">256GB</option>
-                        <option value="500GB">500GB</option>
-                        <option value=""1tb>1TB</option>
-                    </select>
-                </div>
-                <div class="apellido">
-                    <h4>RAM</h4>
-                    <select name="ram" id="">
-                        <option value="<%= product.ram%>"><%= product.ram%></option>
-                        <option value="1GB">1GB</option>
-                        <option value="1.5GB">1.5GB</option>
-                        <option value="2GB">2GB</option>
-                        <option value="4GB">4GB</option>
-                        <option value="8GB">8GB</option>
-                        <option value="12GB">12GB</option>
-                        <option value="16GB">16GB</option>
-                        <option value="20GB">20GB</option>
-                        <option value="32GB">32GB</option>
-                        <option value="64GB">64GB</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>Precio</h4>
-                    <input class="input-style" type="text" id="price" name="price" value="<%= product.price %> ">
-                                       
-                    </div>
+                                <section class="img-coment">
+                                    <div>
+                                        <h4>Imagenes</h4>
+                                        <input class="input-file" type="file" multiple="" name="image" id="image">
+                                    </div>
+                                    <h4>descripción</h4>
+                                    <textarea name="description" id="" cols="30"
+                                        rows="10"><%= product.description%></textarea>
+                                </section>
 
-                <section class="img-coment">
-                <div>
-                    <h4>Imagenes</h4>
-                    <input class="input-file" type="file" multiple="" name="[]" id="">
-                </div>
-                <h4>descripción</h4>
-                <textarea name="description" id="" cols="30" rows="10"><%= product.description%></textarea>
-        </section>
-                
-            </section>
-            <div class="botones-confirm">
-            <section class="button-crear">
-                <button type="submit" class="guardar" cursor="pointer">guardar producto</button>
-                <span class="error-message">Credenciales inválidas</span>
-            </section>
-            <section class="button-crear">
-                
-                <button type="submit" class="quitar">eliminar producto</button>
-                <span class="error-message">Credenciales inválidas</span>
-            </section>
-        </div>
-            </form>
-        </section>
-    </main>
+                            </section>
+                            <div class="botones-confirm">
+                                <section class="button-crear">
+                                    <button type="submit" class="guardar" cursor="pointer">guardar producto</button>
+                                    <span class="error-message">Credenciales inválidas</span>
+                                </section>
+
+
+                            </div>
+                        </form>
+                        <section class="button-crear">
+                            <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+
+                                <button type="submit" class="quitar">eliminar producto</button>
+                                <span class="error-message">Credenciales inválidas</span>
+                            </form>
+                        </section>
+                    </section>
+        </main>
 
 </body>
 

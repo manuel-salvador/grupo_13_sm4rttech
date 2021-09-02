@@ -115,7 +115,7 @@
     flex-direction: column;
 }
 
-.box-compra .botones .boton1 {
+.botones .boton1 {
     text-transform: uppercase;
     color: var(--lightBlue);
     background-color: white;
@@ -126,7 +126,7 @@
     margin: 5px 0;
 }
 
-.box-compra .botones .boton2 {
+.botones .boton2 {
     text-transform: uppercase;
     color: white;
     background-color: var(--greenWater);

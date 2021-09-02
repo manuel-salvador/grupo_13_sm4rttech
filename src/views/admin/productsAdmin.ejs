@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sm4rtTech</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <%- include('./partials/headerAdmin.ejs') %>
+        <main>
+            <%- include('./partials/navAdmin.ejs') %>
+                <h3 class="all-products">Todos nuestros productos</h3>
+                <!--  -->
+                <div class="category">
+                    <h3>Televisores</h3>
+                </div>
+                <section class="products">
+                    <div class="card-product">
+                        <% productsTelevisores.forEach(product=> { %>
+                            <div class="product-admin">
+                                <img src="/images/products/<%- product.image %> " alt="">
+                                <div>
+                                    <div>
+                                        <h5>
+                                            <%= product.name.toUpperCase() %>
+                                        </h5>
+                                        <p class="card-text">Precio: <%= product.precio %>
+                                        </p>
+                                        <p class="card-text">Categoria: <%= product.category %>
+                                        </p>
+                                    </div>
+                                    <div class="botones">
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }) %>
+                    </div>
+                </section>
+                <div class="category">
+                    <h3>Celulares</h3>
+                </div>
+                <section class="products">
+                    <div class="card-product">
+                        <% productsCelulares.forEach(product=> { %>
+                            <div class="product-admin">
+                                <img src="/images/products/<%- product.image %> " alt="">
+                                <div>
+                                    <div>
+                                        <h5>
+                                            <%= product.name.toUpperCase() %>
+                                        </h5>
+                                        <p class="card-text">Precio: <%= product.precio %>
+                                        </p>
+                                        <p class="card-text">Categoria: <%= product.category %>
+                                        </p>
+                                    </div>
+                                    <div class="botones">
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }) %>
+                    </div>
+                </section>
+                <div class="category">
+                    <h3>Tablets</h3>
+                </div>
+                <section class="products">
+                    <div class="card-product">
+                        <% productsTablets.forEach(product=> { %>
+                            <div class="product-admin">
+                                <img src="/images/products/<%- product.image %> " alt="">
+                                <div>
+                                    <div>
+                                        <h5>
+                                            <%= product.name.toUpperCase() %>
+                                        </h5>
+                                        <p class="card-text">Precio: <%= product.precio %>
+                                        </p>
+                                        <p class="card-text">Categoria: <%= product.category %>
+                                        </p>
+                                    </div>
+                                    <div class="botones">
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }) %>
+                    </div>
+                </section>
+                <div class="category">
+                    <h3>Gaming</h3>
+                </div>
+                <section class="products">
+                    <div class="card-product">
+                        <% productsGaming.forEach(product=> { %>
+                            <div class="product-admin">
+                                <img src="/images/products/<%- product.image %> " alt="">
+                                <div>
+                                    <div>
+                                        <h5>
+                                            <%= product.name.toUpperCase() %>
+                                        </h5>
+                                        <p class="card-text">Precio: <%= product.precio %>
+                                        </p>
+                                        <p class="card-text">Categoria: <%= product.category %>
+                                        </p>
+                                    </div>
+                                    <div class="botones">
+                                        <button type="submit" class="boton1"><a href="/admin/editar/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a></button>
+                                        
+                                        
+                                        <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="boton-2">Eliminar</button>
+                                    </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }) %>
+                    </div>
+                </section>
+        </main>
+</body>
+
+</html>
