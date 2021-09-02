@@ -1,8 +1,22 @@
 let { products, writeJson } =require('../data/dataBase');
+let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
+let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
+let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
+let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
 
 module.exports = {
     admin: (req, res) => {
         res.render('admin/indexAdmin')
+    },
+
+    productsAdmin: (req, res) => {
+        res.render('admin/productsAdmin',{
+        productsTelevisores,
+        productsCelulares,
+        productsGaming,
+        productsTablets,
+        products
+        })
     },
   /*  search:(req,res)=>{
         let result=[]

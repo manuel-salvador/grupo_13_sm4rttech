@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('../midlewares/uploadProductsFiles')
-const { admin, 
+const { admin,
+    productsAdmin,
     agregar,
     store,
     filtroEditar, 
@@ -11,6 +12,9 @@ const { admin,
 
 /* GET - Home */
 router.get('/', admin)
+
+/* productos admin */
+router.get('/productsAdmin', productsAdmin)
 
 /* agregar */
 router.get('/agregar', agregar),
