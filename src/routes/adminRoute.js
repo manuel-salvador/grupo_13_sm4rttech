@@ -7,7 +7,7 @@ const { admin,
     filtroEditar, 
     editar,
     actualizar,
-    eliminar } = require('../controllers/adminController');
+    destroy } = require('../controllers/adminController');
 
 /* GET - Home */
 router.get('/', admin)
@@ -25,7 +25,7 @@ router.get('/editar/:id', editar)
 router.put("/editar/:id",multer.single('image'), actualizar)
 
 /*delete */
-router.delete("/eliminar",eliminar)
 
+router.delete('/delete/:id', destroy);
 
 module.exports = router;

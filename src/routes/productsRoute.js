@@ -7,5 +7,4 @@ let controller = require('../controllers/productsController')
 router.get('/', controller.producto)
 /* GET - Detalle del auto elegido */
 
-
 module.exports = router;

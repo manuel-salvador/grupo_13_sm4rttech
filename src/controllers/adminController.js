@@ -120,8 +120,19 @@ module.exports = {
        res.redirect("/products")
 
     },
-    eliminar:(req,res)=>{
-        res.render("admin/eliminar")
+    //eliminar un producto
+    destroy:(req,res)=>{
+        let product= products.find(product => product.id === +req.params.id)
+        products.forEach(product =>{
+            if(product.id === +req.params.id){
+                let productToDestroy = products.indexOf(product);
+                products.splice(productToDestroy, 1)
+     
+            }
+        })
+        writeJson(products)
+
+        res.send(`has eliminado el producto ${product.name}`)
     }
    
         

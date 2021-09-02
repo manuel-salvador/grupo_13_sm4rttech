@@ -7,7 +7,9 @@
     "tamaño": "32''",
     "smart": "Si",
     "price": "$70000",
-    "image": ["tv.jpg"]
+    "image": [
+      "tv.jpg"
+    ]
   },
   {
     "id": 2,
@@ -18,7 +20,9 @@
     "capacity": "32GB",
     "ram": "1.5GB",
     "price": "$18000",
-    "image": ["tablet.jpg"]
+    "image": [
+      "tablet.jpg"
+    ]
   },
   {
     "id": 3,
@@ -29,7 +33,9 @@
     "capacity": "500GB",
     "ram": "4GB",
     "price": "$55000",
-    "image": ["Notebook.jpg"]
+    "image": [
+      "Notebook.jpg"
+    ]
   },
   {
     "id": 4,
@@ -41,7 +47,9 @@
     "capacity": "128GB",
     "ram": "",
     "price": "$45000",
-    "image": ["celular.jpg"]
+    "image": [
+      "celular.jpg"
+    ]
   },
   {
     "id": 5,
@@ -53,7 +61,9 @@
     "capacity": "",
     "ram": "",
     "price": "$240999",
-    "image": ["tv-samsung.jpg"],
+    "image": [
+      "tv-samsung.jpg"
+    ],
     "description": "Samsung es reconocida a nivel mundial como una empresa líder en la industria tecnológica. Todos sus productos son diseñados con una calidad superior y pensados para contribuir a un futuro mejor. Por eso, va a hacer que disfrutes de una experiencia visual incomparable. Con el Smart TV UN75TU8000 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Viví en 4K La cantidad de pixeles que ofrece es 4 veces mayor que la Full HD, ¿el resultado? Escenas mucho más realistas y con un nivel de detalle increíble. Ahora vas a conocer una aventura de inmersión que no va a dejar de sorprenderte. Un sonido que te envuelve Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos van a cobrar otro significado. Más allá de ver televisión Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma vas a poder visualizar todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos y más. Conexión invisible Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el televisor se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡vas a notar la diferencia!"
   },
   {
@@ -66,7 +76,9 @@
     "capacity": "",
     "ram": "",
     "price": "$58999",
-    "image": ["tv-eNova.jpg"],
+    "image": [
+      "tv-eNova.jpg"
+    ],
     "description": ""
   },
   {
@@ -79,7 +91,9 @@
     "capacity": "",
     "ram": "",
     "price": "$59999",
-    "image": ["tv-hitachi.jpg"],
+    "image": [
+      "tv-hitachi.jpg"
+    ],
     "description": ""
   },
   {
@@ -92,7 +106,9 @@
     "capacity": "",
     "ram": "",
     "price": "$38999",
-    "image": ["tv-philips.jpg"],
+    "image": [
+      "tv-philips.jpg"
+    ],
     "description": ""
   },
   {
@@ -105,7 +121,9 @@
     "capacity": "500GB",
     "ram": "",
     "price": "$70000",
-    "image": ["playStation.jpg"],
+    "image": [
+      "playStation.jpg"
+    ],
     "description": ""
   },
   {
@@ -118,7 +136,9 @@
     "capacity": "32GB",
     "ram": "1RAM",
     "price": "$10123 ",
-    "image": ["lgk20.jpg"],
+    "image": [
+      "lgk20.jpg"
+    ],
     "description": "cambiando datos"
   },
   {
@@ -131,7 +151,9 @@
     "capacity": "16GB",
     "ram": "1GB",
     "price": "$10123",
-    "image": ["TabletLenovoM7.jpg"],
+    "image": [
+      "TabletLenovoM7.jpg"
+    ],
     "description": ""
   },
   {
@@ -144,7 +166,9 @@
     "capacity": "",
     "ram": "",
     "price": "$3500",
-    "image": ["joystick.jpg"],
+    "image": [
+      "joystick.jpg"
+    ],
     "description": ""
   },
   {
@@ -158,7 +182,9 @@
     "ram": "ram",
     "price": "sdf",
     "description": "                ",
-    "image": ["joystick.jpg"]
+    "image": [
+      "joystick.jpg"
+    ]
   },
   {
     "id": 14,
@@ -210,21 +236,21 @@
     "ram": "",
     "price": "123455 ",
     "description": "",
-    "image": ["joystick.jpg"]
+    "image": [
+      "joystick.jpg"
+    ]
   },
   {
     "id": 18,
-    "name": "jos",
-    "category": "gaming",
-    "marca": "lenovo",
-    "tamaño": "",
-    "smart": "",
-    "capacity": "capacity",
-    "ram": "ram",
-    "price": "33333",
-    "description": " producto nuevo",
-    "image": ["joystick.jpg"]
-  },
+    "name": "CAJA PLASTICA UTIL-OF AMERICANA",
+    "price": 781,
+    "description": "COLOR AZUL 2,5 X 32,5 X 25,5 CM",
+    "discount": 5,
+    "category": "3",
+    "subcategory": "Cajas",
+    "image": ["cajaArch.jpg"]
+},
+
   {
     "id": 19,
     "name": "",
@@ -236,7 +262,9 @@
     "ram": "ram",
     "price": "",
     "description": "                ",
-    "image": ["joystick.jpg"]
+    "image": [
+      "joystick.jpg"
+    ]
   },
   {
     "id": 20,
@@ -249,6 +277,8 @@
     "ram": "1.5",
     "price": "45",
     "description": "                ",
-    "image": ["joystick.jpg"]
+    "image": [
+      "joystick.jpg"
+    ]
   }
 ]
