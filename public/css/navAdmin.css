@@ -1,5 +1,6 @@
 
 nav.admin {
+    display: block;
     min-width: 200px;
     background-color: #232227;
     color: #fff;

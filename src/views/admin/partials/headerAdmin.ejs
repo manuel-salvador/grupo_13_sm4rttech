@@ -1,9 +1,9 @@
 <header class="admin">
     <div class="left">
-        <div class="burger-menu">
+        <div class="burger-menu" onclick="drupMenu()">
             <i class="fas fa-bars"></i>
         </div>
-        <a href="/admin" id="titulo-principal"><h1>Sm4rtTech</h1></a>
+        <a href="/admin"  class="m4" id="titulo-principal"><h1>Sm4rtTech</h1></a>
     </div>
     <div class="right">
         <div class="hello">
@@ -16,4 +16,28 @@
             <li class="avatar-profile"><i class="far fa-user"></i></li>
         </ul>
     </div>
+    <nav class="opcion-cat" id="barra-lat">
+        <ul>
+            <li onclick="subCategoryMenu()">
+                <i class="fas fa-border-all"></i>
+                <p class="title-item"><a href="/" class="nav-link">Inicio</a></p>
+            </li>
+            <li onclick="subCategoryMenu()">
+                <i class="fas fa-cart-plus"></i>
+                <p class="title-item"></i><a href="/admin/productsAdmin">Productos</a></p>
+                <i class="fas fa-chevron-right"></i>
+                
+            </li>
+            <li onclick="subCategoryMenu()">
+                        <i class="fas fa-plus-circle"></i>
+                        <p><a href="/admin/agregar">Agregar</a></p>
+            </li>
+            <li onclick="subCategoryMenu()">
+               
+                        <i class="fas fa-users"></i>
+                    <p class="title-item"><a href="/admin">Equipo</a></p>
+            </li>
+        </ul>
+    </nav>
+    <script src="/javaScripts/headerAdmin.js" defer></script>
 </header>
