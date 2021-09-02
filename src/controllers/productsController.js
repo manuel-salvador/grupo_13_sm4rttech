@@ -4,16 +4,17 @@
  let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
  let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
 
-module.exports = {
-    producto: (req, res) => {
-      res.render('products', {
-          productsTelevisores,
-          productsCelulares,
-          productsGaming,
-          productsTablets,
-          products
+ module.exports = {
+  producto: (req, res) => {
+    setTimeout(function(){
+    res.render('products', {
+        productsTelevisores,
+        productsCelulares,
+        productsGaming,
+        productsTablets,
+        products
 
-      })
-    },
-   
+    })
+    }, 1000)
+  }
 }
