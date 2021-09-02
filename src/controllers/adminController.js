@@ -53,7 +53,7 @@ module.exports = {
             ram,
             price,
             description,
-            image: req.file ? req.file.filename : ["joystick.jpg"]
+            image: req.file ? req.file.filename : ["logo-sm4rttech.png"]
         }
         
         products.push(newProduct)
