@@ -66,6 +66,9 @@ module.exports = {
         res.render('admin/agregar')
     },
 
+    filtroEditar: (req, res) => {
+        res.render('admin/filtroEditar')
+    },
 
 /*traer la vista con el producto a editar*/
     editar: (req, res) => {

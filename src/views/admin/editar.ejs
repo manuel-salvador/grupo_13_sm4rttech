@@ -21,56 +21,6 @@
 
         <section class="caja-central-form">
             <h2>EDITAR PRODUCTOS</h2>
-           
-            <section class="datos-usuarios">
-                <div>
-                    <h4>Categorias</h4>
-                    <select name="category" id="">
-                        <option value=""><%= product.category%></option>
-                        <option value="celulares">Celulares</option>
-                        <option value="televisores">Televisores</option>
-                        <option value="tablets">Tablets</option>
-                        <option value="gaming">Gaming</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>marcas</h4>
-                    <select name="" id="">
-                        <option value="<%= product.marca%>"><%= product.marca%></option>
-                        <option value="Aorus">Aorus</option>
-                        <option value="Aplle">Apple</option>
-                        <option value="Asus">Asus</option>
-                        <option value="HP">HP</option>
-                        <option value="Lenovo">Lenovo</option>
-                        <option value="LG">LG</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Toshiba">Toshiba</option>
-                    </select>
-                </div>
-                <div>
-                    <h4>Id del producto</h4>
-                    <input class="input-style" type="text" placeholder="#0000">
-                </div>
-                <div class="name">
-                    <h4>nombre del producto</h4>
-                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= product.name%> ">
-                </div>
-            </section>
-            <div class="buscador">
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <th scope="colum-mobile">ID</th>
-                        <th scope="colum-mobile" >Nomb. producto</th>
-                        <th  class="column" scope="col">Categoria</th><!-- tablet y desktop -->
-                        <th  scope="col">Stock</th>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                    
-                </table>
-                
-            </div>
             <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST"  enctype="multipart/form-data" >
             <section class="datos-usuarios">
                 <div>
