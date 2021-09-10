@@ -9,13 +9,19 @@
             <div class="ingreso">
                 <div class="mail">
                     <h4>E-mail</h4>
-                    <input type="text" placeholder="Igresa E-mail">
-                    <span class="error-message">Debe ingresar su E-mail</span>
+                    <input type="text"  name="email" placeholder="Igresa E-mail">
+                    <% if (locals.errors && errors.email) { %>
+                        <small class="text-danger"><%= errors.email.msg %> </small>
+                    <% } %>
+                    <!-- <span class="error-message">Debe ingresar su E-mail</span> -->
                 </div>
                 <div class="contraseña">
                     <h4>contraseña</h4>
-                    <input type="text" placeholder="Ingresa contraseña">
-                    <span class="error-message">Debe ingresar su contraseña</span>
+                    <input type="text" name="pass" placeholder="Ingresa contraseña">
+                    <% if (locals.errors && errors.pass) { %>
+                        <small class="text-danger"><%= errors.pass.msg %> </small>
+                    <% } %>
+                    <!-- <span class="error-message">Debe ingresar su contraseña</span> -->
                 </div>
             </div>
             <div class="recuperar-contraseña">
