@@ -93,21 +93,53 @@ module.exports = {
     },
 
     filtroEditar: (req, res) => {
-        res.render('admin/filtroEditar')
+        let lista = ["error"]
+        res.render('admin/filtroEditar',{lista})
+    },
+
+    filtrarEditar: (req, res) => {
+        const filtrosForm = req.body
+
+        function filtrar(filtros, db) {
+
+            // Filtrando los filtros vacios
+            filtrosFiltrados = {}
+            for ([key, value] of Object.entries(filtros)) {
+                if (value != false){
+                    filtrosFiltrados[key] = value
+                }
+            }
+
+            //Filtrar un json por distintos filtros
+
+            // Comente por si no se quieren listar todos sin filtro
+            
+            /* if(0 == Object.keys(filtrosFiltrados).length){
+                return productsFiltered = []
+            }else{ */
+                productsFiltered = db.filter(product => {
+                    for (var filtro in filtrosFiltrados) {
+                        if ([product[filtro]].toString().toLowerCase().includes(filtrosFiltrados[filtro].toLowerCase()) ){
+
+                        }else{
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+            
+            return(productsFiltered);
+        //  }
+        }
+        
+        filtrar(filtrosForm, products)
+
+        res.render('admin/filtroEditar', {
+            lista: productsFiltered,
+        }) 
     },
 
 /*traer la vista con el producto a editar*/
-    /* editar: (req, res) => {
-        let productEdit= products.find(products=>{
-            
-        })
-      
-    
-        res.render('admin/editar',{
-            product:productEdit
-        })
-
-    }, */
     editar: (req, res) => {
 		let product = products.find(product => product.id === +req.params.id)
 		res.render('admin/editar', {

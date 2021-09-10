@@ -5,7 +5,8 @@ const { admin,
     productsAdmin,
     agregar,
     store,
-    filtroEditar, 
+    filtroEditar,
+    filtrarEditar, 
     editar,
     actualizar,
     destroy } = require('../controllers/adminController');
@@ -25,7 +26,9 @@ router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
 /* get muestra form. de edit*/ 
-router.get('/editar/cualquiera', filtroEditar)
+router.get('/editar', filtroEditar)
+router.post('/editar', filtrarEditar)
+
 
 router.get('/editar/:id', editar)
 router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
