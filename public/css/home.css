@@ -13,7 +13,7 @@ main .carousel ul.slider {
     animation: cambio 30s infinite ease-in-out;
 } 
 
-#slide1 {
+/* #slide1 {
     background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
 }
 
@@ -27,7 +27,7 @@ main .carousel ul.slider {
 
 #slide4 {
     background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
-}
+} */
 
 #slide5 {
     display: none;
@@ -43,7 +43,14 @@ main .carousel ul.slider li {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+}
+
+main .carousel ul.slider li a{
+    display: flex;
     justify-content: center;
+    height: 70%;
 }
 
 main .carousel ul.slider li a, 
@@ -53,9 +60,10 @@ main .carousel ul.slider li .inferior{
     color: white;
 }
 
-main .carousel ul.slider li img{
-    width: 100%;
+main .carousel ul.slider li img.img-carrousel{
+    max-width: 100%;
     border-radius: 20px;
+    max-height: 500px;
 }
 
 main .carousel ul.slider li .inferior {
@@ -63,6 +71,7 @@ main .carousel ul.slider li .inferior {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 30%;
 }
 
 main .carousel ul.slider li .inferior i {
@@ -470,7 +479,6 @@ main .info-final hr {
     
     main div.carousel ul.slider li a img{
         border-radius: 1rem;
-        width: 100%;
     }
     
     main div.carousel ul.slider li .inferior {
