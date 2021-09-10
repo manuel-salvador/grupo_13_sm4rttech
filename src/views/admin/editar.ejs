@@ -29,7 +29,7 @@
                                 <div>
                                     <h4>Categorias</h4>
                                     <select name="category" id="">
-                                        <option value="">Categoria</option>
+                                        <option selected hidden value="">Categoria</option>
                                         <option value="celulares" <%- product.category=="celulares" ? "selected" : "" %>
                                             >Celulares</option>
                                         <option value="televisores" <%- product.category=="televisores" ? "selected"
@@ -39,24 +39,37 @@
                                         <option value="gaming" <%- product.category=="gaming" ? "selected" : "" %>
                                             >Gaming</option>
                                     </select>
+                                    <% if (locals.errors && errors.category) { %>
+                                        <!-- busca en las variables de nuestra aplicacion -->
+                                        <small class="text-danger">
+                                            <%= errors.category.msg %>
+                                        </small>
+                                        <% } %>
                                 </div>
                                 <div>
                                     <h4>marcas</h4>
                                     <select name="marca" id="">
-                                        <option value="">Marca...</option>
-                                        <option value="Aorus" <%- product.marca=="Aorus" ? "selected" : "" %>>Aorus
+                                        <option selected hidden>Marca...</option>
+                                        <option value="Aorus" <%- locals.old && old.marca == "Aorus" ? "selected"
+                                            : "Aorus" == product.marca ? `selected` : "" %>>Aorus
                                         </option>
-                                        <option value="Aplle" <%- product.marca=="Apple" ? "selected" : "" %>>Apple
+                                        <option value="Aplle" <%- locals.old && old.marca == "Apple" ? "selected"
+                                        : "Apple" == product.marca ? `selected` : "" %>>Apple
                                         </option>
-                                        <option value="Asus" <%- product.marca=="Asus" ? "selected" : "" %>>Asus
+                                        <option value="Asus" <%- locals.old && old.marca == "Asus" ? "selected"
+                                        : "Asus" == product.marca ? `selected` : "" %>>Asus
                                         </option>
-                                        <option value="HP" <%- product.marca=="HP" ? "selected" : "" %>>HP</option>
-                                        <option value="Lenovo" <%- product.marca=="Lenovo" ? "selected" : "" %>>Lenovo
+                                        <option value="HP" <%- locals.old && old.marca == "HP" ? "selected"
+                                        : "HP" == product.marca ? `selected` : "" %>>HP</option>
+                                        <option value="Lenovo" <%- locals.old && old.marca == "Lenovo" ? "selected"
+                                        : "Lenovo" == product.marca ? `selected` : "" %>>Lenovo
                                         </option>
-                                        <option value="LG" <%- product.marca=="LG" ? "selected" : "" %>>LG</option>
-                                        <option value="Samsung" <%- product.marca=="Samsung" ? "selected" : "" %>
-                                            >Samsung</option>
-                                        <option value="Toshiba" <%- product.marca=="Toshiba" ? "selected" : "" %>
+                                        <option value="LG" <%- locals.old && old.marca == "LG" ? "selected"
+                                        : "LG" == product.marca ? `selected` : "" %>>LG</option>
+                                        <option value="Samsung" <%- locals.old && old.marca == "Samsung" ? "selected"
+                                        : "Samsung" == product.marca ? `selected` : "" %>>Samsung</option>
+                                        <option value="Toshiba" <%- locals.old && old.marca == "Toshiba" ? "selected"
+                                        : "Toshiba" == product.marca ? `selected` : "" %>
                                             >Toshiba</option>
                                     </select>
                                 </div>
@@ -68,70 +81,103 @@
                                 <div class="name">
                                     <h4>nombre del producto</h4>
                                     <input class="input-style" type="text" name="name" placeholder="Nombre"
-                                        value="<%= product.name%>">
+                                        value="<%= locals.old ? old.name : product.name%>">
+                                        <% if (locals.errors && errors.name) { %>
+                                            <small class="text-danger"><%= errors.name.msg %> </small>
+                                        <% } %>
                                 </div>
                                 <div>
                                     <h4>Tamaño de pantalla</h4>
                                     <select name="tamaño" id="">
                                         <option value="">Tamaño</option>
-                                        <option value="">7"</option>
-                                        <option value="8.7''" <%- product.tamaño=="8.7''" ? "selected" : "" %>>8.7"
+                                        <option value="7''" <%- locals.old && old.tamaño == "7''" ? "selected"
+                                        : "7''" == product.tamaño ? `selected` : "" %>>7"</option>
+                                        <option value="8.7''" <%- locals.old && old.tamaño == "8.7''" ? "selected"
+                                        : "8.7''" == product.tamaño ? `selected` : "" %>>8.7"
                                         </option>
-                                        <option value="10''" <%- product.tamaño=="10''" ? "selected" : "" %>>10"
+                                        <option value="10''" <%- locals.old && old.tamaño == "10''" ? "selected"
+                                        : "10''" == product.tamaño ? `selected` : "" %> >10"
                                         </option>
-                                        <option value="10.1''" <%- product.tamaño=="10.1''" ? "selected" : "" %>>10.1"
+                                        <option value="10.1''" <%- locals.old && old.tamaño == "10.1''" ? "selected"
+                                        : "10.1''" == product.tamaño ? `selected` : "" %> >10.1"
                                         </option>
-                                        <option value="10.2''" <%- product.tamaño=="10.2''" ? "selected" : "" %>>10.2"
+                                        <option value="10.2''" <%- locals.old && old.tamaño == "10.2''" ? "selected"
+                                        : "10.2''" == product.tamaño ? `selected` : "" %> >10.2"
                                         </option>
-                                        <option value="11.3''" <%- product.tamaño=="11.3''" ? "selected" : "" %>>10.3"
+                                        <option value="10.4''"  <%- locals.old && old.tamaño == "10.4''" ? "selected"
+                                        : "10.4''" == product.tamaño ? `selected` : "" %> >10.4"
                                         </option>
-                                        <option value="10.4''" <%- product.tamaño=="10.4''" ? "selected" : "" %>>10.4"
+                                        <option value="10.9''"  <%- locals.old && old.tamaño == "10.9''" ? "selected"
+                                        : "10.9''" == product.tamaño ? `selected` : "" %> >10.9"
                                         </option>
-                                        <option value="10.9''" <%- product.tamaño=="10.9''" ? "selected" : "" %>>10.9"
+                                        <option value="11''" <%- locals.old && old.tamaño == "11''" ? "selected"
+                                        : "11''" == product.tamaño ? `selected` : "" %> >11"
                                         </option>
-                                        <option value="11''" <%- product.tamaño=="11''" ? "selected" : "" %>>11"
+                                        <option value="11.3''" <%- locals.old && old.tamaño == "11.3''" ? "selected"
+                                        : "11.3''" == product.tamaño ? `selected` : "" %> >10.3"
                                         </option>
-                                        <option value="11.6''" <%- product.tamaño=="11.6''" ? "selected" : "" %>>11.6"
+                                        <option value="11.6''" <%- locals.old && old.tamaño == "11.6''" ? "selected"
+                                        : "11.6''" == product.tamaño ? `selected` : "" %> >11.6"
                                         </option>
-                                        <option value="13''" <%- product.tamaño=="13''" ? "selected" : "" %>>13"
+                                        <option value="13''" <%- locals.old && old.tamaño == "13''" ? "selected"
+                                        : "13''" == product.tamaño ? `selected` : "" %> >13"
                                         </option>
-                                        <option value="13.3''" <%- product.tamaño=="13.3''" ? "selected" : "" %>>13.3"
+                                        <option value="13.3''"  <%- locals.old && old.tamaño == "13.3''" ? "selected"
+                                        : "13.3''" == product.tamaño ? `selected` : "" %> >13.3"
                                         </option>
-                                        <option value="13.4''" <%- product.tamaño=="13.4''" ? "selected" : "" %>>13.4"
+                                        <option value="13.4''" <%- locals.old && old.tamaño == "13.4''" ? "selected"
+                                        : "13.4''" == product.tamaño ? `selected` : "" %>>13.4"
                                         </option>
-                                        <option value="13.5''" <%- product.tamaño=="13.5''" ? "selected" : "" %>>13.5"
+                                        <option value="13.5''" <%- locals.old && old.tamaño == "13.5''" ? "selected"
+                                        : "13.5''" == product.tamaño ? `selected` : "" %>>13.5"
                                         </option>
-                                        <option value="13.8''" <%- product.tamaño=="13.8''" ? "selected" : "" %>>13.8"
+                                        <option value="13.8''" <%- locals.old && old.tamaño == "13.8''" ? "selected"
+                                        : "13.8''" == product.tamaño ? `selected` : "" %>>13.8"
                                         </option>
-                                        <option value="14''" <%- product.tamaño=="14''" ? "selected" : "" %>>14"
+                                        <option value="14''" <%- locals.old && old.tamaño == "14''" ? "selected"
+                                        : "14''" == product.tamaño ? `selected` : "" %>>14"
                                         </option>
-                                        <option value="14.1''" <%- product.tamaño=="14.1''" ? "selected" : "" %>>14.1"
+                                        <option value="14.1''" <%- locals.old && old.tamaño == "14.1''" ? "selected"
+                                        : "14.1''" == product.tamaño ? `selected` : "" %>>14.1"
                                         </option>
-                                        <option value="15.6''" <%- product.tamaño=="15.6''" ? "selected" : "" %>>15.6"
+                                        <option value="15.6''" <%- locals.old && old.tamaño == "15.6''" ? "selected"
+                                        : "15.6''" == product.tamaño ? `selected` : "" %>>15.6"
                                         </option>
-                                        <option value="24''" <%- product.tamaño=="24''" ? "selected" : "" %>>24"
+                                        <option value="24''" <%- locals.old && old.tamaño == "24''" ? "selected"
+                                        : "24''" == product.tamaño ? `selected` : "" %>>24"
                                         </option>
-                                        <option value="32''" <%- product.tamaño=="32''" ? "selected" : "" %>>32"
+                                        <option value="32''" <%- locals.old && old.tamaño == "32''" ? "selected"
+                                        : "32''" == product.tamaño ? `selected` : "" %>>32"
                                         </option>
-                                        <option value="40''" <%- product.tamaño=="40''" ? "selected" : "" %>>40"
+                                        <option value="40''" <%- locals.old && old.tamaño == "40''" ? "selected"
+                                        : "40''" == product.tamaño ? `selected` : "" %>>40"
                                         </option>
-                                        <option value="42''" <%- product.tamaño=="42''" ? "selected" : "" %>>42"
+                                        <option value="42''" <%- locals.old && old.tamaño == "42''" ? "selected"
+                                        : "42''" == product.tamaño ? `selected` : "" %>>42"
                                         </option>
-                                        <option value="43''" <%- product.tamaño=="43''" ? "selected" : "" %>>43"
+                                        <option value="43''" <%- locals.old && old.tamaño == "43''" ? "selected"
+                                        : "43''" == product.tamaño ? `selected` : "" %>>43"
                                         </option>
-                                        <option value="49''" <%- product.tamaño=="49''" ? "selected" : "" %>>49"
+                                        <option value="49''" <%- locals.old && old.tamaño == "49''" ? "selected"
+                                        : "49''" == product.tamaño ? `selected` : "" %>>49"
                                         </option>
-                                        <option value="50''" <%- product.tamaño=="50''" ? "selected" : "" %>>50"
+                                        <option value="50''" <%- locals.old && old.tamaño == "50''" ? "selected"
+                                        : "50''" == product.tamaño ? `selected` : "" %>>50"
                                         </option>
-                                        <option value="55''" <%- product.tamaño=="55''" ? "selected" : "" %>>55"
+                                        <option value="55''" <%- locals.old && old.tamaño == "55''" ? "selected"
+                                        : "55''" == product.tamaño ? `selected` : "" %>>55"
                                         </option>
-                                        <option value="58''" <%- product.tamaño=="58''" ? "selected" : "" %>>58"
+                                        <option value="58''" <%- locals.old && old.tamaño == "58''" ? "selected"
+                                        : "58''" == product.tamaño ? `selected` : "" %>>58"
                                         </option>
-                                        <option value="60''" <%- product.tamaño=="60''" ? "selected" : "" %>>60"
+                                        <option value="60''" <%- locals.old && old.tamaño == "60''" ? "selected"
+                                        : "60''" == product.tamaño ? `selected` : "" %>>60"
                                         </option>
-                                        <option value="65''" <%- product.tamaño=="65''" ? "selected" : "" %>>65"
+                                        <option value="65''" <%- locals.old && old.tamaño == "65''" ? "selected"
+                                        : "65''" == product.tamaño ? `selected` : "" %>>65"
                                         </option>
-                                        <option value="70''" <%- product.tamaño=="70''" ? "selected" : "" %>>70"
+                                        <option value="70''" <%- locals.old && old.tamaño == "70''" ? "selected"
+                                        : "70''" == product.tamaño ? `selected` : "" %>>70"
                                         </option>
                                     </select>
                                 </div>
@@ -139,29 +185,39 @@
                                     <h4>smart</h4>
                                     <select name="smart" id="">
                                         <option value="">smat...</option>
-                                        <option value="Si" <%- product.smart=="Si" ? "selected" : "" %>>Si</option>
-                                        <option value="No" <%- product.smart=="No" ? "selected" : "" %>>No</option>
+                                        <option value="Si" <%- locals.old && old.smart == "Si" ? "selected"
+                                        : "Si" == product.smart ? `selected` : "" %>>Si</option>
+                                        <option value="No"  <%- locals.old && old.smart == "No" ? "selected"
+                                        : "No" == product.smart ? `selected` : "" %>>No</option>
                                     </select>
                                 </div>
                                 <div>
                                     <h4>capacidad</h4>
                                     <select name="capacity" id="">
                                         <option value="">GB</option>
-                                        <option value="8GB" <%- product.capacity=="8GB" ? "selected" : "" %>>8GB
+                                        <option value="8GB"  <%- locals.old && old.capacity == "8GB" ? "selected"
+                                        : "8GB" == product.capacity ? `selected` : "" %>>8GB
                                         </option>
-                                        <option value="16GB" <%- product.capacity=="16GB" ? "selected" : "" %>>16GB
+                                        <option value="16GB" <%- locals.old && old.capacity == "16GB" ? "selected"
+                                        : "16GB" == product.capacity ? `selected` : "" %>>16GB
                                         </option>
-                                        <option value="32GB" <%- product.capacity=="32GB" ? "selected" : "" %>>32GB
+                                        <option value="32GB" <%- locals.old && old.capacity == "32GB" ? "selected"
+                                        : "32GB" == product.capacity ? `selected` : "" %>>32GB
                                         </option>
-                                        <option value="64GB" <%- product.capacity=="64GB" ? "selected" : "" %>>64GB
+                                        <option value="64GB" <%- locals.old && old.capacity == "64GB" ? "selected"
+                                        : "64GB" == product.capacity ? `selected` : "" %>>64GB
                                         </option>
-                                        <option value="128GB" <%- product.capacity=="128GB" ? "selected" : "" %>>128GB
+                                        <option value="128GB" <%- locals.old && old.capacity == "128GB" ? "selected"
+                                        : "128GB" == product.capacity ? `selected` : "" %>>128GB
                                         </option>
-                                        <option value="256GB" <%- product.capacity=="256GB" ? "selected" : "" %>>256GB
+                                        <option value="256GB" <%- locals.old && old.capacity == "256GB" ? "selected"
+                                        : "256GB" == product.capacity ? `selected` : "" %>>256GB
                                         </option>
-                                        <option value="500GB" <%- product.capacity=="500GB" ? "selected" : "" %>>500GB
+                                        <option value="500GB" <%- locals.old && old.capacity == "500GB" ? "selected"
+                                        : "16GB" == product.capacity ? `selected` : "" %>>500GB
                                         </option>
-                                        <option value="1TB" <%- product.capacity=="1TB" ? "selected" : "" %>>1TB
+                                        <option value="1TB" <%- locals.old && old.capacity == "1TB" ? "selected"
+                                        : "1TB" == product.capacity ? `selected` : "" %>>1TB
                                         </option>
                                     </select>
                                 </div>
@@ -169,23 +225,39 @@
                                     <h4>RAM</h4>
                                     <select name="ram" id="">
                                         <option value="">RAM</option>
-                                        <option value="1GB" <%- product.ram=="1GB" ? "selected" : "" %>>1GB</option>
-                                        <option value="1.5GB" <%- product.ram=="1.5GB" ? "selected" : "" %>>1.5GB
+                                        <option value="1GB" <%- locals.old && old.ram == "1GB" ? "selected"
+                                        : "1GB" == product.ram ? `selected` : "" %>>1GB</option>
+                                        <option value="1.5GB" <%- locals.old && old.ram == "1.5GB" ? "selected"
+                                        : "1.5GB" == product.ram ? `selected` : "" %>>1.5GB
                                         </option>
-                                        <option value="2GB" <%- product.ram=="2GB" ? "selected" : "" %>>2GB</option>
-                                        <option value="4GB" <%- product.ram=="4GB" ? "selected" : "" %>>4GB</option>
-                                        <option value="8GB" <%- product.ram=="8GB" ? "selected" : "" %>>8GB</option>
-                                        <option value="12GB" <%- product.ram=="12GB" ? "selected" : "" %>>12GB</option>
-                                        <option value="16GB" <%- product.ram=="16GB" ? "selected" : "" %>>16GB</option>
-                                        <option value="20GB" <%- product.ram=="20GB" ? "selected" : "" %>>20GB</option>
-                                        <option value="32GB" <%- product.ram=="32GB" ? "selected" : "" %>>32GB</option>
-                                        <option value="64GB" <%- product.ram=="64GB" ? "selected" : "" %>>64GB</option>
+                                        <option value="2GB" <%- locals.old && old.ram == "2GB" ? "selected"
+                                        : "2GB" == product.ram ? `selected` : "" %>>2GB</option>
+                                        <option value="4GB" <%- locals.old && old.ram == "4GB" ? "selected"
+                                        : "4GB" == product.ram ? `selected` : "" %>>4GB</option>
+                                        <option value="8GB" <%- locals.old && old.ram == "8GB" ? "selected"
+                                        : "8GB" == product.ram ? `selected` : "" %>>8GB</option>
+                                        <option value="12GB"  <%- locals.old && old.ram == "12GB" ? "selected"
+                                        : "12GB" == product.ram ? `selected` : "" %>>12GB</option>
+                                        <option value="16GB" <%- locals.old && old.ram == "16GB" ? "selected"
+                                        : "16GB" == product.ram ? `selected` : "" %>>16GB</option>
+                                        <option value="20GB"  <%- locals.old && old.ram == "20GB" ? "selected"
+                                        : "20GB" == product.ram ? `selected` : "" %>>20GB</option>
+                                        <option value="32GB"  <%- locals.old && old.ram == "32GB" ? "selected"
+                                        : "32GB" == product.ram ? `selected` : "" %>>32GB</option>
+                                        <option value="64GB"  <%- locals.old && old.ram == "64GB" ? "selected"
+                                        : "64GB" == product.ram ? `selected` : "" %>>64GB</option>
                                     </select>
                                 </div>
                                 <div>
                                     <h4>Precio</h4>
                                     <input class="input-style" type="text" id="price" name="price"
-                                        value="<%= product.price %>">
+                                        value="<%= locals.old ? old.price: product.price%>">
+                                    <% if (locals.errors && errors.price) { %>
+                                        <!-- busca en las variables de nuestra aplicacion -->
+                                        <small class="text-danger">
+                                            <%= errors.price.msg %>
+                                        </small>
+                                        <% } %>
                                 </div>
 
                                 <section class="img-coment">
@@ -195,7 +267,13 @@
                                     </div>
                                     <h4>descripción</h4>
                                     <textarea name="description" id="" cols="30"
-                                        rows="10"><%= product.description%></textarea>
+                                        rows="10"><%= locals.old ? old.description : product.description %></textarea>
+                                    <% if (locals.errors && errors.description) { %>
+                                        <!-- busca en las variables de nuestra aplicacion -->
+                                        <small class="text-danger">
+                                            <%= errors.description.msg %>
+                                        </small>
+                                        <% } %>
                                 </section>
 
                             </section>

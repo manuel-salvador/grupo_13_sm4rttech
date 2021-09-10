@@ -1,4 +1,5 @@
 let { products, writeJson } =require('../data/dataBase');
+let { validationResult } = require('express-validator')
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
@@ -36,7 +37,10 @@ module.exports = {
     },
 
     store: (req, res) => {
-        let lastId = 1;
+        let errors = validationResult(req)
+
+        if(errors.isEmpty()){
+            let lastId = 1;
         products.forEach(product => {
             if(product.id > lastId){
                 lastId = product.id
@@ -75,7 +79,15 @@ module.exports = {
         writeJson(products)
         /* res.send(products) */
         res.redirect(`/products#${newProduct.id}`)
-    },
+    }else{
+        res.render('admin/agregar', {
+            errors: errors.mapped(),
+            old: req.body
+        })
+
+    }
+},
+        
     agregar: (req, res) => {
         res.render('admin/agregar')
     },
@@ -103,6 +115,9 @@ module.exports = {
 		})
 	},
     actualizar: (req, res) => {
+        let errors = validationResult(req)
+
+        if(errors.isEmpty()){
 
         const {
        
@@ -138,6 +153,16 @@ module.exports = {
         })
         writeJson(products)
        res.redirect("/products")
+    } else {
+        let product = products.find(product => product.id === +req.params.id)
+
+        res.render('admin/editar', {
+            product,
+            errors: errors.mapped(),
+            old: req.body
+        })
+
+    }
 
     },
     //eliminar un producto

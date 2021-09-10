@@ -11,6 +11,9 @@
     justify-content: center;
 }
 
+.text-danger{
+    color: red;
+}
 .caja-central-form {
     background-color: var(--grey);
     margin: 2rem 0;
