@@ -12,12 +12,15 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body class="admin">
+    <% if(lista.length == 0){ %>
+        <script>alert("No hay coincidencias")</script>
+    <% } %> 
     <%- include('./partials/headerAdmin.ejs') %> 
     <main class="admin">
         <%- include('./partials/navAdmin.ejs') %>
         <section class="formAdmin">
             <section class="caja-central-form">
-                <form action="">
+                <form action="/admin/editar" method="POST">
                     <section class="datos-usuarios">
                         <div>
                             <h4>Categorias</h4>
@@ -31,7 +34,7 @@
                         </div>
                         <div>
                             <h4>marcas</h4>
-                            <select name="" id="">
+                            <select name="marca" id="">
                                 <option value="">Marcas</option>
                                 <option value="Aorus">Aorus</option>
                                 <option value="Aplle">Apple</option>
@@ -45,7 +48,7 @@
                         </div>
                         <div>
                             <h4>Id del producto</h4>
-                            <input class="input-style" type="text" placeholder="#0000">
+                            <input class="input-style" type="text" placeholder="#0000" name="id">
                         </div>
                         <div class="name">
                             <h4>nombre del producto</h4>
@@ -68,7 +71,18 @@
                             <th  scope="col"></th>
                         </thead>
                         <tbody>
-        
+                            <% if(lista != "error") {%> 
+                            <% lista.forEach(producto => {%> 
+                                <tr>
+                                    <td><%= producto.id %> </td>    
+                                    <td><%= producto.name %></td>
+                                    <td><%= producto.category %></td>
+                                    <td>"aca va el stock"</td>
+                                    <td>
+                                        <button><a href="/admin/editar/<%= producto.id %>"><i class="far fa-edit"></i></a></button>
+                                    </td>
+                                </tr>
+                            <% })} %>
                         </tbody>
                         
                     </table>

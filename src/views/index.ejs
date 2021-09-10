@@ -4,14 +4,20 @@
 <body>
     <%- include("partials/header.ejs") %> 
     <main>
+        <%function random(min, max) {
+            return Math.floor((Math.random() * (max - min + 1)) + min);
+        }
+        %>
         <div class="carousel">
             <ul class="slider">
-                <li id="slide1">
-                    <a href="/"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
+                <% for(i=1; i <= 6; i++) {%>
+                <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
+                <li id=<%= `slide${i}` %> style="background-image:url(/images/products/<%= product.image %>)" >
+                    <a href="/"><img src="/images/products/<%= product.image %>" class="img-carrousel" alt="Lenovo M7"></a>
                     <div class="inferior">
                         <i class="fas fa-chevron-left"></i>
                         <div class="description">
-                            <h4>Galaxy S6 Edge</h4>
+                            <h4> <%= product.name %>  </h4>
                             <p><span class="bold">La mejor opción gama alta</span></p>
                             <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
                         </div>
@@ -19,124 +25,27 @@
                     </div>
                     <div class="box-filter"></div>
                 </li>
-                <li id="slide2">
-                    <a href="/"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4>LG K20</h4>
-                            <p><span class="bold">Un gran celular</span></p>
-                            <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de
-                                la tecnologia.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="box-filter"></div>
-                </li>
-                <li id="slide3">
-                    <a href="/"><img src="/images/carousel/galaxy-s6-edge.jpg" alt="Galaxy S6 Edge"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4>Galaxy S6 Edge</h4>
-                            <p><span class="bold">La mejor opción gama alta</span></p>
-                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="box-filter"></div>
-                </li>
-                <li id="slide4">
-                    <a href="/"><img src="/images/carousel/lenovo-tablet-m7.jpg" alt="Lenovo M7"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4>Galaxy S6 Edge</h4>
-                            <p><span class="bold">La mejor opción gama alta</span></p>
-                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="box-filter"></div>
-                </li>
-                <li id="slide5">
-                    <a href="/"><img src="/images/carousel/lg-k20.jpg" alt="LG K20"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4>LG K20</h4>
-                            <p><span class="bold">Un gran celular</span></p>
-                            <p>Buen diseño, buenas prestaciones, colores únicos. Un buen celular para entrar al mundo de
-                                la
-                                tecnologia.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="box-filter"></div>
-                </li>
-                <li id="slide6">
-                    <a href="/"><img src="./images/carousel/galaxy-s6-edge.jpg" alt="Galaxy S6 Edge"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4>Galaxy S6 Edge 2</h4>
-                            <p><span class="bold">La mejor opción gama alta</span></p>
-                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="box-filter"></div>
-                </li>
+                <% } %> 
             </ul>
         </div>
 
         <div class="top-sales">
             <h2>Los mas vendidos</h2>
             <section class="articulos">
+                <% for(i=0; i < 4; i++) {%>
+                <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                 <article>
-                    <a href="/detalleDeProducto">
+                    <a href="/detalleDeProducto/<%= product.id %> ">
                         <div class="product-img">
-                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                            <img src="/images/products/<%= product.image %>" alt="">
                         </div>
                         <div class="description">
-                            <h3>Galaxy S6</h3>
-                            <p class="price">$ 5.123</p>
+                            <h3> <%= product.name %>  </h3>
+                            <p class="price">$ <%= product.price %></p>
                         </div>
                     </a>
-                </article>
-                <article>
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>Lenovo Tablet M7</h3>
-                            <p class="price">$ 12.525</p>
-                        </div>
-                    </a>
-                </article>
-                <article>
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/lg-k20.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>LG K20</h3>
-                            <p class="price">$ 10.123</p>
-                        </div>
-                    </a>
-                </article>
-                <article>
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>Galaxy S6</h3>
-                            <p class="price">$ 5.123</p>
-                        </div>
-                    </a>
-                </article>
+                </article>                
+                <% } %> 
             </section>
         </div>
 
@@ -144,67 +53,52 @@
             <h2>Destacados</h2>
             <section class="articulos-destacados">
                 <div class="izquierda arriba">
+                    <% for(i=0; i < 2; i++) {%>
+                    <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                     <article class="producto">
-                        <a href="/detalleDeProducto">
-                            <div class="product-img">
-                                <img src="/images/carousel/lg-k20.jpg" alt="">
+                        <a href="/detalleDeProducto/<%= product.id %> ">
+                        <div class="product-img">
+                                <img src="/images/products/<%= product.image %>" alt="">
                             </div>
                             <div class="description">
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
+                                <h3> <%= product.name %>  </h3>
+                                <p class="price">$ <%= product.price %></p>
                             </div>
                         </a>
                     </article>
-                    <article class="producto">
-                        <a href="/detalleDeProducto">
-                            <div class="product-img">
-                                <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>Lenovo Tablet M7</h3>
-                                <p class="price">$ 12.525</p>
-                            </div>
-                        </a>
-                    </article>
+                    <% } %> 
                 </div>
 
                 <article class="producto-principal">
-                    <a href="/detalleDeProducto">
+                    <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
+                    <a href="/detalleDeProducto<%= product.id %>">
                         <div class="product-img">
-                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
+                            <img src="/images/products/<%= product.image %>" alt="">
                         </div>
                         <div class="description-principal">
                             <div class="description">
-                                <h3>Galaxy S6</h3>
-                                <p class="price">$ 5.123</p>
+                                <h3> <%= product.name %>  </h3>
+                                <p class="price">$ <%= product.price %></p>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <div class="derecha abajo">
-                    <article class="producto">
-                        <a href="/detalleDeProducto">
+                    <% for(i=0; i < 2; i++) {%>
+                        <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
+                        <article class="producto">
+                            <a href="/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>Lenovo Tablet M7</h3>
-                                <p class="price">$ 12.525</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="producto">
-                        <a href="/detalleDeProducto">
-                            <div class="product-img">
-                                <img src="/images/carousel/lg-k20.jpg" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
-                            </div>
-                        </a>
-                    </article>
+                                    <img src="/images/products/<%= product.image %>" alt="">
+                                </div>
+                                <div class="description">
+                                    <h3> <%= product.name %>  </h3>
+                                    <p class="price">$ <%= product.price %></p>
+                                </div>
+                            </a>
+                        </article>
+                        <% } %>
                 </div>
             </section>
         </div>
@@ -212,58 +106,20 @@
         <div class="ofertas">
             <h2>Ofertas</h2>
             <section class="articulos">
-                <article class="producto">
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/lg-k20.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
+                <% for(i=0; i < 4; i++) {%>
+                    <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
+                    <article class="producto">
+                        <a href="/detalleDeProducto/<%= product.id %> ">
+                            <div class="product-img">
+                                <img src="/images/products/<%= product.image %>" alt="">
                             </div>
-                        </div>
-                    </a>
-                </article>
-                <article class="producto">
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
+                            <div class="description">
+                                <h3><%= product.name %></h3>
+                                <p class="price">$ <%= product.price %></p>
                             </div>
-                        </div>
-                    </a>
-                </article>
-                <article class="producto">
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/galaxy-s6-edge.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-                <article class="producto">
-                    <a href="/detalleDeProducto">
-                        <div class="product-img">
-                            <img src="/images/carousel/lenovo-tablet-m7.jpg" alt="">
-                        </div>
-                        <div class="description">
-                            <div>
-                                <h3>LG K20</h3>
-                                <p class="price">$ 10.123</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
+                        </a>
+                    </article>                
+                    <% } %> 
             </section>
             <a href="/products" class="ver-todas">
                 <p>Ver todas ></p>

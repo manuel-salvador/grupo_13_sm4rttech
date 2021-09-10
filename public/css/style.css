@@ -17,6 +17,8 @@
 @import url("formsAdmin.css");
 @import url("products.css");
 @import url("productAdmin.css");
+@import url("filtroEditar.css");
+
 /* Paleta de colores */
 :root {
     --greenWater : #00A99D;

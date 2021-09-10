@@ -1,0 +1,42 @@
+table{
+    min-height: 100px;
+    text-transform: capitalize;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+table tbody tr,
+table thead{
+    height: 2.5rem;
+}
+
+table td button{
+    background: linear-gradient(45deg, rgb(2, 95, 2) 0%, rgba(11,121,9,1) 35%, rgba(4,228,4,1) 100%);
+    border: none;
+    display: flex;
+    justify-content: center;
+
+    padding: 5px;
+}
+
+table td button i{
+    color: white;
+}
+
+table tbody tr{
+    border-bottom: 1px solid rgb(112, 112, 112);
+}
+
+table tbody tr:nth-of-type(even){
+    background-color: #242424;
+}
+
+table tbody tr:last-of-type{
+    border-bottom: hidden;
+}
+
+table thead{
+    background-color: #008678;
+}
