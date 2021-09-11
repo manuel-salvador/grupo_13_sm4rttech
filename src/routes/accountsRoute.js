@@ -1,11 +1,27 @@
 const express = require('express');
 const router = express.Router();
-let controller = require('../controllers/accountsController');
+const {
+    register,
+    login,
+    logout,
+    recuperarcontra,
+    processRegister} = require('../controllers/accountsController');
+const loginValidator = require('../validations/loginValidator');
+const registerValidator = require('../validations/registerValidator')
+
 
 /* GET - Home */
-router.get('/login', controller.login),
-router.get('/recuperarcontra', controller.recuperarcontra),
-router.get('/register', controller.register),
+router.get('/login', login),
+router.post('/login', loginValidator, login),
+router.get('/logout', logout)
+
+
+
+router.get('/recuperarcontra', recuperarcontra),
+
+
+router.get('/register', register),
+router.post('/register', registerValidator, processRegister)
 
 
 module.exports = router;

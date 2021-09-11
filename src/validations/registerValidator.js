@@ -1,4 +1,5 @@
 const { check, body } = require('express-validator')
+const { users } = require('../data/dataBase')
 
 module.exports = [
     check('name')
@@ -29,5 +30,9 @@ module.exports = [
 
     body('pass2')
     .custom((value, {req}) => value !== req.body.pass ? false : true)
-    .withMessage("Las contraseñas no coinciden")
+    .withMessage("Las contraseñas no coinciden"),
+
+    check('terms')
+    .isString('on')
+    .withMessage("Debes aceptar los terminos y condiciones")
 ]

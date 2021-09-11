@@ -53,7 +53,10 @@
                 </section>
                 <section class="check">
                     <input type="checkbox" name="terms" id=""width="auto"><p>Acepto los <a href="">Termino y condiciones</a></p>
-                    <span class="error-message">Debe aceptar lostérminos y condiciones</span>
+                    <% if (locals.errors && errors.terms) { %>
+                        <small class="text-danger"><%= errors.terms.msg %> </small>
+                    <% } %>
+                    <!-- <span class="error-message">Debe aceptar lostérminos y condiciones</span> -->
                 </section>
         <section class="button-crear">
             <button type="submit" class="registrar">Registrarme</button>
