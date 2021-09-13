@@ -13,7 +13,7 @@ const registerValidator = require('../validations/registerValidator')
 /* GET - Home */
 router.get('/login', login),
 router.post('/login', loginValidator, login),
-router.get('/logout', logout)
+/* router.get('/logout', logout) */
 
 
 

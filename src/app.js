@@ -26,7 +26,7 @@ app.use(methodOverride('_method'));
 
 /* Routes */
 app.use('/', indexRouter);
-app.use('/accounts',accountsRouter);
+app.use('/accounts', accountsRouter);
 app.use ('/carritoDeCompra', carritoRouter);
 app.use ('/detalleDeProducto', detalleDeProductoRouter);
 app.use('/admin', adminRouter);

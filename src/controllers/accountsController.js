@@ -19,7 +19,7 @@ module.exports = {
         let errors = validationResult(req)
 
         if (errors.isEmpty()) {
-            let lastId = 0;
+            let lastId = 1;
 
             users.forEach(user => {
                 if(user.id > lastId){
@@ -27,32 +27,33 @@ module.exports = {
                 }
             }) 
 
-            let {
+            const {
                 name,
                 lastname,
                 email,
                 pass
-            } = req.body
+            } = req.body;
 
             let newUser = {
                 id : lastId + 1,
                 name,
                 lastname,
                 email,
-                pass,
+                pass : pass,
                 rol: "ROL_USER"
             }
 
-            users.push(newUser)
+            users.push(newUser);
 
             writeUserJSON(users)
 
-            res.redirect('/accounts/login')
+            res.redirect('login')
+
 
         } else {
             res.render('register', {
-                errors: errors.mapped(),
-                old : req.body
+                errors : errors.mapped(),
+                old: req.body
             })
         }
 

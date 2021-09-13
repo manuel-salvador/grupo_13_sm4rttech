@@ -2,73 +2,73 @@
     {
         "id": 1,
         "name": "Maria",
-        "lastName": "Robledo",
+        "lastname": "Robledo",
         "email": "mariarobledo@gmail.com",
-        "password": "mariarobledo"
+        "pass": "mariarobledo"
         
     },
     {
         "id":2,
         "name": "Laura",
-        "lastName": "Gomez",
+        "lastname": "Gomez",
         "email": "lauragomez@gmail.com",
-        "password": "lauragomez"
+        "pass": "lauragomez"
     },
     {
         "id": 3,
         "name": "ana",
-        "lastName": "sanchez",
+        "lastname": "sanchez",
         "email": "anasanchez@gmail.com",
-        "password": "anasanchez"
+        "pass": "anasanchez"
     },
     {
         "id": 4,
         "name": "alejandro",
-        "lastName": "romero",
+        "lastname": "romero",
         "email": "alejandroromero@gmail.com",
-        "password": "alejandroromero"
+        "pass": "alejandroromero"
     },
     {
         "id": 5,
         "name": "Marcelo",
-        "lastName": "palacios",
+        "lastname": "palacios",
         "email": "marcelopalacios@gmail.com",
-        "password": "marcelopalacios"
+        "pass": "marcelopalacios"
     },
     {
         "id": 6,
         "name": "Miriam",
-        "lastName": "leguizamon",
+        "lastname": "leguizamon",
         "email": "miriamleguizamon@gmail.com",
-        "password": "miriamleguizamon"
+        "pass": "miriamleguizamon"
     },
     {
         "id": 7,
         "name": "carlos",
-        "lastName": "peralta",
+        "lastname": "peralta",
         "email": "carlosperalta@gmail.com",
-        "password": "carlosperalta"
+        "pass": "carlosperalta"
     },
     {
         "id": 8,
         "name": "marcela",
-        "lastName": "rodriguez",
+        "lastname": "rodriguez",
         "email": "macelarodriguez@gmail.com",
-        "password": "marcelarodriguez"
+        "pass": "marcelarodriguez"
     },
     {
         "id": 9,
         "name": "Martin",
-        "lastName": "salgado",
+        "lastname": "salgado",
         "email": "martinsalgado@gmail.com",
-        "password": "martinsalgado"
+        "pass": "martinsalgado"
     },
     {
         "id": 10,
         "name": "susana",
-        "lastName": "pardo",
+        "lastname": "pardo",
         "email": "susanapardo@gmail.com",
-        "password": "susanapardo"
+        "pass": "susanapardo"
     }
     ]
        

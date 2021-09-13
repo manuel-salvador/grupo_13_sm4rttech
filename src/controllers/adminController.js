@@ -1,4 +1,4 @@
-let { products, writeProductJson } =require('../data/dataBase');
+let { products, writeJson } =require('../data/dataBase');
 let { validationResult } = require('express-validator')
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
@@ -76,7 +76,7 @@ module.exports = {
         
         products.push(newProduct)
 
-        writeProductJson(products)
+        writeJson(products)
         /* res.send(products) */
         res.redirect(`/products#${newProduct.id}`)
     }else{
