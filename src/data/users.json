@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "Maria",
+        "lastname": "Robledo",
+        "email": "mariarobledo@gmail.com",
+        "pass": "mariarobledo"
+    },
+    {
+        "id": 2,
+        "name": "Laura",
+        "lastname": "Gomez",
+        "email": "lauragomez@gmail.com",
+        "pass": "lauragomez"
+    },
+    {
+        "id": 3,
+        "name": "ana",
+        "lastname": "sanchez",
+        "email": "anasanchez@gmail.com",
+        "pass": "anasanchez"
+    },
+    {
+        "id": 4,
+        "name": "alejandro",
+        "lastname": "romero",
+        "email": "alejandroromero@gmail.com",
+        "pass": "alejandroromero"
+    },
+    {
+        "id": 5,
+        "name": "Marcelo",
+        "lastname": "palacios",
+        "email": "marcelopalacios@gmail.com",
+        "pass": "marcelopalacios"
+    },
+    {
+        "id": 6,
+        "name": "Miriam",
+        "lastname": "leguizamon",
+        "email": "miriamleguizamon@gmail.com",
+        "pass": "miriamleguizamon"
+    },
+    {
+        "id": 7,
+        "name": "carlos",
+        "lastname": "peralta",
+        "email": "carlosperalta@gmail.com",
+        "pass": "carlosperalta"
+    },
+    {
+        "id": 8,
+        "name": "marcela",
+        "lastname": "rodriguez",
+        "email": "macelarodriguez@gmail.com",
+        "pass": "marcelarodriguez"
+    },
+    {
+        "id": 9,
+        "name": "Martin",
+        "lastname": "salgado",
+        "email": "martinsalgado@gmail.com",
+        "pass": "martinsalgado"
+    },
+    {
+        "id": 10,
+        "name": "susana",
+        "lastname": "pardo",
+        "email": "susanapardo@gmail.com",
+        "pass": "susanapardo"
+    }
+]

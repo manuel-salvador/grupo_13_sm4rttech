@@ -1,4 +1,7 @@
 const { check, body } = require('express-validator')
+const { users } = require('../data/dataBase')
+
+
 
 module.exports = [
     check('name')
@@ -15,11 +18,22 @@ module.exports = [
     .isEmail()
     .withMessage("El Email es invalido"),
 
+    body('email')
+    .custom(value => {
+        let user = users.find(user => user.email === value)
+        if(user === undefined){
+            return true
+        }else{
+            return false
+        }
+    })
+    .withMessage('Email ya registrado'),
+
     body('email2')
     .custom((value, {req}) => value !== req.body.email ? false : true)
     .withMessage("Los Emails no coinciden"),
 
-    check('pass')
+    check('pass1')
     .notEmpty()
     .withMessage("Ingresa tu contraseña")
     .isLength({
@@ -28,6 +42,10 @@ module.exports = [
     .withMessage("La contraseña es demasiado corta"),
 
     body('pass2')
-    .custom((value, {req}) => value !== req.body.pass ? false : true)
-    .withMessage("Las contraseñas no coinciden")
+    .custom((value, {req}) => value !== req.body.pass1 ? false : true)
+    .withMessage("Las contraseñas no coinciden"),
+
+    check('terms')
+    .isString('on')
+    .withMessage("Debes aceptar los terminos y condiciones")
 ]

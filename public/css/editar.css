@@ -52,10 +52,6 @@ textarea{
     outline: none;
 }
 
-.datos-usuarios {
-    text-transform: uppercase;
-    margin: 2rem 0;
-}
 
 .datos-usuarios input {
     padding: 5px;
