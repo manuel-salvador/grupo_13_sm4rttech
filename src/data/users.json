@@ -5,10 +5,9 @@
         "lastname": "Robledo",
         "email": "mariarobledo@gmail.com",
         "pass": "mariarobledo"
-        
     },
     {
-        "id":2,
+        "id": 2,
         "name": "Laura",
         "lastname": "Gomez",
         "email": "lauragomez@gmail.com",
@@ -70,5 +69,4 @@
         "email": "susanapardo@gmail.com",
         "pass": "susanapardo"
     }
-    ]
-       
+]

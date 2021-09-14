@@ -1,5 +1,6 @@
 const { users, writeUserJSON } = require('../data/dataBase');
-const { validationResult } = require('express-validator')
+const { validationResult, body } = require('express-validator')
+let bcrypt = require('bcryptjs')
 
 
 module.exports = {
@@ -16,6 +17,7 @@ module.exports = {
             res.render('register')
     },
     processRegister: (req, res) => {
+        
         let errors = validationResult(req)
 
         if (errors.isEmpty()) {
@@ -27,11 +29,11 @@ module.exports = {
                 }
             }) 
 
-            const {
+            let {
                 name,
                 lastname,
                 email,
-                pass
+                pass1
             } = req.body;
 
             let newUser = {
@@ -39,7 +41,8 @@ module.exports = {
                 name,
                 lastname,
                 email,
-                pass : pass,
+                pass : bcrypt.hashSync(pass1, 12),
+                avatar : req.file ? req.file.filename : "",
                 rol: "ROL_USER"
             }
 

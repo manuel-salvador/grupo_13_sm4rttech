@@ -9,6 +9,7 @@
             <h2>COMPLETA TUS DATOS</h2>
             <form action="/accounts/register" method="POST" enctype="multipart/form-data">
             <section class="datos-usuarios">
+
                     <div class="name">
                         <h4>nombre</h4>
                         <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>"> 
@@ -41,7 +42,7 @@
                         <h4>contraseña</h4>
                         <input class="input-style" type="password" name="pass1" placeholder="Ingrese su contraseña">
                         <% if (locals.errors && errors.pass1) { %>
-                            <small class="text-danger"><%= errors.pass.msg %> </small>
+                            <small class="text-danger"><%= errors.pass1.msg %> </small>
                         <% } %>
                     </div>
                     <div class="confirm-contra">
@@ -52,7 +53,16 @@
                         <% } %>
                     </div>
                 </section>
+                <section class="img-avatar">
+                    <h4>Agregar foto de perfil</h4>
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                        <input class="avatar-profile" type="file" name="avatar" id="">
+                    
+                </div>
+                </section>
                 <section class="check">
+                    
                     <input type="checkbox" name="terms" id=""width="auto"><p>Acepto los <a href="">Termino y condiciones</a></p>
                     <% if (locals.errors && errors.terms) { %>
                         <small class="text-danger"><%= errors.terms.msg %> </small>
