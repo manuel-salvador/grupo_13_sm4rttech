@@ -9,23 +9,22 @@
         "price": "70000",
         "image": [
             "tv.jpg"
-        ],
-        "capacity": "",
-        "ram": "",
-        "description": ""
+        ]
     },
     {
         "id": 2,
         "name": "Tablet Toshiba 32gb 18",
         "category": "tablets",
         "marca": "Toshiba",
-        "tamaño": "18''",
+        "tamaño": "",
         "capacity": "32GB",
         "ram": "1.5GB",
         "price": "18000",
         "image": [
             "tablet.jpg"
-        ]
+        ],
+        "smart": "",
+        "description": "Descripción "
     },
     {
         "id": 3,
@@ -176,15 +175,15 @@
     },
     {
         "id": 15,
-        "name": "segunda prueba con imagen",
+        "name": "prueba de validaciones",
         "category": "televisores",
-        "marca": "",
+        "marca": "Aorus",
         "tamaño": "",
         "smart": "",
         "capacity": "",
         "ram": "",
-        "price": "111211",
-        "description": "                ertyuikl",
+        "price": "331",
+        "description": "Producto de prueba de validaciones ",
         "image": "1630596073827_img_.jpg"
     },
     {
@@ -206,18 +205,6 @@
         "id": 18,
         "name": "CAJA PLASTICA UTIL-OF AMERICANA",
         "price": 781,
-        "description": "COLOR AZUL 2,5 X 32,5 X 25,5 CM",
-        "discount": 5,
-        "category": "3",
-        "subcategory": "Cajas",
-        "image": [
-            "cajaArch.jpg"
-        ]
-    },
-    {
-        "id": 19,
-        "name": "PRODUCTO RANDOM",
-        "price": 5654,
         "description": "COLOR AZUL 2,5 X 32,5 X 25,5 CM",
         "discount": 5,
         "category": "3",
@@ -258,15 +245,15 @@
     },
     {
         "id": 22,
-        "name": "asdasd",
-        "category": "televisores",
-        "marca": "asus",
+        "name": "",
+        "category": "tablets",
+        "marca": "Aorus",
         "tamaño": "",
-        "smart": "no",
-        "capacity": "capacity",
-        "ram": "ram",
-        "price": "23231",
-        "description": "adsad",
+        "smart": "",
+        "capacity": "",
+        "ram": "",
+        "price": "",
+        "description": "",
         "image": "1630562627516_img_.jpg"
     },
     {
@@ -286,15 +273,32 @@
     },
     {
         "id": 24,
-        "name": "GEFORCE RTX 3080 MASTER 10G ENFRIAMIENTO CUBIERTO MÁXIMO",
-        "category": "",
-        "marca": "Aorus",
+        "name": "prueba nueva",
+        "category": "gaming",
+        "marca": "samsung",
         "tamaño": "",
         "smart": "",
-        "capacity": "",
+        "capacity": "capacity",
         "ram": "",
-        "price": "349999",
-        "description": "La placa de video RTX 3080 incluye innovaciones térmicas diseñadas para aprovechar al máximo la nueva arquitectura gráfica NVIDIA Ampere. El nuevo diseño y los refuerzos metálicos envuelven los ventiladores Axial-tech. La disposición de los ventiladores de la última generación se ha actualizado con un nuevo esquema de rotación y funciones especializadas para los ventiladores centrales y auxiliares. Bajo las aspas, se encuentra un disipador más grande preparado para hacer frente a las cargas térmicas más exigentes. La PCB esconde algunos trucos nuevos bajo la manga, y también hemos mejorado la placa trasera para aumentar el rendimiento. Has estado esperando lo último en diseño GPU... Pues aquí lo tienes.",
-        "image": "1631223599716_img_.jpg"
+        "price": "11111",
+        "description": "prueba de funcionalidad json\r\n\r\n                    ",
+        "image": [
+            "logo-sm4rttech.png"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "hhhppp",
+        "category": "televisores",
+        "marca": "lg",
+        "tamaño": "13.8''",
+        "smart": "",
+        "capacity": "capacity",
+        "ram": "",
+        "price": "132433",
+        "description": "                    \r\n                    \r\n                    ",
+        "image": [
+            "logo-sm4rttech.png"
+        ]
     }
 ]

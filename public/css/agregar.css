@@ -11,6 +11,9 @@
     justify-content: center;
 }
 
+.text-danger{
+    color: red;
+}
 .caja-central-form {
     background-color: var(--grey);
     margin: 2rem 0;
@@ -52,10 +55,6 @@ textarea{
     outline: none;
 }
 
-.datos-usuarios {
-    text-transform: uppercase;
-    margin: 2rem 0;
-}
 
 .datos-usuarios input {
     padding: 5px;

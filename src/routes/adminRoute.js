@@ -10,6 +10,8 @@ const { admin,
     editar,
     actualizar,
     destroy } = require('../controllers/adminController');
+const agregarValidator =require('../validations/agregarValidator')
+
 
 /* GET - Home */
 router.get('/', admin)
@@ -19,7 +21,7 @@ router.get('/productsAdmin', productsAdmin)
 
 /* agregar */
 router.get('/agregar', agregar),
-router.post('/agregar', multer.single('image'), store)
+router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
 
@@ -29,7 +31,7 @@ router.post('/editar', filtrarEditar)
 
 
 router.get('/editar/:id', editar)
-router.put('/editar/:id',multer.single('image'), actualizar)
+router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
 
