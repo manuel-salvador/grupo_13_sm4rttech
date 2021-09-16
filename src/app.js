@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 let port = 3000;
-const methodOverride =  require("method-override")
+const methodOverride =  require("method-override");
+let session = require('express-session')
+let cookieParser = require('cookie-parser')
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
@@ -23,10 +25,17 @@ app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.urlencoded({ extended : false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(cookieParser())
+app.use(session({
+    secret: "smartTech",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000}
+}))
 
 /* Routes */
 app.use('/', indexRouter);
-app.use('/accounts',accountsRouter);
+app.use('/accounts', accountsRouter);
 app.use ('/carritoDeCompra', carritoRouter);
 app.use ('/detalleDeProducto', detalleDeProductoRouter);
 app.use('/admin', adminRouter);
