@@ -1,0 +1,145 @@
+body#listado-productos{
+    width: 100%;
+}
+
+main#listado-productos{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin: 3rem auto;
+    max-width: 1215px;
+}
+
+main#listado-productos .filtros{
+    max-width: 294px;
+    min-width: 210px;
+    /* width: 100%; */
+    padding:0 2rem;
+    border-radius: .8rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.178);
+    box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.103);
+}
+
+main#listado-productos .filtros h1{
+    font-weight: 500;
+}
+
+
+.buscado::first-letter{
+    text-transform: capitalize;
+}
+
+.lista-filtro {
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+
+.lista-filtro h2{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.filtro{
+    margin-top: 1rem;
+}
+
+.filtro dt{
+    font-weight: 500;
+}
+
+.filtro dd{
+    margin-top: .9rem;
+}
+
+.filtro input[type="checkbox"] {
+    display: none;
+}
+
+.filtro input[type="checkbox"]:checked + label{
+    background: rgba(5, 79, 94, 0.09);
+    border-bottom: 1.5px solid var(--greenWater);
+    border-radius: 5px;
+    transition: all .4s ease;
+}
+
+.filtro input[type="checkbox"]:checked + label:before{
+    background: var(--greenWater);
+    border: 1.8px solid #fff;
+    border-radius: 50%;    
+    transition: all .4s ease;
+}
+
+.filtro label{
+    /*color: var(--greenWater);*/
+    cursor: pointer;
+    position: relative;
+    padding: 5px 15px 5px 40px;
+    border-radius: .2rem;
+    border-bottom: 1.5px solid transparent;
+}
+
+.filtro label:before{
+    content: "";
+    width: .7rem;
+    height: .7rem;
+    display: inline-block;
+    background: none;
+    border: 1.8px solid var(--greenWater);
+    position: absolute;
+    left: .8rem;
+    top:.6rem;
+    transition: all .4s ease;
+}
+
+
+.listado {
+    display: flex;
+    flex-wrap: wrap;
+    width: 950px;
+    height: fit-content;
+}
+
+.listado article.hide {
+    display: none;
+}
+
+.listado article.active {
+    display: block;
+}
+
+.listado .producto {
+    min-width: 284px;
+    max-width: 284px;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    margin-left: 1.2rem;
+    box-shadow: 0px 0px 0px 0px rgba(141, 141, 141, 0.400);
+    transition: box-shadow .3s ease;
+    max-height: 400px;
+}
+
+.listado .producto:hover{
+    box-shadow: 0px 0px 20px 4px rgba(141, 141, 141, 0.450);
+}
+
+.listado .producto a {
+    text-decoration: none;
+    color: black;
+}
+
+.listado .producto .product-img{
+    width: 252px;
+    height: 252px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listado .producto img{
+    width: 100%;
+}
+
+.listado .producto .description {
+    padding: 1rem;
+}

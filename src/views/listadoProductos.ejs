@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head.ejs") %>
+
+    <body id="listado-productos">
+        <%- include("partials/header.ejs") %>
+        <main id="listado-productos">
+            <aside class="filtros">
+                <h1 class="buscado"><%= busqueda %> </h1>
+                <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
+                <section class="lista-filtro">
+                    <% if (claves.length != 0) {%> 
+                        <h2>Filtros</h2>
+                        <% claves.forEach(clave => { %>
+                            <dl class="filtro">
+                                <dt class="nombre-filtro"><%= clave %></dt>
+                                <% let count = [] %>
+                                <% lista.forEach(producto => { %> 
+                                    <% let valor = producto[clave] ? producto[clave].toString() : ""; %> 
+                                    <% if(!count.includes(valor.toLowerCase()) && valor) { %> 
+                                        <dd>
+                                            <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor.toLowerCase() %>">
+                                            <label for="<%= valor %> "><%= valor %></label>
+                                        </dd>
+                                        <% valor ? count.push(valor.toLowerCase()) : ""; %> 
+                                    <% } %> 
+                                <% }) %> 
+                            </dl>
+                        <% }) %>   
+                    <% } %> 
+                </section>               
+            </aside>
+            <section class="listado">
+                <% lista.forEach(product => { %> 
+                    <article class="producto"
+                    <% claves.forEach(e => { %>
+                        <%= e %>= 
+                        <% if(product[e] != null && product[e] != undefined && product[e] != ""){ %>
+                            <%= product[e] %> 
+                        <% }else{ %> 
+                            ""
+                        <% } %> 
+
+                    <% }) %> >
+                        <a href="/detalleDeProducto/<%= product.id %> ">
+                            <div class="product-img">
+                                <img src="/images/products/<%= product.image %>" alt="">
+                            </div>
+                            <div class="description">
+                                <h3><%= product.name %></h3>
+                                <p class="price">$ <%= product.price %></p>
+                            </div>
+                        </a>
+                    </article> 
+                <% }) %> 
+            </section>
+        </main>
+    </body>
+    <script src="/javaScripts/listadoProductos.js" defer></script>
+</html>

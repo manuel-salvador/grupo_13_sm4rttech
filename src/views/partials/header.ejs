@@ -6,29 +6,29 @@
         </a>
 
         <!-- buscador -->
-        <form action="#" class="search-form-mobile" id="search">
+        <form action="/products" method="GET" class="search-form-mobile" id="search">
             <div class="search-bar">
               
-                <input type="search" name="busqueda" id="" placeholder="Buscar productos">
+                <input type="search" name="buscar" id="" placeholder="Buscar productos" autocomplete="off">
                 <button type="submit"><i class="fas fa-search"></i></button>
        
             </div>
             <div class="cat-tablet">
             <ul class="categorías">
                 <li class="dropdown-menu" onclick="dropSubCategoryMenu()">
-                    <a href="/products">novedades</a>
+                    <a href="/products/novedades">novedades</a>
                 </li>
                 <li class="dropdown-menu">
-                    <a href="/products">televisores</a>
+                    <a href="/products/televisores">televisores</a>
                 </li>
                 <li class="dropdown-menu">
-                    <a href="/products">celulares</a>
+                    <a href="/products/celulares">celulares</a>
                 </li>
                 <li class="dropdown-menu">
-                    <a href="/products">tablets</a>
+                    <a href="/products/tablets">tablets</a>
                 </li>
                 <li class="dropdown-menu">
-                    <a href="/products">gaming</a>
+                    <a href="/products/gaming">gaming</a>
                 </li>
             </ul>
         </div>

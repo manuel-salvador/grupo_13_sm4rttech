@@ -5,7 +5,7 @@
     <%- include("partials/header.ejs") %> 
     <main>
         <div class="detalle">
-            <p><a href="/">inicio</a>><a href=""><%= product.category %></a>><a><%= product.marca%></a></p>
+            <p><a href="/">inicio</a>><a href="/products/<%= product.category %>"><%= product.category %></a>><a><%= product.marca%></a></p>
 
         </div>
         <article class="imagenes">

@@ -18,6 +18,10 @@
 @import url("products.css");
 @import url("productAdmin.css");
 @import url("filtroEditar.css");
+@import url("listadoProductos.css");
+@import url("error404.css");
+
+
 
 /* Paleta de colores */
 :root {

@@ -80,8 +80,7 @@
                                 </div>
                                 <div class="name">
                                     <h4>nombre del producto</h4>
-                                    <input class="input-style" type="text" name="name" placeholder="Nombre"
-                                        value="<%= locals.old ? old.name : product.name%>">
+                                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old ? old.name : product.name%>"  autocomplete="off">
                                         <% if (locals.errors && errors.name) { %>
                                             <small class="text-danger"><%= errors.name.msg %> </small>
                                         <% } %>
@@ -251,7 +250,7 @@
                                 <div>
                                     <h4>Precio</h4>
                                     <input class="input-style" type="text" id="price" name="price"
-                                        value="<%= locals.old ? old.price: product.price%>">
+                                        value="<%= locals.old ? old.price: product.price%>" autocomplete="off">
                                     <% if (locals.errors && errors.price) { %>
                                         <!-- busca en las variables de nuestra aplicacion -->
                                         <small class="text-danger">
@@ -266,8 +265,7 @@
                                         <input class="input-file" type="file" multiple="" name="image" id="image">
                                     </div>
                                     <h4>descripción</h4>
-                                    <textarea name="description" id="" cols="30"
-                                        rows="10"><%= locals.old ? old.description : product.description %></textarea>
+                                    <textarea name="description" id="" cols="30" rows="10"><%= locals.old ? old.description : product.description %></textarea>
                                     <% if (locals.errors && errors.description) { %>
                                         <!-- busca en las variables de nuestra aplicacion -->
                                         <small class="text-danger">
