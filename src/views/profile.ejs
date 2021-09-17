@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("partials/head.ejs") %>
+<body>
+    <%- include("partials/header-formularios.ejs") %> 
+    
+    <main class="formulario-reg">
+        <section class="caja-central-form">
+            <h2>COMPLETA TUS DATOS</h2>
+            <form action="/accounts/editProfile">
+                <section class="img-avatar">
+                    <h4>Agregar foto de perfil</h4>
+                    <div class="avatar-img">
+                        <img src="/images/logo-sm4rttech.png" alt="">
+                        <input class="avatar-profile" type="file" name="avatar" id="">
+                    </div>
+                </section>
+            <section class="datos-usuarios">
+                    <div class="name">
+                        <h4>nombre</h4>
+                        <p class="casil">nombre</p>
+                    </div>
+                    <div class="apellido">
+                        <h4>Apellido</h4>
+                        <p class="casil">apellido</p>
+                    </div>
+                    <div class="mail">
+                        <h4>E-mail</h4>
+                        <p class="casil">mail registrado</p>
+                    </div>
+                    <div class="mail">
+                        <h4>Fecha de nacimiento</h4>
+                        <p class="casil">11/12/2000</p>
+                    </div>
+                    <div class="confirm-contra">
+                        <h4>País</h4>
+                        <p class="casil">pais</p>
+                    </div>
+                    <div class="confirm-contra">
+                        <h4>Provincia</h4>
+                        <p class="casil">provincia</p>
+                    </div>
+                    <div class="confirm-contra">
+                        <h4>localidad</h4>
+                        <p class="casil">localidad</p>
+                    </div>
+                    <div class="confirm-contra">
+                        <h4>Codigo postal</h4>
+                        <p class="casil">codigo postal</p>
+                    </div>
+                </section>
+        <section class="button-crear">
+            <button type="submit" class="edit-profile"><i class="far fa-edit"></i>Editar perfil</button>                         
+        </section>
+        </section>
+    </form>
+</main>
+    <%- include("partials/footer.ejs") %> 
+</body>
+</html>
