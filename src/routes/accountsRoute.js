@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {
     register,
+    userProfile,
+    profile,
     login,
     logout,
     recuperarcontra,
@@ -23,6 +25,9 @@ router.get('/recuperarcontra', recuperarcontra),
 
 router.get('/register', register),
 router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, processRegister)
+
+router.get ('/editProfile', userProfile),
+router.get ('/profile', profile)
 
 
 module.exports = router;
