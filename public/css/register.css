@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 1rem 0;
 }
 
 .img-avatar h4 {
@@ -27,7 +28,6 @@
     width: 4.5rem;
     height: 4.5rem;
     background-color: var(--lightBlue);
-    margin-bottom: 2rem;
  }
  .avatar i {
     font-size: 5rem;
@@ -62,14 +62,6 @@
 .datos-usuarios {
     text-transform: uppercase;
     margin-bottom: 1rem;
-}
-
-.datos-usuarios input {
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
-    margin: 10px 0;
-    width: 100%;
 }
 
 .check {
@@ -114,7 +106,7 @@ width: 75%;
     border-color: var(--darkWaterGreen);
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 20px;
     max-width: 300px;
     width: 100%;
 }

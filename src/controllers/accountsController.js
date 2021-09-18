@@ -13,6 +13,17 @@ module.exports = {
             res.render('recuperarcontra')
     },
 
+    userProfile: (req, res) =>{
+        res.render('userProfile')
+    },
+
+    profile: (req, res) => {
+        let user = users.find(user => user.id === +req.params.id)
+		res.render('profile', {
+			user
+		})
+    },
+
     register: (req, res) => {
             res.render('register')
     },
@@ -40,9 +51,14 @@ module.exports = {
                 id : lastId + 1,
                 name,
                 lastname,
+                date: "",
                 email,
                 pass : bcrypt.hashSync(pass1, 12),
-                avatar : req.file ? req.file.filename : "",
+                pais: "",
+                province: "",
+                localidad: "",
+                cp: "",
+                avatar : req.file ? req.file.filename : "logo-sm4rttech.png",
                 rol: "ROL_USER"
             }
 

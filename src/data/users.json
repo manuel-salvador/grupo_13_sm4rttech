@@ -68,5 +68,19 @@
         "lastname": "pardo",
         "email": "susanapardo@gmail.com",
         "pass": "susanapardo"
+    },
+    {
+        "id": 11,
+        "name": "Matias",
+        "lastname": "Galeano",
+        "date": "",
+        "email": "matii.galeano@gmail.com",
+        "pass": "$2a$12$EdgT5rCTmETx8KipCtl/MeAfqa4At/vrgfKFMZ4Jik7qUoj9UCPca",
+        "pais": "",
+        "province": "",
+        "localidad": "",
+        "cp": "",
+        "avatar": "logo-sm4rttech.png",
+        "rol": "ROL_USER"
     }
 ]
