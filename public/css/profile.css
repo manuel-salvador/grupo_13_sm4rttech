@@ -1,0 +1,18 @@
+.datos-usuarios .casil {
+    box-shadow: 0px 0px 5px var(--lightBlue);
+    border-radius: 10px;
+    padding: 2px 5px;
+    background-color: white;
+    font-weight: 450;
+    margin: 5px 0 10px 0;
+}
+.button-crear .edit-profile {
+    background-color: var(--greenWater);
+    color: white;
+    border-color: var(--darkWaterGreen);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    max-width: 300px;
+    padding: 5px;
+}

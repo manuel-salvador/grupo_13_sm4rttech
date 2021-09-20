@@ -71,11 +71,11 @@ module.exports = {
             ram,
             price,
             description,
-            image: req.file ? req.file.filename : ["logo-sm4rttech.png"]
+            image: req.file ? req.file.filename : '../logo-sm4rttech.png'  
         }
-        
-        products.push(newProduct)
 
+        products.push(newProduct)
+        
         writeJson(products)
         /* res.send(products) */
         res.redirect(`/detalleDeProducto/${newProduct.id}`)
@@ -184,7 +184,7 @@ module.exports = {
             
         })
         writeJson(products)
-       res.redirect("/products")
+       res.redirect(`/detalledeProducto/${req.params.id}`)
     } else {
         let product = products.find(product => product.id === +req.params.id)
 

@@ -51,17 +51,6 @@ textarea{
     width: 100%;
     outline: none;
 }
-
-
-.datos-usuarios input {
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
-    margin: 10px 0;
-    width: 100%;
-    outline: none;
-}
-
  
 .form-container2{
     width: 100%;
