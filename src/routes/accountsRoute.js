@@ -16,16 +16,19 @@ const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
 /* GET - Home */
 router.get('/login', login),
 router.post('/login', loginValidator, login),
+
 /* router.get('/logout', logout) */
 
 
-
+/* Router recuperar contraseña */
 router.get('/recuperarcontra', recuperarcontra),
 
-
+/* Router register */
 router.get('/register', register),
 router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, processRegister)
 
+
+/* Router editar perfil */
 router.get ('/editProfile', userProfile),
 router.get ('/profile', profile)
 

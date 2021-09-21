@@ -4,6 +4,6 @@ main.admin .formAdmin {
 }
 
 main.admin .formAdmin .caja-central-form {
-    margin: 0;
+    margin: 0 auto;
     width: 100%;
 }

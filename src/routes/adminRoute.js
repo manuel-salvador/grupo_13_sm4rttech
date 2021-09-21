@@ -10,7 +10,7 @@ const { admin,
     editar,
     actualizar,
     destroy } = require('../controllers/adminController');
-const agregarValidator =require('../validations/agregarValidator')
+const agregarValidator = require('../validations/agregarValidator')
 
 
 /* GET - Home */
@@ -34,7 +34,6 @@ router.get('/editar/:id', editar)
 router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
-
 router.delete('/delete/:id', destroy);
 
 module.exports = router;
