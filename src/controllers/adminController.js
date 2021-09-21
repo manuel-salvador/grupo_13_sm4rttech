@@ -1,4 +1,4 @@
-let { products, writeJson } =require('../data/dataBase');
+let { products, writeJson } = require('../data/dataBase');
 let { validationResult } = require('express-validator')
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
@@ -71,14 +71,14 @@ module.exports = {
             ram,
             price,
             description,
-            image: req.file ? req.file.filename : ["logo-sm4rttech.png"]
+            image: req.file ? req.file.filename : '../logo-sm4rttech.png'  
         }
-        
-        products.push(newProduct)
 
+        products.push(newProduct)
+        
         writeJson(products)
         /* res.send(products) */
-        res.redirect(`/products#${newProduct.id}`)
+        res.redirect(`/detalleDeProducto/${newProduct.id}`)
     }else{
         res.render('admin/agregar', {
             errors: errors.mapped(),
@@ -184,7 +184,7 @@ module.exports = {
             
         })
         writeJson(products)
-       res.redirect("/products")
+       res.redirect(`/detalledeProducto/${req.params.id}`)
     } else {
         let product = products.find(product => product.id === +req.params.id)
 

@@ -5,7 +5,7 @@ module.exports = [
     check('category')
     .notEmpty()
     .withMessage("Se debe seleccionar una categoria")
-    .isLength({min: 4})
+    .isLength({min: 2})
     .withMessage("El nombre es demasiado corto"),
 
     check('marca')

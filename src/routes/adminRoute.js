@@ -35,7 +35,6 @@ router.get('/editar/:id',usersAdminCheck, editar)
 router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
-
 router.delete('/delete/:id', destroy);
 
 module.exports = router;

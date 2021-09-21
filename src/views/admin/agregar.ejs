@@ -56,14 +56,14 @@
                     </div>
                     <div>
                         <h4>precio</h4>
-                        <input class="input-style" type="text" id="price" name="price" placeholder="$" value="<%= locals.old && old.price %>" >
+                        <input class="input-style" type="text" id="price" name="price" placeholder="$" value="<%= locals.old && old.price %>" autocomplete="off">
                         <% if (locals.errors && errors.price) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.price.msg %>  </small>
                            <% } %>
                     </div>
                     <div class="name">
                         <h4>nombre del producto</h4>
-                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>">
+                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
                         <% if (locals.errors && errors.name) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.name.msg %>  </small>
                            <% } %>
@@ -115,7 +115,7 @@
                     <div>
                         <h4>capacidad</h4>
                         <select name="capacity" id="capacity">
-                            <option selected hidden value="capacity">GB</option>
+                            <option selected hidden value="">GB</option>
                             <option value="8" <%= locals.old && old.capacity == "8" ? "selected" : null %>>8GB</option>
                             <option value="16" <%= locals.old && old.capacity == "16" ? "selected" : null %>>16GB</option>
                             <option value="32" <%= locals.old && old.capacity == "32" ? "selected" : null %>>32GB</option>
@@ -148,8 +148,7 @@
                         <input class="input-file" type="file" multiple="" name="image" id="image">
                     </div>
                     <h4>descripción</h4>
-                    <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %>
-                    </textarea>
+                    <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %></textarea>
                     <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
                         <small class="text-danger"> <%= errors.description.msg %>  </small>
                        <% } %>

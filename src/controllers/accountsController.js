@@ -18,12 +18,58 @@ module.exports = {
     },
 
     profile: (req, res) => {
-        let user = users.find(user => user.id === +req.params.id)
+        let user = users.find(user=>user.id===req.session.user.id)
+          res.render("profile", {
+          
+          user
+         
+            })
+          
+      /* user = users.find(user => user.id === +req.params.id)
 		res.render('profile', {
 			user
-		})
+		})*/
     },
+    processLogin:(req,res)=>{
+        let errors= validationResult(req)
+        if(errors.isEmpty()){
 
+            let user=users.find(user=>user.email===req.body.email)/*traer el usuario q coincida con el mail*/
+
+             /*se crea la session*/
+            req.session.user={
+                id:user.id,
+                name:user.name,
+                last_name:user.last_name,
+                email:user.email,
+                avatar:user.avatar,
+                rol:user.rol    /**a q rutas puede entrar o no el usuario */
+            }
+
+            if(req.body.recordarme){
+                res.cookie('email', user.email, {maxAge: 3600000})
+            }
+
+            res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
+            
+            res.redirect("/")
+
+        }else{
+            res.render('login', {
+            errors : errors.mapped(),
+          
+        })
+ 
+        }
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+        }
+        
+        return res.redirect('/')
+    },
     register: (req, res) => {
             res.render('register')
     },
@@ -39,6 +85,8 @@ module.exports = {
                     lastId = user.id
                 }
             }) 
+
+
 
             let {
                 name,
