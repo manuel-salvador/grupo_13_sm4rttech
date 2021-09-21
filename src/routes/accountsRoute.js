@@ -20,7 +20,7 @@ router.get('/login', usersLog ,login),
 router.post('/login', loginValidator, processLogin),
 
 /* router.get('/logout', logout) */
-router.get('/logout', logout)
+router.get('/logout',userSession, logout)
 
 /* Router recuperar contraseña */
 router.get('/recuperarcontra',userSession, recuperarcontra),
