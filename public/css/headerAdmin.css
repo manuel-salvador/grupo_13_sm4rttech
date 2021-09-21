@@ -24,6 +24,10 @@ header.admin .left {
     order: 0;
 }
 
+.admin .left .burger-menu{
+    cursor: pointer;
+}
+
 .admin .right{
     order: 2;
 }

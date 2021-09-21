@@ -3,8 +3,8 @@
 }
 .avatar-img  img{
     display: flex;
-    box-shadow: 0px 0px 20px var(--lightBlue);
-    border-radius: 100%;
+    box-shadow: 0px 0px 12px #686b6d;
+    border-radius: 50%;
     width: 5rem;
     height: 5rem;
 }

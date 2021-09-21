@@ -11,3 +11,16 @@ function dropMenu(){
         subcategoryMenu ? subcategoryMenu.classList.remove("active") : ""
     }
 }
+
+
+
+let menuAvatar = document.getElementById("menu-avatar");
+
+function dropAvatarMenu(){
+    if (menuAvatar.style.display === "block" || menuAvatar.style.display === "flex") {
+        menuAvatar.removeAttribute("style");
+    } else {
+        menuAvatar.style.display = "flex";
+    }
+    console.log('funca');
+}

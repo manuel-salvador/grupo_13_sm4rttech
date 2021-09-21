@@ -50,7 +50,7 @@ module.exports = {
                 res.cookie('email', user.email, {maxAge: 3600000})
             }
 
-            res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
+            //res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
             
             res.redirect("/")
 
@@ -107,7 +107,7 @@ module.exports = {
                 province: "",
                 localidad: "",
                 cp: "",
-                avatar : req.file ? req.file.filename : "logo-sm4rttech.png",
+                avatar : req.file ? req.file.filename : "/UserAvatar/default-user-profile.png",
                 rol: "ROL_USER"
             }
 

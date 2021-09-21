@@ -63,7 +63,8 @@
                 </section>
                 <section class="check">
                     
-                    <input type="checkbox" name="terms" id=""width="auto"><p>Acepto los <a href="">Termino y condiciones</a></p>
+                    <input type="checkbox" name="terms" id="terms" width="auto">
+                    <label for="terms"><p>Acepto los <a href="">Termino y condiciones</a></p></label>
                     <% if (locals.errors && errors.terms) { %>
                         <small class="text-danger"><%= errors.terms.msg %> </small>
                     <% } %>

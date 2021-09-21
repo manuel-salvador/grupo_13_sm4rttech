@@ -4,6 +4,11 @@
     justify-content: center;
 }
 
+.formularios-reg label,
+.formulario-reg label {
+    cursor: pointer;
+}
+
 main .caja-central {
     background-color: var(--grey);
     margin: 2rem 0;

@@ -4,70 +4,80 @@
         "name": "Maria",
         "lastname": "Robledo",
         "email": "mariarobledo@gmail.com",
-        "pass": "mariarobledo"
+        "pass": "mariarobledo",
+        "rol": "ROL_USER"
     },
     {
         "id": 2,
         "name": "Laura",
         "lastname": "Gomez",
         "email": "lauragomez@gmail.com",
-        "pass": "lauragomez"
+        "pass": "lauragomez",
+        "rol": "ROL_USER"
     },
     {
         "id": 3,
         "name": "ana",
         "lastname": "sanchez",
         "email": "anasanchez@gmail.com",
-        "pass": "anasanchez"
+        "pass": "anasanchez",
+        "rol": "ROL_USER"
     },
     {
         "id": 4,
         "name": "alejandro",
         "lastname": "romero",
         "email": "alejandroromero@gmail.com",
-        "pass": "alejandroromero"
+        "pass": "alejandroromero",
+        "rol": "ROL_USER"
     },
     {
         "id": 5,
         "name": "Marcelo",
         "lastname": "palacios",
         "email": "marcelopalacios@gmail.com",
-        "pass": "marcelopalacios"
+        "pass": "marcelopalacios",
+        "rol": "ROL_USER"
     },
     {
         "id": 6,
         "name": "Miriam",
         "lastname": "leguizamon",
         "email": "miriamleguizamon@gmail.com",
-        "pass": "miriamleguizamon"
+        "pass": "miriamleguizamon",
+        "rol": "ROL_USER"
     },
     {
         "id": 7,
         "name": "carlos",
         "lastname": "peralta",
         "email": "carlosperalta@gmail.com",
-        "pass": "carlosperalta"
+        "pass": "carlosperalta",
+        "rol": "ROL_USER"
     },
     {
         "id": 8,
         "name": "marcela",
         "lastname": "rodriguez",
         "email": "macelarodriguez@gmail.com",
-        "pass": "marcelarodriguez"
+        "pass": "marcelarodriguez",
+        "rol": "ROL_USER"
     },
     {
         "id": 9,
         "name": "Martin",
         "lastname": "salgado",
         "email": "martinsalgado@gmail.com",
-        "pass": "martinsalgado"
+        "pass": "martinsalgado",
+        "rol": "ROL_USER"
     },
     {
         "id": 10,
         "name": "susana",
         "lastname": "pardo",
         "email": "susanapardo@gmail.com",
-        "pass": "susanapardo"
+        "pass": "susanapardo",
+        "rol": "ROL_USER"
     },
     {
         "id": 11,
@@ -206,7 +216,7 @@
         "province": "",
         "localidad": "",
         "cp": "",
-        "avatar": "logo-sm4rttech.png",
-        "rol": "ROL_USER"
+        "avatar": "./UserAvatar/default-user-profile.png",
+        "rol": "ROL_ADMIN"
     }
 ]

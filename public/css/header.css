@@ -16,6 +16,7 @@ header {
     padding: 10px 10px;
     width: 100%;
     z-index: 999;
+    flex-wrap: wrap;
 }
 
 .main-header .navigation-bar {
@@ -66,13 +67,38 @@ header {
 .main-header .cat {
     display: none;
     order: 3;
-    padding: 15px;
+    margin: 15px;
+    width: 200px;
 }
 
 .main-header .cat .user-icons-mobile {
     display: flex;
     justify-content: space-around;
+    width: 100px;
+    margin: 0 auto;
+    position: relative;
+    
 }
+
+.main-header .cat .user-icons-mobile .nav-header-user i{
+    color: #fff;
+}
+
+.main-header .cat  #menu-avatar{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: #181818 ;
+    padding: 1rem .7rem 0px;
+    border-radius: .5rem;
+    z-index: 100;
+    width: 60vw;
+    top: 23px;
+    height: 175px;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 .main-header .cat a {
     text-decoration:none;
     color: white;
@@ -191,6 +217,87 @@ header {
 /* TABLET */
 
 @media (min-width: 768px){
+
+    .main-header .search-form-mobile {
+        width: 60%;
+        margin: 10px 0;
+    }
+
+    .search-form-mobile ul {
+        text-transform: uppercase;
+        color: white;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .search-bar {
+        padding: 5px 1rem;
+    }
+
+    .search-bar input {
+        height: 25px;
+    }
+    .search-form-mobile ul li:hover {
+        transition: all 0.3s ease;
+        border-bottom: 2px solid #00A99D;
+    }
+
+    .iconos {
+        display: none;
+    }
+
+    .main-header .logo {
+        height: 90px;
+        max-height: 100px;
+        width: 15%;
+        margin-left: 0;
+        order: 0;
+    }
+
+    .main-header .logo img {
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .logeo {
+        display: inline-block;
+        width: 20%;
+    }
+
+    .logeo .options  {
+        text-align: center;
+        text-transform: uppercase;
+        width: fit-content;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .logeo .options a {
+        color: white;
+        text-decoration: none;
+        padding: 0 10px;
+    }
+
+    .logeo .options span {
+        margin: 5px 0;
+    }
+    
+    .logeo .options span a:hover {
+        transition: all 0.3s ease;
+        border-bottom: 2px solid #00A99D;
+
+    }
+
+    .iconos-desktop{
+        margin-top: 5px;
+        text-align: center;
+        color: white;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
     
     
     .main-header .search-form-mobile {
@@ -248,9 +355,68 @@ header {
     .logeo {
         display: inline-block;
         width: 20%;
+        color: #fff
     }
 
-    .logeo .options ul li {
+    
+    .logeo .nav-header-user{
+        position: relative;
+        text-align: right;
+        cursor: pointer;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 3.5rem ;
+    }
+    
+    
+    .logeo .nav-header-user #menu-avatar{
+        display: none;
+        position: absolute;
+        right: 0rem;
+        flex-direction: column;
+        background-color: #181818 ;
+        padding: 1rem .7rem 0px;
+        border-radius: .5rem;
+        z-index: 100;
+    }
+
+    .logeo .nav-header-user #menu-avatar a{
+        text-decoration: none;
+        margin-bottom: .7rem;
+        padding: 5px;
+    }
+
+    .logeo .nav-header-user #menu-avatar a:hover{
+        background-color: #202020;
+    }
+    
+    
+    .logeo a {
+        color: #fff;
+    }
+    
+    .logeo span img {
+        width: 20px;
+    }
+    
+    .logeo .nav-header-user:hover #menu-avatar{
+        display: flex;
+        width: 150px;
+    }
+
+
+    .logeo .nav-header-user .header-avatar {
+        display: flex;
+        width: 60%;
+        align-items: center;
+    }
+
+    .logeo .nav-header-user .header-avatar > * {
+        margin: auto 0 auto .5rem;
+        line-height: 1;
+    }
+
+/*     .logeo .options ul li {
         width: auto;
         list-style: none;
         text-align: center;
@@ -259,12 +425,13 @@ header {
         color: white;
         border-bottom: 2px solid rgba(0, 0, 0, 0);
         transition: all 0.3s ease;
-    }
+    } */
     
-    .logeo .options ul li:hover{
+    /* .logeo .options ul li:hover{
         border-bottom: 2px solid #00A99D;
 
-    }
+    } */
+    
 
     .iconos-desktop{
         margin-top: 5px;
@@ -298,9 +465,6 @@ header {
         align-items: center;
         height: 120px;
         padding: 10px 1rem;
-    }
-
-    .main-header {
         flex-wrap: nowrap;
     }
 
@@ -318,7 +482,7 @@ header {
         width: 21%;
     }
     
-    .main-header .logeo .options ul {
+    /* .main-header .logeo .options ul {
         text-transform: uppercase;
         color: white;
         list-style: none;
@@ -330,13 +494,13 @@ header {
     .main-header .logeo .options ul li {
         padding-right: 5px;
         border-right: 0;
-    }
+    } */
 
-    .main-header .logeo ul li:last-child {
+    /* .main-header .logeo ul li:last-child {
         border-right: none;
         padding-right: 0;
     }
-
+ */
     .iconos-desktop{
         margin-top: 5px;
         text-align: center;
@@ -346,9 +510,4 @@ header {
 
         margin-top: 1rem;
     }
-
-    .iconos-desktop i {
-        padding-left: 20px;
-    }
-
 }

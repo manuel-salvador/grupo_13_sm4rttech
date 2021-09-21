@@ -38,7 +38,15 @@
         </div>
         <div class="cat" id="navigation-bar-mobile">
             <div class="user-icons-mobile">
-                <a href="/accounts/login"><i class="fas fa-user"></i></a>
+                    <span class="nav-header-user" onclick="dropAvatarMenu()">
+                        <i class="fas fa-user"></i>
+                        <i class="fas fa-angle-down" ></i>
+                    </span>
+                    
+                    <div id="menu-avatar">
+                        <a href="/accounts/profile">Mis datos</a>
+                        <a href="/accounts/logout">Cerrar sesion</a>
+                    </div>
                 <a href="/carritoDeCompra"><i class="fas fa-shopping-cart"></i></a>
             </div>
             <ul class="categorías">
@@ -62,14 +70,25 @@
             </ul>
         </div>
         <div class="logeo">
-            <nav class="options">
-                <% if( locals.user != "") {%> 
-                    <a href="/accounts/logout">Cerrar Sesion</a>
-                <% } else {%> 
+            <% if( locals.user != "") {%> 
+                <div class="nav-header-user" onclick="dropAvatarMenu()">
+                    <span class="header-avatar">
+                        <span class="nav-header-avatar-user"><img src="./images/<%= locals.user.avatar %>" alt="" ></span>
+                        <span class="nombre-usuario" ><%= locals.user.name  %> </span>
+                        <i class="fas fa-angle-down" ></i>
+                    </span>
+                    <div id="menu-avatar">
+                        <a href="/accounts/profile">Mis datos</a>
+                        <a href="/accounts/logout">Cerrar sesion</a>
+                    </div>
+                    
+                </div>
+            <% } else {%> 
+                <nav class="options">
                     <span><a href="/accounts/login">inicia sesion</a>
                     <span><a href="/accounts/register">registrate</a>
-                <% } %> 
-            </nav>
+                </nav>
+            <% } %> 
             <nav class="iconos-desktop">
                 <i class="fa fa-bell"></i>
                 <i class="fa fa-heart"></i>
