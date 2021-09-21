@@ -4,12 +4,14 @@
 <body>
     <%- include("partials/header-formularios.ejs") %> 
     <main class="formularios-reg">
+        <form action="/accounts/login" method="POST">
+           
         <section class="caja-central">
             <h2>bienvenido</h2>
             <div class="ingreso">
                 <div class="mail">
                     <h4>E-mail</h4>
-                    <input type="text"  name="email" placeholder="Igresa E-mail">
+                    <input type="text"  name="email" placeholder="Ingresa E-mail">
                     <% if (locals.errors && errors.email) { %>
                         <small class="text-danger"><%= errors.email.msg %> </small>
                     <% } %>
@@ -33,10 +35,11 @@
             <div class="botones">
                 <button class="boton-ingreso">ingresar</button>
                 <p>0</p>
-                <button class="boton-cuenta"><a href="/accounts/register">crear una cuenta</a></button>
+                <button type="submit" class="boton-cuenta"><a href="/accounts/register">crear una cuenta</a></button>
             </div>
 
         </section>
+    </form>
     </main>
         <%- include("partials/footer.ejs") %> 
 </body>

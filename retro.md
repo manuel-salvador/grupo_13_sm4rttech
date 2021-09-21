@@ -14,3 +14,13 @@
 - Esperar hasta ultimo momento para terminar los proyectos.
 ## Dejar de hacer
 - No hacer actividades individualmente sin coordinacion grupal.
+
+
+## seguir trabajando
+-Enfocarnos en mejorar la comunicación
+-consultar dudas
+
+seguir haciendo
+-hacer la restrospectiva de trabajo
+-mantener ordenado el trello
+

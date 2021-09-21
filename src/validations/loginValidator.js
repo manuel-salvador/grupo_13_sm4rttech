@@ -27,12 +27,8 @@ module.exports = [
 
     body('pass')
     .custom((value, {req}) => {
-        let user = users.find(user => user.email === value)
-        if(user !== undefined){
-            return true
-        }else{
-            return false
-        }
+        let user = users.find(user => user.email === req.body.email)
+        return bcrypt.compareSync(value, user.pass)
     })
-    .withMessage('Email no registrado')
+    .withMessage('contraseña invalida')
 ]

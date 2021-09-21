@@ -5,7 +5,7 @@ const {
     userProfile,
     profile,
     login,
-    logout,
+    processLogin,
     recuperarcontra,
     processRegister} = require('../controllers/accountsController');
 const loginValidator = require('../validations/loginValidator');
@@ -15,7 +15,8 @@ const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
 
 /* GET - Home */
 router.get('/login', login),
-router.post('/login', loginValidator, login),
+
+router.post('/login', loginValidator, processLogin),
 /* router.get('/logout', logout) */
 
 
@@ -29,5 +30,12 @@ router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, pr
 router.get ('/editProfile', userProfile),
 router.get ('/profile', profile)
 
+router.get('/sesion', (req, res) => {
+    if(req.session != undefined){
+      res.send('Sesion iniciada correctamente ' + req.session.email)
+    }else{
+      res.send('Sesion no iniciada')
+    }
+    })
 
 module.exports = router;
