@@ -5,6 +5,7 @@ let port = 3000;
 const methodOverride =  require("method-override");
 let session = require('express-session')
 let cookieParser = require('cookie-parser')
+const cookieSessionCheck = require('./midlewares/cookieSessionCheck')
 
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
@@ -32,6 +33,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000}
 }))
+app.use(cookieSessionCheck)
+
 
 /* Routes */
 app.use('/', indexRouter);

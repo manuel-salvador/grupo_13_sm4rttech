@@ -46,9 +46,11 @@ module.exports = {
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
             }
 
+            if(req.body.recordarme){
+                res.cookie('email', user.email, {maxAge: 3600000})
+            }
 
-            res.locals.user=req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
-        
+            res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
             
             res.redirect("/")
 
@@ -60,7 +62,14 @@ module.exports = {
  
         }
     },
-
+    logout: (req,res) => {
+        req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+        }
+        
+        return res.redirect('/')
+    },
     register: (req, res) => {
             res.render('register')
     },
