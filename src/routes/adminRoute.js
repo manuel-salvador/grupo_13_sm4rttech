@@ -11,26 +11,27 @@ const { admin,
     actualizar,
     destroy } = require('../controllers/adminController');
 const agregarValidator =require('../validations/agregarValidator')
+const usersAdminCheck = require('../midlewares/usersAdminCheck')
 
 
 /* GET - Home */
-router.get('/', admin)
+router.get('/',usersAdminCheck, admin)
 
 /* productos admin */
-router.get('/productsAdmin', productsAdmin)
+router.get('/productsAdmin',usersAdminCheck, productsAdmin)
 
 /* agregar */
-router.get('/agregar', agregar),
+router.get('/agregar', usersAdminCheck, agregar),
 router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
 
 /* get muestra form. de edit*/ 
-router.get('/editar', filtroEditar)
+router.get('/editar', usersAdminCheck, filtroEditar)
 router.post('/editar', filtrarEditar)
 
 
-router.get('/editar/:id', editar)
+router.get('/editar/:id',usersAdminCheck, editar)
 router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
 
 /*delete */

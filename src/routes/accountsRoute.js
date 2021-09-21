@@ -11,23 +11,24 @@ const {
 const loginValidator = require('../validations/loginValidator');
 const registerValidator = require('../validations/registerValidator')
 const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
-
+const userSession = require('../midlewares/usersSession')
+const usersLog = require('../midlewares/usersLog')
 
 /* GET - Home */
-router.get('/login', login),
+router.get('/login', usersLog ,login),
 router.post('/login', loginValidator, login),
 /* router.get('/logout', logout) */
 
 
 
-router.get('/recuperarcontra', recuperarcontra),
+router.get('/recuperarcontra',userSession, recuperarcontra),
 
 
-router.get('/register', register),
+router.get('/register', usersLog, register),
 router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, processRegister)
 
-router.get ('/editProfile', userProfile),
-router.get ('/profile', profile)
+router.get ('/editProfile',userSession, userProfile),
+router.get ('/profile',userSession,  profile)
 
 
 module.exports = router;
