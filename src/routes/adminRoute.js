@@ -13,6 +13,11 @@ const { admin,
 const agregarValidator =require('../validations/agregarValidator')
 const usersAdminCheck = require('../midlewares/usersAdminCheck')
 
+router.use(function (req, res, next) {
+    res.locals.user = req.session.user ? req.session.user : "";
+    next();
+});
+
 
 /* GET - Home */
 router.get('/',usersAdminCheck, admin)

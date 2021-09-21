@@ -15,6 +15,11 @@ const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
 const userSession = require('../midlewares/usersSession')
 const usersLog = require('../midlewares/usersLog')
 
+router.use(function (req, res, next) {
+  res.locals.user = req.session.user ? req.session.user : "";
+  next();
+});
+
 /* GET -login */
 router.get('/login', usersLog ,login),
 router.post('/login', loginValidator, processLogin),

@@ -66,6 +66,7 @@ module.exports = {
         req.session.destroy();
         if(req.cookies.email){
             res.cookie('email','',{maxAge:-1})
+            res.locals.user = ""
         }
         
         return res.redirect('/')

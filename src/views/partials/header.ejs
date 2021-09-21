@@ -63,12 +63,11 @@
         </div>
         <div class="logeo">
             <nav class="options">
-                <% if(typeof locals.user != 'undefined' ){ %> 
-                    <a href="/accounts/logout">Cerrar sesion</a>
-                <% } else { %> 
-                <span><a href="/accounts/login">inicia sesion</a>
+                <% if( locals.user != "") {%> 
+                    <a href="/accounts/logout">Cerrar Sesion</a>
+                <% } else {%> 
+                    <span><a href="/accounts/login">inicia sesion</a>
                     <span><a href="/accounts/register">registrate</a>
-
                 <% } %> 
             </nav>
             <nav class="iconos-desktop">
