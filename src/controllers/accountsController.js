@@ -47,7 +47,7 @@ module.exports = {
             }
 
             if(req.body.recordarme){
-                res.cookie('email', user.email, {maxAge: 3600000})
+                res.cookie('email', user.email, {maxAge: 3600000*4})
             }
 
             //res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */

@@ -18,7 +18,7 @@
             <section class="datos-usuarios">
                     <div class="name">
                         <h4>nombre</h4>
-                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>"> 
+                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old ? old.name : locals.user.name%>"> 
                     </div>
                     <div class="apellido">
                         <h4>Apellido</h4>
