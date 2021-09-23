@@ -38,15 +38,22 @@
         </div>
         <div class="cat" id="navigation-bar-mobile">
             <div class="user-icons-mobile">
+                <% if( locals.user != "") {%>
                     <span class="nav-header-user" onclick="dropAvatarMenu()">
                         <i class="fas fa-user"></i>
                         <i class="fas fa-angle-down" ></i>
                     </span>
                     
                     <div id="menu-avatar">
+                        <% if (locals.user.rol === "ROL_ADMIN") {%> 
+                            <a href="/admin">Ir al Admin</a>
+                        <% } %>
                         <a href="/accounts/profile">Mis datos</a>
                         <a href="/accounts/logout">Cerrar sesion</a>
                     </div>
+                <% } else {%>
+                    <a href="/accounts/login"><i class="fas fa-user"></i></a>
+                <% } %> 
                 <a href="/carritoDeCompra"><i class="fas fa-shopping-cart"></i></a>
             </div>
             <ul class="categorías">
