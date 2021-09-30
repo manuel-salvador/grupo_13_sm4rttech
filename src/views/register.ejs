@@ -38,16 +38,24 @@
                             <small class="text-danger"><%= errors.email2.msg %> </small>
                         <% } %>
                     </div>
-                    <div class="contraseña">
+                    <div class="contraseña contra">
                         <h4>contraseña</h4>
                         <input class="input-style" type="password" name="pass1" placeholder="Ingrese su contraseña">
+                        <a role="button" class="password-view" >
+                            <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                            <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
+                        </a>
                         <% if (locals.errors && errors.pass1) { %>
                             <small class="text-danger"><%= errors.pass1.msg %> </small>
                         <% } %>
                     </div>
-                    <div class="confirm-contra">
+                    <div class="confirm-contra contra">
                         <h4>confirmar contraseña</h4>
                         <input class="input-style" type="password" name="pass2" placeholder="confirmar contraseña">
+                        <a role="button" class="password-view" >
+                            <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                            <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
+                        </a>
                         <% if (locals.errors && errors.pass2) { %>
                             <small class="text-danger"><%= errors.pass2.msg %> </small>
                         <% } %>
