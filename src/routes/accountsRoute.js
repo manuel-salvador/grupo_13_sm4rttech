@@ -38,9 +38,11 @@ router.get('/register', usersLog, register),
 router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, processRegister)
 
 /* perfil/edicion*/
-router.get ('/profile',userSession, userProfile),
 
-router.put ("/profile",uploadUserAvatar.single("avatar"),updateProfile)
+router.get ('/profile',userSession,profile),
+router.get ('/editProfile',userSession, userProfile),
+
+router.put ("/editProfile",uploadUserAvatar.single("avatar"),updateProfile)
 
 /* verificar sesion*/
 router.get('/sesion', (req, res) => {

@@ -43,7 +43,7 @@ module.exports = {
     updateProfile:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
-            let user=users.find(user=>user.id=== +req.params.id) 
+            let user=users.find(user=>user.email=== req.body.email) 
             let {
                 
                 name,                       
@@ -51,16 +51,17 @@ module.exports = {
                 localidad,
                 cp,
                 province,
+                pais
                 }=req.body
             
             user.name=name
             user.lastname=lastname
             user.pais=pais
             user.localidad=localidad
-            user.pc=pc
+            user.cp=cp
             user.province=province
             user.avatar=req.file ? req.file.filename:user.avatar
-            console.log(user)
+           
 
             writeUserJSON(users)
             delete user.pass
