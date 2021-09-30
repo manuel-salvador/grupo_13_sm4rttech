@@ -59,8 +59,11 @@
     text-align: center;
 }
 
+.capit::first-letter {
+    text-transform: capitalize;
+}
+
 .datos-usuarios {
-    text-transform: uppercase;
     margin-bottom: 1rem;
 }
 

@@ -48,6 +48,7 @@ module.exports = {
                 
                 name,                       
                 lastname,
+                date,
                 localidad,
                 cp,
                 province,
@@ -56,6 +57,7 @@ module.exports = {
             
             user.name=name
             user.lastname=lastname
+            user.date=date
             user.pais=pais
             user.localidad=localidad
             user.cp=cp
