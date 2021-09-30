@@ -8,7 +8,9 @@ const {
     processLogin,
     recuperarcontra,
     processRegister,
-    logout} = require('../controllers/accountsController');
+    logout,
+    profileEdit,
+    updateProfile} = require('../controllers/accountsController');
 const loginValidator = require('../validations/loginValidator');
 const registerValidator = require('../validations/registerValidator')
 const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
@@ -36,8 +38,9 @@ router.get('/register', usersLog, register),
 router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, processRegister)
 
 /* perfil/edicion*/
-router.get ('/editProfile',userSession, userProfile),
-router.get ('/profile',userSession,  profile)
+router.get ('/profile',userSession, userProfile),
+
+router.put ("/profile",uploadUserAvatar.single("avatar"),updateProfile)
 
 /* verificar sesion*/
 router.get('/sesion', (req, res) => {

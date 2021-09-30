@@ -15,6 +15,7 @@ module.exports = {
 
     userProfile: (req, res) =>{
         res.render('userProfile')
+        
     },
 
     profile: (req, res) => {
@@ -30,6 +31,53 @@ module.exports = {
 			user
 		})*/
     },
+    profileEdit:(req,res)=>{
+        let user=users.find(user=>user.id=== +req.params.id)
+
+        res.render("userProfileEdit",{
+            user,
+            session:req.session
+        })
+
+    },
+    updateProfile:(req,res)=>{
+        let errors= validationResult(req)
+        if(errors.isEmpty()){
+            let user=users.find(user=>user.id=== +req.params.id) 
+            let {
+                
+                name,                       
+                lastname,
+                localidad,
+                cp,
+                province,
+                }=req.body
+            
+            user.name=name
+            user.lastname=lastname
+            user.pais=pais
+            user.localidad=localidad
+            user.pc=pc
+            user.province=province
+            user.avatar=req.file ? req.file.filename:user.avatar
+            console.log(user)
+
+            writeUserJSON(users)
+            delete user.pass
+            req.session.user= user
+            res.redirect("profile")
+
+        }else{
+            res.render("userProfileEdit",{
+                errors:errors.mapped(),
+                old:req.body,
+                session:req.session
+            })
+
+        }
+
+
+    },
     processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
@@ -40,8 +88,12 @@ module.exports = {
             req.session.user={
                 id:user.id,
                 name:user.name,
-                last_name:user.last_name,
+                lastname:user.lastname,
                 email:user.email,
+                pais: user.pais,
+                province:user.province,
+                localidad:user.localidad,
+                cp:user.cp,
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
             }
