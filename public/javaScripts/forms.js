@@ -1,4 +1,4 @@
-var contra = document.querySelectorAll(".password-view");
+var contra = document.querySelectorAll("div > .password-view");
 
 contra.forEach(e => {
     e.addEventListener("click", () => {
@@ -20,3 +20,29 @@ contra.forEach(e => {
         }
     })
 })
+
+/* document.addEventListener('click', (event) => {
+    try {
+        elementId = event.path[0].id
+        elementClass = event.path[0].className
+    }
+    catch {
+        elementId = event.target.id
+        elementClass = event.path[0].className
+    }
+    switch (elementClass){
+        case "eye-cover":
+            toggleEyes(event) 
+            event.preventDefault()   
+            break;
+    }
+})
+
+function toggleEyes(event){
+    var input = event.target.parentElement.parentElement.children[1].type;
+    if(input == "password") {
+        event.target.parentElement.parentElement.children[1].type = "text"
+    }else{
+        event.target.parentElement.parentElement.children[1].type = "password"
+    }
+} */
