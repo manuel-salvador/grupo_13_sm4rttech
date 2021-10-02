@@ -7,7 +7,7 @@
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
-            <form action="/accounts/register"> <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
+            <form action="/accounts/editProfile?_method=PUT" method="POST"> <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
                 <section class="img-avatar">
                     <h4>Agregar foto de perfil</h4>
                     <div class="avatar-img">
@@ -22,63 +22,47 @@
                     </div>
                     <div class="apellido">
                         <h4>Apellido</h4>
-                        <input class="input-style" type="text" name="lastname" placeholder="Apellido" value="<%= locals.old && old.lastname %>">
-                        <% if (locals.errors && errors.lastname) { %>
-                            <small class="text-danger"><%= errors.lastname.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="text" name="lastname" placeholder="Apellido" value="<%= locals.old ? old.lastname:locals.user.lastname %>">
+                       
                     </div>
                     <div class="mail">
                         <h4>E-mail</h4>
-                        <input class="input-style" type="email" name="email" placeholder="E-mail">
-                        <% if (locals.errors && errors.email) { %>
-                            <small class="text-danger"><%= errors.email.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="email" name="email" placeholder="E-mail"  value="<%= locals.old ? old.email:locals.user.email %>">
+                        
                     </div>
                     <div class="confirm-mail">
                         <h4>fecha de nacimiento</h4>
-                        <input class="input-style-date" type="date" name="date">
+                        <input class="input-style-date" type="date" name="date"  value="<%= locals.old ? old.date:locals.user.date %>">
                     </div>
                     <div class="contraseña">
                         <h4>contraseña</h4>
-                        <input class="input-style" type="password" name="pass1" placeholder="Ingrese su contraseña">
-                        <% if (locals.errors && errors.pass1) { %>
-                            <small class="text-danger"><%= errors.pass1.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="password" name="pass1" placeholder="Ingrese su contraseña" value="<%= locals.old ? old.pass1:locals.user.pass1 %>">
+                        
                     </div>
                     <div class="confirm-contra">
                         <h4>confirmar contraseña</h4>
-                        <input class="input-style" type="password" name="pass2" placeholder="confirmar contraseña">
-                        <% if (locals.errors && errors.pass2) { %>
-                            <small class="text-danger"><%= errors.pass2.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="password" name="pass2" placeholder="confirmar contraseña" value="<%= locals.old ? old.pass2:locals.user.pass2 %>">
+                        
                     </div>
                     <div class="confirm-contra">
                         <h4>País</h4>
-                        <input class="input-style" type="text" name="pais" placeholder="Ingresa el país">
-                        <% if (locals.errors && errors.pass2) { %>
-                            <small class="text-danger"><%= errors.pass2.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="text" name="pais" placeholder="Ingresa el país" value="<%= locals.old ? old.pais:locals.user.pais %>">
+                        
                     </div>
                     <div class="confirm-contra">
                         <h4>Provincia</h4>
-                        <input class="input-style" type="text" name="province" placeholder="Ingresa tu provincia">
-                        <% if (locals.errors && errors.pass2) { %>
-                            <small class="text-danger"><%= errors.pass2.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="text" name="province" placeholder="Ingresa tu provincia" value="<%= locals.old ? old.province:locals.user.province %>">
+                      
                     </div>
                     <div class="confirm-contra">
                         <h4>localidad</h4>
-                        <input class="input-style" type="text" name="localidad" placeholder="Ingresa tu localidad">
-                        <% if (locals.errors && errors.pass2) { %>
-                            <small class="text-danger"><%= errors.pass2.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="text" name="localidad" placeholder="Ingresa tu localidad" value="<%= locals.old ? old.localidad:locals.user.localidad %>">
+                       
                     </div>
                     <div class="confirm-contra">
                         <h4>Codigo postal</h4>
-                        <input class="input-style" type="text" name="cp" placeholder="Ingresa el codigo correspondiente">
-                        <% if (locals.errors && errors.pass2) { %>
-                            <small class="text-danger"><%= errors.pass2.msg %> </small>
-                        <% } %>
+                        <input class="input-style" type="text" name="cp" placeholder="Ingresa el codigo correspondiente" value="<%= locals.old ? old.cp:locals.user.cp%>">
+                        
                     </div>
                 </section>
         <section class="button-crear">
