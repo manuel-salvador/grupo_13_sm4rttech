@@ -4,6 +4,8 @@ let productsTelevisores = products.filter(product => product.category.toLowerCas
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
 let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
+const db = require('../database/models')
+
 
 module.exports = {
     admin: (req, res) => {
@@ -38,7 +40,6 @@ module.exports = {
 
     store: (req, res) => {
         let errors = validationResult(req)
-
         if(errors.isEmpty()){
             let lastId = 1;
         products.forEach(product => {
@@ -60,19 +61,30 @@ module.exports = {
         } = req.body
 
         /*  */
-        let newProduct = {
-            id: lastId + 1,
+        db.product.create({
             name,
-            category,
-            marca,
-            tamaño,
-            smart,
-            capacity,
-            ram,
+            category: id,
+            brand: brand_id,
+            size_product: size_id,
+            smart_product: id ,
+            capacity: capacity_id,
+            ram_product: ram_id,
             price,
-            description,
-            image: req.file ? req.file.filename : ["logo-sm4rttech.png"]
-        }
+            description
+        })
+        .then(product => {
+            if(arrayImages.length > 0){
+                let images = arrayImages.map(image => {
+                    return {
+                        image: image,
+                        productId: product.id
+                    }
+                })
+                db.ProductImage.bulkCreate(images)
+                .then(() => res.redirect('/admin/products'))
+                .catch(err => console.log(err))
+          }
+        })
         
         products.push(newProduct)
 
