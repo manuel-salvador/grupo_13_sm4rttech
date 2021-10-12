@@ -20,18 +20,18 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         brand: {
-            type: dataTypes.STRING(50),
+            type: dataTypes.INTEGER(11),
         },
         capacity: {
             type: dataTypes.INTEGER(11),
         },
-        size_product: {
+        sizes: {
             type: dataTypes.INTEGER(11),
         },
-        smart_product: {
+        smart: {
             type: dataTypes.INTEGER(2),
         },
-        ram_product: {
+        ram: {
             type: dataTypes.INTEGER(11),
         },
         color: {
@@ -40,6 +40,9 @@ module.exports = function(sequelize, dataTypes){
         description: {
             type: dataTypes.STRING(800),
         },
+        product_images: {
+            type: dataTypes.INTEGER(11)
+        }
     }
     let config = {
         tableName: "products", //No hace falta
@@ -52,15 +55,26 @@ module.exports = function(sequelize, dataTypes){
         Product.belongsTo(models.Category, {
             as: "category",
             foreignKey: "category"
-        })
+        }),
         Product.belongsTo(models.Ram, {
             as: "ram",
-            foreignKey: "ram_id"
-        })
-
-        Product.hasMany(models.ProductImage, {
-            as: "images",
-            foreignKey: "image_id"
+            foreignKey: "ram_product"
+        }),
+        Product.belongsTo(models.Brands, {
+            as: "brand",
+            foreignKey: "brand"
+        }),
+        Product.belongsTo(models.Capacity, {
+            as: "capacity",
+            foreignKey: "capacity"
+        }),
+        Product.belongsTo(models.Sizes, {
+            as: "sizes",
+            foreignKey: "sizes"
+        }),
+        Product.belongsTo(models.Color, {
+            as: "color",
+            foreignKey: "color"
         })
     }
 
