@@ -19,9 +19,9 @@ module.exports = function(sequelize, dataTypes){
     const Ram = sequelize.define(alias, cols, config)
 
     Ram.associate = models => {
-        Ram.belongsTo(models.Products, {
+        Ram.belongsTo(models.ram_product, {
             as: "ram",
-            foreignKey: "ram_product"
+            foreignKey: "ram_id"
         })
     }
 

@@ -14,8 +14,17 @@ module.exports = function(sequelize, dataTypes){
 
     }
     let config = {
+        tablename: "capacities"
 
     }
     const Capacity = sequelize.define(alias, cols, config)
+
+    Capacity.associate = models => {
+        Capacity.belongsTo(models.capacity_product, {
+            as: "category",
+            foreignKey: "capacity_id"
+        })
+    }
+
     return Capacity
 }

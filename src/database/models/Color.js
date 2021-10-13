@@ -13,8 +13,17 @@ module.exports = function(sequelize, dataTypes){
         },
     }
     let config = {
+        tablename: "colors"
 
     }
     const Color = sequelize.define(alias, cols, config)
+
+    Color.associate = models => {
+        Color.belongsTo(models.color_product, {
+            as: "color",
+            foreignKey: "color_id"
+        })
+    }
+
     return Color
 }
