@@ -10,10 +10,17 @@ module.exports = {
         //Trae producto con categorias
 
         db.Product.findAll({
-            include: [{association: "category"}, {association: "colores"}]
+            include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+        {association: "capacities"}]
         })
-        .then( producto => {
-            res.send(producto[0])
+        .then( productos => {
+            let products = []
+            productos.forEach(product => {
+                var newProduct = { Nombre:product.name, marca:product.brand.brand}
+                products.push(newProduct)
+            })
+
+            res.send(products)
         })
 
 

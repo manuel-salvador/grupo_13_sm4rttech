@@ -10,6 +10,21 @@ module.exports = function(sequelize, dataTypes){
         category_id: {
             type: dataTypes.INTEGER(11),
             allowNull: false
+        },
+        name: {
+            type: dataTypes.STRING(100),
+            allowNull: false
+        },
+        price: {
+            type: dataTypes.FLOAT,
+            allowNull: false
+        },
+        brand_id: {
+            type: dataTypes.INTEGER(11),
+            allowNull: false
+        },
+        smart: {
+            type: dataTypes.BOOLEAN
         }
     }
     let config = {
@@ -28,15 +43,33 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
+        Product.belongsToMany(modelos.Capacity, {
+            as: "capacities",
+            through: "capacity_products",
+            foreignKey: "product_id",
+            otherKey: "capacity_id",
+            timestamps: false
+        })
+
         Product.hasMany(modelos.ColorProduct, {
             as: "product",
             foreignKey: "product_id",
             timestamps: false
         })
+
         Product.belongsTo(modelos.Category, {
             as: "category",
             foreignKey: "category_id",
-            timestamps: false
+        })
+
+        Product.belongsTo(modelos.Brand, {
+            as: "brand",
+            foreignKey: "brand_id",
+        })
+
+        Product.hasMany(modelos.CapacityProduct, {
+            as: "capacity",
+            foreignKey: "capacity_id"
         })
     }
 
