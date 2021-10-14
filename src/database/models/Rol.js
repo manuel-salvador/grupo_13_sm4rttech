@@ -1,31 +1,21 @@
 module.exports = function(sequelize, dataTypes){
     let alias = "Rol";
     let cols = {
-        id: {
-            type: dataTypes.INTEGER(11).UNSIGNED,
+        rol_id: {
+            type: dataTypes.INTEGER(11),
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        name: {
-            type: dataTypes.STRING(45),
+        user_type:{
+            type: dataTypes.STRING(50),
+            primaryKey: true,
             allowNull: false
-        },
-        price:{
-            type: dataTypes.INTEGER(11),
-            allowNull: false
-        },
-        discount: {
-            type: dataTypes.INTEGER(11),
-        },
-        description: {
-            type: dataTypes.STRING(800),
-        },
-        subcategoryId: {
-            type: dataTypes.INTEGER(11),
-            allowNull: false
+
         }
-    }
+
+        }
+        
     let config = {
         tableName: "Rols", //No hace falta
         timestamps: true
@@ -34,14 +24,12 @@ module.exports = function(sequelize, dataTypes){
     const Rol = sequelize.define(alias, cols, config)
 
     Rol.associate = models => {
-        Rol.belongsTo(models.Subcategory, {
-            as: "subcategory",
-            foreignKey: "subcategoryId"
+        Rol.belongsTo(models.User, {
+            as:"user",
+            foreingnKey:"rol"
+                    
         })
-        Rol.hasMany(models.RolImage, {
-            as: "images",
-            foreignKey: "RolId"
-        })
+        
     }
 
     return Rol

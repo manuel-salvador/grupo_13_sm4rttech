@@ -8,18 +8,15 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false 
         },
         province: {
-            type: dataTypes.VARCHAR(255)
+            type: dataTypes.STRING(255)
         },
         localidad: {
-            type: dataTypes.VARCHAR(255)
+            type: dataTypes.STRING(255)
         },
         postal_code: {
-            type: dataTypes.VARCHAR(255)
+            type: dataTypes.STRING(255)
         },
-      /*  userId: {
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },*/
+      
     }
     
     let config = {
@@ -28,8 +25,9 @@ module.exports = function(sequelize, dataTypes){
     }
     const Address = sequelize.define(alias, cols, config)
     Address.associate=models=>{
-        Address.belongsTo(models.User,{
+        Address.hasMany(models.User,{
             as:"user",
+            foreingnKey:"address"
             
         })
     }
