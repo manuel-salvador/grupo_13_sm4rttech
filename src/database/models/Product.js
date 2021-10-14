@@ -50,6 +50,20 @@ module.exports = function(sequelize, dataTypes){
             otherKey: "capacity_id",
             timestamps: false
         })
+        Product.belongsToMany(modelos.ram, {
+            as: "rams",
+            through: "ram_products",
+            foreignKey: "product_id",
+            otherKey: "ram_id",
+            timestamps: false
+        })
+        Product.belongsToMany(modelos.size, {
+            as: "sizes",
+            through: "size_products",
+            foreignKey: "product_id",
+            otherKey: "size_id",
+            timestamps: false
+        })
 
         Product.hasMany(modelos.ColorProduct, {
             as: "product",
@@ -76,6 +90,18 @@ module.exports = function(sequelize, dataTypes){
             as: "image",
             foreignKey: "product_id"
         })
+        
+        Product.hasMany(modelos.ramProduct, {
+            as: "ram",
+            foreignKey: "ram_id"
+        })
+        Product.hasMany(modelos.sizeProduct, {
+            as: "size",
+            foreignKey: "size_id"
+        })
+      
+      
+
     }
 
     return Product
