@@ -1,4 +1,4 @@
-const {products} =  require('../data/dataBase');
+//const {products} =  require('../data/dataBase');
 const db = require('../database/models');
 
 module.exports = {
@@ -11,16 +11,12 @@ module.exports = {
 
         db.Product.findAll({
             include: [{association: "category"}, {association: "colores"}, {association: "brand"},
-        {association: "capacities"}]
+        {association: "capacities"}, {association: "image"}]
         })
         .then( productos => {
-            let products = []
-            productos.forEach(product => {
-                var newProduct = { Nombre:product.name, marca:product.brand.brand}
-                products.push(newProduct)
-            })
+            
 
-            res.send(products)
+            res.send(productos)
         })
 
 
