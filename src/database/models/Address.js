@@ -1,7 +1,7 @@
 module.exports = function(sequelize, dataTypes){
     let alias = "Address";
     let cols = {
-        id: {
+        address_id: {
             type: dataTypes.INTEGER(11).UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
@@ -16,11 +16,7 @@ module.exports = function(sequelize, dataTypes){
         cp: {
             type: dataTypes.STRING(255)
         },
-        userId:{
-            type:dataTypes.INTEGER(11),
-            allowNull:false
-        }
-      
+       
     }
     
     let config = {
@@ -31,7 +27,7 @@ module.exports = function(sequelize, dataTypes){
     Address.associate=models=>{
         Address.hasMany(models.User,{
             as:"user",
-            foreingnKey:"userId"
+            foreignKey:"address_id"
             
         })
     }
