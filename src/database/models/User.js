@@ -55,6 +55,10 @@ module.exports = function(sequelize, dataTypes){
             as:"direccion",
             foreingnKey:"address"
         })
+        User.hasMany(models.Avatar_user,{
+            as:"avatar",
+            foreingnKey:"user_id"
+        })
     }
     return User;
     }

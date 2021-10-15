@@ -20,16 +20,15 @@ module.exports = function(sequelize, dataTypes){
 
     
     let config = {
-        avatar_id:{
-            type: dataTypes.STRING(100)
-        },
-
+      tablename:"avatar_user",
+      timestamps: false
+     
     }
     const Avatar_user = sequelize.define(alias, cols, config)
       Avatar_user.associate=models=>{
-         Avatar_user.hasMany(models.User,{
+         Avatar_user.belongsTo(models.User,{
             as:"user",
-            foreingnKey:"avatar_user_fk"
+            foreingnKey:"user_id"
             
         })
         }
