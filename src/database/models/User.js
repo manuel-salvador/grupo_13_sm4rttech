@@ -3,7 +3,7 @@ module.exports = function(sequelize, dataTypes){
     let cols = {
 
         id: {   
-            type: dataTypes.INTEGER(11),    
+            type: dataTypes.INTEGER(11).UNSIGNED,    
             primaryKey: true,
             autoIncrement: true,
             allowNull: false   /*acepta nulos?*/
@@ -35,24 +35,24 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER(11),
                       
         },
-        address: {
+      /*  address: {
             type: dataTypes.INTEGER(11),
                        
-        },
+        },*/
         
              
         
 
     }
     let config = {
-        tableName: "user", 
+        tableName: "users", 
         timestamps: false
 
     }
     const User = sequelize.define(alias, cols, config)
     User.associate = models => {
         User.belongsTo(models.Address,{
-            as:"address",
+            as:"direccion",
             foreingnKey:"address"
         })
     }

@@ -5,7 +5,7 @@ module.exports = {
     index: (req, res) => {
         db.User.findAll({
             include:[{
-                association:"address"
+                association:"direccion"
             }]
             
         })

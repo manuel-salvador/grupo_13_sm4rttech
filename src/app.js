@@ -7,6 +7,7 @@ let session = require('express-session')
 let cookieParser = require('cookie-parser')
 const cookieSessionCheck = require('./midlewares/cookieSessionCheck')
 
+
 /* Enrutadores */       // -------- Esto es nuevo y se necesita!
 let indexRouter = require('./routes/indexRoute');
 let accountsRouter = require('./routes/accountsRoute');
@@ -28,7 +29,7 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(cookieParser())
 app.use(session({
-    secret: "smartTech",
+    secret: "sm4rtTechConDatos",
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60000}
@@ -43,7 +44,7 @@ app.use ('/carritoDeCompra', carritoRouter);
 app.use ('/detalleDeProducto', detalleDeProductoRouter);
 app.use('/admin', adminRouter);
 app.use('/products', productsRouter)
-    
+   
 app.get('/prueba', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/prueba.html'))
 })

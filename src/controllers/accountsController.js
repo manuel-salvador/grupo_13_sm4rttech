@@ -4,7 +4,9 @@ let db = require("../database/models")
 
 module.exports = {
     login: (req, res) => {
-        res.render('login')
+        res.render('login',{
+          session:req.session,
+        });
         
     },
 
@@ -18,59 +20,66 @@ module.exports = {
     },
 
     profile: (req, res) => {
-        let user = users.find(user=>user.id===req.session.user.id)
-          res.render("profile", {
-          
-          user
-         
-            })
+            db.User.findBypk(req.session.user.id,{
+             include:[{association:"direccion"}]  
+            }).then((user)=>{
+              res.render("userPrfile",{
+                user,
+                session:req.session,
+              });
+            });
           
    
     },
     profileEdit:(req,res)=>{
-        let user=users.find(user=>user.id=== +req.params.id)
-
+      db.User.findBypk(req.session.user.id,{  /*trae el usuario de la base de datos */
+      include:[{association:"direccion"}]  
+     }).then((user)=>{   
         res.render("userProfileEdit",{
-            user,
-            session:req.session
-        })
-
+          user,
+          session:req.session
+        });
+      });
+      
     },
     updateProfile:(req,res)=>{
-        let errors= validationResult(req)
+        let errors= validationResult(req);
+
         if(errors.isEmpty()){
-            let user=users.find(user=>user.email=== req.body.email) 
-            let {
-                
-                name,                       
-                lastname,
-                localidad,
-                cp,
-                province,
-                pais
-                }=req.body
-            
-            user.name=name
-            user.lastname=lastname
-            user.pais=pais
-            user.localidad=localidad
-            user.cp=cp
-            user.province=province
-            user.avatar=req.file ? req.file.filename:user.avatar
-           
-
-            writeUserJSON(users)
-            delete user.pass
-            req.session.user= user
+          /*let user=users.find(user=>user.email=== req.body.email) */
+          let{name,last_name,localidad,cp,province,pais}=req.body
+          db.User.update({ /*verifica  */
+            name,                       
+            last_name,
+            localidad,
+            cp,
+            province,
+            pais,
+            avatar:req.file?req.file.filename:req.session.user.avatar
+          },{
+            where:{
+              id:req.params.id
+            }
+          })
+          .then(()=>{
+            db.Address.create({
+              address,
+              province,
+              localidad,
+              cp
+            })
+          })
+          .then(()=>{
             res.redirect("profile")
-
+          })         
+           
         }else{
             res.render("userProfileEdit",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
-
+            
         }
 
 
@@ -84,20 +93,21 @@ module.exports = {
                 },
               }).then((user) => {
                 req.session.user = {
-                  id:user.id,
+                id:user.id,
                 name:user.name,
-                lastname:user.lastname,
+                lastname:user.last_name,
                 email:user.email,
-                pais: user.pais,
+                /*pais: user.pais,
                 province:user.province,
                 localidad:user.localidad,
-                cp:user.cp,
+                cp:user.cp,*/
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
                 };
         
                 if(req.body.recordarme){
                   res.cookie('email', user.email, {maxAge: 3600000*4})
+                  
               }
                 res.locals.user = req.session.user;
         

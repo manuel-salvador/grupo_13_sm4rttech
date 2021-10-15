@@ -78,7 +78,7 @@ CREATE TABLE `brands` (
   `brand` varchar(30) NOT NULL,
   PRIMARY KEY (`brand_id`),
   UNIQUE KEY `brand` (`brand`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,6 +87,7 @@ CREATE TABLE `brands` (
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
+INSERT INTO `brands` VALUES (3,'Lenovo'),(4,'LG'),(1,'Samsung'),(2,'Sony');
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +103,7 @@ CREATE TABLE `capacities` (
   `capacity` varchar(10) NOT NULL,
   PRIMARY KEY (`capacity_id`),
   UNIQUE KEY `capacity` (`capacity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,17 +112,18 @@ CREATE TABLE `capacities` (
 
 LOCK TABLES `capacities` WRITE;
 /*!40000 ALTER TABLE `capacities` DISABLE KEYS */;
+INSERT INTO `capacities` VALUES (3,'16 GB'),(1,'4 GB'),(2,'8 GB');
 /*!40000 ALTER TABLE `capacities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `capacity_product`
+-- Table structure for table `capacity_products`
 --
 
-DROP TABLE IF EXISTS `capacity_product`;
+DROP TABLE IF EXISTS `capacity_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `capacity_product` (
+CREATE TABLE `capacity_products` (
   `capacity_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `capacity_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -130,16 +132,17 @@ CREATE TABLE `capacity_product` (
   KEY `capacity_product_FK_1` (`product_id`),
   CONSTRAINT `capacity_product_FK` FOREIGN KEY (`capacity_id`) REFERENCES `capacities` (`capacity_id`),
   CONSTRAINT `capacity_product_FK_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `capacity_product`
+-- Dumping data for table `capacity_products`
 --
 
-LOCK TABLES `capacity_product` WRITE;
-/*!40000 ALTER TABLE `capacity_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `capacity_product` ENABLE KEYS */;
+LOCK TABLES `capacity_products` WRITE;
+/*!40000 ALTER TABLE `capacity_products` DISABLE KEYS */;
+INSERT INTO `capacity_products` VALUES (1,1,2),(2,3,2);
+/*!40000 ALTER TABLE `capacity_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -154,7 +157,7 @@ CREATE TABLE `categories` (
   `category` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category` (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,17 +166,18 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'celulares'),(3,'pc'),(2,'televisores');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `color_product`
+-- Table structure for table `color_products`
 --
 
-DROP TABLE IF EXISTS `color_product`;
+DROP TABLE IF EXISTS `color_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `color_product` (
+CREATE TABLE `color_products` (
   `color_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `color_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -182,16 +186,17 @@ CREATE TABLE `color_product` (
   KEY `Color_product_FK_1` (`product_id`),
   CONSTRAINT `Color_product_FK` FOREIGN KEY (`color_id`) REFERENCES `colors` (`color_id`),
   CONSTRAINT `Color_product_FK_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `color_product`
+-- Dumping data for table `color_products`
 --
 
-LOCK TABLES `color_product` WRITE;
-/*!40000 ALTER TABLE `color_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `color_product` ENABLE KEYS */;
+LOCK TABLES `color_products` WRITE;
+/*!40000 ALTER TABLE `color_products` DISABLE KEYS */;
+INSERT INTO `color_products` VALUES (1,1,2),(2,2,2);
+/*!40000 ALTER TABLE `color_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,7 +211,7 @@ CREATE TABLE `colors` (
   `color` varchar(50) NOT NULL,
   PRIMARY KEY (`color_id`),
   UNIQUE KEY `color` (`color`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +220,7 @@ CREATE TABLE `colors` (
 
 LOCK TABLES `colors` WRITE;
 /*!40000 ALTER TABLE `colors` DISABLE KEYS */;
+INSERT INTO `colors` VALUES (2,'blanco'),(1,'negro');
 /*!40000 ALTER TABLE `colors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +262,7 @@ CREATE TABLE `product_images` (
   PRIMARY KEY (`image_id`),
   KEY `product_images_FK` (`product_id`),
   CONSTRAINT `product_images_FK` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +271,7 @@ CREATE TABLE `product_images` (
 
 LOCK TABLES `product_images` WRITE;
 /*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
+INSERT INTO `product_images` VALUES (1,'logo-sm4rttech.png',1);
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,7 +294,7 @@ CREATE TABLE `products` (
   KEY `products_FK_2` (`brand_id`),
   CONSTRAINT `products_FK` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   CONSTRAINT `products_FK_2` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`brand_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,59 +303,62 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,2,'Smart TV Samsung 32',45000,1,1),(2,1,'Celular LG K20 32GB',25000,4,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ram`
+-- Table structure for table `ram_products`
 --
 
-DROP TABLE IF EXISTS `ram`;
+DROP TABLE IF EXISTS `ram_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ram` (
-  `ram_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ram` varchar(5) NOT NULL,
-  PRIMARY KEY (`ram_id`),
-  UNIQUE KEY `ram` (`ram`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ram`
---
-
-LOCK TABLES `ram` WRITE;
-/*!40000 ALTER TABLE `ram` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ram` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ram_product`
---
-
-DROP TABLE IF EXISTS `ram_product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ram_product` (
+CREATE TABLE `ram_products` (
   `ram_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `ram_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   PRIMARY KEY (`ram_product_id`),
   KEY `Ram_product_FK` (`ram_id`),
   KEY `Ram_product_FK_1` (`product_id`),
-  CONSTRAINT `Ram_product_FK` FOREIGN KEY (`ram_id`) REFERENCES `ram` (`ram_id`),
+  CONSTRAINT `Ram_product_FK` FOREIGN KEY (`ram_id`) REFERENCES `rams` (`ram_id`),
   CONSTRAINT `Ram_product_FK_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ram_product`
+-- Dumping data for table `ram_products`
 --
 
-LOCK TABLES `ram_product` WRITE;
-/*!40000 ALTER TABLE `ram_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ram_product` ENABLE KEYS */;
+LOCK TABLES `ram_products` WRITE;
+/*!40000 ALTER TABLE `ram_products` DISABLE KEYS */;
+INSERT INTO `ram_products` VALUES (1,1,2),(2,2,2);
+/*!40000 ALTER TABLE `ram_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rams`
+--
+
+DROP TABLE IF EXISTS `rams`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rams` (
+  `ram_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ram` varchar(5) NOT NULL,
+  PRIMARY KEY (`ram_id`),
+  UNIQUE KEY `ram` (`ram`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rams`
+--
+
+LOCK TABLES `rams` WRITE;
+/*!40000 ALTER TABLE `rams` DISABLE KEYS */;
+INSERT INTO `rams` VALUES (1,'2 GB'),(2,'4 GB');
+/*!40000 ALTER TABLE `rams` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -376,13 +386,13 @@ LOCK TABLES `roles` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `size_product`
+-- Table structure for table `size_products`
 --
 
-DROP TABLE IF EXISTS `size_product`;
+DROP TABLE IF EXISTS `size_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `size_product` (
+CREATE TABLE `size_products` (
   `size_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `size_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -391,16 +401,17 @@ CREATE TABLE `size_product` (
   KEY `Size_product_FK_1` (`product_id`),
   CONSTRAINT `Size_product_FK` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`),
   CONSTRAINT `Size_product_FK_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `size_product`
+-- Dumping data for table `size_products`
 --
 
-LOCK TABLES `size_product` WRITE;
-/*!40000 ALTER TABLE `size_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `size_product` ENABLE KEYS */;
+LOCK TABLES `size_products` WRITE;
+/*!40000 ALTER TABLE `size_products` DISABLE KEYS */;
+INSERT INTO `size_products` VALUES (1,1,2),(2,2,1);
+/*!40000 ALTER TABLE `size_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -415,7 +426,7 @@ CREATE TABLE `sizes` (
   `sizes` varchar(255) NOT NULL,
   PRIMARY KEY (`size_id`),
   UNIQUE KEY `sizes` (`sizes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,6 +435,7 @@ CREATE TABLE `sizes` (
 
 LOCK TABLES `sizes` WRITE;
 /*!40000 ALTER TABLE `sizes` DISABLE KEYS */;
+INSERT INTO `sizes` VALUES (2,'32\''),(1,'5\'');
 /*!40000 ALTER TABLE `sizes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,4 +488,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-12 23:53:44
+-- Dump completed on 2021-10-13 23:58:26

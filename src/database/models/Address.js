@@ -13,9 +13,13 @@ module.exports = function(sequelize, dataTypes){
         localidad: {
             type: dataTypes.STRING(255)
         },
-        postal_code: {
+        cp: {
             type: dataTypes.STRING(255)
         },
+        userId:{
+            type:dataTypes.INTEGER(11),
+            allowNull:false
+        }
       
     }
     
@@ -27,7 +31,7 @@ module.exports = function(sequelize, dataTypes){
     Address.associate=models=>{
         Address.hasMany(models.User,{
             as:"user",
-            foreingnKey:"address"
+            foreingnKey:"userId"
             
         })
     }
