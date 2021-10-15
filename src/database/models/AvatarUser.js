@@ -28,7 +28,7 @@ module.exports = function(sequelize, dataTypes){
       Avatar_user.associate=models=>{
          Avatar_user.belongsTo(models.User,{
             as:"user",
-            foreingnKey:"user_id"
+            foreignKeyy:"user_id"
             
         })
         }

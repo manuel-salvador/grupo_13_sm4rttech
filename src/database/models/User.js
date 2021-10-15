@@ -35,10 +35,10 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER(11),
                       
         },
-      /*  address: {
+        address_id: {
             type: dataTypes.INTEGER(11),
                        
-        },*/
+        },
         
              
         
@@ -53,11 +53,11 @@ module.exports = function(sequelize, dataTypes){
     User.associate = models => {
         User.belongsTo(models.Address,{
             as:"direccion",
-            foreingnKey:"address"
+            foreignKey:"address_id"
         })
         User.hasMany(models.Avatar_user,{
             as:"avatar",
-            foreingnKey:"user_id"
+            foreignKey:"user_id"
         })
     }
     return User;

@@ -14,7 +14,7 @@ module.exports = function(sequelize, dataTypes){
 
     }
     let config = {
-        tableName: "dates",
+        tableName: "dates",   
         timestamps: false
 
     }
@@ -22,7 +22,7 @@ module.exports = function(sequelize, dataTypes){
     Date.associate=models=>{
         Date.hasMany(models.User,{
             as:"user",
-            foreingnKey:"dates"
+            foreignKey:"dates"
                  
         })
     }

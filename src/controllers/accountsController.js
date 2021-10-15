@@ -170,7 +170,7 @@ module.exports = {
 
             db.user.create({    /*trae la base de datos*/
                     name,
-                    lastname,
+                    last_name,
                     email,
                     pass : bcrypt.hashSync(pass1, 12),
                     avatar : req.file ? req.file.filename : "/UserAvatar/default-user-profile.png", 
