@@ -1,3 +1,13 @@
+.contra {
+    position: relative;
+}
+
+.contra a.password-view{
+    color: black;
+    position: absolute;
+    right: 10px;
+    top: 34px;
+}
 
 .formulario-reg {
     display: flex;

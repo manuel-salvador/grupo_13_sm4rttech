@@ -1,5 +1,5 @@
 const { check, body } = require('express-validator')
-const { users } = require('../data/dataBase')
+const db=require("../database/models")
 
 
 
@@ -20,18 +20,20 @@ module.exports = [
 
     body('email')
     .custom(value => {
-        let user = users.find(user => user.email === value)
-        if(user === undefined){
-            return true
-        }else{
-            return false
-        }
-    })
-    .withMessage('Email ya registrado'),
+      /*  let user = users.find(user => user.email === value)*/
+      returndb.user.findOne({
+          where:{
+              email:value
+          }          
+      })
+      .then(user={
+          if(user){
+              return Promise.reject("ya existe este mail")
 
-    body('email2')
-    .custom((value, {req}) => value !== req.body.email ? false : true)
-    .withMessage("Los Emails no coinciden"),
+          }
+          })
+      }),
+    
 
     check('pass1')
     .notEmpty()

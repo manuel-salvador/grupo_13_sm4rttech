@@ -17,9 +17,13 @@
                     <% } %>
                     <!-- <span class="error-message">Debe ingresar su E-mail</span> -->
                 </div>
-                <div class="contraseña">
+                <div class="contraseña contra">
                     <h4>contraseña</h4>
                     <input type="password" name="pass" placeholder="Ingresa contraseña">
+                    <a role="button" class="password-view" >
+                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                        <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
+                    </a>
                     <% if (locals.errors && errors.pass) { %>
                         <small class="text-danger"><%= errors.pass.msg %> </small>
                     <% } %>

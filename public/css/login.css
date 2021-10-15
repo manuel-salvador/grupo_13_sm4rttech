@@ -1,3 +1,13 @@
+div.eye-cover {
+    width: 100% !important; 
+    height: 100%;
+    position: absolute;
+}
+
+.password-view{
+    position: relative;
+}
+
 
 .formularios-reg {
     display: flex;
