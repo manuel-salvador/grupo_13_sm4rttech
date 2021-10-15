@@ -35,18 +35,23 @@ module.exports = {
 
     },*/
     agregar: (req, res) => {
-        res.render('admin/agregar')
+        let categorias = db.Category.findAll()
+        let marcas = db.Brand.findAll()
+        let tamaños = db.Size.findAll()
+        let capacidades = db.Capacity.findAll()
+        let rams = db.Ram.findAll()
+
+        Promise.all([categorias, marcas, tamaños, capacidades, rams])
+        .then(([categorias, marcas, tamaños, capacidades, rams]) => {
+            res.render('admin/agregar', {categorias, marcas, tamaños, capacidades, rams})
+        })
+
     },
 
     store: (req, res) => {
         let errors = validationResult(req)
         if(errors.isEmpty()){
-            let lastId = 1;
-        products.forEach(product => {
-            if(product.id > lastId){
-                lastId = product.id
-            }
-        })
+        
         const {
             category,
             marca,
@@ -61,7 +66,7 @@ module.exports = {
         } = req.body
 
         /*  */
-        db.product.create({
+        db.Product.create({
             name,
             category: id,
             brand: brand_id,
@@ -86,10 +91,7 @@ module.exports = {
           }
         })
         
-        products.push(newProduct)
         
-        writeJson(products)
-        /* res.send(products) */
         res.redirect(`/detalleDeProducto/${newProduct.id}`)
     }else{
         res.render('admin/agregar', {
@@ -100,9 +102,9 @@ module.exports = {
     }
 },
         
-    agregar: (req, res) => {
+    /* agregar: (req, res) => {
         res.render('admin/agregar')
-    },
+    }, */
 
     filtroEditar: (req, res) => {
         let lista = ["error"]

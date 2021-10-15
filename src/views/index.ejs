@@ -4,6 +4,8 @@
 <body>
     <%- include("partials/header.ejs") %> 
     <main>
+        <p><%= products[1].images[0].image %></p> 
+
         <%function random(min, max) {
             return Math.floor((Math.random() * (max - min + 1)) + min)
         }

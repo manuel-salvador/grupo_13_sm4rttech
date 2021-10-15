@@ -27,11 +27,10 @@
                         <h4>Categorias</h4>
                         <select name="category" id="category">
                             <option selected hidden value="">Categorias...</option>
-                            <option value="celulares" <%= locals.old && old.category == "celulares" ? "selected" : null %>>Celulares</option>
-                            <option value="televisores" <%= locals.old && old.category == "televisores" ? "selected" : null %>>Televisores</option>
-                            <option value="tablets" <%= locals.old && old.category == "tablets" ? "selected" : null %>>Tablets</option>
-                            <option value="gaming" <%= locals.old && old.category == "gaming" ? "selected" : null %>>Gaming</option>
-                            <option value="pc" <%= locals.old && old.category == "pc" ? "selected" : null %>>PC</option>
+                            <% categorias.forEach(categoria => { %>
+                                <option value="<%= categoria.id %>"  <%= locals.old && old.categoria.category == categoria.category ? "selected" : null %>><%= categoria.category %></option>
+                            <% }) %> 
+
                         </select>
                         <% if (locals.errors && errors.category) { %> <!-- busca en las variables de nuestra aplicacion -->
                          <small class="text-danger"> <%= errors.category.msg %>  </small>
@@ -41,14 +40,10 @@
                         <h4>marcas</h4>
                         <select name="marca" id="">
                             <option selected hidden value="">Marcas...</option>
-                            <option value="aorus" <%= locals.old && old.marca == "aorus" ? "selected" : null %>>Aorus</option>
-                            <option value="apple" <%= locals.old && old.marca == "apple" ? "selected" : null %>>Apple</option>
-                            <option value="asus" <%= locals.old && old.marca == "asus" ? "selected" : null %>>Asus</option>
-                            <option value="hp" <%= locals.old && old.marca == "hp" ? "selected" : null %>>HP</option>
-                            <option value="lenovo" <%= locals.old && old.marca == "lenovo" ? "selected" : null %>>Lenovo</option>
-                            <option value="lg" <%= locals.old && old.marca == "lg" ? "selected" : null %>>LG</option>
-                            <option value="samsung" <%= locals.old && old.marca == "samsung" ? "selected" : null %>>Samsung</option>
-                            <option value="toshiba" <%= locals.old && old.marca == "toshiba" ? "selected" : null %>>Toshiba</option>
+                            <% marcas.forEach(marca => { %>
+                                <option value="<%= marca.id %>" <%= locals.old && old.marca.brand == marca.brand ? "selected" : null %>><%= marca.brand %> </option>
+                            <% }) %>
+
                         </select>
                         <% if (locals.errors && errors.marca) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.marca.msg %>  </small>
@@ -72,74 +67,36 @@
                         <h4>Tamaño de pantalla</h4>
                         <select name="tamaño" id="tamaño">
                             <option selected hidden value="">Pulgadas...</option>
-                            <option value="7''" <%= locals.old && old.tamaño == "7''" ? "selected" : null %>>7"</option>
-                            <option value="8.7''" <%= locals.old && old.tamaño == "8.7''" ? "selected" : null %>>8.7"</option>
-                            <option value="10''" <%= locals.old && old.tamaño == "10''" ? "selected" : null %>>10"</option>
-                            <option value="10.1''" <%= locals.old && old.tamaño == "10.1''" ? "selected" : null %>>10.1"</option>
-                            <option value="10.2''" <%= locals.old && old.tamaño == "10.2''" ? "selected" : null %>>10.2"</option>
-                            <option value="10.3''" <%= locals.old && old.tamaño == "10.3''" ? "selected" : null %>>10.3"</option>
-                            <option value="10.4''" <%= locals.old && old.tamaño == "10.4''" ? "selected" : null %>>10.4"</option>
-                            <option value="10.9''" <%= locals.old && old.tamaño == "10.9''" ? "selected" : null %>>10.9"</option>
-                            <option value="11''" <%= locals.old && old.tamaño == "11''" ? "selected" : null %>>11"</option>
-                            <option value="11.6''" <%= locals.old && old.tamaño == "11.6''" ? "selected" : null %>>11.6"</option>
-                            <option value="13''" <%= locals.old && old.tamaño == "13''" ? "selected" : null %>>13"</option>
-                            <option value="13.3''" <%= locals.old && old.tamaño == "13.3''" ? "selected" : null %>>13.3"</option>
-                            <option value="13.4''" <%= locals.old && old.tamaño == "13.4''" ? "selected" : null %>>13.4"</option>
-                            <option value="13.5''" <%= locals.old && old.tamaño == "13.5''" ? "selected" : null %>>13.5"</option>
-                            <option value="13.8''" <%= locals.old && old.tamaño == "13.8''" ? "selected" : null %>>13.8"</option>
-                            <option value="14''" <%= locals.old && old.tamaño == "14''" ? "selected" : null %>>14"</option>
-                            <option value="14.1''" <%= locals.old && old.tamaño == "14.1''" ? "selected" : null %>>14.1"</option>
-                            <option value="15.6''" <%= locals.old && old.tamaño == "15.6''" ? "selected" : null %>>15.6"</option>
-                            <option value="24''" <%= locals.old && old.tamaño == "24''" ? "selected" : null %>>24"</option>
-                            <option value="32''" <%= locals.old && old.tamaño == "32''" ? "selected" : null %>>32"</option>
-                            <option value="40''" <%= locals.old && old.tamaño == "40''" ? "selected" : null %>>40"</option>
-                            <option value="42''" <%= locals.old && old.tamaño == "42''" ? "selected" : null %>>42"</option>
-                            <option value="43''" <%= locals.old && old.tamaño == "43''" ? "selected" : null %>>43"</option>
-                            <option value="49''" <%= locals.old && old.tamaño == "49''" ? "selected" : null %>>49"</option>
-                            <option value="50''" <%= locals.old && old.tamaño == "50''" ? "selected" : null %>>50"</option>
-                            <option value="55''" <%= locals.old && old.tamaño == "55''" ? "selected" : null %>>55"</option>
-                            <option value="58''" <%= locals.old && old.tamaño == "58''" ? "selected" : null %>>58"</option>
-                            <option value="60''" <%= locals.old && old.tamaño == "60''" ? "selected" : null %>>60"</option>
-                            <option value="65''" <%= locals.old && old.tamaño == "65''" ? "selected" : null %>>65"</option>
-                            <option value="70''" <%= locals.old && old.tamaño == "70''" ? "selected" : null %>>70"</option>
+                            <% tamaños.forEach(tamaño => { %>
+                                <option value="<%= tamaño.sizes %>" <%= locals.old && old.tamaño.sizes == tamaño.sizes ? "selected" : null %>><%= tamaño.sizes %></option>
+                            <% }) %>         
                         </select>
                     </div>
                     <div>
                         <h4>smart</h4>
                         <select name="smart" id="">
                             <option selected hidden value="">Seleccionar...</option>
-                            <option value="si" <%= locals.old && old.smart == "si" ? "selected" : null %>>Si</option>
-                            <option value="no" <%= locals.old && old.smart == "no" ? "selected" : null %>>No</option>
+                            <option value="1" <%= locals.old && old.smart == "1" ? "selected" : null %>>Si</option>
+                            <option value="0" <%= locals.old && old.smart == "0" ? "selected" : null %>>No</option>
                         </select>
                     </div>
                     <div>
                         <h4>capacidad</h4>
                         <select name="capacity" id="capacity">
                             <option selected hidden value="">GB</option>
-                            <option value="8" <%= locals.old && old.capacity == "8" ? "selected" : null %>>8GB</option>
-                            <option value="16" <%= locals.old && old.capacity == "16" ? "selected" : null %>>16GB</option>
-                            <option value="32" <%= locals.old && old.capacity == "32" ? "selected" : null %>>32GB</option>
-                            <option value="64" <%= locals.old && old.capacity == "64" ? "selected" : null %>>64GB</option>
-                            <option value="128" <%= locals.old && old.capacity == "128" ? "selected" : null %>>128GB</option>
-                            <option value="256" <%= locals.old && old.capacity == "256" ? "selected" : null %>>256GB</option>
-                            <option value="500" <%= locals.old && old.capacity == "500" ? "selected" : null %>>500GB</option>
-                            <option value="1tb" <%= locals.old && old.capacity == "1tb" ? "selected" : null %>>1TB</option>
+                            <% capacidades.forEach(capacidad => { %>
+                                <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacidad.capacity == capacidad.capacity ? "selected" : null %>><%= capacidad.capacity %></option>
+                            <% }) %>
                         </select>
                     </div>
                     <div class="apellido">
                         <h4>RAM</h4>
                         <select name="ram" id="ram">
                             <option selected hidden value="">GB</option>
-                            <option value="1" <%= locals.old && old.ram == "1" ? "selected" : null %>>1GB</option>
-                            <option value="1.5" <%= locals.old && old.ram == "1.5" ? "selected" : null %>>1.5GB</option>
-                            <option value="2" <%= locals.old && old.ram == "2" ? "selected" : null %>>2GB</option>
-                            <option value="4" <%= locals.old && old.ram == "4" ? "selected" : null %>>4GB</option>
-                            <option value="8" <%= locals.old && old.ram == "8" ? "selected" : null %>>8GB</option>
-                            <option value="12" <%= locals.old && old.ram == "12" ? "selected" : null %>>12GB</option>
-                            <option value="16" <%= locals.old && old.ram == "16" ? "selected" : null %>>16GB</option>
-                            <option value="20" <%= locals.old && old.ram == "20" ? "selected" : null %>>20GB</option>
-                            <option value="32" <%= locals.old && old.ram == "32" ? "selected" : null %>>32GB</option>
-                            <option value="64" <%= locals.old && old.ram == "64" ? "selected" : null %>>64GB</option>
+                            <% rams.forEach(ram => { %>
+                                <option value="<%= ram.ram_id %>" <%= locals.old && old.ram.ram == ram.ram ? "selected" : null %>><%= ram.ram %></option>
+                            <% }) %>
+                            
                         </select>
                     </div>
                     <section class="img-coment">

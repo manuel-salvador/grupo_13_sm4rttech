@@ -1,4 +1,6 @@
+const db = require('../database/models')
 let { products } = require('../data/dataBase');
+const Product = require('../database/models/Product');
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
@@ -103,46 +105,56 @@ module.exports = {
   categoria: (req, res) => {
     let categoria = req.params.categoria
 
-    let productsFiltrados = products.filter(product => product.category.toLowerCase() == categoria.toLowerCase())
+    // let productsFiltrados = products.filter(product => product.category.toLowerCase() == categoria.toLowerCase())
 
+    db.Product.findAll({
+      where: {
+        category_id: categoria
+      },
+      include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+      {association: "capacities"}, {association: "images"}, {association:"rams"},
+      {association: "sizes"}]
+    })
+    .then(productsFiltrados => {
+      
     // Aca va el filtro para obtener los filtros
     var claves = []
     function obtenerFiltros (list){ 
     
      list.forEach(objeto => {
-         let getKeys = Object.keys(objeto);
-    
+         let getKeys = Object.keys(objeto.dataValues);
          for(var clave of getKeys){
-             if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
-                 claves.push(clave)
-             } 
-         }
-    
-     })
-
-     claves = claves.filter(clave => {
-      count = 0
-      list.forEach(producto => {
-        if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
-          count++
+           if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
+             claves.push(clave)
+            } 
+          }
+          
+        })
+        
+        claves = claves.filter(clave => {
+          count = 0
+          list.forEach(producto => {
+            if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
+              count++
         }
       })
       if(count != list.length){return true}
-     })
+    })
     
-     return claves
+    console.log(list[0]._options.includeNames);
+    return claves
     
     }
 
     obtenerFiltros(productsFiltrados)
 
-
-    
     res.render('listadoProductos', {
       lista: productsFiltrados,
-      busqueda: categoria,
+      busqueda: productsFiltrados[0].category.dataValues.category,
       claves
     })
+  })
+    
 
   }
 }

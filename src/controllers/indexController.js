@@ -6,17 +6,13 @@ module.exports = {
         /* res.render('index',
         {products}) */
 
-
-        //Trae producto con categorias
-
         db.Product.findAll({
             include: [{association: "category"}, {association: "colores"}, {association: "brand"},
-        {association: "capacities"}, {association: "image"}]
+        {association: "capacities"}, {association: "images"}, {association:"rams"},
+        {association: "sizes"}]
         })
-        .then( productos => {
-            
-
-            res.send(productos)
+        .then( products => {
+            res.render('index', {products}) 
         })
 
 

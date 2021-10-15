@@ -1,13 +1,13 @@
 module.exports = function(sequelize, dataTypes){
-    let alias = "size";
+    let alias = "Size";
     let cols = {
-        color_id: {
+        size_id: {
             type: dataTypes.INTEGER(11),
             primaryKey:true,
             autoIncrement:true,
             allowNull:false
         },
-        size: {
+        sizes: {
             type: dataTypes.STRING(30),
             unique: true
         }
@@ -16,22 +16,22 @@ module.exports = function(sequelize, dataTypes){
         tablename: "sizes",
         timestamps: false
     }
-    const size = sequelize.define(alias, cols, config)
+    const Size = sequelize.define(alias, cols, config)
 
-    size.associate = modelos =>{
-        size.belongsToMany(modelos.Product, {
-            as:"size",
+    Size.associate = modelos =>{
+        Size.belongsToMany(modelos.Product, {
+            as:"product",
             through:"size_products",
             foreignKey:"size_id",
             otherKey:"product_id",
             timestamps: false
         })
 
-        size.hasMany(modelos.sizeProduct, {
+        Size.hasMany(modelos.SizeProduct, {
             as:'sizeName',
             foreignKey:'size_id',
         })
     }
 
-    return size
+    return Size
 }

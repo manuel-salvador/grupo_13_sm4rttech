@@ -44,7 +44,7 @@
                     <% }) %> >
                         <a href="/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                <img src="/images/products/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">
                             </div>
                             <div class="description">
                                 <h3><%= product.name %></h3>

@@ -50,14 +50,14 @@ module.exports = function(sequelize, dataTypes){
             otherKey: "capacity_id",
             timestamps: false
         })
-        Product.belongsToMany(modelos.ram, {
+        Product.belongsToMany(modelos.Ram, {
             as: "rams",
             through: "ram_products",
             foreignKey: "product_id",
             otherKey: "ram_id",
             timestamps: false
         })
-        Product.belongsToMany(modelos.size, {
+        Product.belongsToMany(modelos.Size, {
             as: "sizes",
             through: "size_products",
             foreignKey: "product_id",
@@ -87,15 +87,15 @@ module.exports = function(sequelize, dataTypes){
         })
 
         Product.hasMany(modelos.ProductImage, {
-            as: "image",
+            as: "images",
             foreignKey: "product_id"
         })
         
-        Product.hasMany(modelos.ramProduct, {
+        Product.hasMany(modelos.RamProduct, {
             as: "ram",
             foreignKey: "ram_id"
         })
-        Product.hasMany(modelos.sizeProduct, {
+        Product.hasMany(modelos.SizeProduct, {
             as: "size",
             foreignKey: "size_id"
         })
