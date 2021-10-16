@@ -5,7 +5,6 @@ let productsTelevisores = products.filter(product => product.category.toLowerCas
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
 let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
-let db = require("../database/models")
 
 module.exports = {
   producto: (req, res) => {
@@ -142,7 +141,6 @@ module.exports = {
       if(count != list.length){return true}
     })
     
-    console.log(list[0]._options.includeNames);
     return claves
     
     }

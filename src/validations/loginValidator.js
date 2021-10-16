@@ -10,16 +10,16 @@ module.exports = [
     .withMessage("El Email es invalido"),
 
   
-    body("custom")
+    body("login")
     .custom((value, { req }) => {/*genera una propiedad */
         return db.User.findOne({
           where: {                  /**encuentra usuario */
             email: req.body.email,
           },
         })
-          .then((user) => {                 /*se captura el resultado de la promesa*/
-            if (!bcrypt.compareSync(req.body.pass, user.dataValues.pass)) {  /*compara la contraseña del body y la de la base de datos*/
-              return Promise.reject();
+          .then((user) => {   
+            if (req.body.pass != user.dataValues.pass) {  /*compara la contraseña del body y la de la base de datos*/
+              return Promise.reject("No coiciden las contraseñas");
             }
           })
           .catch((error) => {

@@ -15,6 +15,7 @@ module.exports = {
             res.render('index', {products}) 
         })
 
+    
 
         // Trae colores
 

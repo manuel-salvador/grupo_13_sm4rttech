@@ -21,7 +21,7 @@ module.exports = [
     body('email')
     .custom(value => {
       /*  let user = users.find(user => user.email === value)*/
-      returndb.user.findOne({
+      return db.user.findOne({
           where:{
               email:value
           }          

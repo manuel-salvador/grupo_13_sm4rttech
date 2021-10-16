@@ -110,7 +110,8 @@ module.exports = {
                 where: {
                   email: req.body.email,
                 },
-              }).then((user) => {
+              }).then((user)=> {
+                console.log(user);
                 req.session.user = {
                 id:user.id,
                 name:user.name,
