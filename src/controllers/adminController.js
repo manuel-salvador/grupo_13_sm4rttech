@@ -155,6 +155,9 @@ module.exports = {
 
 /*traer la vista con el producto a editar*/
     editar: (req, res) => {
+        db.Product.findOne(req.product, {
+            include:[{association:"ram_product"}, {association:"colors"},{association:"sizes"},{association:"capacities"}]
+        })
 		let product = products.find(product => product.id === +req.params.id)
 		res.render('admin/editar', {
 			product
