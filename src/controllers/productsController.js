@@ -19,6 +19,20 @@ module.exports = {
       })
     }, 1000)
   },
+  detalleDeProducto: (req, res) => {
+
+    db.Product.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+        {association: "capacities"}, {association: "images"}, {association:"rams"},
+        {association: "sizes"}]
+    })
+    .then(product => {
+      res.render('detalleDeProducto', {product})
+    })
+  },
   buscar: (req, res) => {
     let busqueda = req.query.buscar
 

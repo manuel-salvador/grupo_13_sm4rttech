@@ -28,7 +28,7 @@
                         <select name="category" id="category">
                             <option selected hidden value="">Categorias...</option>
                             <% categorias.forEach(categoria => { %>
-                                <option value="<%= categoria.id %>"  <%= locals.old && old.categoria.category == categoria.category ? "selected" : null %>><%= categoria.category %></option>
+                                <option value="<%= categoria.id %>"  <%= locals.old && old.category == categoria.id ? "selected" : null %>><%= categoria.category %></option>
                             <% }) %> 
 
                         </select>
@@ -37,55 +37,55 @@
                         <% } %>
                     </div>
                     <div>
-                        <h4>marcas</h4>
+                        <h4>Marcas</h4>
                         <select name="marca" id="">
-                            <option selected hidden value="">Marcas...</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% marcas.forEach(marca => { %>
-                                <option value="<%= marca.id %>" <%= locals.old && old.marca.brand == marca.brand ? "selected" : null %>><%= marca.brand %> </option>
+                                <option value="<%= marca.brand_id %>" <%= locals.old && old.marca == marca.brand_id ? "selected" : null %>><%= marca.brand %> </option>
                             <% }) %>
 
                         </select>
                         <% if (locals.errors && errors.marca) { %> <!-- busca en las variables de nuestra aplicacion -->
-                            <small class="text-danger"> <%= errors.marca.msg %>  </small>
-                           <% } %>
+                            <small class="text-danger"><%= errors.marca.msg %></small>
+                        <% } %>
                     </div>
                     <div>
-                        <h4>precio</h4>
+                        <h4>Precio</h4>
                         <input class="input-style" type="text" id="price" name="price" placeholder="$" value="<%= locals.old && old.price %>" autocomplete="off">
                         <% if (locals.errors && errors.price) { %> <!-- busca en las variables de nuestra aplicacion -->
-                            <small class="text-danger"> <%= errors.price.msg %>  </small>
-                           <% } %>
+                            <small class="text-danger"><%= errors.price.msg %></small>
+                        <% } %>
                     </div>
                     <div class="name">
-                        <h4>nombre del producto</h4>
+                        <h4>Nombre del producto</h4>
                         <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
                         <% if (locals.errors && errors.name) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.name.msg %>  </small>
-                           <% } %>
+                        <% } %>
                     </div>
                     <div>
                         <h4>Tamaño de pantalla</h4>
                         <select name="tamaño" id="tamaño">
-                            <option selected hidden value="">Pulgadas...</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% tamaños.forEach(tamaño => { %>
-                                <option value="<%= tamaño.sizes %>" <%= locals.old && old.tamaño.sizes == tamaño.sizes ? "selected" : null %>><%= tamaño.sizes %></option>
+                                <option value="<%= tamaño.size_id %>" <%= locals.old && old.tamaño == tamaño.size_id ? "selected" : null %>><%= tamaño.sizes %></option>
                             <% }) %>         
                         </select>
                     </div>
                     <div>
-                        <h4>smart</h4>
+                        <h4>Smart</h4>
                         <select name="smart" id="">
-                            <option selected hidden value="">Seleccionar...</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <option value="1" <%= locals.old && old.smart == "1" ? "selected" : null %>>Si</option>
                             <option value="0" <%= locals.old && old.smart == "0" ? "selected" : null %>>No</option>
                         </select>
                     </div>
                     <div>
-                        <h4>capacidad</h4>
+                        <h4>Capacidad</h4>
                         <select name="capacity" id="capacity">
-                            <option selected hidden value="">GB</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% capacidades.forEach(capacidad => { %>
-                                <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacidad.capacity == capacidad.capacity ? "selected" : null %>><%= capacidad.capacity %></option>
+                                <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacity == capacidad.capacity_id ? "selected" : null %>><%= capacidad.capacity %></option>
                             <% }) %>
                         </select>
                     </div>
@@ -94,7 +94,7 @@
                         <select name="ram" id="ram">
                             <option selected hidden value="">GB</option>
                             <% rams.forEach(ram => { %>
-                                <option value="<%= ram.ram_id %>" <%= locals.old && old.ram.ram == ram.ram ? "selected" : null %>><%= ram.ram %></option>
+                                <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == ram.ram_id ? "selected" : null %>><%= ram.ram %></option>
                             <% }) %>
                             
                         </select>
@@ -104,10 +104,10 @@
                         <h4>Imagenes</h4>
                         <input class="input-file" type="file" multiple="" name="image" id="image">
                     </div>
-                    <h4>descripción</h4>
+                    <h4>Descripción</h4>
                     <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %></textarea>
                     <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
-                        <small class="text-danger"> <%= errors.description.msg %>  </small>
+                        <small class="text-danger"><%= errors.description.msg %></small>
                        <% } %>
             </section>
             <div class="botones-confirm">
