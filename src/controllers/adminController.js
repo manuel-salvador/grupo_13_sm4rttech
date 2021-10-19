@@ -188,10 +188,14 @@ module.exports = {
 
 /*traer la vista con el producto a editar*/
     editar: (req, res) => {
-		let product = products.find(product => product.id === +req.params.id)
-		res.render('admin/editar', {
-			product
-		})
+        db.Product.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(product =>{
+            res.render('admin/editar', {product})
+        })
 	},
     actualizar: (req, res) => {
         let errors = validationResult(req)
