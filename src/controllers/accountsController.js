@@ -108,7 +108,7 @@ module.exports = {
         if(errors.isEmpty()){
             db.User.findOne({
                 where: {
-                  email: req.body.email,
+                  email: req.body.email,    /*trae el mail que coincida con el mail del body */
                 },
               }).then((user) => {
                 req.session.user = {
@@ -116,10 +116,6 @@ module.exports = {
                 name:user.name,
                 lastname:user.last_name,
                 email:user.email,
-                /*pais: user.pais,
-                province:user.province,
-                localidad:user.localidad,
-                cp:user.cp,*/
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
                 };
@@ -166,7 +162,7 @@ module.exports = {
                 /*creacion de usuario*/
         if (errors.isEmpty()) {
 
-            let {name,lastname,email,pass1} = req.body;
+            let {name,last_name,email,pass1} = req.body;
 
             db.user.create({    /*trae la base de datos*/
                     name,
@@ -177,7 +173,7 @@ module.exports = {
                     rol:0,
             }) 
               .then(() => {
-                res.redirect("/users/login");
+                res.redirect("/accounts/login");
               })
               .catch((err) => console.log(err));
 
@@ -191,7 +187,12 @@ module.exports = {
         }
 
     }
-    }    
+    }
+
+    
+    
+
+
       
     
         
