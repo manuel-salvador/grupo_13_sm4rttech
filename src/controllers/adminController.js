@@ -187,66 +187,62 @@ module.exports = {
     },
 
 /*traer la vista con el producto a editar*/
-    editar: (req, res) => {
-        db.Product.findOne(req.product, {
-            include:[{association:"ram_product"}, {association:"colors"},{association:"sizes"},{association:"capacities"}]
-        })
-		let product = products.find(product => product.id === +req.params.id)
-		res.render('admin/editar', {
-			product
-		})
-	},
-    actualizar: (req, res) => {
-        let errors = validationResult(req)
+editar: (req, res) => {
+    let product = db.Product.findOne({
+        where: {
+            id: req.params.id,
+        }, include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+        {association: "capacities"}, {association: "images"}, {association:"rams"},
+        {association: "sizes"}]},
+        )
+    let categorias = db.Category.findAll()
+    let marcas = db.Brand.findAll()
+    let tamaños = db.Size.findAll()
+    let capacidades = db.Capacity.findAll()
+    let rams = db.Ram.findAll()
 
-        if(errors.isEmpty()){
-
+    Promise.all([product, categorias, marcas, tamaños, capacidades, rams])
+    .then(([product, categorias, marcas, tamaños, capacidades, rams]) => {
+        res.render('admin/editar', {product, categorias, marcas, tamaños, capacidades, rams})
+    })
+},
+actualizar: (req, res) => {
+    let product = db.Product.findOne({
+        where: {
+            id: req.params.id,
+        }, include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+        {association: "capacities"}, {association: "images"}, {association:"rams"},
+        {association: "sizes"}]},
+        )
         const {
-       
-            category,
-            marca,
-            price,
-            name,
-            tamaño,
-            smart,
-            capacity,
-            ram,
-            image,
-            description
-        } = req.body
+        category,
+        marca,
+        price,
+        name,
+        tamaño,
+        smart,
+        capacity,
+        ram,
+        image,
+        description = descriptionReplaced
+    } = req.body
 
-       
-        /**recorrimos el arrays y modificamos el product */
-        products.forEach(product=>{
-            if(product.id == + req.params.id){
-                product.name= (name == undefined) ? "" : name,
-                product.category= (category == undefined) ? "" : category,
-                product.marca= (marca == undefined) ? "" : marca,
-                product.tamaño= (tamaño == undefined) ? "" : tamaño,
-                product.smart= (smart == undefined) ? "" : smart,
-                product.capacity= (capacity == undefined) ? "" : capacity,
-                product.ram= (ram == undefined) ? "" : ram,
-                product.price= (price == undefined) ? "" : price,
-                product.description= (description == undefined) ? "" : description
-                product.image = req.file ? req.file.filename : product.image
-                
-            }
+    db.Product.update(
+            {
+                    /* category_id: Number(category), */
+                    name
+                    /* price: Number(price),
+                    brand_id: Number(marca),
+                    smart: Number(smart),
+                    description */
             
-        })
-        writeJson(products)
-       res.redirect(`/detalledeProducto/${req.params.id}`)
-    } else {
-        let product = products.find(product => product.id === +req.params.id)
+            })
+        .then(()=> {
+            return res.redirect(`/products/detalleDeProducto/${product.id}`)
+        .catch(error => res.send(error))
+    })
 
-        res.render('admin/editar', {
-            product,
-            errors: errors.mapped(),
-            old: req.body
-        })
-
-    }
-
-    },
+},
     //eliminar un producto
     destroy:(req,res)=>{
         let product= products.find(product => product.id === +req.params.id)
