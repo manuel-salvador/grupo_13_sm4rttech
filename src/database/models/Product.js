@@ -25,6 +25,9 @@ module.exports = function(sequelize, dataTypes){
         },
         smart: {
             type: dataTypes.BOOLEAN
+        },
+        description: {
+            type: dataTypes.STRING(800)
         }
     }
     let config = {
@@ -65,7 +68,7 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        Product.hasMany(modelos.ColorProduct, {
+        Product.hasMany(modelos.Color_Product, {
             as: "product",
             foreignKey: "product_id",
             timestamps: false
@@ -81,21 +84,21 @@ module.exports = function(sequelize, dataTypes){
             foreignKey: "brand_id",
         })
 
-        Product.hasMany(modelos.CapacityProduct, {
+        Product.hasMany(modelos.Capacity_Product, {
             as: "capacity",
             foreignKey: "capacity_id"
         })
 
-        Product.hasMany(modelos.ProductImage, {
+        Product.hasMany(modelos.Product_Image, {
             as: "images",
             foreignKey: "product_id"
         })
         
-        Product.hasMany(modelos.RamProduct, {
+        Product.hasMany(modelos.Ram_Product, {
             as: "ram",
             foreignKey: "ram_id"
         })
-        Product.hasMany(modelos.SizeProduct, {
+        Product.hasMany(modelos.Size_Product, {
             as: "size",
             foreignKey: "size_id"
         })
