@@ -39,6 +39,10 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER(11),
                        
         },
+        avatar:{
+            type: dataTypes.STRING(100),
+            allowNull: false
+        }
         
              
         
@@ -55,10 +59,7 @@ module.exports = function(sequelize, dataTypes){
             as:"direccion",
             foreignKey:"address_id"
         })
-        User.hasMany(models.Avatar_user,{
-            as:"avatar",
-            foreignKey:"user_id"
-        })
+       
     }
     return User;
     }
