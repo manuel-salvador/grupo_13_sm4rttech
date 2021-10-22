@@ -20,17 +20,15 @@ module.exports = [
 
     body('email')
     .custom(value => {
-      /*  let user = users.find(user => user.email === value)*/
-      return db.user.findOne({
-          where:{
-              email:value
+      return db.User.findOne({   /* */
+          where:{                      /*busca el usuario en la base de datos*/
+              email:value  
           }          
       })
       .then(user={
-          if(user){
-              return Promise.reject("ya existe este mail")
-
-          }
+            if(user){
+              return Promise.reject("ya existe este mail")/*si se encuentra el usuario retorna error */
+            }
           })
       }),
     

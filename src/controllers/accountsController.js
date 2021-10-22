@@ -20,10 +20,10 @@ module.exports = {
     },
 
     profile: (req, res) => {
-            db.User.findBypk(req.session.user.id,{
+            db.User.findBypk(req.session.user.id,{  
              include:[{association:"direccion"}]  
             }).then((user)=>{
-              res.render("userPrfile",{
+              res.render("userProile",{
                 user,
                 session:req.session,
               });
@@ -34,40 +34,18 @@ module.exports = {
     profileEdit:(req,res)=>{
       db.User.findBypk(req.session.user.id,{  /*trae el usuario de la base de datos */
       include:[{association:"direccion"}]  
-     }).then((user)=>{   
+     }).then((user)=>{  
+       res.send(user) 
         res.render("userProfileEdit",{
           user,
           session:req.session
         });
       });
-      
     },
     updateProfile:(req,res)=>{
         let errors= validationResult(req)
+
         if(errors.isEmpty()){
-            let user=users.find(user=>user.email=== req.body.email) 
-            let {
-                
-                name,                       
-                lastname,
-                date,
-                localidad,
-                cp,
-                province,
-                pais
-                }=req.body
-            
-            user.name=name
-            user.lastname=lastname
-            user.date=date
-            user.pais=pais
-            user.localidad=localidad
-            user.cp=cp
-            user.province=province
-            user.avatar=req.file ? req.file.filename:user.avatar
-           
-        if(errors.isEmpty()){
-          /*let user=users.find(user=>user.email=== req.body.email) */
           let{name,last_name,localidad,cp,province,pais}=req.body
           db.User.update({ /*verifica  */
             name,                       
@@ -101,26 +79,21 @@ module.exports = {
                 session:req.session
             })
         }
-      }
-    },
-    processLogin:(req,res)=>{
+      },
+     processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
             db.User.findOne({
                 where: {
-                  email: req.body.email,
-                },
-              }).then((user)=> {
-                console.log(user);
+                  email: req.body.email,    /*trae el mail que coincida con el mail del body */
+                }
+              })
+              .then((user) => {
                 req.session.user = {
                 id:user.id,
                 name:user.name,
                 lastname:user.last_name,
                 email:user.email,
-                /*pais: user.pais,
-                province:user.province,
-                localidad:user.localidad,
-                cp:user.cp,*/
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
                 };
@@ -167,18 +140,19 @@ module.exports = {
                 /*creacion de usuario*/
         if (errors.isEmpty()) {
 
+
             let {name,lastname,email,pass1} = req.body;
 
-            db.user.create({    /*trae la base de datos*/
+            db.User.create({    /*trae la base de datos*/
                     name,
-                    last_name,
+                    last_name: lastname,
                     email,
                     pass : bcrypt.hashSync(pass1, 12),
-                    avatar : req.file ? req.file.filename : "/UserAvatar/default-user-profile.png", 
-                    rol:0,
+                    avatar : "default-user-profile.png", 
+                    rol:2,
             }) 
               .then(() => {
-                res.redirect("/users/login");
+                res.redirect("/accounts/login");
               })
               .catch((err) => console.log(err));
 
@@ -192,7 +166,11 @@ module.exports = {
         }
 
     }
-    }    
+    }
+    
+    
+
+
       
     
         
