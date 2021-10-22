@@ -10,17 +10,17 @@ module.exports = [
     .withMessage("El Email es invalido"),
 
   
-    body("email")
-    .custom((value, { req }) => {/*genera una propiedad */
+    body("custom")
+    .custom((value, { req }) => {/*genera una propiedad  y dentro de esa propiedad, si hay errores se muestran en el pauete de errores del express validator */
         return db.User.findOne({
           where: {                  /**encuentra usuario */
             email: req.body.email
           }
         })
           .then((user) => {  
-             return user              /*se captura el resultado de la promesa*/
-            /*if (!bcrypt.compareSync(req.body.pass, user.dataValues.pass)) {  /*compara la contraseña del body y la de la base de datos*/
-              return Promise.reject();
+                                  /*se captura el resultado de la promesa*/
+            if (!bcrypt.compareSync(req.body.pass,user.dataValues.pass)){   /*compara la contraseña del body y la de la base de datos*/
+              return Promise.reject()}
             
           })
           .catch((error) => {
@@ -35,7 +35,7 @@ module.exports = [
             }
           })
             .then((user) => {  
-               return (!bcrypt.compareSync(req.body.pass, user.dataValues.pass))
+               return (!bcrypt.compareSync(req.body.pass, user.dataValues.pass))/**si no coinciden las contraseñas se genera un error*/
                 return Promise.reject();
               
             })

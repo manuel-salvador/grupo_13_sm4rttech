@@ -20,8 +20,7 @@ module.exports = [
 
     body('email')
     .custom(value => {
-      /*let user = users.find(user => user.email === value)*/
-      return db.user.findOne({   /* */
+      return db.User.findOne({   /* */
           where:{                      /*busca el usuario en la base de datos*/
               email:value  
           }          
