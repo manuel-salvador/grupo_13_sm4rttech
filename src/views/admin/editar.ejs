@@ -23,28 +23,21 @@
 
                     <section class="caja-central-form">
                         <h2>EDITAR PRODUCTOS</h2>
-                        <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST">
                             <section class="datos-usuarios">
                                 <div>
                                     <h4>Categorias</h4>
                                     <select name="category" id="">
                                         <option selected hidden value="">Categoria</option>
                                         <% categorias.forEach(categoria => { %>
-                                            <option value="<%= categoria.id %>"  <%= locals.old && old.category == categoria.id ? "selected" : null %>><%= categoria.category %></option>
+                                            <option value="<%= categoria.id %>" <%- product.category_id == categoria.category_id ? "selected" : "" %>><%= categoria.category %></option>
                                         <% }) %>
                                     </select>
-                                    <% if (locals.errors && errors.category) { %>
-                                        <!-- busca en las variables de nuestra aplicacion -->
-                                        <small class="text-danger">
-                                            <%= errors.category.msg %>
-                                        </small>
-                                        <% } %>
                                 </div>
                                 <div>
                                     <h4>marcas</h4>
                                     <select name="marca" id="">
-                                        <option selected hidden>Marca...</option>
+                                        <option selected hidden>Marca</option>
                                         <% marcas.forEach(marca => { %>
                                             <option value="<%= marca.id %>" <%- product.brand_id == marca.brand_id ? "selected" : "" %>><%= marca.brand %></option>
                                         <% }) %>

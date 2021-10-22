@@ -214,35 +214,85 @@ actualizar: (req, res) => {
         {association: "capacities"}, {association: "images"}, {association:"rams"},
         {association: "sizes"}]},
         )
-        const {
-        category,
-        marca,
-        price,
-        name,
-        tamaño,
-        smart,
-        capacity,
-        ram,
-        image,
-        description = descriptionReplaced
-    } = req.body
+    let categorias = db.Category.findAll()
+    let marcas = db.Brand.findAll()
+    let tamaños = db.Size.findAll()
+    let capacidades = db.Capacity.findAll()
+    let rams = db.Ram.findAll()
 
-    db.Product.update(
-            {
-                    /* category_id: Number(category), */
-                    name
-                    /* price: Number(price),
-                    brand_id: Number(marca),
-                    smart: Number(smart),
-                    description */
-            
-            })
-        .then(()=> {
-            return res.redirect(`/products/detalleDeProducto/${product.id}`)
-        .catch(error => res.send(error))
+    Promise.all([product, categorias, marcas, tamaños, capacidades, rams])
+    .then(([product, categorias, marcas, tamaños, capacidades, rams]) => {
+        res.render('admin/editar', {product, categorias, marcas, tamaños, capacidades, rams})
     })
+        const {
+            category,
+            marca,
+            price,
+            name,
+            tamaño,
+            smart,
+            capacity,
+            ram,
+            description = descriptionReplaced
+        } = req.body
 
-},
+        
+        
+        db.Product.update({
+            category,
+            marca,
+            price,
+            name,
+            tamaño,
+            smart,
+            capacity,
+            ram,
+            description
+        },{
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(product => {
+            
+
+            if(product && capacity){
+                db.Size_Product.update({
+                    size_id: Number(capacity),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && tamaño){
+                db.Size_Product.update({
+                    size_id: Number(tamaño),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && capacity){
+                db.Capacity_Product.update({
+                    capacity_id: Number(capacity),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && ram){
+                db.Ram_Product.update({
+                    ram_id: Number(ram),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && !image){
+                db.Product_Image.update({
+                    image: 'logo-sm4rttech.png',
+                    product_id: product.id
+                })
+            }
+            
+        })
+        res.redirect(`/products/detalleDeProducto/${product.id}`)
+        
+        
+    },
+    
     //eliminar un producto
     destroy:(req,res)=>{
         let product= products.find(product => product.id === +req.params.id)

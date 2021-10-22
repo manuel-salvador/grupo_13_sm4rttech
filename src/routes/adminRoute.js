@@ -38,7 +38,7 @@ router.post('/editar', filtrarEditar)
 
 
 router.get('/editar/:id', usersAdminCheck, editar)
-router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
+router.put('/editar/:id', agregarValidator, actualizar)
 
 /*delete */
 router.delete('/delete/:id', destroy);
