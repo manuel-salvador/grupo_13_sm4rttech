@@ -210,7 +210,7 @@ module.exports = {
 
     },
     //eliminar un producto
-    destroy:(req,res)=>{
+  /*  destroy:(req,res)=>{
         let product= products.find(product => product.id === +req.params.id)
         products.forEach(product =>{
             if(product.id === +req.params.id){
@@ -221,10 +221,29 @@ module.exports = {
         })
         writeJson(products)
 
-        res.send(`has eliminado el producto ${product.name}`)
-    }
-   
-        
-            
-        
-}
+        res.send(`has eliminado el producto ${product.name}`)*/
+    productDestroy: (req, res) => {
+        db.ProductImages.findAll({
+          where: {
+            productId: req.params.id,
+          },
+        }).then((result) => {
+          result.forEach((image) => {
+            fs.existsSync("./public/images/productos/", image.image)
+              ? fs.unlinkSync("./public/images/productos/" + image.image)
+              : console.log("-- No se encontró");
+          });
+          db.ProductImages.destroy({
+            where: {
+              productId: req.params.id,
+            },
+          }).then((result) => {
+            db.Products.destroy({
+              where: {
+                id: req.params.id,
+              },
+            }).then(res.redirect("/admin/products"));
+          });
+        });
+      },
+    };
