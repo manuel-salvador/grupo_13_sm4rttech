@@ -24,7 +24,7 @@ module.exports = function(sequelize, dataTypes){
 
         },
         pass: {
-            type: dataTypes.STRING(12),
+            type: dataTypes.STRING(200),
             allowNull: false
         },
         rol: {

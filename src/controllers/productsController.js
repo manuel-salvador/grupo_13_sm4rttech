@@ -25,13 +25,13 @@ module.exports = {
       where: {
         id: req.params.id
       },
-      include: [{association: "category"}, {association: "colores"}, {association: "brand"},
-        {association: "capacities"}, {association: "images"}, {association:"rams"},
-        {association: "sizes"}]
+      include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+      { association: "capacities" }, { association: "images" }, { association: "rams" },
+      { association: "sizes" }]
     })
-    .then(product => {
-      res.render('detalleDeProducto', {product})
-    })
+      .then(product => {
+        res.render('detalleDeProducto', { product })
+      })
   },
   buscar: (req, res) => {
     let busqueda = req.query.buscar
@@ -39,19 +39,19 @@ module.exports = {
     var lista = []
     function buscar(busqueda, db) {
 
-      if(!busqueda){
+      if (!busqueda) {
         lista = db
         return lista;
-      }else{
+      } else {
 
-        
+
         let keywords = busqueda.split(" ");
-        
+
         db.forEach(producto => {
-          
+
           let order = 0;
           var nombre = producto.name.toLowerCase().split(" ");
-          
+
           for (var word of keywords) {
             for (var palabra of nombre) {
               if (palabra == word.toLowerCase()) {
@@ -61,52 +61,52 @@ module.exports = {
               }
             }
           }
-          
+
           if (order > 0) {
-          lista.push({ order: order, ...producto })
-        }
-        
-      })
-      
-      lista.sort((a, b) => b.order - a.order)
+            lista.push({ order: order, ...producto })
+          }
+
+        })
+
+        lista.sort((a, b) => b.order - a.order)
+      }
+
+      return lista;
     }
-    
-    return lista;
-    }
-    
+
     buscar(busqueda, products)
-    
+
     // Aca va el filtro para obtener los filtros
     var claves = []
-    function obtenerFiltros (list){ 
-    
-     list.forEach(objeto => {
-         let getKeys = Object.keys(objeto);
-    
-         for(var clave of getKeys){
-             if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
-                 claves.push(clave)
-             } 
-         }
-    
-     })
+    function obtenerFiltros(list) {
 
+      list.forEach(objeto => {
+        let getKeys = Object.keys(objeto);
 
-     claves = claves.filter(clave => {
-      count = 0
-      lista.forEach(producto => {
-        if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
-          count++
+        for (var clave of getKeys) {
+          if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
+            claves.push(clave)
+          }
         }
+
       })
-      if(count != lista.length){return true}
-     })
-      
+
+
+      claves = claves.filter(clave => {
+        count = 0
+        lista.forEach(producto => {
+          if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
+            count++
+          }
+        })
+        if (count != lista.length) { return true }
+      })
+
       return claves
     }
-    
+
     obtenerFiltros(lista)
-    
+
     !busqueda ? busqueda = "Todos los productos" : "";
 
     //renderizo vista    
@@ -125,49 +125,57 @@ module.exports = {
       where: {
         category_id: categoria
       },
-      include: [{association: "category"}, {association: "colores"}, {association: "brand"},
-      {association: "capacities"}, {association: "images"}, {association:"rams"},
-      {association: "sizes"}]
+      include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+      { association: "capacities" }, { association: "images" }, { association: "rams" },
+      { association: "sizes" }]
     })
-    .then(productsFiltrados => {
-      
-    // Aca va el filtro para obtener los filtros
-    var claves = []
-    function obtenerFiltros (list){ 
-    
-     list.forEach(objeto => {
-         let getKeys = Object.keys(objeto.dataValues);
-         for(var clave of getKeys){
-           if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
-             claves.push(clave)
-            } 
+      .then(productsFiltrados => {
+
+        if (productsFiltrados.length == 0) {
+          res.render('listadoProductos', {
+            lista: productsFiltrados
+          })
+        } else {
+          // Aca va el filtro para obtener los filtros
+          var claves = []
+          function obtenerFiltros(list) {
+
+            list.forEach(objeto => {
+              let getKeys = Object.keys(objeto.dataValues);
+              for (var clave of getKeys) {
+                if (!claves.includes(clave) && clave != "order" && clave != "brand" && clave != "images" && clave != "category_id" && clave != "brand_id" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
+                  claves.push(clave)
+                }
+              }
+            })
+
+            claves = claves.filter(clave => {
+              count = 0
+              list.forEach(producto => {
+                if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
+                  count++
+                }
+              })
+              if (count != list.length) {
+                return true
+              }
+            })
+
+            return claves
+
           }
-          
-        })
-        
-        claves = claves.filter(clave => {
-          count = 0
-          list.forEach(producto => {
-            if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
-              count++
+
+          obtenerFiltros(productsFiltrados)
+
+          res.render('listadoProductos', {
+            lista: productsFiltrados,
+            busqueda: productsFiltrados[0].category.dataValues.category,
+            claves
+          })
         }
       })
-      if(count != list.length){return true}
-    })
-    
-    return claves
-    
-    }
 
-    obtenerFiltros(productsFiltrados)
 
-    res.render('listadoProductos', {
-      lista: productsFiltrados,
-      busqueda: productsFiltrados[0].category.dataValues.category,
-      claves
-    })
-  })
-    
 
   }
 }

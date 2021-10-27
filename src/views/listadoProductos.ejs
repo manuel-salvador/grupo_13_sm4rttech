@@ -5,25 +5,36 @@
     <body id="listado-productos">
         <%- include("partials/header.ejs") %>
         <main id="listado-productos">
+            <% if(lista.length == 0){ %>
+                <p>Por el momento no hay productos en esta categoria.</p>
+            <% } else{ %> 
             <aside class="filtros">
                 <h1 class="buscado"><%= busqueda %> </h1>
                 <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
                 <section class="lista-filtro">
                     <% if (claves.length != 0) {%> 
                         <h2>Filtros</h2>
-                        <% claves.forEach(clave => { %>
+                        <% claves.forEach(clavePrincipal => { %>
                             <dl class="filtro">
-                                <dt class="nombre-filtro"><%= clave %></dt>
+                                <dt class="nombre-filtro"><%= clavePrincipal %></dt>
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
-                                    <% let valor = producto[clave] ? producto[clave].toString() : ""; %> 
-                                    <% if(!count.includes(valor.toLowerCase()) && valor) { %> 
-                                        <dd>
-                                            <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor.toLowerCase() %>">
-                                            <label for="<%= valor %> "><%= valor %></label>
-                                        </dd>
-                                        <% valor ? count.push(valor.toLowerCase()) : ""; %> 
-                                    <% } %> 
+                                    <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
+                                    <% if(!count.includes(valor) && valor) { %> 
+                                            <% valor.forEach(atributo => { %>
+
+                                                <% let key = Object.keys(atributo.dataValues) %> 
+                                                <% let clave = key[1] %> </p>
+                                                <p><%= clave %></p>
+                                                <p><%= atributo.clave %></p> 
+
+                                                <dd>
+                                                    <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor %>">
+                                                    <label for="<%= valor %> "><%= valor.clave %></label>
+                                                </dd>
+                                            <% }) %>
+                                        <% } %> 
+                                        <% valor ? count.push(valor) : ""; %> 
                                 <% }) %> 
                             </dl>
                         <% }) %>   
@@ -54,6 +65,7 @@
                     </article> 
                 <% }) %> 
             </section>
+            <% } %> 
         </main>
     </body>
     <script src="/javaScripts/listadoProductos.js" defer></script>
