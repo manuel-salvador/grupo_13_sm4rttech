@@ -20,21 +20,18 @@
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
                                     <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
-                                    <% if(!count.includes(valor) && valor) { %> 
-                                            <% valor.forEach(atributo => { %>
-
-                                                <% let key = Object.keys(atributo.dataValues) %> 
-                                                <% let clave = key[1] %> </p>
-                                                <p><%= clave %></p>
-                                                <p><%= atributo.clave %></p> 
-
+                                    <% valor.forEach(atributo => { %>
+                                        <% let key = Object.keys(atributo.dataValues) %> 
+                                        <% let clave = key[1]%>
+                                        <% let atributoId = key[0] %> 
+                                        <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
                                                 <dd>
-                                                    <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor %>">
-                                                    <label for="<%= valor %> "><%= valor.clave %></label>
+                                                    <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
+                                                    <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
                                                 </dd>
+                                                <% atributo[clave] ? count.push(atributo[clave]) : ""; %> 
+                                                <% } %> 
                                             <% }) %>
-                                        <% } %> 
-                                        <% valor ? count.push(valor) : ""; %> 
                                 <% }) %> 
                             </dl>
                         <% }) %>   
@@ -45,13 +42,12 @@
                 <% lista.forEach(product => { %> 
                     <article class="producto"
                     <% claves.forEach(e => { %>
-                        <%= e %>= 
+                        <!-- <%= e %>= 
                         <% if(product[e] != null && product[e] != undefined && product[e] != ""){ %>
                             <%= product[e] %> 
                         <% }else{ %> 
-                            ""
-                        <% } %> 
-
+                            return ""
+                        <% } %>  -->
                     <% }) %> >
                         <a href="/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
