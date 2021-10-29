@@ -10,7 +10,8 @@ const {
     processRegister,
     logout,
     profileEdit,
-    updateProfile} = require('../controllers/accountsController');
+    updateProfile,
+    deleteUser} = require('../controllers/accountsController');
 const loginValidator = require('../validations/loginValidator');
 const registerValidator = require('../validations/registerValidator')
 const uploadUserAvatar = require('../midlewares/uploadUserAvatar')
@@ -43,6 +44,8 @@ router.get ('/profile',userSession,profile),
 router.get ('/editProfile',userSession, userProfile),
 
 router.put ("/editProfile",uploadUserAvatar.single("avatar"),updateProfile)
+
+router.delete("/deleteProfile/:id", userSession, deleteUser)
 
 /* verificar sesion*/
 router.get('/sesion', (req, res) => {

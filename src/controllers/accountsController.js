@@ -20,10 +20,10 @@ module.exports = {
     },
 
     profile: (req, res) => {
-            db.User.findBypk(req.session.user.id,{  
+            db.User.findByPk(req.session.user.id,{  
              include:[{association:"direccion"}]  
             }).then((user)=>{
-              res.render("userProile",{
+              res.render("profile",{
                 user,
                 session:req.session,
               });
@@ -32,11 +32,10 @@ module.exports = {
    
     },
     profileEdit:(req,res)=>{
-      db.User.findBypk(req.session.user.id,{  /*trae el usuario de la base de datos */
+      db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
       include:[{association:"direccion"}]  
      }).then((user)=>{  
-       res.send(user) 
-        res.render("userProfileEdit",{
+        res.render("userProfile",{
           user,
           session:req.session
         });
@@ -165,8 +164,21 @@ module.exports = {
             });
         }
 
+    },
+    deleteUser: (req, res) => {
+      req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+            res.locals.user = ""
+        }
+        db.User.destroy({
+          where:{
+            id: req.params.id
+          }
+        })
+        return res.redirect('/') 
     }
-    }
+}
     
     
 
