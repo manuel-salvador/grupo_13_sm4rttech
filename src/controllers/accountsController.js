@@ -1,6 +1,7 @@
 const { validationResult, body } = require('express-validator')
 let bcrypt = require('bcryptjs')
-let db = require("../database/models")
+let db = require("../database/models");
+const User = require('../database/models/User');
 
 module.exports = {
     login: (req, res) => {
@@ -14,29 +15,51 @@ module.exports = {
             res.render('recuperarcontra')
     },
 
-    userProfile: (req, res) =>{
-        res.render('userProfile')
+    editProfile: (req, res) =>{
+        res.render('editProfile')
         
     },
 
     profile: (req, res) => {
-            db.User.findBypk(req.session.user.id,{  
-             include:[{association:"direccion"}]  
-            }).then((user)=>{
-              res.render("userProile",{
-                user,
-                session:req.session,
+                 
+  
+            db.User.findByPk(req.session.user.id).then((user)=>{
+            
+              db.Address.findOne({
+                where:{
+                  address_id:user.address_id,
+                }
+              }).then((address) => {
+                res.render("profile",{
+                  session:req.session,
+                  user,
+                  address,
+                });
               });
-            });
-          
+            }) ;
    
     },
-    profileEdit:(req,res)=>{
-      db.User.findBypk(req.session.user.id,{  /*trae el usuario de la base de datos */
+    editProfile: (req, res) => {
+    /*  db.Users.findByPk(req.params.id).then((user) => {
+        db.Addresses.findOne({
+          where: {
+            userId: user.id,
+          },
+        }).then((address) => {
+          res.render("editProfile", {
+            user,
+            session: req.session,
+            address
+          });
+        });
+      });
+    },*/
+
+      db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
       include:[{association:"direccion"}]  
      }).then((user)=>{  
-       res.send(user) 
-        res.render("userProfileEdit",{
+    
+        res.render("editProfile",{
           user,
           session:req.session
         });
@@ -47,7 +70,8 @@ module.exports = {
 
         if(errors.isEmpty()){
           let{name,last_name,localidad,cp,province,pais}=req.body
-          db.User.update({ /*verifica  */
+          db.User.update( /*verifica  */
+          {
             name,                       
             last_name,
             localidad,
@@ -67,19 +91,20 @@ module.exports = {
               localidad,
               cp
             })
+              
+              res.redirect("profile")
+                       
+               
           })
-          .then(()=>{
-            res.redirect("profile")
-          })         
-           
         }else{
-            res.render("userProfileEdit",{
+            res.render("/editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
         }
       },
+   
      processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
