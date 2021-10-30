@@ -4,6 +4,7 @@
 <body>
     <%- include("partials/header.ejs") %> 
     <main>
+        <p><%= product.images[0].image %></p>
         <div class="detalle">
             <p><a href="/">inicio</a>><a href="/products/<%= product.category %>"><%= product.category %></a>><a><%= product.marca%></a></p>
 

@@ -10,7 +10,8 @@ const { admin,
     editar,
     actualizar,
     destroy,
-    team } = require('../controllers/adminController');
+    team,
+    deleteProduct } = require('../controllers/adminController');
 const agregarValidator = require('../validations/agregarValidator')
 const usersAdminCheck = require('../midlewares/usersAdminCheck')
 
@@ -41,8 +42,7 @@ router.get('/editar/:id', usersAdminCheck, editar)
 router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
-router.delete('/delete/:id', destroy);
-
+router.get('/delete/:id', usersAdminCheck, deleteProduct)
 
 /* Rutas Team, Equipo*/
 router.get('/team', usersAdminCheck, team)
