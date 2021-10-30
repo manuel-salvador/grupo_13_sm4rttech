@@ -7,7 +7,6 @@
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
-            <form action="/accounts/editProfile"  method="GET">
                 <section class="img-avatar">
                     <h4>Agregar foto de perfil</h4>
                     <div class="avatar-img">
@@ -50,10 +49,9 @@
                     </div>
                 </section>
         <section class="button-crear">
-            <button type="submit" class="edit-profile"><i class="far fa-edit"></i>Editar perfil</button>                         
+            <a href="/accounts/editProfile"><button class="edit-profile"><i class="far fa-edit"></i>Editar perfil</button></a>                         
         </section>
         </section>
-    </form>
 </main>
     <%- include("partials/footer.ejs") %> 
 </body>

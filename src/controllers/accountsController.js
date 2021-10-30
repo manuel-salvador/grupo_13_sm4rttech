@@ -1,7 +1,6 @@
 const { validationResult, body } = require('express-validator')
 let bcrypt = require('bcryptjs')
-let db = require("../database/models");
-const User = require('../database/models/User');
+let db = require("../database/models")
 
 module.exports = {
     login: (req, res) => {
@@ -21,44 +20,21 @@ module.exports = {
     },
 
     profile: (req, res) => {
-                 
-  
-            db.User.findByPk(req.session.user.id).then((user)=>{
-            
-              db.Address.findOne({
-                where:{
-                  address_id:user.address_id,
-                }
-              }).then((address) => {
-                res.render("profile",{
-                  session:req.session,
-                  user,
-                  address,
-                });
+            db.User.findByPk(req.session.user.id,{  
+             include:[{association:"direccion"}]  
+            }).then((user)=>{
+              res.render("profile",{
+                user,
+                session:req.session,
               });
-            }) ;
+            });
+          
    
     },
-    editProfile: (req, res) => {
-    /*  db.Users.findByPk(req.params.id).then((user) => {
-        db.Addresses.findOne({
-          where: {
-            userId: user.id,
-          },
-        }).then((address) => {
-          res.render("editProfile", {
-            user,
-            session: req.session,
-            address
-          });
-        });
-      });
-    },*/
-
+    editProfile:(req,res)=>{
       db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
       include:[{association:"direccion"}]  
      }).then((user)=>{  
-    
         res.render("editProfile",{
           user,
           session:req.session
@@ -70,8 +46,7 @@ module.exports = {
 
         if(errors.isEmpty()){
           let{name,last_name,localidad,cp,province,pais}=req.body
-          db.User.update( /*verifica  */
-          {
+          db.User.update({ /*verifica  */
             name,                       
             last_name,
             localidad,
@@ -84,27 +59,25 @@ module.exports = {
               id:req.params.id
             }
           })
-          .then(()=>{
+          /* .then(()=>{
             db.Address.create({
               address,
               province,
               localidad,
               cp
-            })
-              
-              res.redirect("profile")
-                       
-               
-          })
+            }) */
+            .then(()=>{
+              res.redirect("/accounts/profile")
+            })         
+          //})
         }else{
-            res.render("/editProfile",{
+            res.render("editProfileEdit",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
         }
       },
-   
      processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
@@ -190,8 +163,21 @@ module.exports = {
             });
         }
 
+    },
+    deleteUser: (req, res) => {
+      req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+            res.locals.user = ""
+        }
+        db.User.destroy({
+          where:{
+            id: req.params.id
+          }
+        })
+        return res.redirect('/') 
     }
-    }
+}
     
     
 

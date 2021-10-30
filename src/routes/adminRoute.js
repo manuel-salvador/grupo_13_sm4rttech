@@ -30,14 +30,13 @@ router.get('/agregar', usersAdminCheck, agregar),
 router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
-
 /* get muestra form. de edit*/ 
 router.get('/editar', usersAdminCheck, filtroEditar)
 router.post('/editar', filtrarEditar)
 
 
-router.get('/editar/:id',usersAdminCheck, editar)
-router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
+router.get('/editar/:id', usersAdminCheck, editar)
+router.put('/editar/:id', multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
 router.delete('/delete/:id', destroy);
