@@ -67,11 +67,30 @@ module.exports = {
               cp
             }) */
             .then(()=>{
+              db.User.findOne({
+                where:{
+                  id:req.params.id
+                }
+              })
+              .then(user=>{
+                req.session.user = {
+                  id:user.id,
+                  name:user.name,
+                  lastname:user.last_name,
+                  email:user.email,
+                  avatar:user.avatar
+                };
+                res.locals.user = req.session.user;
               res.redirect("/accounts/profile")
             })         
-          //})
+
+              })
+  
+             
+                        
+         
         }else{
-            res.render("editProfileEdit",{
+            res.render("editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
