@@ -51,6 +51,7 @@ module.exports = {
 
     store: (req, res) => {
         let errors = validationResult(req)
+        let imagen = req.file.filename
         if (errors.isEmpty()) {
             let descripcion = req.body.description;
             let descriptionReplaced = descripcion.replace(/\r\n/gi, '-r-n');
@@ -63,11 +64,9 @@ module.exports = {
                 smart,
                 capacity,
                 ram,
-                image,
                 description = descriptionReplaced
             } = req.body
 
-            res.send(req.body)
 
             db.Product.create({
                 category_id: Number(category),
@@ -98,9 +97,14 @@ module.exports = {
                             product_id: Number(product.id)
                         })
                     }
-                    if (product && !image) {
+                    if (product && !imagen) {
                         db.Product_Image.create({
                             image: 'logo-sm4rttech.png',
+                            product_id: product.id
+                        })
+                    }else{
+                        db.Product_Image.create({
+                            image: imagen,
                             product_id: product.id
                         })
                     }
