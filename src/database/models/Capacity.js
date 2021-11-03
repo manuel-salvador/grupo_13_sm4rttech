@@ -28,7 +28,7 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        Capacity.hasMany(modelos.CapacityProduct, {
+        Capacity.hasMany(modelos.Capacity_Product, {
             as: "capacityName",
             foreignKey: "capacity_id"
         })

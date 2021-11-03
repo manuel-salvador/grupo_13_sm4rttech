@@ -27,7 +27,7 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        Size.hasMany(modelos.SizeProduct, {
+        Size.hasMany(modelos.Size_Product, {
             as:'sizeName',
             foreignKey:'size_id',
         })

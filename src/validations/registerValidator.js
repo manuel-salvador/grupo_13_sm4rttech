@@ -26,10 +26,9 @@ module.exports = [
           }          
       })
       .then(user={
-          if(user){
+            if(user){
               return Promise.reject("ya existe este mail")/*si se encuentra el usuario retorna error */
-
-          }
+            }
           })
       }),
     

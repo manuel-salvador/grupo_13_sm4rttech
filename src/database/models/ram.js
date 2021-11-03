@@ -27,7 +27,7 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        Ram.hasMany(modelos.RamProduct, {
+        Ram.hasMany(modelos.Ram_Product, {
             as:'ramName',
             foreignKey:'ram_id',
         })

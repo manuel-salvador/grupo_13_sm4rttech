@@ -24,8 +24,8 @@ function filtrar(filtros, products){
                 var key = filtro.name ? filtro.name : "";
                 console.log("• Comparando filtro:" + key);
                 var valorProducto = product.getAttribute(key) != null ? product.getAttribute(key) : "";
-                console.log(valorProducto.toLowerCase());
-                console.log(filtro.value.toLowerCase());
+                console.log(valorProducto);
+                console.log(filtro.value);
                 if( valorProducto.toLowerCase() == filtro.value.toLowerCase() ){
                     count++
                 }
@@ -44,6 +44,7 @@ function filtrar(filtros, products){
             }
             console.log(product);
             console.log("Se encontraron " + count + " coincidencias");
+            console.log("-------------------");
             }
         
         })   

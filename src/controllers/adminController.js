@@ -45,13 +45,13 @@ module.exports = {
         .then(([categorias, marcas, tamaños, capacidades, rams]) => {
             res.render('admin/agregar', {categorias, marcas, tamaños, capacidades, rams})
         })
-
     },
 
     store: (req, res) => {
         let errors = validationResult(req)
         if(errors.isEmpty()){
-        
+            let descripcion = req.body.description;
+            let descriptionReplaced = descripcion.replace(/\r\n/gi, '-r-n');
         const {
             category,
             marca,
@@ -62,23 +62,50 @@ module.exports = {
             capacity,
             ram,
             image,
-            description
+            description = descriptionReplaced
         } = req.body
 
-        /*  */
+        
+        
         db.Product.create({
+            category_id: Number(category),
             name,
-            category: id,
-            brand: brand_id,
-            size_product: size_id,
-            smart_product: id ,
-            capacity: capacity_id,
-            ram_product: ram_id,
-            price,
+            price: Number(price),
+            brand_id: Number(marca),
+            smart: Number(smart),
             description
         })
         .then(product => {
-            if(arrayImages.length > 0){
+            console.log(product.id);
+
+            if(product && tamaño){
+                db.Size_Product.create({
+                    size_id: Number(tamaño),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && capacity){
+                db.Capacity_Product.create({
+                    capacity_id: Number(capacity),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && ram){
+                db.Ram_Product.create({
+                    ram_id: Number(ram),
+                    product_id: Number(product.id)
+                })
+            }
+            if(product && !image){
+                db.Product_Image.create({
+                    image: 'logo-sm4rttech.png',
+                    product_id: product.id
+                })
+            }
+            
+            res.redirect(`/products/detalleDeProducto/${product.id}`)
+
+            /* if(arrayImages.length > 0){
                 let images = arrayImages.map(image => {
                     return {
                         image: image,
@@ -88,16 +115,22 @@ module.exports = {
                 db.ProductImage.bulkCreate(images)
                 .then(() => res.redirect('/admin/products'))
                 .catch(err => console.log(err))
-          }
+            } */
         })
         
         
-        res.redirect(`/detalleDeProducto/${newProduct.id}`)
     }else{
-        res.render('admin/agregar', {
-            errors: errors.mapped(),
-            old: req.body
-        })
+            let categorias = db.Category.findAll()
+            let marcas = db.Brand.findAll()
+            let tamaños = db.Size.findAll()
+            let capacidades = db.Capacity.findAll()
+            let rams = db.Ram.findAll()
+
+            Promise.all([categorias, marcas, tamaños, capacidades, rams])
+            .then(([categorias, marcas, tamaños, capacidades, rams]) => {
+                res.render('admin/agregar',
+                {categorias, marcas, tamaños, capacidades, rams, errors: errors.mapped(), old: req.body})
+            })
 
     }
 },
@@ -155,10 +188,14 @@ module.exports = {
 
 /*traer la vista con el producto a editar*/
     editar: (req, res) => {
-		let product = products.find(product => product.id === +req.params.id)
-		res.render('admin/editar', {
-			product
-		})
+        db.Product.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(product =>{
+            res.render('admin/editar', {product})
+        })
 	},
     actualizar: (req, res) => {
         let errors = validationResult(req)
@@ -224,9 +261,12 @@ module.exports = {
         writeJson(products)
 
         res.send(`has eliminado el producto ${product.name}`)
+    },
+    team: (req, res) => {
+        db.User.findAll()
+        .then(usersTeam => {
+            res.render('admin/team', {usersTeam})
+        })
     }
-   
-        
-            
         
 }
