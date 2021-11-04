@@ -45,7 +45,7 @@ router.delete('/delete/:id', destroy);
 
 
 /* Rutas Team, Equipo*/
-router.get('/team', usersAdminCheck, team)
+
 
 
 module.exports = router;
