@@ -218,24 +218,23 @@ module.exports = {
                 name,
                 price,
                 description,
-                smart,
-                category
+                tamaño: req.body
                 
-            })
-            db.sizeProduct.update({
+            })/* 
+            db.sizeProduct.findOne({
                     size_id: tamaño
                 },{
                     where: {
                       id: req.params.id,
                     }
-                })
+                }) *//* 
             db.Category.update({
                     category_id: category
             },{
                 where: {
                     id: req.params.id
                 }
-            })
+            }) */
             res.redirect(`/products/detalleDeProducto/${req.params.id}`)
             .catch(error => console.log(error))
             })
