@@ -7,60 +7,60 @@
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
-            <form action="/accounts/register" method="POST" enctype="multipart/form-data">
+            <form id="formRegister" action="/accounts/register" method="POST" enctype="multipart/form-data">
             <section class="datos-usuarios">
 
                     <div class="name">
-                        <h4>nombre</h4>
-                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>"> 
+                        <h4>Nombre *</h4>
+                        <input id="name" class="input-style inputValidate" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>"> 
                         <% if (locals.errors && errors.name) { %>
                             <small class="text-danger"><%= errors.name.msg %> </small>
                         <% } %>
                     </div>
                     <div class="apellido">
-                        <h4>Apellido</h4>
-                        <input class="input-style" type="text" name="lastname" placeholder="Apellido" value="<%= locals.old && old.lastname %>">
+                        <h4>Apellido *</h4>
+                        <input id="lastName" class="input-style inputValidate" type="text" name="lastname" placeholder="Apellido"  %>">
                         <% if (locals.errors && errors.lastname) { %>
                             <small class="text-danger"><%= errors.lastname.msg %> </small>
                         <% } %>
                     </div>
                     <div class="mail">
-                        <h4>E-mail</h4>
-                        <input class="input-style" type="email" name="email" placeholder="E-mail">
+                        <h4>E-mail *</h4>
+                        <input id="email" class="input-style inputValidate" type="email" name="email" placeholder="E-mail">
                         <% if (locals.errors && errors.email) { %>
                             <small class="text-danger"><%= errors.email.msg %> </small>
                         <% } %>
                     </div>
                     <div class="confirm-mail">
-                        <h4>Confirmar e-mail</h4>
-                        <input class="input-style" type="email" name="email2" placeholder="E-mail">
+                        <h4>Confirmar e-mail *</h4>
+                        <input id="confirmEmail" class="input-style inputValidate" type="email" name="email2" placeholder="E-mail">
                         <% if (locals.errors && errors.email2) { %>
                             <small class="text-danger"><%= errors.email2.msg %> </small>
                         <% } %>
                     </div>
                     <div class="contraseña contra">
-                        <h4>contraseña</h4>
-                        <input class="input-style" type="password" name="pass1" placeholder="Ingrese su contraseña">
+                        <h4>Contraseña *</h4>
+                        <input id="password" class="input-style inputValidate" type="password" name="pass1" placeholder="Ingrese su contraseña">
                         <a role="button" class="password-view" >
-                            <div class="eye-cover"></div>
                             <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
                             <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
                         </a>
                         <% if (locals.errors && errors.pass1) { %>
                             <small class="text-danger"><%= errors.pass1.msg %> </small>
                         <% } %>
+                        <small class="text-danger"></small>
                     </div>
                     <div class="confirm-contra contra">
-                        <h4>confirmar contraseña</h4>
-                        <input class="input-style" type="password" name="pass2" placeholder="confirmar contraseña">
+                        <h4>Confirmar contraseña *</h4>
+                        <input id="confirmPassword" class="input-style inputValidate" type="password" name="pass2" placeholder="confirmar contraseña">
                         <a role="button" class="password-view" >
-                            <div class="eye-cover"></div>
                             <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
                             <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
                         </a>
                         <% if (locals.errors && errors.pass2) { %>
                             <small class="text-danger"><%= errors.pass2.msg %> </small>
                         <% } %>
+                        <small class="text-danger"></small>
                     </div>
                 </section>
                 <section class="img-avatar">
@@ -74,14 +74,17 @@
                 <section class="check">
                     
                     <input type="checkbox" name="terms" id="terms" width="auto">
-                    <label for="terms"><p>Acepto los <a href="">Termino y condiciones</a></p></label>
+                    <label for="terms"><p>Acepto los <a href="">Termino y condiciones</a> *</p></label>
                     <% if (locals.errors && errors.terms) { %>
                         <small class="text-danger"><%= errors.terms.msg %> </small>
                     <% } %>
+                    <small class="text-danger"></small>
+
                     <!-- <span class="error-message">Debe aceptar lostérminos y condiciones</span> -->
                 </section>
         <section class="button-crear">
             <button type="submit" class="registrar">Registrarme</button>
+            <small id="submitErrors" class="text-danger"></small>
             <span class="error-message">Credenciales inválidas</span>                            
         </section>
             <div class="vuelta-login">
@@ -91,5 +94,6 @@
     </form>
 </main>
     <%- include("partials/footer.ejs") %> 
+    <script src="/javaScripts/registerValidatorFront.js"></script>
 </body>
 </html>
