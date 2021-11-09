@@ -208,36 +208,19 @@ module.exports = {
             })
     },
     actualizar: (req, res) => {
-        const { name, price, description, tamaño} = req.body
-        db.Product.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(product => {
-            db.Product.update({
-                name,
-                price,
-                description,
-                tamaño: req.body
-                
-            })/* 
-            db.sizeProduct.findOne({
-                    size_id: tamaño
-                },{
-                    where: {
-                      id: req.params.id,
-                    }
-                }) *//* 
-            db.Category.update({
-                    category_id: category
-            },{
-                where: {
-                    id: req.params.id
-                }
-            }) */
-            res.redirect(`/products/detalleDeProducto/${req.params.id}`)
-            .catch(error => console.log(error))
-            })
+        db.Product.update({
+            name: req.body.name,
+            price: req.body.price,
+            marca: req.body.marca,
+            smart: req.body.smart,
+            category_id: req.body.category,
+            description: req.body.description
+    },{
+        where: {
+            id:req.params.id
+        }
+    });
+    res.redirect(`/products/detalleDeProducto/${req.params.id}`)
     },
 
     //eliminar un producto
