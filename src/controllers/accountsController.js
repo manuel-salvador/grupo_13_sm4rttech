@@ -45,51 +45,93 @@ module.exports = {
         let errors= validationResult(req)
 
         if(errors.isEmpty()){
-          let{name,last_name,localidad,cp,province,pais}=req.body
+          let{name,last_name,localidad,cp,address,province,pais}=req.body
           db.User.update({ /*verifica  */
             name,                       
             last_name,
-            localidad,
-            cp,
-            province,
-            pais,
             avatar:req.file?req.file.filename:req.session.user.avatar
           },{
             where:{
               id:req.params.id
             }
           })
-          /* .then(()=>{
-            db.Address.create({
-              address,
-              province,
-              localidad,
-              cp
-            }) */
+          
             .then(()=>{
               db.User.findOne({
                 where:{
                   id:req.params.id
                 }
               })
-              .then(user=>{
-                req.session.user = {
-                  id:user.id,
-                  name:user.name,
-                  lastname:user.last_name,
-                  email:user.email,
-                  avatar:user.avatar
-                };
-                res.locals.user = req.session.user;
-              res.redirect("/accounts/profile")
-            })         
+            .then(user => {
+              if(user.address_id){
+                
+                db.Address.update({
+                  address,
+                  province,
+                  localidad,
+                  pais,
+                  cp
+                },{
+                  where:{
+                   address_id:user.address_id
+                  }
+                })
+                .then(()=>{
+                  req.session.user = {
+                    id: user.id,
+                    name: user.name,
+                    lastname: user.last_name,
+                    email: user.email,
+                    avatar: user.avatar
+                  };
+                  res.locals.user = req.session.user;
+                  res.redirect("/accounts/profile");
+               
+                })
+                 
+                
+              }else{
+                
+                db.Address.create({
+                  address,
+                  province,
+                  localidad,
+                  cp,
+                  pais
 
-              })
-  
-             
-                        
-         
-        }else{
+
+                })
+                .then(direccion=>{
+               
+
+                  db.User.update({
+                    address_id:Number(direccion.address_id) //acutualiza el null
+                  },{
+                    where:{
+                      
+                       id:req.params.id
+                  }
+                  })
+
+                  .then(()=>{
+                    req.session.user = {
+                      id: user.id,
+                      name: user.name,
+                      lastname: user.last_name,
+                      email: user.email,
+                      avatar: user.avatar
+                    };
+                    res.locals.user = req.session.user;
+                    res.redirect("/accounts/profile");
+                 
+                  })
+                })
+              } 
+              });
+
+        });
+
+             }else{
             res.render("editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
@@ -97,6 +139,7 @@ module.exports = {
             })
         }
       },
+     
      processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){

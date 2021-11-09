@@ -6,6 +6,8 @@
         <%- include("partials/header-formularios.ejs") %>
 
             <main class="formulario-reg">
+           
+               
                 <section class="caja-central-form">
                     <h2>COMPLETA TUS DATOS</h2>
                     <form action="/accounts/updateProfile/<%= locals.user.id %>?_method=PUT" method="POST">                    <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
@@ -24,8 +26,8 @@
                             </div>
                             <div class="apellido">
                                 <h4>Apellido</h4>
-                                <input class="input-style" type="text" name="lastname" placeholder="Apellido"
-                                    value="<%= locals.old ? old.lastname:locals.user.lastname %>">
+                                <input class="input-style" type="text" name="last_name" placeholder="Apellido"
+                                    value="<%= locals.old ? old.lastname:locals.user.last_name %>">
 
                             </div>
                             <div class="mail">
@@ -57,6 +59,13 @@
                                 <h4>País</h4>
                                 <input class="input-style" type="text" name="pais" placeholder="Ingresa el país"
                                     value="<%= locals.old ? old.pais:locals.user.pais %>">
+
+                            </div>
+                             </div>
+                            <div class="confirm-contra">
+                                <h4>Direccion</h4>
+                                <input class="input-style" type="text" name="address" placeholder="Ingresa su direccion"
+                                    value="<%= locals.old ? old.pais:locals.user.address %>">
 
                             </div>
                             <div class="confirm-contra">

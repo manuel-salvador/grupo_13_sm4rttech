@@ -43,6 +43,7 @@ router.post('/register', uploadUserAvatar.single('avatar'),registerValidator, pr
 router.get('/profile',userSession, profile),
 router.get('/editProfile',userSession, editProfile),
 
+
 router.put("/updateProfile/:id",uploadUserAvatar.single("avatar"),updateProfile)
 
 router.delete("/deleteProfile/:id", userSession, deleteUser)
