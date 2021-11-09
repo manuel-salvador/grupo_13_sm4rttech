@@ -11,7 +11,7 @@
             <div class="ingreso">
                 <div class="mail">
                     <h4>E-mail</h4>
-                    <input type="text"  name="email" placeholder="Ingresa E-mail">
+                    <input id="email"type="text"  name="email" placeholder="Ingresa E-mail">
                     <% if (locals.errors && errors.email) { %>
                         <small class="text-danger"><%= errors.email.msg %> </small>
                     <% } %>
