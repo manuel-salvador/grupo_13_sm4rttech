@@ -1,9 +1,9 @@
-let { products, writeJson } = require('../data/dataBase');
+// let { products, writeJson } = require('../data/dataBase');
 let { validationResult } = require('express-validator')
-let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
+/* let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
-let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
+let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming") */
 const db = require('../database/models')
 const fs = require('fs');
 const { logout } = require('./accountsController');
@@ -102,7 +102,7 @@ module.exports = {
                             image: 'logo-sm4rttech.png',
                             product_id: product.id
                         })
-                    }else{
+                    } else {
                         db.Product_Image.create({
                             image: imagen,
                             product_id: product.id
@@ -197,62 +197,132 @@ module.exports = {
         db.Product.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+            { association: "capacities" }, { association: "images" }, { association: "rams" },
+            { association: "sizes" }]
         })
             .then(product => {
-                res.render('admin/editar', { product })
+                //res.send(product)
+                let categorias = db.Category.findAll()
+                let marcas = db.Brand.findAll()
+                let tamaños = db.Size.findAll()
+                let capacidades = db.Capacity.findAll()
+                let rams = db.Ram.findAll()
+                let colores = db.Color.findAll()
+                Promise.all([categorias, marcas, tamaños, capacidades, rams, colores])
+                    .then(([categorias, marcas, tamaños, capacidades, rams, colores]) => {
+                        res.render('admin/editar', { product, categorias, marcas, tamaños, capacidades, rams, colores })
+                    })
             })
+
     },
     actualizar: (req, res) => {
-        let errors = validationResult(req)
+        let errors = validationResult(req);
 
         if (errors.isEmpty()) {
 
-            const {
-
-                category,
-                marca,
-                price,
+            let { category,
                 name,
-                tamaño,
+                price,
+                marca,
                 smart,
+                description } = req.body;
+
+            let { tamaño,
                 capacity,
                 ram,
-                image,
-                description
+                color
             } = req.body
 
-
-            /**recorrimos el arrays y modificamos el product */
-            products.forEach(product => {
-                if (product.id == + req.params.id) {
-                    product.name = (name == undefined) ? "" : name,
-                        product.category = (category == undefined) ? "" : category,
-                        product.marca = (marca == undefined) ? "" : marca,
-                        product.tamaño = (tamaño == undefined) ? "" : tamaño,
-                        product.smart = (smart == undefined) ? "" : smart,
-                        product.capacity = (capacity == undefined) ? "" : capacity,
-                        product.ram = (ram == undefined) ? "" : ram,
-                        product.price = (price == undefined) ? "" : price,
-                        product.description = (description == undefined) ? "" : description
-                    product.image = req.file ? req.file.filename : product.image
-
-                }
-
+            db.Product.findOne({
+                where: { id: req.params.id },
+                include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+                { association: "capacities" }, { association: "images" }, { association: "rams" },
+                { association: "sizes" }]
             })
-            writeJson(products)
-            res.redirect(`/detalledeProducto/${req.params.id}`)
-        } else {
-            let product = products.find(product => product.id === +req.params.id)
+                .then(producto => {
 
-            res.render('admin/editar', {
-                product,
-                errors: errors.mapped(),
-                old: req.body
-            })
+                    if (tamaño) {
+                        if (producto.tamaño[0]) {
+                            db.Size_Product.update({
+                                size_id: tamaño
+                            }, {
+                                where: { product_id: producto.id }
+                            })
+                        } else {
+                            db.Size_Product.create({
+                                tamaño_id: Number(tamaño),
+                                product_id: Number(producto.id)
+                            })
+                        }
+                    }
 
+                    if (capacity) {
+                        if (producto.capacity[0]) {
+                            db.Capacity_Product.update({
+                                capacity_id: capacity
+                            }, {
+                                where: { product_id: producto.id }
+                            })
+                        } else {
+                            db.Capacity_Product.create({
+                                capacity_id: Number(capacity),
+                                product_id: Number(producto.id)
+                            })
+                        }
+                    }
+
+                    if (ram) {
+                        if (producto.rams[0]) {
+                            db.Ram_Product.update({
+                                ram_id: ram
+                            }, {
+                                where: { product_id: producto.id }
+                            })
+                        } else {
+                            db.Ram_Product.create({
+                                ram_id: Number(ram),
+                                product_id: Number(producto.id)
+                            })
+                        }
+                    }
+
+                    if (color) {
+                        if (producto.colores[0]) {
+                            db.Color_Product.update({
+                                color_id: color
+                            }, {
+                                where: { product_id: producto.id }
+                            })
+                        } else {
+                            db.Color_Product.create({
+                                color_id: Number(color),
+                                product_id: Number(producto.id)
+                            })
+                        }
+                    } else {
+                        db.Color_Product.destroy({
+                            where: { product_id: producto.id }
+                        })
+                    }
+
+
+                    db.Product.update({
+                        category_id: category,
+                        name,
+                        price,
+                        brand_id: marca,
+                        smart,
+                        description
+                    }, {
+                        where: { id: producto.id }
+                    })
+                        .then(() => {
+                            res.redirect(`/admin/editar/${producto.id}`)
+                        })
+                })
         }
-
     },
     deleteProduct: (req, res) => {
         db.Product.findOne({
@@ -271,9 +341,9 @@ module.exports = {
 
                 // Elimino capacities en pivot
                 if (product.capacities.length > 0) {
-                        db.Capacity_Product.destroy({
-                            where: { product_id: product.id }
-                        })
+                    db.Capacity_Product.destroy({
+                        where: { product_id: product.id }
+                    })
                 }
 
                 // Elimino images en pivot
@@ -291,16 +361,16 @@ module.exports = {
                     })
 
                     db.Product_Image.destroy({
-                        where: { product_id: product.id}
+                        where: { product_id: product.id }
                     })
 
                 }
 
                 // Elimino rams en pivot
                 if (product.rams.length > 0) {
-                        db.Ram_Product.destroy({
-                            where: { product_id: product.id }
-                        })
+                    db.Ram_Product.destroy({
+                        where: { product_id: product.id }
+                    })
                 }
 
                 // Elimino sizes en pivot
@@ -313,9 +383,9 @@ module.exports = {
                 db.Product.destroy({
                     where: { id: req.params.id }
                 })
-                .then(producto => {
-                   return res.redirect('/')
-                })
+                    .then(producto => {
+                        return res.redirect('/')
+                    })
 
             })
     },

@@ -45,10 +45,10 @@
                             <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
                             <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
                         </a>
+                        <small class="text-danger"></small>
                         <% if (locals.errors && errors.pass1) { %>
                             <small class="text-danger"><%= errors.pass1.msg %> </small>
                         <% } %>
-                        <small class="text-danger"></small>
                     </div>
                     <div class="confirm-contra contra">
                         <h4>Confirmar contraseña *</h4>
@@ -57,10 +57,10 @@
                             <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
                             <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
                         </a>
+                        <small class="text-danger"></small>
                         <% if (locals.errors && errors.pass2) { %>
                             <small class="text-danger"><%= errors.pass2.msg %> </small>
                         <% } %>
-                        <small class="text-danger"></small>
                     </div>
                 </section>
                 <section class="img-avatar">

@@ -19,7 +19,7 @@
         <%- include('./partials/navAdmin.ejs') %>
         <section class="formAdmin">
             <section class="caja-central-form">
-                <h2>AGREGAR PRODUCTOS</h2>
+                <h2>AGREGAR PRODUCTO</h2>
                 
                 <form action="/admin/agregar" method="POST" enctype="multipart/form-data">
                 <section class="datos-usuarios">
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <h4>Marcas</h4>
-                        <select name="marca" id="">
+                        <select name="marca">
                             <option selected hidden value="">Seleccionar</option>
                             <% marcas.forEach(marca => { %>
                                 <option value="<%= marca.brand_id %>" <%= locals.old && old.marca == marca.brand_id ? "selected" : null %>><%= marca.brand %> </option>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="name">
                         <h4>Nombre del producto</h4>
-                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
+                        <input id="name" class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
                         <% if (locals.errors && errors.name) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.name.msg %>  </small>
                         <% } %>
@@ -99,6 +99,15 @@
                             
                         </select>
                     </div>
+                    <div class="apellido">
+                        <h4>Color</h4>
+                        <select name="color" id="color">
+                            <option selected hidden value="">GB</option>
+                            <% colores.forEach(color => { %>
+                                <option value="<%= color.color_id %>" <%= locals.old && old.color == color.color_id ? "selected" : null %>><%= color.color %></option>
+                            <% }) %>
+                        </select>
+                    </div>
                     <section class="img-coment">
                     <div>
                         <h4>Imagenes</h4>
@@ -106,8 +115,8 @@
                     </div>
                     <h4>Descripción</h4>
                     <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %></textarea>
-                    <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
-                        <small class="text-danger"><%= errors.description.msg %></small>
+                        <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
+                            <small class="text-danger"><%= errors.description.msg %></small>
                        <% } %>
             </section>
             <div class="botones-confirm">

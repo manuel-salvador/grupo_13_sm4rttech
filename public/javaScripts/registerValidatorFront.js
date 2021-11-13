@@ -2,6 +2,8 @@ window.onload = () => {
 
     let inputsValidates = document.querySelectorAll(".inputValidate")
 
+
+
     inputsValidates.forEach(input => {
         input.addEventListener('blur', (event) => {
 
@@ -92,7 +94,7 @@ window.onload = () => {
 
             if(!document.querySelector("input[type=checkbox]").checked){
                 error = true;
-                document.querySelector("input[type=checkbox]").nextElementSibling.nextElementSibling.innerText = "Debes aceptar los términos y condiciones"
+                document.querySelector("input[type=checkbox]").nextElementSibling.nextElementSibling.innerText = " " + "Debes aceptar los términos y condiciones"
             }
         
             if(!error){

@@ -35,7 +35,7 @@ router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 /* get muestra form. de edit*/ 
 router.get('/editar', usersAdminCheck, filtroEditar)
-router.post('/editar', filtrarEditar)
+router.post('/editar', usersAdminCheck, filtrarEditar)
 
 
 router.get('/editar/:id', usersAdminCheck, editar)
