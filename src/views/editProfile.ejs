@@ -61,12 +61,12 @@
                                     placeholder="Ingrese su contraseña"
                                     value="<%= locals.old ? old.pass1:locals.user.pass1 %>">
                                     <a role="button" class="password-view">
-                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i>"</span>
-                                        <span class="eye-closed"><i class="far fa-slash"></i>"</span>
+                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                                        <span class="eye-closed"><i class="far fa-slash"></i></span>
                                     </a>
                                     <small class="text-danger"></small>
                                     <% if (locals.errors && errors.pass1) { %>
-                                        <small class="text-danger"><%= errors.pass1.msg %> </small>
+                                        <small class="text-danger"><%= errors.pass1.msg %></small>
                                     <% } %>
 
 
@@ -77,8 +77,8 @@
                                     placeholder="confirmar contraseña"
                                     value="<%= locals.old ? old.pass2:locals.user.pass2 %>">
                                     <a role="button" class="password-view">
-                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i>"</span>
-                                        <span class="eye-closed"><i class="far fa-slash"></i>"</span>
+                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                                        <span class="eye-closed"><i class="far fa-slash"></i></span>
                                     </a>
                                     <small class="text-danger"></small>
                                      <% if (locals.errors && errors.pass2) { %>
