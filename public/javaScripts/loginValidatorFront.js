@@ -13,13 +13,31 @@ window.onload=function() {
                 } else {
                     input.style.border = '3px solid rgba(185, 14, 14, 0.66)'
                     input.setAttribute("error", "error")
-                    }
+                }
                                         
         }))
         }
-        input.addEventListener
+
         let form = document.getElementById("formLogin")
         form.addEventListener('submit', event => {
             event.preventDefault()
+
+            let error = false;
+  
+            let elementosForm = form.elements
+  
+            for (let index = 0; index < elementosForm.length-1; index++) {
+                if(elementosForm[index].value == "" && elementosForm[index].value != "pass" && !elementosForm[index].classList.contains("boton-ingreso")|| elementosForm[index].error){
+                    elementosForm[index].style.border = '3px solid rgba(185, 14, 14, 0.66)'
+                    elementosForm[index].setAttribute("error", "error")
+                    document.getElementById("submitErrors").innerHTML = "Los campos son obligatorios *";
+                    error = true;
+                }
+            }
+  
+            if(!error){
+                console.log('Todo bien');
+                form.submit()
+            }
+
         })
-        
