@@ -1,117 +1,167 @@
-const { users, writeUserJSON } = require('../data/dataBase');
 const { validationResult, body } = require('express-validator')
 let bcrypt = require('bcryptjs')
-
+let db = require("../database/models")
 
 module.exports = {
     login: (req, res) => {
-        res.render('login')
+        res.render('login',{
+          session:req.session,
+        });
         
     },
 
     recuperarcontra: (req, res) => {
             res.render('recuperarcontra')
     },
-
-    userProfile: (req, res) =>{
-        res.render('userProfile')
-        
-    },
-
     profile: (req, res) => {
-        let user = users.find(user=>user.id===req.session.user.id)
-          res.render("profile", {
-          
-          user
-         
-            })
-          
-      /* user = users.find(user => user.id === +req.params.id)
-		res.render('profile', {
-			user
-		})*/
+            db.User.findByPk(req.session.user.id,{  
+             include:[{association:"direccion"}, {association:"fecha"}]  
+            }).then((user)=>{
+              res.render("profile",{
+                user,
+                session:req.session,
+              });
+            });
     },
-    profileEdit:(req,res)=>{
-        let user=users.find(user=>user.id=== +req.params.id)
-
-        res.render("userProfileEdit",{
-            user,
-            session:req.session
-        })
-
+    editProfile:(req,res)=>{
+      db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
+      include:[{association:"direccion"}, {association:"fecha"}]  
+     }).then((user)=>{  
+        res.render("editProfile",{
+          user,
+          session:req.session
+        });
+      });
     },
     updateProfile:(req,res)=>{
         let errors= validationResult(req)
+
         if(errors.isEmpty()){
-            let user=users.find(user=>user.email=== req.body.email) 
-            let {
-                
-                name,                       
-                lastname,
-                localidad,
-                cp,
-                province,
-                pais
-                }=req.body
-            
-            user.name=name
-            user.lastname=lastname
-            user.pais=pais
-            user.localidad=localidad
-            user.cp=cp
-            user.province=province
-            user.avatar=req.file ? req.file.filename:user.avatar
-           
+          let{name,last_name,localidad,cp,address,province,pais, date}=req.body
+            db.User.update({
+              name,                       
+              last_name,
+              avatar:req.file?req.file.filename:req.session.user.avatar
+            },{
+              where:{
+                id:req.params.id
+              }
+            })
+            .then(()=>{
+              db.User.findOne({
+                where:{
+                  id:req.params.id
+                }
+              })
+            .then(user => {
+              if(user.address_id){
+                db.Address.update({
+                  address,
+                  province,
+                  localidad,
+                  pais,
+                  cp
+                },{
+                  where:{
+                   address_id:user.address_id
+                  }
+                })              
+              } else {
+                db.Address.create({
+                  address,
+                  province,
+                  localidad,
+                  cp,
+                  pais
+                })
+                .then(direccion=>{
+                  db.User.update({
+                    address_id:Number(direccion.address_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                  }
+                  })
+                })
+              } 
 
-            writeUserJSON(users)
-            delete user.pass
-            req.session.user= user
-            res.redirect("profile")
+              if(user.dates){
+                db.Date.update({
+                  date_user: date
+                },{
+                  where: {
+                    id:req.params.id
+                  }
+                })
+              } else {
+                db.Date.create({
+                  date_user: date
+                })
+                .then(fecha => {
+                  db.User.update({
+                    dates: Number(fecha.date_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                    }
+                  })
+                })
+              }
 
-        }else{
-            res.render("userProfileEdit",{
+              req.session.user = {
+                id: user.id,
+                name: user.name,
+                lastname: user.last_name,
+                email: user.email,
+                avatar: user.avatar
+              };
+              res.locals.user = req.session.user;
+              res.redirect("/accounts/profile");
+              });
+
+        });
+
+             }else{
+            res.render("editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
-
         }
-
-
-    },
-    processLogin:(req,res)=>{
+      },
+     
+     processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
-
-            let user=users.find(user=>user.email===req.body.email)/*traer el usuario q coincida con el mail*/
-
-             /*se crea la session*/
-            req.session.user={
+            db.User.findOne({
+                where: {
+                  email: req.body.email,    /*trae el mail que coincida con el mail del body */
+                }
+              })
+              .then((user) => {
+                req.session.user = {
                 id:user.id,
                 name:user.name,
-                lastname:user.lastname,
+                lastname:user.last_name,
                 email:user.email,
-                pais: user.pais,
-                province:user.province,
-                localidad:user.localidad,
-                cp:user.cp,
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
-            }
-
-            if(req.body.recordarme){
-                res.cookie('email', user.email, {maxAge: 3600000*4})
-            }
-
-            //res.locals.user = req.session.user    /**se pasa a local los datos del usuario por si lo necesita alguna de las vistas */
-            
-            res.redirect("/")
+                };
+        
+                if(req.body.recordarme){
+                  res.cookie('email', user.email, {maxAge: 3600000*24})
+                  
+              }
+                res.locals.user = req.session.user;
+        
+                res.redirect("/");
+              });
 
         }else{
             res.render('login', {
             errors : errors.mapped(),
-          
-        })
+            session:req.session,
+          })
  
         }
     },
@@ -130,56 +180,60 @@ module.exports = {
     processRegister: (req, res) => {
         
         let errors = validationResult(req)
-
+        if (req.fileValidatorError) {  /**validacion de imagen jpg */
+            let image = {
+              param: "image",
+              msg: req.fileValidatorError,
+            };
+            errors.push(image);
+          }
+                /*creacion de usuario*/
         if (errors.isEmpty()) {
-            let lastId = 1;
 
-            users.forEach(user => {
-                if(user.id > lastId){
-                    lastId = user.id
-                }
+
+            let {name,lastname,email,pass1} = req.body;
+
+            db.User.create({    /*trae la base de datos*/
+                    name,
+                    last_name: lastname,
+                    email,
+                    pass : bcrypt.hashSync(pass1, 12),
+                    avatar : "default-user-profile.png", 
+                    rol:2,
             }) 
-
-
-
-            let {
-                name,
-                lastname,
-                email,
-                pass1
-            } = req.body;
-
-            let newUser = {
-                id : lastId + 1,
-                name,
-                lastname,
-                date: "",
-                email,
-                pass : bcrypt.hashSync(pass1, 12),
-                pais: "",
-                province: "",
-                localidad: "",
-                cp: "",
-                avatar : req.file ? req.file.filename : "/UserAvatar/default-user-profile.png",
-                rol: "ROL_USER"
-            }
-
-            users.push(newUser);
-
-            writeUserJSON(users)
-
-            res.redirect('login')
+              .then(() => {
+                res.redirect("/accounts/login");
+              })
+              .catch((err) => console.log(err));
 
 
         } else {
-            res.render('register', {
-                errors : errors.mapped(),
-                old: req.body
-            })
+            res.render("register", {
+              errors: errors.mapped(),
+              old: req.body,
+              session: req.session,
+            });
         }
 
+    },
+    deleteUser: (req, res) => {
+      req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+            res.locals.user = ""
+        }
+        db.User.destroy({
+          where:{
+            id: req.params.id
+          }
+        })
+        return res.redirect('/') 
     }
-        
-            
-        
 }
+    
+    
+
+
+      
+    
+        

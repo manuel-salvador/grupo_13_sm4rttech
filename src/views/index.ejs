@@ -4,6 +4,8 @@
 <body>
     <%- include("partials/header.ejs") %> 
     <main>
+        <p><%= products[1].images[0].image %></p> 
+
         <%function random(min, max) {
             return Math.floor((Math.random() * (max - min + 1)) + min)
         }
@@ -13,7 +15,7 @@
                 <% for(i=1; i <= 6; i++) {%>
                 <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                 <li id=<%= `slide${i}` %> style="background-image:url(/images/products/<%= product.image %>)" >
-                    <a href="/"><img src="/images/products/<%= product.image %>" class="img-carrousel" alt="Lenovo M7"></a>
+                    <a href="/"><img src="/images/products/<%= product.images[0].image %>" class="img-carrousel" alt="<%= product.images[0].image %>"></a>
                     <div class="inferior">
                         <i class="fas fa-chevron-left"></i>
                         <div class="description">
@@ -35,9 +37,9 @@
                 <% for(i=0; i < 4; i++) {%>
                 <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                 <article>
-                    <a href="/detalleDeProducto/<%= product.id %> ">
+                    <a href="/products/detalleDeProducto/<%= product.id %> ">
                         <div class="product-img">
-                            <img src="/images/products/<%= product.image %>" alt="">
+                            <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
                         </div>
                         <div class="description">
                             <h3> <%= product.name %>  </h3>
@@ -56,9 +58,9 @@
                     <% for(i=0; i < 2; i++) {%>
                     <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                     <article class="producto">
-                        <a href="/detalleDeProducto/<%= product.id %> ">
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
                         <div class="product-img">
-                                <img src="/images/products/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
                             </div>
                             <div class="description">
                                 <h3> <%= product.name %>  </h3>
@@ -71,9 +73,9 @@
 
                 <article class="producto-principal">
                     <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                    <a href="/detalleDeProducto<%= product.id %>">
+                    <a href="/products/detalleDeProducto/<%= product.id %>">
                         <div class="product-img">
-                            <img src="/images/products/<%= product.image %>" alt="">
+                            <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
                         </div>
                         <div class="description-principal">
                             <div class="description">
@@ -88,9 +90,9 @@
                     <% for(i=0; i < 2; i++) {%>
                         <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                         <article class="producto">
-                            <a href="/detalleDeProducto/<%= product.id %> ">
+                            <a href="/products/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                    <img src="/images/products/<%= product.image %>" alt="">
+                                    <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
                                 </div>
                                 <div class="description">
                                     <h3> <%= product.name %>  </h3>
@@ -109,9 +111,9 @@
                 <% for(i=0; i < 4; i++) {%>
                     <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
                     <article class="producto">
-                        <a href="/detalleDeProducto/<%= product.id %> ">
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                <img src="/images/products/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
                             </div>
                             <div class="description">
                                 <h3><%= product.name %></h3>

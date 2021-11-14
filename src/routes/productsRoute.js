@@ -2,7 +2,8 @@ let express = require('express');
 let router = express.Router();
 const { producto,
         buscar,
-        categoria
+        categoria,
+        detalleDeProducto
     } = require('../controllers/productsController')
 
     router.use(function (req, res, next) {
@@ -15,6 +16,7 @@ const { producto,
 router.get('/', buscar)
 router.get('/:categoria', categoria)
 
-/* GET - Detalle del auto elegido */
+/* GET - Detalle del producto elegido */
+router.get('/detalleDeProducto/:id', detalleDeProducto)
 
 module.exports = router;

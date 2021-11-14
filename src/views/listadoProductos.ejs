@@ -5,25 +5,33 @@
     <body id="listado-productos">
         <%- include("partials/header.ejs") %>
         <main id="listado-productos">
+            <% if(lista.length == 0){ %>
+                <p>Por el momento no hay productos en esta categoria.</p>
+            <% } else{ %> 
             <aside class="filtros">
                 <h1 class="buscado"><%= busqueda %> </h1>
                 <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
                 <section class="lista-filtro">
                     <% if (claves.length != 0) {%> 
                         <h2>Filtros</h2>
-                        <% claves.forEach(clave => { %>
+                        <% claves.forEach(clavePrincipal => { %>
                             <dl class="filtro">
-                                <dt class="nombre-filtro"><%= clave %></dt>
+                                <dt class="nombre-filtro"><%= clavePrincipal %></dt>
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
-                                    <% let valor = producto[clave] ? producto[clave].toString() : ""; %> 
-                                    <% if(!count.includes(valor.toLowerCase()) && valor) { %> 
-                                        <dd>
-                                            <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor.toLowerCase() %>">
-                                            <label for="<%= valor %> "><%= valor %></label>
-                                        </dd>
-                                        <% valor ? count.push(valor.toLowerCase()) : ""; %> 
-                                    <% } %> 
+                                    <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
+                                    <% valor.forEach(atributo => { %>
+                                        <% let key = Object.keys(atributo.dataValues) %> 
+                                        <% let clave = key[1]%>
+                                        <% let atributoId = key[0] %> 
+                                        <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
+                                                <dd>
+                                                    <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
+                                                    <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
+                                                </dd>
+                                                <% atributo[clave] ? count.push(atributo[clave]) : ""; %> 
+                                                <% } %> 
+                                            <% }) %>
                                 <% }) %> 
                             </dl>
                         <% }) %>   
@@ -34,17 +42,16 @@
                 <% lista.forEach(product => { %> 
                     <article class="producto"
                     <% claves.forEach(e => { %>
-                        <%= e %>= 
+                        <!-- <%= e %>= 
                         <% if(product[e] != null && product[e] != undefined && product[e] != ""){ %>
                             <%= product[e] %> 
                         <% }else{ %> 
-                            ""
-                        <% } %> 
-
+                            return ""
+                        <% } %>  -->
                     <% }) %> >
                         <a href="/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                <img src="/images/products/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">
                             </div>
                             <div class="description">
                                 <h3><%= product.name %></h3>
@@ -54,6 +61,7 @@
                     </article> 
                 <% }) %> 
             </section>
+            <% } %> 
         </main>
     </body>
     <script src="/javaScripts/listadoProductos.js" defer></script>

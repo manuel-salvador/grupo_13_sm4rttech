@@ -9,8 +9,9 @@ const { admin,
     filtrarEditar, 
     editar,
     actualizar,
-    destroy } = require('../controllers/adminController');
-const agregarValidator =require('../validations/agregarValidator')
+    destroy,
+    team } = require('../controllers/adminController');
+const agregarValidator = require('../validations/agregarValidator')
 const usersAdminCheck = require('../midlewares/usersAdminCheck')
 
 router.use(function (req, res, next) {
@@ -30,16 +31,20 @@ router.get('/agregar', usersAdminCheck, agregar),
 router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
-
 /* get muestra form. de edit*/ 
 router.get('/editar', usersAdminCheck, filtroEditar)
 router.post('/editar', filtrarEditar)
 
 
-router.get('/editar/:id',usersAdminCheck, editar)
-router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
+router.get('/editar/:id', usersAdminCheck, editar)
+router.put('/editar/:id', multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
 router.delete('/delete/:id', destroy);
+
+
+/* Rutas Team, Equipo*/
+router.get('/team', usersAdminCheck, team)
+
 
 module.exports = router;
