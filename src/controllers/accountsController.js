@@ -13,13 +13,8 @@ module.exports = {
     recuperarcontra: (req, res) => {
             res.render('recuperarcontra')
     },
-
-    editProfile: (req, res) =>{
-        res.render('editProfile')
-        
-    },
-
     profile: (req, res) => {
+      res.send("hola")
             db.User.findByPk(req.session.user.id,{  
              include:[{association:"direccion"}]  
             }).then((user)=>{
@@ -33,7 +28,7 @@ module.exports = {
     },
     editProfile:(req,res)=>{
       db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
-      include:[{association:"direccion"}]  
+      include:[{association:"direccion"},{association:"fecha"}]  
      }).then((user)=>{  
         res.render("editProfile",{
           user,
@@ -159,7 +154,7 @@ module.exports = {
                 };
         
                 if(req.body.recordarme){
-                  res.cookie('email', user.email, {maxAge: 3600000*4})
+                  res.cookie('email', user.email, {maxAge: 3600000*24})
                   
               }
                 res.locals.user = req.session.user;
