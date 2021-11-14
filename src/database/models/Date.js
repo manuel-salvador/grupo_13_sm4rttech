@@ -22,7 +22,7 @@ module.exports = function(sequelize, dataTypes){
     Date.associate=models=>{
         Date.hasMany(models.User,{
             as:"user",
-            foreignKey:"date_id"
+            foreignKey:"dates"
         })
     }
     return Date

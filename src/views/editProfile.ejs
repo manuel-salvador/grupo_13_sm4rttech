@@ -4,10 +4,8 @@
 
     <body>
         <%- include("partials/header-formularios.ejs") %>
-        <p><%= JSON.stringify(user) %> </p>
             <main class="formulario-reg">
            
-               
                 <section class="caja-central-form">
                     <h2>COMPLETA TUS DATOS</h2>
                     <form id="formedit" action="/accounts/updateProfile/<%= locals.user.id %>?_method=PUT" method="POST">                    <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
@@ -49,7 +47,7 @@
                             <div class="confirm-mail">
                                 <h4>Fecha de nacimiento</h4>
                                 <input id="date" class="input-style-date inputValidate" type="date" name="date" 
-                                    value="<%= locals.old ? old.date:locals.user.date %>">
+                                    value="<%= locals.old ? old.date : user.fecha.date_user %>">
                                     <% if (locals.errors && errors.date) { %>
                                         <small class="text-danger"><%= errors.date.msg %> </small>
                                     <% } %>

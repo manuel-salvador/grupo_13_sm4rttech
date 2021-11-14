@@ -64,8 +64,7 @@ window.onload = () => {
             if (input.id == "pass1") {
                 if (validatePass) {
                     input.style.border = '3px rgba(14, 185, 90, 0.66) solid'
-                   input.nextElementSibling.nextElementSibling.innerText = ""
-                    input.removeAttribute("error")
+                    input.nextElementSibling.nextElementSibling.innerText = ""
                     return inputPass1 = input.value
                 } else {
                     input.style.border = '3px solid rgba(185, 14, 14, 0.66)'
@@ -76,7 +75,6 @@ window.onload = () => {
             if (input.id == "pass2") {
               if (validatePass && inputPass1 == input.value) {
                   input.style.border = '3px rgba(14, 185, 90, 0.66) solid'
-                  input.removeAttribute("error")
               }
               else {
                   input.style.border = '3px solid rgba(185, 14, 14, 0.66)'
