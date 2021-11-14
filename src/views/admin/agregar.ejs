@@ -21,12 +21,12 @@
             <section class="caja-central-form">
                 <h2>AGREGAR PRODUCTO</h2>
                 
-                <form action="/admin/agregar" method="POST" enctype="multipart/form-data">
+                <form id="formAddProduct"" action="/admin/agregar" method="POST" enctype="multipart/form-data">
                 <section class="datos-usuarios">
                     <div>
-                        <h4>Categorias</h4>
+                        <h4>Categoria</h4>
                         <select name="category" id="category">
-                            <option selected hidden value="">Categorias...</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% categorias.forEach(categoria => { %>
                                 <option value="<%= categoria.id %>"  <%= locals.old && old.category == categoria.id ? "selected" : null %>><%= categoria.category %></option>
                             <% }) %> 
@@ -37,7 +37,7 @@
                         <% } %>
                     </div>
                     <div>
-                        <h4>Marcas</h4>
+                        <h4>Marca</h4>
                         <select name="marca">
                             <option selected hidden value="">Seleccionar</option>
                             <% marcas.forEach(marca => { %>
@@ -76,8 +76,8 @@
                         <h4>Smart</h4>
                         <select name="smart" id="">
                             <option selected hidden value="">Seleccionar</option>
-                            <option value="1" <%= locals.old && old.smart == "1" ? "selected" : null %>>Si</option>
-                            <option value="0" <%= locals.old && old.smart == "0" ? "selected" : null %>>No</option>
+                            <option value="Si" <%= locals.old && old.smart == "Si" ? "selected" : null %>>Si</option>
+                            <option value="No" <%= locals.old && old.smart == "No" ? "selected" : null %>>No</option>
                         </select>
                     </div>
                     <div>
@@ -92,7 +92,7 @@
                     <div class="apellido">
                         <h4>RAM</h4>
                         <select name="ram" id="ram">
-                            <option selected hidden value="">GB</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% rams.forEach(ram => { %>
                                 <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == ram.ram_id ? "selected" : null %>><%= ram.ram %></option>
                             <% }) %>
@@ -102,7 +102,7 @@
                     <div class="apellido">
                         <h4>Color</h4>
                         <select name="color" id="color">
-                            <option selected hidden value="">GB</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% colores.forEach(color => { %>
                                 <option value="<%= color.color_id %>" <%= locals.old && old.color == color.color_id ? "selected" : null %>><%= color.color %></option>
                             <% }) %>
@@ -121,12 +121,15 @@
             </section>
             <div class="botones-confirm">
                 <section class="button-crear">
+                    <small id="submitErrors" class="text-danger"></small>
                     <button type="submit" class="guardar" cursor="pointer">agregar producto</button>
                 </section>
             </div>
         </section>
     </form>
     </main>
+
+    <script src="/javaScripts/addProductValidatorFront.js"></script>
 
 </body>
 </html>

@@ -7,6 +7,7 @@ let productsGaming = products.filter(product => product.category.toLowerCase() =
 const db = require('../database/models')
 const fs = require('fs');
 const { logout } = require('./accountsController');
+const { Op } = require("sequelize");
 
 
 module.exports = {
@@ -42,16 +43,17 @@ module.exports = {
         let tamaños = db.Size.findAll()
         let capacidades = db.Capacity.findAll()
         let rams = db.Ram.findAll()
+        let colores = db.Color.findAll()
 
-        Promise.all([categorias, marcas, tamaños, capacidades, rams])
-            .then(([categorias, marcas, tamaños, capacidades, rams]) => {
-                res.render('admin/agregar', { categorias, marcas, tamaños, capacidades, rams })
+        Promise.all([categorias, marcas, tamaños, capacidades, colores, rams])
+            .then(([categorias, marcas, tamaños, capacidades, colores, rams]) => {
+                res.render('admin/agregar', { categorias, marcas, tamaños, capacidades, colores, rams })
             })
     },
 
     store: (req, res) => {
         let errors = validationResult(req)
-        let imagen = req.file.filename
+        let imagen = req.file?.filename
         if (errors.isEmpty()) {
             let descripcion = req.body.description;
             let descriptionReplaced = descripcion.replace(/\r\n/gi, '-r-n');
@@ -64,20 +66,20 @@ module.exports = {
                 smart,
                 capacity,
                 ram,
+                color,
                 description = descriptionReplaced
             } = req.body
 
 
             db.Product.create({
                 category_id: Number(category),
-                name,
-                price: Number(price),
+                name: name.trim(),
+                price: Number(price.trim()),
                 brand_id: Number(marca),
                 smart: Number(smart),
-                description
+                description: description.trim()
             })
                 .then(product => {
-                    console.log(product.id);
 
                     if (product && tamaño) {
                         db.Size_Product.create({
@@ -85,18 +87,28 @@ module.exports = {
                             product_id: Number(product.id)
                         })
                     }
+
                     if (product && capacity) {
                         db.Capacity_Product.create({
                             capacity_id: Number(capacity),
                             product_id: Number(product.id)
                         })
                     }
+
                     if (product && ram) {
                         db.Ram_Product.create({
                             ram_id: Number(ram),
                             product_id: Number(product.id)
                         })
                     }
+
+                    if (product && color) {
+                        db.Color_Product.create({
+                            color_id: Number(color),
+                            product_id: Number(product.id)
+                        })
+                    }
+
                     if (product && !imagen) {
                         db.Product_Image.create({
                             image: 'logo-sm4rttech.png',
@@ -109,7 +121,10 @@ module.exports = {
                         })
                     }
 
+                    setTimeout(function () {
                     res.redirect(`/products/detalleDeProducto/${product.id}`)
+                    }, 1000)
+
 
                     /* if(arrayImages.length > 0){
                         let images = arrayImages.map(image => {
@@ -131,11 +146,12 @@ module.exports = {
             let tamaños = db.Size.findAll()
             let capacidades = db.Capacity.findAll()
             let rams = db.Ram.findAll()
+            let colores = db.Color.findAll()
 
-            Promise.all([categorias, marcas, tamaños, capacidades, rams])
-                .then(([categorias, marcas, tamaños, capacidades, rams]) => {
+            Promise.all([categorias, marcas, tamaños, capacidades, rams, colores])
+                .then(([categorias, marcas, tamaños, capacidades, rams, colores]) => {
                     res.render('admin/agregar',
-                        { categorias, marcas, tamaños, capacidades, rams, errors: errors.mapped(), old: req.body })
+                        { categorias, marcas, tamaños, capacidades, rams, colores, errors: errors.mapped(), old: req.body })
                 })
 
         }
@@ -147,48 +163,43 @@ module.exports = {
 
     filtroEditar: (req, res) => {
         let lista = ["error"]
-        res.render('admin/filtroEditar', { lista })
+
+        let categorias = db.Category.findAll()
+        let marcas = db.Brand.findAll()
+
+        Promise.all([categorias, marcas])
+            .then(([categorias, marcas]) => {
+                res.render('admin/filtroEditar', { categorias, marcas, lista})
+            })
     },
 
     filtrarEditar: (req, res) => {
-        const filtrosForm = req.body
+        const {
+            category,
+            marca,
+            id,
+            name
+        } = req.body
 
-        function filtrar(filtros, db) {
+        db.Product.findAll({
+            where:{
+                [Op.and]: [
+                    category != "" ? {category_id: category} : null,
+                    marca != "" ? {brand_id: marca} : null,
+                    id != "" ? {id: {[Op.like]:`%${id}%`}} : null,
+                    name != "" ? {name: {[Op.like]:`%${name}%`}} : null
+                ]
+              },
+              include: [{ association: "category" }]
+        })
+        .then(lista => {
+            let categorias = db.Category.findAll()
+            let marcas = db.Brand.findAll()
 
-            // Filtrando los filtros vacios
-            filtrosFiltrados = {}
-            for ([key, value] of Object.entries(filtros)) {
-                if (value != false) {
-                    filtrosFiltrados[key] = value
-                }
-            }
-
-            //Filtrar un json por distintos filtros
-
-            // Comente por si no se quieren listar todos sin filtro
-
-            /* if(0 == Object.keys(filtrosFiltrados).length){
-                return productsFiltered = []
-            }else{ */
-            productsFiltered = db.filter(product => {
-                for (var filtro in filtrosFiltrados) {
-                    if ([product[filtro]].toString().toLowerCase().includes(filtrosFiltrados[filtro].toLowerCase())) {
-
-                    } else {
-                        return false;
-                    }
-                }
-                return true;
-            });
-
-            return (productsFiltered);
-            //  }
-        }
-
-        filtrar(filtrosForm, products)
-
-        res.render('admin/filtroEditar', {
-            lista: productsFiltered,
+            Promise.all([categorias, marcas])
+            .then(([categorias, marcas]) => {
+                res.render('admin/filtroEditar', { categorias, marcas, lista})
+            })
         })
     },
 
@@ -244,7 +255,7 @@ module.exports = {
                 .then(producto => {
 
                     if (tamaño) {
-                        if (producto.tamaño[0]) {
+                        if (producto.sizes[0]) {
                             db.Size_Product.update({
                                 size_id: tamaño
                             }, {
@@ -259,7 +270,7 @@ module.exports = {
                     }
 
                     if (capacity) {
-                        if (producto.capacity[0]) {
+                        if (producto.capacities[0]) {
                             db.Capacity_Product.update({
                                 capacity_id: capacity
                             }, {
@@ -310,9 +321,9 @@ module.exports = {
 
                     db.Product.update({
                         category_id: category,
-                        name,
-                        price,
-                        brand_id: marca,
+                        name: name.trim(),
+                        price:  Number(price.trim()),
+                        brand_id: Number(marca),
                         smart,
                         description
                     }, {

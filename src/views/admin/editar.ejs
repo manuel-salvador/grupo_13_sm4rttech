@@ -19,7 +19,6 @@
     <%- include('./partials/headerAdmin.ejs') %>
         <main class="admin">
             <%- include('./partials/navAdmin.ejs') %>
-                <p><%= JSON.stringify(product) %> </p>
                 <section class="formAdmin">
 
                     <section class="caja-central-form">
@@ -76,7 +75,7 @@
                                     <select name="tamaño" id="">
                                         <option value="">Seleccionar</option>
                                         <% tamaños.forEach(tamaño => { %> 
-                                        <option value="<%= tamaño.size_id %>" <%= locals.old && old.tamaño == tamaño.size_id ? "selected" : tamaño.size_id == product.sizes[0].size_id ? `selected` : "" %>><%= tamaño.sizes %> </option>
+                                            <option value="<%= tamaño.size_id %>" <%= locals.old && old.tamaño == tamaño.size_id ? "selected" : tamaño.size_id == product.sizes[0]?.size_id ? `selected` : "" %>><%= tamaño.sizes %> </option>
                                         <% }) %> 
                                     </select>
                                 </div>
@@ -96,7 +95,7 @@
                                         <option value="">Seleccionar</option>
                                         <% capacidades.forEach(capacidad => { %> 
                                         <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacity == product.capacities[0].capacity_id ? "selected"
-                                        : capacidad.capacity_id == product.capacities[0].capacity_id ? `selected` : "" %>><%= capacidad.capacity %> </option>
+                                        : capacidad.capacity_id == product.capacities[0]?.capacity_id ? `selected` : "" %>><%= capacidad.capacity %> </option>
                                         <% }) %>
                                     </select>
                                 </div>
@@ -106,7 +105,7 @@
                                         <option selected value="">Seleccionar</option>
                                         <% rams.forEach(ram => { %> 
                                             <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == product.rams[0]?.ram_id ? "selected"
-                                            : ram.ram_id == product.rams[0].ram_id ? `selected` : "" %>><%= ram.ram %> </option>
+                                            : ram.ram_id == product.rams[0]?.ram_id ? `selected` : "" %>><%= ram.ram %> </option>
                                         <% }) %>
                                     </select>
                                 </div>
@@ -154,7 +153,7 @@
                     </section>
         </main>
      
-        <script src="/javaScripts/editValidatorFront.js"></script>
+        <script src="/javaScripts/editProductValidatorFront.js"></script>
 
 </body>
 
