@@ -1,6 +1,6 @@
 window.onload=function() {
     let input = document.getElementById("email")
-  //  let $pass= document.querySelectorAll("pass")
+  
    
         input.addEventListener("blur",(event=>{
             
@@ -13,11 +13,13 @@ window.onload=function() {
                 } else {
                     input.style.border = '3px solid rgba(185, 14, 14, 0.66)'
                     input.setAttribute("error", "error")
-                })
-                
-                
-
-  
-        
+                    }
+                                        
+        }))
         }
+        input.addEventListener
+        let form = document.getElementById("formLogin")
+        form.addEventListener('submit', event => {
+            event.preventDefault()
+        })
         
