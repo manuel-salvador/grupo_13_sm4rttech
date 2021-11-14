@@ -2,7 +2,7 @@ window.onload = () => {
 
     let inputName = document.getElementById("name")
     inputName.addEventListener('blur', (event) => {
-        if (inputName.value) {
+        if (inputName.value.trim().length > 3) {
             inputName.style.border = '3px rgba(14, 185, 90, 0.66) solid'
             inputName.removeAttribute("error")
         } else {
@@ -14,7 +14,7 @@ window.onload = () => {
 
     let inputPrice = document.getElementById("price")
     inputPrice.addEventListener('blur', (event) => {
-        if (/[\d,]+/.test(inputPrice.value) && inputPrice.value != "0") {
+        if (/[\d,]+/.test(inputPrice.value) && inputPrice.value != "0" && inputPrice.value.trim().length > 0) {
             inputPrice.style.border = '3px rgba(14, 185, 90, 0.66) solid'
             inputPrice.removeAttribute("error")
         } else {
@@ -25,7 +25,7 @@ window.onload = () => {
 
     let inputDescription = document.getElementById("description")
     inputDescription.addEventListener('blur', (event) => {
-        if (inputDescription.value.length > 5) {
+        if (inputDescription.value.trim().length > 5) {
             inputDescription.style.border = '3px rgba(14, 185, 90, 0.66) solid'
             inputDescription.removeAttribute("error")
         } else {
