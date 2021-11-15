@@ -55,6 +55,11 @@ module.exports = function(sequelize, dataTypes){
             as:"direccion",
             foreignKey:"address_id"
         })
+
+        User.belongsTo(models.Date, {
+            as:"fecha",
+            foreignKey: "dates"
+        })
        
     }
     return User;

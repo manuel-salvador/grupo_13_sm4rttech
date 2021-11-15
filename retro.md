@@ -24,3 +24,5 @@ seguir haciendo
 -hacer la restrospectiva de trabajo
 -mantener ordenado el trello
 
+
+

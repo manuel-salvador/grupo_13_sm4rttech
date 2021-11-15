@@ -13,29 +13,21 @@ module.exports = {
     recuperarcontra: (req, res) => {
             res.render('recuperarcontra')
     },
-
-    userProfile: (req, res) =>{
-        res.render('userProfile')
-        
-    },
-
     profile: (req, res) => {
             db.User.findByPk(req.session.user.id,{  
-             include:[{association:"direccion"}]  
+             include:[{association:"direccion"}, {association:"fecha"}]  
             }).then((user)=>{
               res.render("profile",{
                 user,
                 session:req.session,
               });
             });
-          
-   
     },
-    profileEdit:(req,res)=>{
+    editProfile:(req,res)=>{
       db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
-      include:[{association:"direccion"}]  
+      include:[{association:"direccion"}, {association:"fecha"}]  
      }).then((user)=>{  
-        res.render("userProfile",{
+        res.render("editProfile",{
           user,
           session:req.session
         });
@@ -45,40 +37,99 @@ module.exports = {
         let errors= validationResult(req)
 
         if(errors.isEmpty()){
-          let{name,last_name,localidad,cp,province,pais}=req.body
-          db.User.update({ /*verifica  */
-            name,                       
-            last_name,
-            localidad,
-            cp,
-            province,
-            pais,
-            avatar:req.file?req.file.filename:req.session.user.avatar
-          },{
-            where:{
-              id:req.params.id
-            }
-          })
-          .then(()=>{
-            db.Address.create({
-              address,
-              province,
-              localidad,
-              cp
+          let{name,last_name,localidad,cp,address,province,pais, date}=req.body
+            db.User.update({
+              name,                       
+              last_name,
+              avatar:req.file?req.file.filename:req.session.user.avatar
+            },{
+              where:{
+                id:req.params.id
+              }
             })
-          })
-          .then(()=>{
-            res.redirect("profile")
-          })         
-           
-        }else{
-            res.render("userProfileEdit",{
+            .then(()=>{
+              db.User.findOne({
+                where:{
+                  id:req.params.id
+                }
+              })
+            .then(user => {
+              if(user.address_id){
+                db.Address.update({
+                  address,
+                  province,
+                  localidad,
+                  pais,
+                  cp
+                },{
+                  where:{
+                   address_id:user.address_id
+                  }
+                })              
+              } else {
+                db.Address.create({
+                  address,
+                  province,
+                  localidad,
+                  cp,
+                  pais
+                })
+                .then(direccion=>{
+                  db.User.update({
+                    address_id:Number(direccion.address_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                  }
+                  })
+                })
+              } 
+
+              if(user.dates){
+                db.Date.update({
+                  date_user: date
+                },{
+                  where: {
+                    id:req.params.id
+                  }
+                })
+              } else {
+                db.Date.create({
+                  date_user: date
+                })
+                .then(fecha => {
+                  db.User.update({
+                    dates: Number(fecha.date_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                    }
+                  })
+                })
+              }
+
+              req.session.user = {
+                id: user.id,
+                name: user.name,
+                lastname: user.last_name,
+                email: user.email,
+                avatar: user.avatar
+              };
+              res.locals.user = req.session.user;
+              res.redirect("/accounts/profile");
+              });
+
+        });
+
+             }else{
+            res.render("editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
         }
       },
+     
      processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
@@ -98,7 +149,7 @@ module.exports = {
                 };
         
                 if(req.body.recordarme){
-                  res.cookie('email', user.email, {maxAge: 3600000*4})
+                  res.cookie('email', user.email, {maxAge: 3600000*24})
                   
               }
                 res.locals.user = req.session.user;
