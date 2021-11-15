@@ -20,18 +20,29 @@
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
                                     <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
-                                    <% valor.forEach(atributo => { %>
-                                        <% let key = Object.keys(atributo.dataValues) %> 
-                                        <% let clave = key[1]%>
-                                        <% let atributoId = key[0] %> 
-                                        <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
-                                                <dd>
-                                                    <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
-                                                    <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
-                                                </dd>
+                                    <% if(clavePrincipal.toLowerCase() != "smart") { %> 
+                                        <% valor.forEach(atributo => { %>
+                                            <% let key = Object.keys(atributo.dataValues) %> 
+                                            <% let clave = key[1]%>
+                                            <% let atributoId = key[0] %> 
+                                            <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
+                                                    <dd>
+                                                        <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
+                                                        <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
+                                                    </dd>
                                                 <% atributo[clave] ? count.push(atributo[clave]) : ""; %> 
                                                 <% } %> 
                                             <% }) %>
+                                    <% } else { %>
+                                        <% if(!count.includes(producto[clavePrincipal]) && producto[clavePrincipal]) { %>
+                                        <dd>
+                                            <input id="<%= `${valor}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= producto[clavePrincipal] %>">
+                                            <label for="<%= `${valor}` %> "><%= producto[clavePrincipal] %></label>
+                                        </dd>
+                                        <% producto[clavePrincipal] ? count.push(producto[clavePrincipal]) : ""; %> 
+                                        <% } %> 
+                                    <% } %> 
+                                        
                                 <% }) %> 
                             </dl>
                         <% }) %>   
@@ -48,8 +59,8 @@
                         <% }else{ %> 
                             return ""
                         <% } %>  -->
-                    <% }) %> >
-                        <a href="/detalleDeProducto/<%= product.id %> ">
+                    <% }) %>
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
                                 <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">
                             </div>

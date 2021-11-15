@@ -2,10 +2,10 @@
 <html lang="es">
     <%- include("partials/head.ejs") %>
 <body>
-    <%- include("partials/header.ejs") %> 
+    <%- include("partials/header.ejs") %>
     <main>
         <div class="detalle">
-            <p><a href="/">inicio</a>><a href="/products/<%= product.category %>"><%= product.category %></a>><a><%= product.marca%></a></p>
+            <p><a href="/">inicio</a>><a href="/products/<%= product.category.id %>"><%= product.category.category %></a>><a><%= product.brand.brand%></a></p>
 
         </div>
         <article class="imagenes">
@@ -53,22 +53,33 @@
                 <h4>Especificaciones tecnicas</h4>
                 <ul>
                     <li>Marca: <%= product.brand.brand %> </li>
-                    <li>Pulgadas: <%= product.sizes[0].sizes %> </li>
-                    <li>RAM:
-                        <%let ramMemory = []; product.rams.forEach(ram => { %>
-                            <% ramMemory.push(ram.ram) %> 
-                        <% }) %>     
-                        <%= ramMemory.join(', ') %> 
-                    </li>
+
+                    <% if (product.sizes[0]) { %> 
+                        <li>Pulgadas: <%= product.sizes[0].sizes %> </li>
+                    <% } %> 
+
+                    <% if (product.rams[0]) { %> 
+                        <li>RAM:
+                            <%let ramMemory = []; product.rams.forEach(ram => { %>
+                                <% ramMemory.push(ram.ram) %> 
+                            <% }) %>     
+                            <%= ramMemory.join(', ') %> 
+                        </li>
+                    <% } %> 
+
                     <% if (product.smart) {%> 
                         <li>Smart: <%= product.smart %> </li>
                     <% } %> 
-                    <li>Capacidad: 
-                        <%let capacidades = []; product.capacities.forEach(capacity => { %>
-                            <% capacidades.push(capacity.capacity) %> 
-                        <% }) %> 
-                        <%= capacidades.join(', ') %> 
-                    </li>
+
+
+                    <% if (product.capacities[0]) { %> 
+                        <li>Capacidad: 
+                            <%let capacidades = []; product.capacities.forEach(capacity => { %>
+                                <% capacidades.push(capacity.capacity) %> 
+                            <% }) %> 
+                            <%= capacidades.join(', ') %> 
+                        </li>
+                    <% } %> 
                 </ul>
             </div>
             <div class="descripcion-del-producto">

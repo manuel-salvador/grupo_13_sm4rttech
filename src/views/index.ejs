@@ -4,8 +4,6 @@
 <body>
     <%- include("partials/header.ejs") %> 
     <main>
-        <p><%= products[1].images[0].image %></p> 
-
         <%function random(min, max) {
             return Math.floor((Math.random() * (max - min + 1)) + min)
         }
@@ -14,7 +12,7 @@
             <ul class="slider">
                 <% for(i=1; i <= 6; i++) {%>
                 <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                <li id=<%= `slide${i}` %> style="background-image:url(/images/products/<%= product.image %>)" >
+                <li id=<%= `slide${i}` %> style="background-image:url(/images/products/<%= product.images[0].image %>)" >
                     <a href="/"><img src="/images/products/<%= product.images[0].image %>" class="img-carrousel" alt="<%= product.images[0].image %>"></a>
                     <div class="inferior">
                         <i class="fas fa-chevron-left"></i>

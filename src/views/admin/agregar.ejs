@@ -19,14 +19,14 @@
         <%- include('./partials/navAdmin.ejs') %>
         <section class="formAdmin">
             <section class="caja-central-form">
-                <h2>AGREGAR PRODUCTOS</h2>
+                <h2>AGREGAR PRODUCTO</h2>
                 
-                <form action="/admin/agregar" method="POST" enctype="multipart/form-data">
+                <form id="formAddProduct"" action="/admin/agregar" method="POST" enctype="multipart/form-data">
                 <section class="datos-usuarios">
                     <div>
-                        <h4>Categorias</h4>
+                        <h4>Categoria</h4>
                         <select name="category" id="category">
-                            <option selected hidden value="">Categorias...</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% categorias.forEach(categoria => { %>
                                 <option value="<%= categoria.id %>"  <%= locals.old && old.category == categoria.id ? "selected" : null %>><%= categoria.category %></option>
                             <% }) %> 
@@ -37,8 +37,8 @@
                         <% } %>
                     </div>
                     <div>
-                        <h4>Marcas</h4>
-                        <select name="marca" id="">
+                        <h4>Marca</h4>
+                        <select name="marca">
                             <option selected hidden value="">Seleccionar</option>
                             <% marcas.forEach(marca => { %>
                                 <option value="<%= marca.brand_id %>" <%= locals.old && old.marca == marca.brand_id ? "selected" : null %>><%= marca.brand %> </option>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="name">
                         <h4>Nombre del producto</h4>
-                        <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
+                        <input id="name" class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old && old.name %>" autocomplete="off">
                         <% if (locals.errors && errors.name) { %> <!-- busca en las variables de nuestra aplicacion -->
                             <small class="text-danger"> <%= errors.name.msg %>  </small>
                         <% } %>
@@ -76,8 +76,8 @@
                         <h4>Smart</h4>
                         <select name="smart" id="">
                             <option selected hidden value="">Seleccionar</option>
-                            <option value="1" <%= locals.old && old.smart == "1" ? "selected" : null %>>Si</option>
-                            <option value="0" <%= locals.old && old.smart == "0" ? "selected" : null %>>No</option>
+                            <option value="Si" <%= locals.old && old.smart == "Si" ? "selected" : null %>>Si</option>
+                            <option value="No" <%= locals.old && old.smart == "No" ? "selected" : null %>>No</option>
                         </select>
                     </div>
                     <div>
@@ -92,32 +92,44 @@
                     <div class="apellido">
                         <h4>RAM</h4>
                         <select name="ram" id="ram">
-                            <option selected hidden value="">GB</option>
+                            <option selected hidden value="">Seleccionar</option>
                             <% rams.forEach(ram => { %>
                                 <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == ram.ram_id ? "selected" : null %>><%= ram.ram %></option>
                             <% }) %>
                             
                         </select>
                     </div>
+                    <div class="apellido">
+                        <h4>Color</h4>
+                        <select name="color" id="color">
+                            <option selected hidden value="">Seleccionar</option>
+                            <% colores.forEach(color => { %>
+                                <option value="<%= color.color_id %>" <%= locals.old && old.color == color.color_id ? "selected" : null %>><%= color.color %></option>
+                            <% }) %>
+                        </select>
+                    </div>
                     <section class="img-coment">
                     <div>
                         <h4>Imagenes</h4>
-                        <input class="input-file" type="file" multiple="" name="image" id="image">
+                        <input class="input-file" type="file" name="image" id="image" multiple>
                     </div>
                     <h4>Descripción</h4>
                     <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %></textarea>
-                    <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
-                        <small class="text-danger"><%= errors.description.msg %></small>
+                        <% if (locals.errors && errors.description) { %> <!-- busca en las variables de nuestra aplicacion -->
+                            <small class="text-danger"><%= errors.description.msg %></small>
                        <% } %>
             </section>
             <div class="botones-confirm">
                 <section class="button-crear">
+                    <small id="submitErrors" class="text-danger"></small>
                     <button type="submit" class="guardar" cursor="pointer">agregar producto</button>
                 </section>
             </div>
         </section>
     </form>
     </main>
+
+    <script src="/javaScripts/addProductValidatorFront.js"></script>
 
 </body>
 </html>
