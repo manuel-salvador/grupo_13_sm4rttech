@@ -52,14 +52,14 @@
             <section class="listado">
                 <% lista.forEach(product => { %> 
                     <article class="producto"
-                    <% claves.forEach(e => { %>
-                        <!-- <%= e %>= 
-                        <% if(product[e] != null && product[e] != undefined && product[e] != ""){ %>
-                            <%= product[e] %> 
+                    <% claves.forEach(clave => { %>
+                        <%= clave %>= 
+                        <% if(product[clave] != null && product[clave] != undefined && product[clave] != ""){ %>
+                            <%= product[clave][0] ? product[clave][0][clave] : product[clave] %>  
                         <% }else{ %> 
-                            return ""
-                        <% } %>  -->
-                    <% }) %>
+                            ""
+                        <% } %>  
+                    <% }) %> >
                         <a href="/products/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
                                 <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">

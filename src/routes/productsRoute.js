@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-const { producto,
+const { productos,
         buscar,
         categoria,
         detalleDeProducto
@@ -13,8 +13,9 @@ const { producto,
 
 
 /* GET - Lista todos los productos */
-router.get('/', buscar)
-router.get('/:categoria', categoria)
+router.get('/', productos)
+router.get('/search', buscar)
+router.get('/category/:categoria', categoria)
 
 /* GET - Detalle del producto elegido */
 router.get('/detalleDeProducto/:id', detalleDeProducto)

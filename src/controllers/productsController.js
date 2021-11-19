@@ -1,23 +1,58 @@
 const db = require('../database/models')
-let { products } = require('../data/dataBase');
+/* let { products } = require('../data/dataBase');
 const Product = require('../database/models/Product');
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
 let productsCelulares = products.filter(product => product.category.toLowerCase() === "celulares")
 let productsTablets = products.filter(product => product.category.toLowerCase() === "tablets")
-let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming")
+let productsGaming = products.filter(product => product.category.toLowerCase() === "gaming") */
 
 module.exports = {
-  producto: (req, res) => {
-    setTimeout(function () {
-      res.render('products', {
-        productsTelevisores,
-        productsCelulares,
-        productsGaming,
-        productsTablets,
-        products
+  productos: (req, res) => {
+    db.Product.findAll({
+      include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+    { association: "capacities" }, { association: "images" }, { association: "rams" },
+    { association: "sizes" }]
+  })
+    .then(productsFiltrados => {
 
-      })
-    }, 1000)
+        // Aca va el filtro para obtener los filtros
+        var claves = []
+        function obtenerFiltros(list) {
+
+          list.forEach(objeto => {
+            let getKeys = Object.keys(objeto.dataValues);
+            for (var clave of getKeys) {
+              if (!claves.includes(clave) && clave != "order" && clave != "brand" && clave != "images" && clave != "category_id" && clave != "brand_id" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
+                claves.push(clave)
+              }
+            }
+          })
+
+          claves = claves.filter(clave => {
+            count = 0
+            list.forEach(producto => {
+              if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
+                count++
+              }
+            })
+            if (count != list.length) {
+              return true
+            }
+          })
+
+          return claves
+
+        }
+
+        obtenerFiltros(productsFiltrados)
+
+        res.render('listadoProductos', {
+          lista: productsFiltrados,
+          busqueda: "",
+          claves
+        })
+      
+  })
   },
   detalleDeProducto: (req, res) => {
 
@@ -36,16 +71,20 @@ module.exports = {
   buscar: (req, res) => {
     let busqueda = req.query.buscar
 
-    var lista = []
-    function buscar(busqueda, db) {
-
-      if (!busqueda) {
-        lista = db
-        return lista;
+    let lista = []
+    
+    if (!busqueda) {
+        res.render('listadoProductos', {
+          lista
+        })
       } else {
+        if (productsFiltrados.length == 0) {
+          res.render('listadoProductos', {
+            lista: productsFiltrados
+          })
+        }
 
-
-        let keywords = busqueda.split(" ");
+        /* let keywords = busqueda.split(" ");
 
         db.forEach(producto => {
 
@@ -68,13 +107,11 @@ module.exports = {
 
         })
 
-        lista.sort((a, b) => b.order - a.order)
+        lista.sort((a, b) => b.order - a.order) */
       }
 
       return lista;
-    }
 
-    buscar(busqueda, products)
 
     // Aca va el filtro para obtener los filtros
     var claves = []

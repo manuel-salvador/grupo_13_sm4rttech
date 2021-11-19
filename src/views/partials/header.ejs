@@ -6,7 +6,7 @@
         </a>
 
         <!-- buscador -->
-        <form action="/products" method="GET" class="search-form-mobile" id="search">
+        <form action="/products/search" method="GET" class="search-form-mobile" id="search">
             <div class="search-bar">
               
                 <input type="search" name="buscar" id="" placeholder="Buscar productos" autocomplete="off">
@@ -20,7 +20,7 @@
                 </li>
                 <% categories.forEach(category => { %> 
                     <li class="dropdown-menu">
-                        <a href="/products/<%= category.id %>"><%= category.category %></a>
+                        <a href="/products/category/<%= category.id %>"><%= category.category %></a>
                     </li>
                 <% }) %> 
             </ul>
@@ -55,7 +55,7 @@
                 </li>
                 <% categories.forEach(category => { %> 
                     <li class="dropdown-menu">
-                        <a href="/products/<%= category.id %>"><%= category.category %></a>
+                        <a href="/products/category/<%= category.id %>"><%= category.category %></a>
                     </li>
                 <% }) %> 
             </ul>
