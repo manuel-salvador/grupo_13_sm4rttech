@@ -46,7 +46,6 @@ window.onload = () => {
             }
 
             if (input.id == "password") {
-                console.log(input.nextElementSibling.nextElementSibling);
                 if (validatePass) {
                     input.style.border = '3px rgba(14, 185, 90, 0.66) solid'
                     input.nextElementSibling.nextElementSibling.innerText = ""
@@ -60,7 +59,6 @@ window.onload = () => {
             }
 
             if (input.id == "confirmPassword") {
-                console.log(input.value);
                 if (validatePass && inputPass == input.value) {
                     input.style.border = '3px rgba(14, 185, 90, 0.66) solid'
                     input.nextElementSibling.nextElementSibling.innerText = ""
@@ -84,7 +82,8 @@ window.onload = () => {
             let elementosForm = form.elements
 
             for (let index = 0; index < elementosForm.length-1; index++) {
-                if(elementosForm[index].value == "" || elementosForm[index].error){
+                if(elementosForm[index].value == "" && elementosForm[index].name != "avatar"|| elementosForm[index].error){
+                    console.log(elementosForm[index]);
                     elementosForm[index].style.border = '3px solid rgba(185, 14, 14, 0.66)'
                     elementosForm[index].setAttribute("error", "error")
                     document.getElementById("submitErrors").innerHTML = "Los campos señalados son obligatorios *";

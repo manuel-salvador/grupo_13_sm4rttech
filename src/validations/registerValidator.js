@@ -6,7 +6,7 @@ const db = require("../database/models")
 module.exports = [
   body('name')
     .custom((value) => {
-      regexName = /^[a-zA-Z]{2,}*$/
+      regexName = /^[a-zA-Z]{2,}$/
       return regexName.test(value)
     })
     .withMessage('Introduzca un nombre valido'),

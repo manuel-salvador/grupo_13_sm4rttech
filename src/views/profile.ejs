@@ -28,23 +28,23 @@
                     </div>
                     <div class="mail">
                         <h4>Fecha de nacimiento</h4>
-                        <p class="casil capit"><%= user.fecha.date_user ? user.fecha.date_user: "Fecha de nacimiento"%></p>
+                        <p class="casil capit"><%= user.fecha?.date_user ? user.fecha.date_user: "Fecha de nacimiento"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>País</h4>
-                        <p class="casil capit"><%= user.direccion.pais ? user.direccion.pais : "País"%></p>
+                        <p class="casil capit"><%= user.direccion?.pais ? user.direccion.pais : "País"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>Provincia</h4>
-                        <p class="casil"><%= user.direccion.province ? user.direccion.province : "Provincia"%></p>
+                        <p class="casil"><%= user.direccion?.province ? user.direccion.province : "Provincia"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>localidad</h4>
-                        <p class="casil"><%= user.direccion.localidad ? user.direccion.localidad : "Localidad"%></p>
+                        <p class="casil"><%= user.direccion?.localidad ? user.direccion.localidad : "Localidad"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>Codigo postal</h4>
-                        <p class="casil"><%= user.direccion.cp ? user.direccion.cp : "Codigo postal"%></p>
+                        <p class="casil"><%= user.direccion?.cp ? user.direccion.cp : "Codigo postal"%></p>
                     </div>
                 </section>
         <section class="button-crear">
