@@ -6,7 +6,11 @@
         <%- include("partials/header.ejs") %>
         <main id="listado-productos">
             <% if(lista.length == 0){ %>
-                <p>Por el momento no hay productos en esta categoria.</p>
+                <% if(listado == "category"){ %> 
+                    <h2>Por el momento no hay productos en esta categoria.</h2>
+                <% } else if (listado == "search") { %> 
+                    <h2>No hubo resultados para tu búsqueda</h2>
+                <% } %> 
             <% } else{ %> 
             <aside class="filtros">
                 <h1 class="buscado"><%= busqueda %> </h1>
