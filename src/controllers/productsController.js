@@ -1,4 +1,5 @@
 const db = require('../database/models')
+const { Op } = require("sequelize");
 /* let { products } = require('../data/dataBase');
 const Product = require('../database/models/Product');
 let productsTelevisores = products.filter(product => product.category.toLowerCase() === "televisores")
@@ -10,10 +11,10 @@ module.exports = {
   productos: (req, res) => {
     db.Product.findAll({
       include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
-    { association: "capacities" }, { association: "images" }, { association: "rams" },
-    { association: "sizes" }]
-  })
-    .then(productsFiltrados => {
+      { association: "capacities" }, { association: "images" }, { association: "rams" },
+      { association: "sizes" }]
+    })
+      .then(productsFiltrados => {
 
         // Aca va el filtro para obtener los filtros
         var claves = []
@@ -51,8 +52,8 @@ module.exports = {
           busqueda: "",
           claves
         })
-      
-  })
+
+      })
   },
   detalleDeProducto: (req, res) => {
 
@@ -72,86 +73,90 @@ module.exports = {
     let busqueda = req.query.buscar
 
     let lista = []
-    
+
     if (!busqueda) {
-        res.render('listadoProductos', {
-          lista
-        })
-      } else {
-        if (productsFiltrados.length == 0) {
-          res.render('listadoProductos', {
-            lista: productsFiltrados
-          })
-        }
+      res.render('listadoProductos', {
+        lista
+      })
+    } else {
+      db.Category.findAll()
+        .then(filterCategory => {
 
-        /* let keywords = busqueda.split(" ");
+          let keywords = busqueda.trim().split(" ");
 
-        db.forEach(producto => {
+          let keywordsOR = []
 
-          let order = 0;
-          var nombre = producto.name.toLowerCase().split(" ");
-
-          for (var word of keywords) {
-            for (var palabra of nombre) {
-              if (palabra == word.toLowerCase()) {
-                order += 5
-              } else if (palabra.includes(word.toLowerCase())) {
-                order++
+          keywords.forEach(word => {
+            keywordsOR.push({ name: { [Op.like]: `%${word}%` } })
+            filterCategory.forEach(filterCat => {
+              let posicion = filterCat.category.indexOf(word);
+              let categoryId = filterCat.id
+              if (posicion != "-1") {
+                keywordsOR.push({ category_id: { [Op.like]: categoryId } })
               }
-            }
-          }
+            })
+          })
 
-          if (order > 0) {
-            lista.push({ order: order, ...producto })
-          }
+          db.Product.findAll({
+            where: {
+              [Op.or]: keywordsOR
+            },
+            include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
+            { association: "capacities" }, { association: "images" }, { association: "rams" },
+            { association: "sizes" }]
+          })
+            .then(productsFiltrados => {
 
+              // Aca va el filtro para obtener los filtros
+              var claves = []
+              function obtenerFiltros(list) {
+
+                list.forEach(objeto => {
+                  let getKeys = Object.keys(objeto.dataValues);
+                  for (var clave of getKeys) {
+                    if (!claves.includes(clave) && clave != "order" && clave != "brand" && clave != "images" && clave != "category_id" && clave != "brand_id" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
+                      claves.push(clave)
+                    }
+                  }
+                })
+
+                claves = claves.filter(clave => {
+                  count = 0
+                  list.forEach(producto => {
+                    if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
+                      count++
+                    }
+                  })
+                  if (count != list.length) {
+                    return true
+                  }
+                })
+
+                return claves
+
+              }
+
+              obtenerFiltros(productsFiltrados)
+
+              res.render('listadoProductos', {
+                lista: productsFiltrados,
+                busqueda,
+                claves,
+                listado: "search"
+              })
+            })
         })
 
-        lista.sort((a, b) => b.order - a.order) */
-      }
-
-      return lista;
-
-
-    // Aca va el filtro para obtener los filtros
-    var claves = []
-    function obtenerFiltros(list) {
-
-      list.forEach(objeto => {
-        let getKeys = Object.keys(objeto);
-
-        for (var clave of getKeys) {
-          if (!claves.includes(clave) && clave != "order" && clave != "id" && clave != "name" && clave != "category" && clave != "price" && clave != "image" && clave != "description") {
-            claves.push(clave)
-          }
-        }
-
-      })
-
-
-      claves = claves.filter(clave => {
-        count = 0
-        lista.forEach(producto => {
-          if (producto[clave] == null || producto[clave] == "" || producto[clave] == undefined) {
-            count++
-          }
-        })
-        if (count != lista.length) { return true }
-      })
-
-      return claves
     }
 
-    obtenerFiltros(lista)
 
-    !busqueda ? busqueda = "Todos los productos" : "";
-
-    //renderizo vista    
-    res.render('listadoProductos', {
+    // Renderizo vista sin nada filtrado
+    /* res.render('listadoProductos', {
       lista,
       busqueda,
-      claves
-    })
+      claves: [],
+      listado: "search"
+    }) */
   },
   categoria: (req, res) => {
     let categoria = req.params.categoria
@@ -170,7 +175,8 @@ module.exports = {
 
         if (productsFiltrados.length == 0) {
           res.render('listadoProductos', {
-            lista: productsFiltrados
+            lista: productsFiltrados,
+            listado: "category"
           })
         } else {
           // Aca va el filtro para obtener los filtros
@@ -207,7 +213,8 @@ module.exports = {
           res.render('listadoProductos', {
             lista: productsFiltrados,
             busqueda: productsFiltrados[0].category.dataValues.category,
-            claves
+            claves,
+            listado: "category"
           })
         }
       })
