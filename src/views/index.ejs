@@ -1,184 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include("partials/head.ejs") %> 
-<body>
-    <%- include("partials/header.ejs") %> 
-    <main>
-        <%function random(min, max) {
-            return Math.floor((Math.random() * (max - min + 1)) + min)
-        }
-        %>
-        <div class="carousel">
-            <ul class="slider">
-                <% for(i=1; i <= 6; i++) {%>
-                <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                <li id=<%= `slide${i}` %> style="background-image:url(/images/products/<%= product.images[0].image %>)" >
-                    <a href="/"><img src="/images/products/<%= product.images[0].image %>" class="img-carrousel" alt="<%= product.images[0].image %>"></a>
-                    <div class="inferior">
-                        <i class="fas fa-chevron-left"></i>
-                        <div class="description">
-                            <h4> <%= product.name %>  </h4>
-                            <p><span class="bold">La mejor opción gama alta</span></p>
-                            <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún tiene mucho que dar.</p>
-                        </div>
-                        <i class="fas fa-chevron-right"></i>
+<%- include("partials/head.ejs") %>
+
+    <body>
+        <%- include("partials/header.ejs") %>
+            <main>
+                <%function random(min, max) { return Math.floor((Math.random() * (max - min + 1)) + min) } %>
+                    <div class="carousel">
+                        <ul class="slider">
+                            <% for(i=1; i <=6; i++) {%>
+                                <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
+                                    <li id=<%=`slide${i}` %> style="background-image:url(/images/products/<%=
+                                            product.images[0].image %>)" >
+                                            <a href="/"><img src="/images/products/<%= product.images[0].image %>"
+                                                    class="img-carrousel" alt="<%= product.images[0].image %>"></a>
+                                            <div class="inferior">
+                                                <i class="fas fa-chevron-left"></i>
+                                                <div class="description">
+                                                    <h4>
+                                                        <%= product.name %>
+                                                    </h4>
+                                                    <p><span class="bold">La mejor opción gama alta</span></p>
+                                                    <p>Gran calidad de construcción, aunque fué lanzado en 2015 aún
+                                                        tiene mucho que dar.</p>
+                                                </div>
+                                                <i class="fas fa-chevron-right"></i>
+                                            </div>
+                                            <div class="box-filter"></div>
+                                    </li>
+                                    <% } %>
+                        </ul>
                     </div>
-                    <div class="box-filter"></div>
-                </li>
-                <% } %> 
-            </ul>
-        </div>
 
-        <div class="top-sales">
-            <h2>Los mas vendidos</h2>
-            <section class="articulos">
-                <% for(i=0; i < 4; i++) {%>
-                <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                <article>
-                    <a href="/products/detalleDeProducto/<%= product.id %> ">
-                        <div class="product-img">
-                            <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
-                        </div>
-                        <div class="description">
-                            <h3> <%= product.name %>  </h3>
-                            <p class="price">$ <%= product.price %></p>
-                        </div>
-                    </a>
-                </article>                
-                <% } %> 
-            </section>
-        </div>
+                    <div class="top-sales">
+                        <h2>Los mas vendidos</h2>
+                        <section class="articulos">
+                            <% for(i=0; i < 4; i++) {%>
+                                <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
+                                    <article>
+                                        <a href="/products/detalleDeProducto/<%= product.id %> ">
+                                            <div class="product-img">
+                                                <img src="/images/products/<%= product.images[0].image %>"
+                                                    alt="<%= product.images[0].image %>">
+                                            </div>
+                                            <div class="description">
+                                                <h3>
+                                                    <%= product.name %>
+                                                </h3>
+                                                <p class="price">$ <%= product.price %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                    <% } %>
+                        </section>
+                    </div>
 
-        <div class="destacados">
-            <h2>Destacados</h2>
-            <section class="articulos-destacados">
-                <div class="izquierda arriba">
-                    <% for(i=0; i < 2; i++) {%>
-                    <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                    <article class="producto">
-                        <a href="/products/detalleDeProducto/<%= product.id %> ">
-                        <div class="product-img">
-                                <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
+                    <div class="destacados">
+                        <h2>Destacados</h2>
+                        <section class="articulos-destacados">
+                            <div class="izquierda arriba">
+                                <% for(i=0; i < 2; i++) {%>
+                                    <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom]
+                                        %>
+                                        <article class="producto">
+                                            <a href="/products/detalleDeProducto/<%= product.id %> ">
+                                                <div class="product-img">
+                                                    <img src="/images/products/<%= product.images[0].image %>"
+                                                        alt="<%= product.images[0].image %>">
+                                                </div>
+                                                <div class="description">
+                                                    <h3>
+                                                        <%= product.name %>
+                                                    </h3>
+                                                    <p class="price">$ <%= product.price %>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </article>
+                                        <% } %>
                             </div>
-                            <div class="description">
-                                <h3> <%= product.name %>  </h3>
-                                <p class="price">$ <%= product.price %></p>
+
+                            <article class="producto-principal">
+                                <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
+                                    <a href="/products/detalleDeProducto/<%= product.id %>">
+                                        <div class="product-img">
+                                            <img src="/images/products/<%= product.images[0].image %>"
+                                                alt="<%= product.images[0].image %>">
+                                        </div>
+                                        <div class="description-principal">
+                                            <div class="description">
+                                                <h3>
+                                                    <%= product.name %>
+                                                </h3>
+                                                <p class="price">$ <%= product.price %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </article>
+
+                            <div class="derecha abajo">
+                                <% for(i=0; i < 2; i++) {%>
+                                    <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom]
+                                        %>
+                                        <article class="producto">
+                                            <a href="/products/detalleDeProducto/<%= product.id %> ">
+                                                <div class="product-img">
+                                                    <img src="/images/products/<%= product.images[0].image %>"
+                                                        alt="<%= product.images[0].image %>">
+                                                </div>
+                                                <div class="description">
+                                                    <h3>
+                                                        <%= product.name %>
+                                                    </h3>
+                                                    <p class="price">$ <%= product.price %>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </article>
+                                        <% } %>
                             </div>
+                        </section>
+                    </div>
+
+                    <div class="ofertas">
+                        <h2>Ofertas</h2>
+                        <section class="articulos">
+                            <% for(i=0; i < 4; i++) {%>
+                                <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
+                                    <article class="producto">
+                                        <a href="/products/detalleDeProducto/<%= product.id %> ">
+                                            <div class="product-img">
+                                                <img src="/images/products/<%= product.images[0].image %>"
+                                                    alt="<%= product.images[0].image %>">
+                                            </div>
+                                            <div class="description">
+                                                <h3>
+                                                    <%= product.name %>
+                                                </h3>
+                                                <p class="price">$ <%= product.price %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                    <% } %>
+                        </section>
+                        <a href="/products" class="ver-todas">
+                            <p>Ver todas ></p>
                         </a>
-                    </article>
-                    <% } %> 
-                </div>
+                    </div>
 
-                <article class="producto-principal">
-                    <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                    <a href="/products/detalleDeProducto/<%= product.id %>">
-                        <div class="product-img">
-                            <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
+                    <div class="marcas-partners">
+                        <h2>Marcas Destacadas</h2>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/aorus.png" alt="">
                         </div>
-                        <div class="description-principal">
-                            <div class="description">
-                                <h3> <%= product.name %>  </h3>
-                                <p class="price">$ <%= product.price %></p>
-                            </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/apple.png" alt="">
                         </div>
-                    </a>
-                </article>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/asus.png" alt="">
+                        </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/hp.png" alt="">
+                        </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/lenovo.png" alt="">
+                        </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/lg.png" alt="">
+                        </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/samsung.png" alt="">
+                        </div>
+                        <div class="marca">
+                            <img src="/images/marcas-partners/toshiba.png" alt="">
+                        </div>
+                    </div>
 
-                <div class="derecha abajo">
-                    <% for(i=0; i < 2; i++) {%>
-                        <% var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                        <article class="producto">
-                            <a href="/products/detalleDeProducto/<%= product.id %> ">
-                            <div class="product-img">
-                                    <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
-                                </div>
-                                <div class="description">
-                                    <h3> <%= product.name %>  </h3>
-                                    <p class="price">$ <%= product.price %></p>
-                                </div>
-                            </a>
-                        </article>
-                        <% } %>
-                </div>
-            </section>
-        </div>
-
-        <div class="ofertas">
-            <h2>Ofertas</h2>
-            <section class="articulos">
-                <% for(i=0; i < 4; i++) {%>
-                    <%  var numeroRandom = random(0, products.length-1); var product = products[numeroRandom] %>
-                    <article class="producto">
-                        <a href="/products/detalleDeProducto/<%= product.id %> ">
-                            <div class="product-img">
-                                <img src="/images/products/<%= product.images[0].image %>" alt="<%= product.images[0].image %>">
+                    <div class="info-final">
+                        <div class="metodos-de-pago info">
+                            <div class="tarjeta">
+                                <i class="fas fa-credit-card"></i>
                             </div>
-                            <div class="description">
-                                <h3><%= product.name %></h3>
-                                <p class="price">$ <%= product.price %></p>
+                            <p>Métodos de pago</p>
+                        </div>
+                        <hr>
+                        <div class="envios info">
+                            <div class="camion">
+                                <i class="fas fa-truck"></i>
                             </div>
-                        </a>
-                    </article>                
-                    <% } %> 
-            </section>
-            <a href="/products" class="ver-todas">
-                <p>Ver todas ></p>
-            </a>
-        </div>
+                            <p>Envíos a todo el país</p>
+                        </div>
+                        <hr>
+                        <div class="compra-segura info">
+                            <div class="seguro">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <p>Compra segura</p>
+                        </div>
+                    </div>
 
-        <div class="marcas-partners">
-            <h2>Marcas Destacadas</h2>
-            <div class="marca">
-                <img src="/images/marcas-partners/aorus.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/apple.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/asus.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/hp.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/lenovo.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/lg.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/samsung.png" alt="">
-            </div>
-            <div class="marca">
-                <img src="/images/marcas-partners/toshiba.png" alt="">
-            </div>
-        </div>
-
-        <div class="info-final">
-            <div class="metodos-de-pago info">
-                <div class="tarjeta">
-                    <i class="fas fa-credit-card"></i>
-                </div>
-                <p>Métodos de pago</p>
-            </div>
-            <hr>
-            <div class="envios info">
-                <div class="camion">
-                    <i class="fas fa-truck"></i>
-                </div>
-                <p>Envíos a todo el país</p>
-            </div>
-            <hr>
-            <div class="compra-segura info">
-                <div class="seguro">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <p>Compra segura</p>
-            </div>
-        </div>
-
-    </main>
-         <%- include("partials/footer.ejs") %> 
-</body>
+            </main>
+            <%- include("partials/footer.ejs") %>
+    </body>
 
 </html>

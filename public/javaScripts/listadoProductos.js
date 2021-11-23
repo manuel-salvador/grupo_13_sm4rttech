@@ -1,8 +1,19 @@
 var checks = document.querySelectorAll("input[type=checkbox]")
 var nodeList = document.querySelectorAll(".producto")
+let filter = document.getElementById("filter");
 let enabledSettings = []
 
 let productos = [...nodeList]
+
+function dropFiltros(){
+    let filterList = document.querySelector(".active");
+    if(filter.style.display === "block"){
+        filter.style.display = "none";
+        filterList.classList.remove("active")
+    } else {
+        filter.style.display = "block";
+    }
+}
 
 function filtrar(filtros, products){
     products.forEach(product => {
