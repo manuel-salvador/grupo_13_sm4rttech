@@ -64,6 +64,8 @@ width: 75%;
 
 .button-crear {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     text-align: center;
     font-weight: bold;

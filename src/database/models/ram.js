@@ -1,7 +1,7 @@
 module.exports = function(sequelize, dataTypes){
-    let alias = "ram";
+    let alias = "Ram";
     let cols = {
-        color_id: {
+        ram_id: {
             type: dataTypes.INTEGER(11),
             primaryKey:true,
             autoIncrement:true,
@@ -16,10 +16,10 @@ module.exports = function(sequelize, dataTypes){
         tablename: "rams",
         timestamps: false
     }
-    const ram = sequelize.define(alias, cols, config)
+    const Ram = sequelize.define(alias, cols, config)
 
-    ram.associate = modelos =>{
-        ram.belongsToMany(modelos.Product, {
+    Ram.associate = modelos =>{
+        Ram.belongsToMany(modelos.Product, {
             as:"product",
             through:"ram_products",
             foreignKey:"ram_id",
@@ -27,11 +27,11 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        ram.hasMany(modelos.ramProduct, {
+        Ram.hasMany(modelos.Ram_Product, {
             as:'ramName',
             foreignKey:'ram_id',
         })
     }
 
-    return ram
+    return Ram
 }

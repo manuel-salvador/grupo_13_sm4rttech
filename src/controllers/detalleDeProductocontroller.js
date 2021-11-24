@@ -1,4 +1,5 @@
-let { products } =require('../data/dataBase');
+// let { products } =require('../data/dataBase');
+/* const db = require('../database/dataBase')
 
 module.exports = {
     detalleDeProducto: (req, res) => {
@@ -10,5 +11,4 @@ module.exports = {
             product
         })
     }
-    
-}
+} */

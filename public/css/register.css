@@ -1,3 +1,13 @@
+.contra {
+    position: relative;
+}
+
+.contra a.password-view{
+    color: black;
+    position: absolute;
+    right: 10px;
+    top: 34px;
+}
 
 .formulario-reg {
     display: flex;
@@ -69,6 +79,7 @@
 
 .check {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -100,7 +111,6 @@ width: 75%;
     text-align: center;
     font-weight: bold;
     margin: 1rem 0;
-
 }  
 
 .button-crear .registrar {
@@ -112,6 +122,25 @@ width: 75%;
     font-size: 20px;
     max-width: 300px;
     width: 100%;
+    cursor: pointer;
+}
+
+.button-eliminar {
+    position: absolute;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    max-width: 100px;
+    width: 100%;
+    margin: 0 auto;
+    right: 100px;
+    top: 175px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .vuelta-login{

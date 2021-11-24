@@ -1,8 +1,19 @@
 var checks = document.querySelectorAll("input[type=checkbox]")
 var nodeList = document.querySelectorAll(".producto")
+let filter = document.getElementById("filter");
 let enabledSettings = []
 
 let productos = [...nodeList]
+
+function dropFiltros(){
+    let filterList = document.querySelector(".active");
+    if(filter.style.display === "block"){
+        filter.style.display = "none";
+        filterList.classList.remove("active")
+    } else {
+        filter.style.display = "block";
+    }
+}
 
 function filtrar(filtros, products){
     products.forEach(product => {
@@ -24,8 +35,8 @@ function filtrar(filtros, products){
                 var key = filtro.name ? filtro.name : "";
                 console.log("• Comparando filtro:" + key);
                 var valorProducto = product.getAttribute(key) != null ? product.getAttribute(key) : "";
-                console.log(valorProducto.toLowerCase());
-                console.log(filtro.value.toLowerCase());
+                console.log(valorProducto);
+                console.log(filtro.value);
                 if( valorProducto.toLowerCase() == filtro.value.toLowerCase() ){
                     count++
                 }
@@ -44,6 +55,7 @@ function filtrar(filtros, products){
             }
             console.log(product);
             console.log("Se encontraron " + count + " coincidencias");
+            console.log("-------------------");
             }
         
         })   

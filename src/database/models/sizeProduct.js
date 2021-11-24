@@ -1,5 +1,5 @@
 module.exports = function(sequelize, dataTypes){
-    let alias = "sizeProduct";
+    let alias = "Size_Product";
     let cols = {
         size_product_id: {
             type: dataTypes.INTEGER(11),
@@ -20,18 +20,18 @@ module.exports = function(sequelize, dataTypes){
         tablename: "size_products",
         timestamps: false
     }
-    const sizeProduct = sequelize.define(alias, cols, config)
+    const Size_Product = sequelize.define(alias, cols, config)
 
-    sizeProduct.associate = modelos => {
+    Size_Product.associate = modelos => {
         
-        sizeProduct.belongsTo(modelos.size, {
+        Size_Product.belongsTo(modelos.Size, {
             as:'sizeName',
             foreignKey:'size_id',
             through: 'size_products',
             timestamps: false
         })
 
-        sizeProduct.belongsTo(modelos.Product, {
+        Size_Product.belongsTo(modelos.Product, {
             as:'product',
             foreignKey:'product_id',
             through: 'size_products',
@@ -40,5 +40,5 @@ module.exports = function(sequelize, dataTypes){
         
     }
 
-    return sizeProduct
+    return Size_Product
 }

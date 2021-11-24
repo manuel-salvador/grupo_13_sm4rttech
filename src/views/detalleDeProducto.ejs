@@ -2,22 +2,21 @@
 <html lang="es">
     <%- include("partials/head.ejs") %>
 <body>
-    <%- include("partials/header.ejs") %> 
+    <%- include("partials/header.ejs") %>
     <main>
         <div class="detalle">
-            <p><a href="/">inicio</a>><a href="/products/<%= product.category %>"><%= product.category %></a>><a><%= product.marca%></a></p>
+            <p><a href="/">inicio</a>><a href="/products/category/<%= product.category.id %>"><%= product.category.category %></a>><a><%= product.brand.brand%></a></p>
 
         </div>
         <article class="imagenes">
             <div class="imagen-principal">
-                <img src="/images/products/<%= product.image %>" alt="">
-
+                <img src="/images/products/<%= product.images[0].image %>" alt="">
             </div>
-            <div class="imagen-1">
+           <!--  <div class="imagen-1">
                 <img  src="/images/detalleProducto/tv-samsung1.jpg" alt="">
                 <img  src="/images/detalleProducto/tv-samsung2.jpg" alt="">
                 <img  src="/images/detalleProducto/tv-samsung3.jpg" alt="">
-            </div>
+            </div> -->
 
         </article>
         <section class="box-1">
@@ -53,11 +52,34 @@
             <div class="especificaciones-tecnicas">
                 <h4>Especificaciones tecnicas</h4>
                 <ul>
-                    <li>Marca: <%= product.marca %> </li>
-                    <li>Pulgadas: <%= product.tamaño %> </li>
-                    <li>RAM: <%= product.ram %> </li>
-                    <li>Smart: <%= product.smart %> </li>
-                    <li>Capacidad: <%= product.capacity %> </li>
+                    <li>Marca: <%= product.brand.brand %> </li>
+
+                    <% if (product.sizes[0]) { %> 
+                        <li>Pulgadas: <%= product.sizes[0].sizes %> </li>
+                    <% } %> 
+
+                    <% if (product.rams[0]) { %> 
+                        <li>RAM:
+                            <%let ramMemory = []; product.rams.forEach(ram => { %>
+                                <% ramMemory.push(ram.ram) %> 
+                            <% }) %>     
+                            <%= ramMemory.join(', ') %> 
+                        </li>
+                    <% } %> 
+
+                    <% if (product.smart) {%> 
+                        <li>Smart: <%= product.smart %> </li>
+                    <% } %> 
+
+
+                    <% if (product.capacities[0]) { %> 
+                        <li>Capacidad: 
+                            <%let capacidades = []; product.capacities.forEach(capacity => { %>
+                                <% capacidades.push(capacity.capacity) %> 
+                            <% }) %> 
+                            <%= capacidades.join(', ') %> 
+                        </li>
+                    <% } %> 
                 </ul>
             </div>
             <div class="descripcion-del-producto">

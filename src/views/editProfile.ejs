@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head.ejs") %>
+
+    <body>
+        <%- include("partials/header-formularios.ejs") %>
+            <main class="formulario-reg">
+           
+                <section class="caja-central-form">
+                    <h2>COMPLETA TUS DATOS</h2>
+                    <form id="formedit" action="/accounts/updateProfile/<%= locals.user.id %>?_method=PUT" method="POST">                    <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
+                            <section class="img-avatar">
+                            <h4>Agregar foto de perfil</h4>
+                            <div class="avatar-img">
+                                <img src="/images//UserAvatar/default-user-profile.png" alt="">
+                                <input class="avatar-profile" type="file" name="avatar" id="">
+                            </div>
+                        </section>
+                        <section class="datos-usuarios">
+                            <div class="name">
+                                <h4>Nombre</h4>
+                                <input id="name" class="input-style inputValidate" type="text" name="name" placeholder="Nombre"
+                                    value="<%= locals.old ? old.name : locals.user.name%>">
+                                    <% if (locals.errors && errors.name) { %>
+                                        <small class="text-danger"><%= errors.name.msg %> </small>
+                                    <% } %>
+                                                                                                                 
+                            </div>
+                            <div class="apellido">
+                                <h4>Apellido</h4>
+                                <input id="lastName" class="input-style inputValidate" type="text" name="last_name" placeholder="Apellido"
+                                    value="<%= locals.old ? old.lastname:locals.user.last_name %>">
+                                    <% if (locals.errors && errors.lastname) { %>
+                                        <small class="text-danger"><%= errors.lastname.msg %> </small>
+                                    <% } %>
+
+                            </div>
+                            <div class="mail">
+                                <h4>E-mail</h4>
+                                <input id="email" class="input-style inputValidate" type="email" name="email" placeholder="E-mail"
+                                    value="<%= locals.old ? old.email:locals.user.email %>">
+                                    <% if (locals.errors && errors.email) { %>
+                                        <small class="text-danger"><%= errors.email.msg %> </small>
+                                    <% } %>
+
+                            </div>
+                            <div class="confirm-mail">
+                                <h4>Fecha de nacimiento</h4>
+                                <input id="date" class="input-style-date inputValidate" type="date" name="date" 
+                                    value="<%= locals.old ? old.date : user.fecha?.date_user %>">
+                                    <% if (locals.errors && errors.date) { %>
+                                        <small class="text-danger"><%= errors.date.msg %> </small>
+                                    <% } %>
+
+                            </div>
+                            <div class="contraseña contra">
+                                <h4>Contraseña</h4>
+                                <input id="pass1" class="input-style inputValidate" type="password" name="pass1"
+                                    placeholder="Ingrese su contraseña"
+                                    value="<%= locals.old ? old.pass1:locals.user.pass1 %>">
+                                    <a role="button" class="password-view">
+                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                                        <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
+                                    </a>
+                                    <small class="text-danger"></small>
+                                    <% if (locals.errors && errors.pass1) { %>
+                                        <small class="text-danger"><%= errors.pass1.msg %></small>
+                                    <% } %>
+
+
+                            </div>
+                            <div class="confirm-contra contra">
+                                <h4>Confirmar contraseña</h4>
+                                <input id="pass2" class="input-style inputValidate" type="password" name="pass2"
+                                    placeholder="confirmar contraseña"
+                                    value="<%= locals.old ? old.pass2:locals.user.pass2 %>">
+                                    <a role="button" class="password-view">
+                                        <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
+                                        <span class="eye-closed"><i class="far fa-eye-slash"></i>"</span>
+                                    </a>
+                                    <small class="text-danger"></small>
+                                     <% if (locals.errors && errors.pass2) { %>
+                                        <small class="text-danger"><%= errors.pass2.msg %> </small>
+                                    <% } %>
+
+
+                            </div>
+                            <div class="confirm-contra">
+                                <h4>País</h4>
+                                <input id="pais" class="input-style inputValidate" type="text" name="pais" placeholder="Ingresa el país"
+                                    value="<%= locals.old ? old.pais : user.direccion?.pais %>">
+                                    <% if (locals.errors && errors.pais) { %>
+                                        <small class="text-danger"><%= errors.pais.msg %> </small>
+                                    <% } %>
+
+
+                            </div>
+                             </div>
+                            <div class="confirm-contra">
+                                <h4>Direccion</h4>
+                                <input id="address" class="input-style inputValidate" type="text" name="address" placeholder="Ingresa su direccion"
+                                    value="<%= locals.old ? old.pais : user.direccion?.address %>">
+                                    <% if (locals.errors && errors.address) { %>
+                                        <small class="text-danger"><%= errors.address.msg %> </small>
+                                    <% } %>
+
+
+                            </div>
+                            <div class="confirm-contra">
+                                <h4>Provincia</h4>
+                                <input id="province" class="input-style inputValidate" type="text" name="province"
+                                    placeholder="Ingresa tu provincia"
+                                    value="<%= locals.old ? old.province : user.direccion?.province %>">
+                                    <% if (locals.errors && errors.province) { %>
+                                        <small class="text-danger"><%= errors.province.msg %> </small>
+                                    <% } %>
+
+
+                            </div>
+                            <div class="confirm-contra">
+                                <h4>Localidad</h4>
+                                <input id="localidad" class="input-style inputValidate" type="text" name="localidad"
+                                    placeholder="Ingresa tu localidad"
+                                    value="<%= locals.old ? old.localidad : user.direccion?.localidad %>">
+                                    <% if (locals.errors && errors.localidad) { %>
+                                        <small class="text-danger"><%= errors.localidad.msg %> </small>
+                                    <% } %>
+
+
+                            </div>
+                            <div class="confirm-contra">
+                                <h4>Codigo postal</h4>
+                                <input id="cp" class="input-style inputValidate" type="text" name="cp"
+                                    placeholder="Ingresa el codigo correspondiente"
+                                    value="<%= locals.old ? old.cp : user.direccion?.cp%>">
+                                    <% if (locals.errors && errors.cp) { %>
+                                        <small class="text-danger"><%= errors.cp.msg %> </small>
+                                    <% } %>
+                                    
+
+
+                            </div>
+                        </section>
+                        <section class="button-crear">
+                            <small id="submitErrors" class="text-danger"></small>
+                            <button type="submit" class="registrar">guardar cambios</button>
+                        </section>
+                        
+                    </section>
+                </form>
+                <form action="/accounts/deleteProfile/<%= locals.user.id %>?_method=DELETE" method="POST">
+                    <section class="button-crear">
+                        <button type="submit" class="button-eliminar">Eliminar cuenta</button>
+                           <span class="error-message"></span> 
+                  
+                    </section>
+                </form>
+            </main>
+            <%- include("partials/footer.ejs") %>
+            <script src="/javaScripts/editProfileValidatorFront.js"></script>
+            <!-- <script src="http://momentjs.com/dowloads/moment.min.js"></script> -->
+    </body>
+
+</html>

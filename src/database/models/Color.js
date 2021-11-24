@@ -27,7 +27,7 @@ module.exports = function(sequelize, dataTypes){
             timestamps: false
         })
 
-        Color.hasMany(modelos.ColorProduct, {
+        Color.hasMany(modelos.Color_Product, {
             as:'colorName',
             foreignKey:'color_id',
         })
