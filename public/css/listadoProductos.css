@@ -13,7 +13,9 @@ main#listado-productos{
 }
 
 main#listado-productos .filtros{
-    max-width: 294px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     min-width: 150px;
     padding:1rem;
     margin-bottom: 1rem;
@@ -26,7 +28,7 @@ main#listado-productos .filtros h1{
     font-weight: 500;
 }
 
-.boton1 {
+.botonFilter {
     text-transform: uppercase;
     color: white;
     background-color: var(--greenWater);
@@ -35,7 +37,6 @@ main#listado-productos .filtros h1{
     font-weight: bold;
     height: 2rem;
     margin: 5px 0;
-    width: 80%;
 }
 
 
@@ -45,9 +46,8 @@ main#listado-productos .filtros h1{
 
 .lista-filtro {
     display: none;
-    margin-top: 2rem;
+    padding: 1rem;
     text-transform: capitalize;
-    text-align: center;
 }
 
 .lista-filtro h2{

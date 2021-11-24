@@ -51,36 +51,50 @@
         <section class="especificaciones">
             <div class="especificaciones-tecnicas">
                 <h4>Especificaciones tecnicas</h4>
-                <ul>
-                    <li>Marca: <%= product.brand.brand %> </li>
 
-                    <% if (product.sizes[0]) { %> 
-                        <li>Pulgadas: <%= product.sizes[0].sizes %> </li>
-                    <% } %> 
-
-                    <% if (product.rams[0]) { %> 
-                        <li>RAM:
-                            <%let ramMemory = []; product.rams.forEach(ram => { %>
-                                <% ramMemory.push(ram.ram) %> 
-                            <% }) %>     
-                            <%= ramMemory.join(', ') %> 
-                        </li>
-                    <% } %> 
-
-                    <% if (product.smart) {%> 
-                        <li>Smart: <%= product.smart %> </li>
-                    <% } %> 
-
-
-                    <% if (product.capacities[0]) { %> 
-                        <li>Capacidad: 
-                            <%let capacidades = []; product.capacities.forEach(capacity => { %>
-                                <% capacidades.push(capacity.capacity) %> 
-                            <% }) %> 
-                            <%= capacidades.join(', ') %> 
-                        </li>
-                    <% } %> 
-                </ul>
+                <table class="tabla-especificaciones">
+                    <tr>
+                        <td>Marca</td>
+                        <td><%= product.brand.brand %></td>
+                    </tr>
+                    <tr>
+                        <% if (product.sizes[0]) { %> 
+                            <td>Pulgadas</td>
+                            <td><%= product.sizes[0].sizes %></td>
+                        <% } %> 
+                    </tr>
+                    <tr>
+                        <% if (product.rams[0]) { %> 
+                            <td>
+                                RAM
+                            </td>
+                            <td>
+                                <%let ramMemory = []; product.rams.forEach(ram => { %>
+                                    <% ramMemory.push(ram.ram) %> 
+                                <% }) %>     
+                                <%= ramMemory.join(', ') %> 
+                            </td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <% if (product.smart) {%> 
+                            <td>Smart</td>
+                            <td><%= product.smart %></td>
+                        <% } %> 
+                    </tr>
+                    <tr>
+                                        <% if (product.capacities[0]) { %> 
+                                            <td>Capacidad</td>
+                                            <td>
+                                                <%let capacidades = []; product.capacities.forEach(capacity => { %>
+                                                    <% capacidades.push(capacity.capacity) %> 
+                                                <% }) %> 
+                                                <%= capacidades.join(', ') %> 
+                                            </td>
+                                        <% } %> 
+                                    </tr>
+                </table>
+                
             </div>
             <div class="descripcion-del-producto">
                 <h4>Descripcion del producto</h4>

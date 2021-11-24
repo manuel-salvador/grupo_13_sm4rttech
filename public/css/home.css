@@ -140,16 +140,15 @@ main div.top-sales h2 {
 
 main div.top-sales .articulos {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    width: 400%;
 }
 
 main div.top-sales article {
     background-color: #c4c4c4;
-    width: 250px;
     height: 250px;
     border-radius: 1rem;
     padding: 1rem;
+    margin-right: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -329,6 +328,7 @@ main .ofertas a .product-img img {
 main .ofertas a .description {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-top: 1rem;
 }
