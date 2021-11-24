@@ -146,10 +146,21 @@
                             </div>
                         </form>
                         <section class="button-crear">
-                            <form action="/admin/delete/<%= product.id %>" method="GET">
-                                <button type="submit" class="quitar">eliminar producto</button>
-                            </form>
+                            <button type="submit" class="quitar" id="borrar">eliminar producto</button>
+                            <!-- <form action="/admin/delete/<%= product.id %>" method="GET">
+                            </form> -->
                         </section>
+                        <div class="modal-background">
+                            <div class="modal">
+                                <h2>¿ESTAS SEGURO QUE DESEAS ELIMINAR ESTE PRODUCTO?</h2>
+                        <form id="form" action="/admin/delete/<%= product.id %>" method="GET">
+                            <section class="button-eliminar-profile">
+                                <button type="submit" id="delete" class="button-eliminar">Eliminar producto</button>
+                            </section>
+                        </form>
+                        <button id="cancel">Cancelar</button> 
+                    </div>
+                    </div>
                     </section>
         </main>
      
