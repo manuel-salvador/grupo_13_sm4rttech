@@ -4,7 +4,7 @@ window.onload = () => {
   
     inputsValidates.forEach(input => {
         input.addEventListener('blur', (event) => {
-           validateLetters = /^[A-z ]+$/.test(input.value)
+            validateLetters = /^[A-z ]+$/.test(input.value)
           
             validateEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(input.value)
   

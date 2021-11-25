@@ -187,7 +187,7 @@ module.exports = {
                     category != "" ? {category_id: category} : null,
                     marca != "" ? {brand_id: marca} : null,
                     id != "" ? {id: {[Op.like]:`%${id}%`}} : null,
-                    name != "" ? {name: {[Op.like]:`%${name}%`}} : null
+                    name != "" ? {name: {[Op.like]:`%${name}%`}} : null 
                 ]
               },
               include: [{ association: "category" }]
@@ -403,8 +403,60 @@ module.exports = {
     team: (req, res) => {
         db.User.findAll()
             .then(usersTeam => {
-                res.render('admin/team', { usersTeam })
+                res.render('admin/team', { usersTeam, hayFiltro: "no", encontro: "si" })
+            })
+    },
+    filterUsers: (req, res) => {
+        const {name, lastName} = req.body
+
+        if(name != "" && lastName != "") {
+            db.User.findAll({
+                where:{
+                    [Op.and]: [
+                        {name: {[Op.like]:`%${name}%`}},
+                        {last_name: {[Op.like]: `%${lastName}%`}}
+                    ]
+                }
+            })
+            .then( (usersTeam) => {
+                if(usersTeam.length > 0){
+                    res.render('admin/team', { usersTeam, hayFiltro: "si", encontro: "si" })
+                } else {
+                    res.render('admin/team', { usersTeam, hayFiltro: "no", encontro: "no" })
+                }
+            })
+        } else if(name != "" || lastName != "") {
+            db.User.findAll({
+                where:{
+                    [Op.or]: [
+                        name != "" ? {name: {[Op.like]:`%${name}%`}} : null,
+                        lastName != "" ? {last_name: {[Op.like]: `%${lastName}%`}} : null
+                    ]
+                }
+            })
+            .then( (usersTeam) => {
+                if(usersTeam.length > 0){
+                    res.render('admin/team', { usersTeam, hayFiltro: "si", encontro: "si" })
+                } else {
+                    res.render('admin/team', { usersTeam, hayFiltro: "no", encontro: "no" })
+                }
+            })
+        } else {
+            res.redirect('/admin/team')
+        }
+    },
+    editPermissions: (req, res) => {
+        const {editRol, email} = req.body
+
+            db.User.update({
+                rol: editRol
+            },{
+                where: {
+                    email: email
+                }
+            })
+            .then( () => {
+                res.redirect('/admin/team')
             })
     }
-
 }
