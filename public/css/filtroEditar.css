@@ -17,8 +17,11 @@ table td button{
     border: none;
     display: flex;
     justify-content: center;
-
+    color: #fff;
     padding: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 table td button i{
