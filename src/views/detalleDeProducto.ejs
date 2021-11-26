@@ -57,14 +57,14 @@
                         <td>Marca</td>
                         <td><%= product.brand.brand %></td>
                     </tr>
+                    <% if (product.sizes[0]) { %> 
                     <tr>
-                        <% if (product.sizes[0]) { %> 
                             <td>Pulgadas</td>
                             <td><%= product.sizes[0].sizes %></td>
+                        </tr>
                         <% } %> 
-                    </tr>
+                    <% if (product.rams[0]) { %> 
                     <tr>
-                        <% if (product.rams[0]) { %> 
                             <td>
                                 RAM
                             </td>
@@ -74,25 +74,25 @@
                                 <% }) %>     
                                 <%= ramMemory.join(', ') %> 
                             </td>
-                        <% } %>
-                    </tr>
+                        </tr>
+                    <% } %>
+                    <% if (product.smart) {%> 
                     <tr>
-                        <% if (product.smart) {%> 
                             <td>Smart</td>
                             <td><%= product.smart %></td>
+                        </tr>
                         <% } %> 
-                    </tr>
-                    <tr>
-                                        <% if (product.capacities[0]) { %> 
-                                            <td>Capacidad</td>
-                                            <td>
-                                                <%let capacidades = []; product.capacities.forEach(capacity => { %>
-                                                    <% capacidades.push(capacity.capacity) %> 
-                                                <% }) %> 
-                                                <%= capacidades.join(', ') %> 
-                                            </td>
-                                        <% } %> 
-                                    </tr>
+                        <% if (product.capacities[0]) { %> 
+                        <tr>
+                            <td>Capacidad</td>
+                            <td>
+                            <%let capacidades = []; product.capacities.forEach(capacity => { %>
+                            <% capacidades.push(capacity.capacity) %> 
+                                <% }) %> 
+                                <%= capacidades.join(', ') %> 
+                                </td>
+                            </tr>
+                        <% } %> 
                 </table>
                 
             </div>
