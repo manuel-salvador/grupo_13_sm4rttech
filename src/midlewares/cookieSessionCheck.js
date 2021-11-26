@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
             req.session.user = {
                 id:user.id,
                 name:user.name,
-                lastname:user.last_name,
+                last_name:user.last_name,
                 email:user.email,
                 /*pais: user.pais,
                 province:user.province,

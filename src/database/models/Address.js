@@ -7,6 +7,13 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true,
             allowNull: false 
         },
+        address: {
+            type: dataTypes.STRING(100)
+            
+        },
+        pais: {
+            type: dataTypes.STRING(100)
+        },
         province: {
             type: dataTypes.STRING(255)
         },

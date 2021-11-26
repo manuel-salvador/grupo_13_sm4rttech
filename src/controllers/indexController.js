@@ -14,17 +14,6 @@ module.exports = {
         .then( products => {
             res.render('index', {products}) 
         })
-
-    
-
-        // Trae colores
-
-        /* db.Color_Product.findAll({
-            include: [{association: "colorName"}, {association: "product"}]
-        })
-        .then(colores => {
-            res.send(colores)
-        }) */
     }
     
 }

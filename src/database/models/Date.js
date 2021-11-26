@@ -23,7 +23,6 @@ module.exports = function(sequelize, dataTypes){
         Date.hasMany(models.User,{
             as:"user",
             foreignKey:"dates"
-                 
         })
     }
     return Date

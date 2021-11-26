@@ -23,27 +23,24 @@
                 <form action="/admin/editar" method="POST">
                     <section class="datos-usuarios">
                         <div>
-                            <h4>Categorias</h4>
+                            <h4>Categoria</h4>
                             <select name="category" id="">
-                                <option value="">Categorias</option>
-                                <option value="celulares">Celulares</option>
-                                <option value="televisores">Televisores</option>
-                                <option value="tablets">Tablets</option>
-                                <option value="gaming">Gaming</option>
+                                <option value=""></option>
+
+                                <% categorias.forEach(categoria => { %> 
+                                    <option value="<%= categoria.id %>"><%= categoria.category %></option>
+                                <% }) %> 
+                                
                             </select>
                         </div>
                         <div>
-                            <h4>marcas</h4>
+                            <h4>Marca</h4>
                             <select name="marca" id="">
-                                <option value="">Marcas</option>
-                                <option value="Aorus">Aorus</option>
-                                <option value="Aplle">Apple</option>
-                                <option value="Asus">Asus</option>
-                                <option value="HP">HP</option>
-                                <option value="Lenovo">Lenovo</option>
-                                <option value="LG">LG</option>
-                                <option value="Samsung">Samsung</option>
-                                <option value="Toshiba">Toshiba</option>
+                                <option value=""></option>
+
+                                <% marcas.forEach(marca => { %> 
+                                    <option value="<%= marca.brand_id %>"><%= marca.brand %></option>
+                                <% }) %> 
                             </select>
                         </div>
                         <div>
@@ -51,8 +48,8 @@
                             <input class="input-style" type="text" placeholder="#0000" name="id" autocomplete="off">
                         </div>
                         <div class="name">
-                            <h4>nombre del producto</h4>
-                            <input class="input-style" type="text" name="name" placeholder="Nombre" autocomplete="off"  >
+                            <h4>Nombre del producto</h4>
+                            <input class="input-style" type="text" name="name" placeholder="Nombre" autocomplete="off">
                         </div>
                         <div class="botones-confirm">
                             <section class="button-crear">
@@ -62,7 +59,7 @@
                     </section>
                 </form>
                 <div class="buscador">
-                    <table class="table table-dark table-striped">
+                    <table class="tabla-editar">
                         <thead>
                             <th scope="colum-mobile">ID</th>
                             <th scope="colum-mobile" >Nomb. producto</th>
@@ -71,12 +68,21 @@
                             <th  scope="col"></th>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                             <% if(lista != "error") {%> 
                             <% lista.forEach(product => {%> 
                                 <tr>
                                     <td><%= product.id %> </td>    
                                     <td><%= product.name %></td>
                                     <td><%= product.category %></td>
+=======
+                            <% if(lista[0] != "error") {%> 
+                            <% lista.forEach(producto => {%> 
+                                <tr>
+                                    <td><%= producto.id %> </td>    
+                                    <td><%= producto.name %></td>
+                                    <td><%= producto.category.category%></td>
+>>>>>>> master
                                     <td>"aca va el stock"</td>
                                     <td>
                                         <button><a href="/admin/editar/<%= product.id %>"><i class="far fa-edit"></i></a></button>

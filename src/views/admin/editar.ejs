@@ -22,74 +22,48 @@
                 <section class="formAdmin">
 
                     <section class="caja-central-form">
+<<<<<<< HEAD
                         <h2>EDITAR PRODUCTOS</h2>
                         <form action="/admin/editar/<%= product.id%>?_method=PUT" method="POST">
+=======
+                        <h2>EDITAR PRODUCTO</h2>
+                        <form id="formEditProduct" action="/admin/editar/<%= product.id%>?_method=PUT" method="POST"
+                            enctype="multipart/form-data">
+>>>>>>> master
                             <section class="datos-usuarios">
                                 <div>
                                     <h4>Categorias</h4>
                                     <select name="category" id="">
+<<<<<<< HEAD
                                         <option selected hidden value="">Categoria</option>
                                         <% categorias.forEach(categoria => { %>
                                             <option value="<%= categoria.id %>" <%- product.category_id == categoria.category_id ? "selected" : "" %>><%= categoria.category %></option>
                                         <% }) %>
+=======
+                                        <% categorias.forEach(categoria => { %> 
+                                            <option value="<%= categoria.id %>" <%= locals.old && old.categoria == categoria.id ? "selected" : product.category.id == categoria.id ? "selected" : "" %>><%= categoria.category %></option>
+                                        <% }) %> 
+>>>>>>> master
                                     </select>
                                 </div>
                                 <div>
-                                    <h4>marcas</h4>
+                                    <h4>Marcas</h4>
                                     <select name="marca" id="">
+<<<<<<< HEAD
                                         <option selected hidden>Marca</option>
                                         <% marcas.forEach(marca => { %>
                                             <option value="<%= marca.id %>" <%- product.brand_id == marca.brand_id ? "selected" : "" %>><%= marca.brand %></option>
                                         <% }) %>
+=======
+                                        <option selected hidden>Marca...</option>
+                                        <% marcas.forEach(marca => { %> 
+                                        <option value="<%= marca.brand_id %>" <%= locals.old && old.marca == marca.brand_id ? "selected" : marca.brand_id == product.brand_id ? "selected" : "" %>><%= marca.brand %> </option>
+                                        <% }) %> 
+>>>>>>> master
                                     </select>
-                                </div>
-                                <div>
-                                    <h4>id del producto</h4>
-                                    <input class="input-style" type="text" placeholder="#0000"
-                                        value="<%= product.id%> ">
-                                </div>
-                                <div class="name">
-                                    <h4>nombre del producto</h4>
-                                    <input class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old ? old.name : product.name%>"  autocomplete="off">
-                                        <% if (locals.errors && errors.name) { %>
-                                            <small class="text-danger"><%= errors.name.msg %> </small>
-                                        <% } %>
-                                </div>
-                                <div>
-                                    <h4>Tamaño de pantalla</h4>
-                                    <select name="tamaño" id="">
-                                        <option value="">Tamaño</option>
-                                        <% tamaños.forEach(tamaño => { %>
-                                            <option value="<%= tamaño.id %>" <%- locals.old && old.tamaño.size_id == tamaño.id ? "selected" : "" %>><%= tamaño.sizes %></option>
-                                        <% }) %>
-                                    </select>
-                                </div>
-                                <div>
-                                    <h4>smart</h4>
-                                    <select name="smart" id="">
-                                        <option value="">Smart</option>
-                                        <option value="<%= product.smart == true %> " <%= locals.old && old.smart == true ? "selected" : null %>>Si</option>
-                                        <option value="<%= product.smart == false %> " <%= locals.old && old.smart == false ? "selected" : null %> %>>No</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <h4>capacidad</h4>
-                                    <select name="capacity" id="">
-                                        <option value="">GB</option>
-                                        <% capacidades.forEach(capacidad => { %>
-                                            <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacity == capacidad.capacity_id ? "selected" : null %>><%= capacidad.capacity %></option>
-                                        <% }) %>
-                                    </select>
-                                </div>
-                                <div class="apellido">
-                                    <h4>RAM</h4>
-                                    <select name="ram" id="">
-                                        <option value="">RAM</option>
-                                        <% rams.forEach(ram => { %>
-                                            <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == ram.ram_id ? "selected" : null %>><%= ram.ram %></option>
-                                        <% }) %>
-                                        
-                                    </select>
+                                    <% if (locals.errors && errors.marca) { %>
+                                        <small class="text-danger"><%= errors.marca.msg %> </small>
+                                    <% } %>
                                 </div>
                                 <div>
                                     <h4>Precio</h4>
@@ -102,14 +76,96 @@
                                         </small>
                                         <% } %>
                                 </div>
-
+                                <div class="name">
+                                    <h4>Nombre del producto</h4>
+                                    <input id="name" class="input-style" type="text" name="name" placeholder="Nombre" value="<%= locals.old ? old.name : product.name%>" autocomplete="off">
+                                        <% if (locals.errors && errors.name) { %>
+                                            <small class="text-danger"><%= errors.name.msg %> </small>
+                                        <% } %>
+                                </div>
+                                <div>
+                                    <h4>Tamaño de pantalla</h4>
+                                    <select name="tamaño" id="">
+<<<<<<< HEAD
+                                        <option value="">Tamaño</option>
+                                        <% tamaños.forEach(tamaño => { %>
+                                            <option value="<%= tamaño.id %>" <%- locals.old && old.tamaño.size_id == tamaño.id ? "selected" : "" %>><%= tamaño.sizes %></option>
+                                        <% }) %>
+=======
+                                        <option value="">Seleccionar</option>
+                                        <% tamaños.forEach(tamaño => { %> 
+                                            <option value="<%= tamaño.size_id %>" <%= locals.old && old.tamaño == tamaño.size_id ? "selected" : tamaño.size_id == product.sizes[0]?.size_id ? `selected` : "" %>><%= tamaño.sizes %> </option>
+                                        <% }) %> 
+>>>>>>> master
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>Smart</h4>
+                                    <select name="smart" id="">
+<<<<<<< HEAD
+                                        <option value="">Smart</option>
+                                        <option value="<%= product.smart == true %> " <%= locals.old && old.smart == true ? "selected" : null %>>Si</option>
+                                        <option value="<%= product.smart == false %> " <%= locals.old && old.smart == false ? "selected" : null %> %>>No</option>
+=======
+                                        <option value="">Seleccionar</option>
+                                        <option value="Si" <%= locals.old && old.smart == "Si" ? "selected"
+                                        : "Si" == product.smart ? `selected` : "" %>>Si</option>
+                                        <option value="No"  <%= locals.old && old.smart == "No" ? "selected"
+                                        : "No" == product.smart ? `selected` : "" %>>No</option>
+>>>>>>> master
+                                    </select>
+                                </div>
+                                <div>
+                                    <h4>Capacidad</h4>
+                                    <select name="capacity" id="">
+<<<<<<< HEAD
+                                        <option value="">GB</option>
+                                        <% capacidades.forEach(capacidad => { %>
+                                            <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacity == capacidad.capacity_id ? "selected" : null %>><%= capacidad.capacity %></option>
+=======
+                                        <option value="">Seleccionar</option>
+                                        <% capacidades.forEach(capacidad => { %> 
+                                        <option value="<%= capacidad.capacity_id %>" <%= locals.old && old.capacity == product.capacities[0].capacity_id ? "selected"
+                                        : capacidad.capacity_id == product.capacities[0]?.capacity_id ? `selected` : "" %>><%= capacidad.capacity %> </option>
+>>>>>>> master
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="apellido">
+                                    <h4>RAM</h4>
+                                    <select name="ram" id="">
+<<<<<<< HEAD
+                                        <option value="">RAM</option>
+                                        <% rams.forEach(ram => { %>
+                                            <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == ram.ram_id ? "selected" : null %>><%= ram.ram %></option>
+                                        <% }) %>
+                                        
+=======
+                                        <option selected value="">Seleccionar</option>
+                                        <% rams.forEach(ram => { %> 
+                                            <option value="<%= ram.ram_id %>" <%= locals.old && old.ram == product.rams[0]?.ram_id ? "selected"
+                                            : ram.ram_id == product.rams[0]?.ram_id ? `selected` : "" %>><%= ram.ram %> </option>
+                                        <% }) %>
+>>>>>>> master
+                                    </select>
+                                </div>
+                                <div class="apellido">
+                                    <h4>Color</h4>
+                                    <select name="color" id="color">
+                                        <option selected value="">Seleccionar</option>
+                                        <% colores.forEach(color => { %>
+                                            <option value="<%= color.color_id %>" <%= locals.old && old.color == product.colores[0]?.color_id ? "selected"
+                                                : color.color_id == product.colores[0]?.color_id ? `selected` : "" %>><%= color.color %> </option>
+                                        <% }) %>
+                                    </select>
+                                </div>
                                 <section class="img-coment">
                                     <div>
                                         <h4>Imagenes</h4>
                                         <input class="input-file" type="file" multiple="" name="image" id="image">
                                     </div>
                                     <h4>descripción</h4>
-                                    <textarea name="description" id="" cols="30" rows="10"><%= locals.old ? old.description : product.description %></textarea>
+                                    <textarea name="description" id="description" cols="30" rows="10"><%= locals.old ? old.description : product.description %></textarea>
                                     <% if (locals.errors && errors.description) { %>
                                         <!-- busca en las variables de nuestra aplicacion -->
                                         <small class="text-danger">
@@ -123,21 +179,33 @@
                                 <section class="button-crear">
                                     <button type="submit" class="guardar" cursor="pointer">guardar</button>
                                     <span class="error-message">Credenciales inválidas</span>
+                                    <small class="text-danger" id="submitErrors"></small>
                                 </section>
 
 
                             </div>
                         </form>
                         <section class="button-crear">
-                            <form action="/admin/delete/<%- product.id %>?_method=DELETE" method="POST">
-
-                                <button type="submit" class="quitar">eliminar producto</button>
-                                <span class="error-message">Credenciales inválidas</span>
-                            </form>
+                            <button type="submit" class="quitar" id="borrar">eliminar producto</button>
+                            <!-- <form action="/admin/delete/<%= product.id %>" method="GET">
+                            </form> -->
                         </section>
+                        <div class="modal-background">
+                            <div class="modal">
+                                <h2>¿ESTAS SEGURO QUE DESEAS ELIMINAR ESTE PRODUCTO?</h2>
+                        <form id="form" action="/admin/delete/<%= product.id %>" method="GET">
+                            <section class="button-eliminar-profile">
+                                <button type="submit" id="delete" class="button-eliminar">Eliminar producto</button>
+                            </section>
+                        </form>
+                        <button id="cancel">Cancelar</button> 
+                    </div>
+                    </div>
                     </section>
         </main>
-
+     
+        <script src="/javaScripts/editProductValidatorFront.js"></script>
+        <script src="/javaScripts/editProfileEliminar.js" defer></script>
 </body>
 
 </html>

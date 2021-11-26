@@ -13,120 +13,143 @@ module.exports = {
     recuperarcontra: (req, res) => {
             res.render('recuperarcontra')
     },
-
-    userProfile: (req, res) =>{
-        res.render('userProfile')
-        
-    },
-
     profile: (req, res) => {
-            db.User.findBypk(req.session.user.id,{
-             include:[{association:"direccion"}]  
+            db.User.findByPk(req.session.user.id,{  
+             include:[{association:"direccion"}, {association:"fecha"}]  
             }).then((user)=>{
-              res.render("userPrfile",{
+              res.render("profile",{
                 user,
                 session:req.session,
               });
             });
-          
-   
     },
-    profileEdit:(req,res)=>{
-      db.User.findBypk(req.session.user.id,{  /*trae el usuario de la base de datos */
-      include:[{association:"direccion"}]  
-     }).then((user)=>{   
-        res.render("userProfileEdit",{
+    editProfile:(req,res)=>{
+      db.User.findByPk(req.session.user.id,{  /*trae el usuario de la base de datos */
+      include:[{association:"direccion"}, {association:"fecha"}]  
+     }).then((user)=>{  
+        res.render("editProfile",{
           user,
           session:req.session
         });
       });
-      
     },
     updateProfile:(req,res)=>{
         let errors= validationResult(req)
+
         if(errors.isEmpty()){
-            let user=users.find(user=>user.email=== req.body.email) 
-            let {
-                
-                name,                       
-                lastname,
-                date,
-                localidad,
-                cp,
-                province,
-                pais
-                }=req.body
-            
-            user.name=name
-            user.lastname=lastname
-            user.date=date
-            user.pais=pais
-            user.localidad=localidad
-            user.cp=cp
-            user.province=province
-            user.avatar=req.file ? req.file.filename:user.avatar
-           
-        if(errors.isEmpty()){
-          /*let user=users.find(user=>user.email=== req.body.email) */
-          let{name,last_name,localidad,cp,province,pais}=req.body
-          db.User.update({ /*verifica  */
-            name,                       
-            last_name,
-            localidad,
-            cp,
-            province,
-            pais,
-            avatar:req.file?req.file.filename:req.session.user.avatar
-          },{
-            where:{
-              id:req.params.id
-            }
-          })
-          .then(()=>{
-            db.Address.create({
-              address,
-              province,
-              localidad,
-              cp
+          let{name,last_name,localidad,cp,address,province,pais, date}=req.body
+            db.User.update({
+              name,                       
+              last_name,
+              avatar:req.file?req.file.filename:req.session.user.avatar
+            },{
+              where:{
+                id:req.params.id
+              }
             })
-          })
-          .then(()=>{
-            res.redirect("profile")
-          })         
-           
-        }else{
-            res.render("userProfileEdit",{
+            .then(()=>{
+              db.User.findOne({
+                where:{
+                  id:req.params.id
+                }
+              })
+            .then(user => {
+              if(user.address_id){
+                db.Address.update({
+                  address,
+                  province,
+                  localidad,
+                  pais,
+                  cp
+                },{
+                  where:{
+                   address_id:user.address_id
+                  }
+                })              
+              } else {
+                db.Address.create({
+                  address,
+                  province,
+                  localidad,
+                  cp,
+                  pais
+                })
+                .then(direccion=>{
+                  db.User.update({
+                    address_id:Number(direccion.address_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                  }
+                  })
+                })
+              } 
+
+              if(user.dates){
+                db.Date.update({
+                  date_user: date
+                },{
+                  where: {
+                    id:req.params.id
+                  }
+                })
+              } else {
+                db.Date.create({
+                  date_user: date
+                })
+                .then(fecha => {
+                  db.User.update({
+                    dates: Number(fecha.date_id) //acutualiza el null
+                  },{
+                    where:{
+                       id:req.params.id
+                    }
+                  })
+                })
+              }
+
+              req.session.user = {
+                id: user.id,
+                name: user.name,
+                lastname: user.last_name,
+                email: user.email,
+                avatar: user.avatar
+              };
+              res.locals.user = req.session.user;
+              res.redirect("/accounts/profile");
+              });
+
+        });
+
+             }else{
+            res.render("editProfile",{
                 errors:errors.mapped(),
                 old:req.body,
                 session:req.session
             })
         }
-      }
-    },
-    processLogin:(req,res)=>{
+      },
+     
+     processLogin:(req,res)=>{
         let errors= validationResult(req)
         if(errors.isEmpty()){
             db.User.findOne({
                 where: {
-                  email: req.body.email,
-                },
-              }).then((user)=> {
-                console.log(user);
+                  email: req.body.email,    /*trae el mail que coincida con el mail del body */
+                }
+              })
+              .then((user) => {
                 req.session.user = {
                 id:user.id,
                 name:user.name,
                 lastname:user.last_name,
                 email:user.email,
-                /*pais: user.pais,
-                province:user.province,
-                localidad:user.localidad,
-                cp:user.cp,*/
                 avatar:user.avatar,
                 rol:user.rol    /**a q rutas puede entrar o no el usuario */
                 };
         
                 if(req.body.recordarme){
-                  res.cookie('email', user.email, {maxAge: 3600000*4})
+                  res.cookie('email', user.email, {maxAge: 3600000*24})
                   
               }
                 res.locals.user = req.session.user;
@@ -167,18 +190,19 @@ module.exports = {
                 /*creacion de usuario*/
         if (errors.isEmpty()) {
 
+
             let {name,lastname,email,pass1} = req.body;
 
-            db.user.create({    /*trae la base de datos*/
+            db.User.create({    /*trae la base de datos*/
                     name,
-                    last_name,
+                    last_name: lastname,
                     email,
                     pass : bcrypt.hashSync(pass1, 12),
-                    avatar : req.file ? req.file.filename : "/UserAvatar/default-user-profile.png", 
-                    rol:0,
+                    avatar : "default-user-profile.png", 
+                    rol:2,
             }) 
               .then(() => {
-                res.redirect("/users/login");
+                res.redirect("/accounts/login");
               })
               .catch((err) => console.log(err));
 
@@ -191,8 +215,25 @@ module.exports = {
             });
         }
 
+    },
+    deleteUser: (req, res) => {
+      req.session.destroy();
+        if(req.cookies.email){
+            res.cookie('email','',{maxAge:-1})
+            res.locals.user = ""
+        }
+        db.User.destroy({
+          where:{
+            id: req.params.id
+          }
+        })
+        return res.redirect('/') 
     }
-    }    
+}
+    
+    
+
+
       
     
         
