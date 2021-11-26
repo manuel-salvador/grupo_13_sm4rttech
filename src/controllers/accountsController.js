@@ -203,7 +203,7 @@ module.exports = {
                     email,
                     pass : bcrypt.hashSync(pass1, 12),
                     avatar : "default-user-profile.png", 
-                    rol:2,
+                    rol:1,
             }) 
               .then(() => {
                 res.redirect("/accounts/login");
@@ -226,12 +226,33 @@ module.exports = {
             res.cookie('email','',{maxAge:-1})
             res.locals.user = ""
         }
-        db.User.destroy({
-          where:{
-            id: req.params.id
-          }
+
+        db.User.findByPk(req.params.id)
+        .then(usuario => {
+
+          db.User.destroy({
+            where:{
+              id: req.params.id
+            }
+          })
+
+          db.Date.destroy({
+            where: {
+              date_id: usuario.dates
+            }
+          })
+
+          db.Address.destroy({
+            where: {
+              address_id: usuario.address_id
+            }
+          })
+
+          return res.redirect('/') 
         })
-        return res.redirect('/') 
+
+
+
     }
 }
     
