@@ -38,6 +38,7 @@ module.exports = {
 
         if(errors.isEmpty()){
           let{name,last_name,localidad,cp,address,province,pais, date}=req.body
+
             db.User.update({
               name,                       
               last_name,
@@ -90,7 +91,7 @@ module.exports = {
                   date_user: date
                 },{
                   where: {
-                    id:req.params.id
+                    date_id: user.dates
                   }
                 })
               } else {
@@ -115,8 +116,11 @@ module.exports = {
                 email: user.email,
                 avatar: user.avatar
               };
-              res.locals.user = req.session.user;
-              res.redirect("/accounts/profile");
+                res.locals.user = req.session.user;
+
+                setTimeout(function () {
+                  res.redirect("/accounts/profile");
+                }, 2000)
               });
 
         });
