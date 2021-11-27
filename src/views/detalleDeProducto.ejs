@@ -78,15 +78,15 @@
                                     <%= product.brand.brand %>
                                 </td>
                             </tr>
+                            <% if (product.sizes[0]) { %>
                             <tr>
-                                <% if (product.sizes[0]) { %>
                                     <td>Pulgadas</td>
                                     <td>
                                         <%= product.sizes[0].sizes %>
                                     </td>
-                                    <% } %>
-                            </tr>
-                            <% if (product.rams[0] != "error") { %>
+                                </tr>
+                                <% } %>
+                            <% if (product.rams[0]) { %>
                             <tr>
                                     <td>
                                         RAM
@@ -95,18 +95,18 @@
                                         <%let ramMemory=[]; product.rams.forEach(ram=> { %>
                                             <% ramMemory.push(ram.ram) %>
                                                 <% }) %>
-                                                    <%= ramMemory.join(', ') %> 
+                                        <%= ramMemory.join(', ') %> 
                             </td>
                         </tr>
                         <% } %>
-                    <tr>
                         <% if (product.smart) {%> 
+                    <tr>
                             <td>Smart</td>
                             <td><%= product.smart %></td>
+                        </tr>
                         <% } %> 
-                    </tr>
+                        <% if (product.capacities[0]) { %> 
                     <tr>
-                                        <% if (product.capacities[0] != "error") { %> 
                                             <td>Capacidad</td>
                                             <td>
                                                 <%let capacidades = []; product.capacities.forEach(capacity => { %>
@@ -114,8 +114,8 @@
                                                 <% }) %> 
                                                 <%= capacidades.join(' , ') %> 
                                             </td>
+                                        </tr>
                                         <% } %> 
-                                    </tr>
                 </table>
                 
             </div>
