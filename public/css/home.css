@@ -8,6 +8,10 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid rgb(248, 248, 248);
 }
 
+body{
+    background-image: url('/images/M4-background.jpeg');
+}
+
 
 /* ------------- Slider ------------- */
 
@@ -150,6 +154,7 @@ main div.top-sales article {
     padding: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
+    max-width: 250px;
 }
 
 main div.top-sales article a{
@@ -286,7 +291,6 @@ main .ofertas {
 
 main .ofertas h2 {
     padding: 0.5rem;
-    background-color: #EEE;
     border-radius: 1rem 1rem 0 0;
 }
 
@@ -349,7 +353,6 @@ main .ofertas a.ver-todas {
     color: var(--lightBlue);
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    background-color: #EEE;
     border-radius: 0 0 1rem 1rem;
 }
 
@@ -414,6 +417,7 @@ main .info-final {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 }
 
 main .info-final .info {
@@ -629,10 +633,6 @@ main .info-final hr {
         border-bottom: 0;
     }
 
-    main div.ofertas h2  {
-        background-color: #fff;
-    }
-
     main div.ofertas .articulos {
         display: flex;
         justify-content: space-between;
@@ -661,7 +661,6 @@ main .info-final hr {
 
     main div.ofertas a.ver-todas{
         justify-content: flex-start;
-        background-color: #fff;
     }
 
     main div.ofertas a.ver-todas p {

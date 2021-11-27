@@ -38,6 +38,7 @@ module.exports = {
 
         if(errors.isEmpty()){
           let{name,last_name,localidad,cp,address,province,pais, date}=req.body
+
             db.User.update({
               name,                       
               last_name,
@@ -90,7 +91,7 @@ module.exports = {
                   date_user: date
                 },{
                   where: {
-                    id:req.params.id
+                    date_id: user.dates
                   }
                 })
               } else {
@@ -115,8 +116,11 @@ module.exports = {
                 email: user.email,
                 avatar: user.avatar
               };
-              res.locals.user = req.session.user;
-              res.redirect("/accounts/profile");
+                res.locals.user = req.session.user;
+
+                setTimeout(function () {
+                  res.redirect("/accounts/profile");
+                }, 2000)
               });
 
         });
@@ -199,7 +203,7 @@ module.exports = {
                     email,
                     pass : bcrypt.hashSync(pass1, 12),
                     avatar : "default-user-profile.png", 
-                    rol:2,
+                    rol:1,
             }) 
               .then(() => {
                 res.redirect("/accounts/login");
@@ -222,12 +226,33 @@ module.exports = {
             res.cookie('email','',{maxAge:-1})
             res.locals.user = ""
         }
-        db.User.destroy({
-          where:{
-            id: req.params.id
-          }
+
+        db.User.findByPk(req.params.id)
+        .then(usuario => {
+
+          db.User.destroy({
+            where:{
+              id: req.params.id
+            }
+          })
+
+          db.Date.destroy({
+            where: {
+              date_id: usuario.dates
+            }
+          })
+
+          db.Address.destroy({
+            where: {
+              address_id: usuario.address_id
+            }
+          })
+
+          return res.redirect('/') 
         })
-        return res.redirect('/') 
+
+
+
     }
 }
     
