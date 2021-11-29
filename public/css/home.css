@@ -8,6 +8,10 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid rgb(248, 248, 248);
 }
 
+body{
+    background-image: url('/images/M4-background.jpeg');
+}
+
 
 /* ------------- Slider ------------- */
 
@@ -145,11 +149,12 @@ main div.top-sales .articulos {
 
 main div.top-sales article {
     background-color: #c4c4c4;
-    width: 250px;
     height: 250px;
     border-radius: 1rem;
     padding: 1rem;
     margin-right: 1rem;
+    margin-bottom: 1rem;
+    max-width: 250px;
 }
 
 main div.top-sales article a{
@@ -196,7 +201,8 @@ main .destacados article {
     margin-bottom: 1rem;
     border-radius: 0.6rem;
     width: 250px;
-    height: 250px;
+    height: auto;
+    min-height: 200px;
 }
 
 main .destacados .arriba,
@@ -212,8 +218,8 @@ main .destacados article.producto {
 main .destacados article a {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 250px;
+   /*  justify-content: space-evenly;
+    height: 250px; */
     width: 100%;
     color: #000;
     text-decoration: none;
@@ -236,6 +242,9 @@ main .destacados article.producto img {
 
 main .destacados article a .description h3 {
     font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 main .destacados .producto-principal {
@@ -244,7 +253,6 @@ main .destacados .producto-principal {
 
 main .destacados .producto-principal a{
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
@@ -283,7 +291,6 @@ main .ofertas {
 
 main .ofertas h2 {
     padding: 0.5rem;
-    background-color: #EEE;
     border-radius: 1rem 1rem 0 0;
 }
 
@@ -325,6 +332,7 @@ main .ofertas a .product-img img {
 main .ofertas a .description {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-top: 1rem;
 }
@@ -345,7 +353,6 @@ main .ofertas a.ver-todas {
     color: var(--lightBlue);
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    background-color: #EEE;
     border-radius: 0 0 1rem 1rem;
 }
 
@@ -410,6 +417,7 @@ main .info-final {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 }
 
 main .info-final .info {
@@ -625,10 +633,6 @@ main .info-final hr {
         border-bottom: 0;
     }
 
-    main div.ofertas h2  {
-        background-color: #fff;
-    }
-
     main div.ofertas .articulos {
         display: flex;
         justify-content: space-between;
@@ -657,7 +661,6 @@ main .info-final hr {
 
     main div.ofertas a.ver-todas{
         justify-content: flex-start;
-        background-color: #fff;
     }
 
     main div.ofertas a.ver-todas p {

@@ -5,25 +5,48 @@
     <body id="listado-productos">
         <%- include("partials/header.ejs") %>
         <main id="listado-productos">
+            <% if(lista.length == 0){ %>
+                <% if(listado == "category"){ %> 
+                    <h2>Por el momento no hay productos en esta categoria.</h2>
+                <% } else if (listado == "search") { %> 
+                    <h2>No hubo resultados para tu búsqueda</h2>
+                <% } %> 
+            <% } else{ %> 
             <aside class="filtros">
                 <h1 class="buscado"><%= busqueda %> </h1>
                 <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
-                <section class="lista-filtro">
+                <button class="botonFilter" onclick="dropFiltros()">FILTROS</button>
+                <section class="lista-filtro" id="filter">
                     <% if (claves.length != 0) {%> 
-                        <h2>Filtros</h2>
-                        <% claves.forEach(clave => { %>
+                        <% claves.forEach(clavePrincipal => { %>
                             <dl class="filtro">
-                                <dt class="nombre-filtro"><%= clave %></dt>
+                                <dt class="nombre-filtro"><%= clavePrincipal %></dt>
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
-                                    <% let valor = producto[clave] ? producto[clave].toString() : ""; %> 
-                                    <% if(!count.includes(valor.toLowerCase()) && valor) { %> 
+                                    <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
+                                    <% if(clavePrincipal.toLowerCase() != "smart") { %> 
+                                        <% valor.forEach(atributo => { %>
+                                            <% let key = Object.keys(atributo.dataValues) %> 
+                                            <% let clave = key[1]%>
+                                            <% let atributoId = key[0] %> 
+                                            <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
+                                                    <dd>
+                                                        <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
+                                                        <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
+                                                    </dd>
+                                                <% atributo[clave] ? count.push(atributo[clave]) : ""; %> 
+                                                <% } %> 
+                                            <% }) %>
+                                    <% } else { %>
+                                        <% if(!count.includes(producto[clavePrincipal]) && producto[clavePrincipal]) { %>
                                         <dd>
-                                            <input id="<%= valor %> " type="checkbox" class="checkboxito" name="<%= clave %>" value="<%= valor.toLowerCase() %>">
-                                            <label for="<%= valor %> "><%= valor %></label>
+                                            <input id="<%= `${valor}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= producto[clavePrincipal] %>">
+                                            <label for="<%= `${valor}` %> "><%= producto[clavePrincipal] %></label>
                                         </dd>
-                                        <% valor ? count.push(valor.toLowerCase()) : ""; %> 
+                                        <% producto[clavePrincipal] ? count.push(producto[clavePrincipal]) : ""; %> 
+                                        <% } %> 
                                     <% } %> 
+                                        
                                 <% }) %> 
                             </dl>
                         <% }) %>   
@@ -33,18 +56,17 @@
             <section class="listado">
                 <% lista.forEach(product => { %> 
                     <article class="producto"
-                    <% claves.forEach(e => { %>
-                        <%= e %>= 
-                        <% if(product[e] != null && product[e] != undefined && product[e] != ""){ %>
-                            <%= product[e] %> 
+                    <% claves.forEach(clave => { %>
+                        <%= clave %>= 
+                        <% if(product[clave] != null && product[clave] != undefined && product[clave] != ""){ %>
+                            <%= product[clave][0] ? product[clave][0][clave] : product[clave] %>  
                         <% }else{ %> 
                             ""
-                        <% } %> 
-
+                        <% } %>  
                     <% }) %> >
-                        <a href="/detalleDeProducto/<%= product.id %> ">
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
                             <div class="product-img">
-                                <img src="/images/products/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">
                             </div>
                             <div class="description">
                                 <h3><%= product.name %></h3>
@@ -54,7 +76,83 @@
                     </article> 
                 <% }) %> 
             </section>
+            <% } %> 
         </main>
+        <main id="listado-productos-desktop">
+            <% if(lista.length == 0){ %>
+                <% if(listado == "category"){ %> 
+                    <h2>Por el momento no hay productos en esta categoria.</h2>
+                <% } else if (listado == "search") { %> 
+                    <h2>No hubo resultados para tu búsqueda</h2>
+                <% } %> 
+            <% } else{ %> 
+            <aside class="filtros">
+                <h1 class="buscado"><%= busqueda %> </h1>
+                <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
+                <section class="lista-filtro" id="filter">
+                    <% if (claves.length != 0) {%> 
+                        <% claves.forEach(clavePrincipal => { %>
+                            <dl class="filtro">
+                                <h3>Filtros</h3>
+                                <dt class="nombre-filtro"><%= clavePrincipal %></dt>
+                                <% let count = [] %>
+                                <% lista.forEach(producto => { %> 
+                                    <% let valor = producto[clavePrincipal] ? producto[clavePrincipal] : ""; %> 
+                                    <% if(clavePrincipal.toLowerCase() != "smart") { %> 
+                                        <% valor.forEach(atributo => { %>
+                                            <% let key = Object.keys(atributo.dataValues) %> 
+                                            <% let clave = key[1]%>
+                                            <% let atributoId = key[0] %> 
+                                            <% if(!count.includes(atributo[clave]) && atributo[clave]) { %> 
+                                                    <dd>
+                                                        <input id="<%= `${clave+atributo[clave]}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= atributo[atributoId] %>">
+                                                        <label for="<%= `${clave+atributo[clave]}` %> "><%= atributo[clave] %></label>
+                                                    </dd>
+                                                <% atributo[clave] ? count.push(atributo[clave]) : ""; %> 
+                                                <% } %> 
+                                            <% }) %>
+                                    <% } else { %>
+                                        <% if(!count.includes(producto[clavePrincipal]) && producto[clavePrincipal]) { %>
+                                        <dd>
+                                            <input id="<%= `${valor}` %> " type="checkbox" class="checkboxito" name="<%= clavePrincipal %>" value="<%= producto[clavePrincipal] %>">
+                                            <label for="<%= `${valor}` %> "><%= producto[clavePrincipal] %></label>
+                                        </dd>
+                                        <% producto[clavePrincipal] ? count.push(producto[clavePrincipal]) : ""; %> 
+                                        <% } %> 
+                                    <% } %> 
+                                        
+                                <% }) %> 
+                            </dl>
+                        <% }) %>   
+                    <% } %> 
+                </section>               
+            </aside>
+            <section class="listado">
+                <% lista.forEach(product => { %> 
+                    <article class="producto"
+                    <% claves.forEach(clave => { %>
+                        <%= clave %>= 
+                        <% if(product[clave] != null && product[clave] != undefined && product[clave] != ""){ %>
+                            <%= product[clave][0] ? product[clave][0][clave] : product[clave] %>  
+                        <% }else{ %> 
+                            ""
+                        <% } %>  
+                    <% }) %> >
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
+                            <div class="product-img">
+                                <img src="/images/products/<%= product.images[0].dataValues.image %>" alt="">
+                            </div>
+                            <div class="description">
+                                <h3><%= product.name %></h3>
+                                <p class="price">$ <%= product.price %></p>
+                            </div>
+                        </a>
+                    </article> 
+                <% }) %> 
+            </section>
+            <% } %> 
+        </main>
+        <%- include("partials/footer.ejs") %> 
     </body>
     <script src="/javaScripts/listadoProductos.js" defer></script>
 </html>

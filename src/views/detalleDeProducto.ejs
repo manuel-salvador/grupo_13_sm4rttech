@@ -1,64 +1,114 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include("partials/head.ejs") %>
-<body>
-    <%- include("partials/header.ejs") %> 
-    <main>
-        <div class="detalle">
-            <p><a href="/">inicio</a>><a href="/products/<%= product.category %>"><%= product.category %></a>><a><%= product.marca%></a></p>
+<%- include("partials/head.ejs") %>
 
-        </div>
-        <article class="imagenes">
-            <div class="imagen-principal">
-                <img src="/images/products/<%= product.image %>" alt="">
+    <body>
+        <%- include("partials/header.ejs") %>
+            <main>
+                <div class="detalle">
+                    <p><a href="/">inicio</a>><a href="/products/category/<%= product.category.id %>">
+                            <%= product.category.category %>
+                        </a>><a>
+                            <%= product.brand.brand%>
+                        </a></p>
 
-            </div>
-            <div class="imagen-1">
+                </div>
+                <article class="imagenes">
+                    <div class="imagen-principal">
+                        <img src="/images/products/<%= product.images[0].image %>" alt="">
+                    </div>
+                    <!--  <div class="imagen-1">
                 <img  src="/images/detalleProducto/tv-samsung1.jpg" alt="">
                 <img  src="/images/detalleProducto/tv-samsung2.jpg" alt="">
                 <img  src="/images/detalleProducto/tv-samsung3.jpg" alt="">
-            </div>
+            </div> -->
 
-        </article>
-        <section class="box-1">
-            <div class="botones">
-                <button class="boton1">comprar</button>
-                <button class="boton2">agregar al carrito</button>
-            </div>
-            <div class="nombre-producto">
-                <h3>
-                    <%= product.name %>
-                </h3>
-                <h3> $ <%= product.price %>  </h3>
-            </div>
+                </article>
+                <section class="box-1">
+                    <div class="botones">
+                        <button class="boton1">comprar</button>
+                        <button class="boton2">agregar al carrito</button>
+                    </div>
+                    <div class="nombre-producto">
+                        <h3>
+                            <%= product.name %>
+                        </h3>
+                        <h3> $ <%= product.price %>
+                        </h3>
+                    </div>
 
 
-            <h4>cuotas</h4>
-            <select class="selecciona-cuotas">
-                <option value="0">Seleccionar cuotas</option>
-                <option value="1">3 cuotas de $<%- ((Number(product.price)*1.1)/3).toFixed(2) %> </option>
-                <option value="2">6 cuotas de $<%- ((Number(product.price)*1.13)/6).toFixed(2) %> </option>
-                <option value="3">9 cuotas de $<%- ((Number(product.price)*1.16)/9).toFixed(2) %> </option>
-                <option value="4">12 cuotas de $<%- ((Number(product.price)*1.20)/12).toFixed(2) %> </option>
-            </select>
-            <div class="etiquetas">
-                <p><i class="fas fa-credit-card">
-                        Medios de pagos</i></p>
-                <p><i class="fas fa-truck">
-                        Envios a todo el pais</i></p>
-                <a href="">Calcular costo de Envios</a>
-            </div>
-        </section>
-        <section class="especificaciones">
-            <div class="especificaciones-tecnicas">
-                <h4>Especificaciones tecnicas</h4>
-                <ul>
-                    <li>Marca: <%= product.marca %> </li>
-                    <li>Pulgadas: <%= product.tamaño %> </li>
-                    <li>RAM: <%= product.ram %> </li>
-                    <li>Smart: <%= product.smart %> </li>
-                    <li>Capacidad: <%= product.capacity %> </li>
-                </ul>
+                    <h4>cuotas</h4>
+                    <select class="selecciona-cuotas">
+                        <option value="0">Seleccionar cuotas</option>
+                        <option value="1">3 cuotas de $<%- ((Number(product.price)*1.1)/3).toFixed(2) %>
+                        </option>
+                        <option value="2">6 cuotas de $<%- ((Number(product.price)*1.13)/6).toFixed(2) %>
+                        </option>
+                        <option value="3">9 cuotas de $<%- ((Number(product.price)*1.16)/9).toFixed(2) %>
+                        </option>
+                        <option value="4">12 cuotas de $<%- ((Number(product.price)*1.20)/12).toFixed(2) %>
+                        </option>
+                    </select>
+                    <div class="etiquetas">
+                        <p><i class="fas fa-credit-card">
+                                Medios de pagos</i></p>
+                        <p><i class="fas fa-truck">
+                                Envios a todo el pais</i></p>
+                        <a href="">Calcular costo de Envios</a>
+                    </div>
+                </section>
+                <section class="especificaciones">
+                    <div class="especificaciones-tecnicas">
+                        <h4>Especificaciones tecnicas</h4>
+
+                        <table class="tabla-especificaciones">
+                            <tr>
+                                <td>Marca</td>
+                                <td>
+                                    <%= product.brand.brand %>
+                                </td>
+                            </tr>
+                            <% if (product.sizes[0]) { %>
+                            <tr>
+                                    <td>Pulgadas</td>
+                                    <td>
+                                        <%= product.sizes[0].sizes %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            <% if (product.rams[0]) { %>
+                            <tr>
+                                    <td>
+                                        RAM
+                                    </td>
+                                    <td>
+                                        <%let ramMemory=[]; product.rams.forEach(ram=> { %>
+                                            <% ramMemory.push(ram.ram) %>
+                                                <% }) %>
+                                        <%= ramMemory.join(', ') %> 
+                            </td>
+                        </tr>
+                        <% } %>
+                        <% if (product.smart) {%> 
+                    <tr>
+                            <td>Smart</td>
+                            <td><%= product.smart %></td>
+                        </tr>
+                        <% } %> 
+                        <% if (product.capacities[0]) { %> 
+                    <tr>
+                                            <td>Capacidad</td>
+                                            <td>
+                                                <%let capacidades = []; product.capacities.forEach(capacity => { %>
+                                                    <% capacidades.push(capacity.capacity) %> 
+                                                <% }) %> 
+                                                <%= capacidades.join(' , ') %> 
+                                            </td>
+                                        </tr>
+                                        <% } %> 
+                </table>
+                
             </div>
             <div class="descripcion-del-producto">
                 <h4>Descripcion del producto</h4>

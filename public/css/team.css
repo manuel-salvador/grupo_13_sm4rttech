@@ -1,0 +1,35 @@
+main.admin section.team {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main.admin section.team table {
+    margin-top: 30px;
+}
+
+main.admin section.team > form > *{
+    padding: 5px;
+    border:1px solid;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.button-filter {
+    background-color: var(--greenWater);
+    color: white;
+    border-color: var(--greenWater);;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.button-filter:hover {
+    background-color: #01867e;
+}
+
+.edit-rol {
+    cursor: pointer;
+}

@@ -4,9 +4,7 @@ let { check } = require('express-validator');
 module.exports = [
     check('category')
     .notEmpty()
-    .withMessage("Se debe seleccionar una categoria")
-    .isLength({min: 2})
-    .withMessage("El nombre es demasiado corto"),
+    .withMessage("Se debe seleccionar una categoria"),
 
     check('marca')
     .notEmpty()

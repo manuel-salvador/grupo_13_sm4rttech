@@ -3,11 +3,9 @@
     <%- include("partials/head.ejs") %>
 <body>
     <%- include("partials/header-formularios.ejs") %> 
-    
     <main class="formulario-reg">
         <section class="caja-central-form">
             <h2>COMPLETA TUS DATOS</h2>
-            <form action="/accounts/editProfile">
                 <section class="img-avatar">
                     <h4>Agregar foto de perfil</h4>
                     <div class="avatar-img">
@@ -17,43 +15,42 @@
                 </section>
             <section class="datos-usuarios">
                     <div class="name">
-                        <h4>nombre</h4>
-                        <p class="casil">nombre</p>
+                        <h4>Nombre</h4>
+                        <p class="casil capit"><%= user.name ? user.name.toLowerCase() : "Nombre"%></p>
                     </div>
                     <div class="apellido">
                         <h4>Apellido</h4>
-                        <p class="casil">apellido</p>
+                        <p class="casil capit"><%= user.last_name ? user.last_name.toLowerCase() : "Apellido"%></p>
                     </div>
                     <div class="mail">
                         <h4>E-mail</h4>
-                        <p class="casil">mail registrado</p>
+                        <p class="casil"><%= user.email ? user.email.toLowerCase() : "E-mail"%></p>
                     </div>
                     <div class="mail">
                         <h4>Fecha de nacimiento</h4>
-                        <p class="casil">Fecha de nacimiento</p>
+                        <p class="casil capit"><%= user.fecha?.date_user ? user.fecha.date_user: "Fecha de nacimiento"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>País</h4>
-                        <p class="casil">pais</p>
+                        <p class="casil capit"><%= user.direccion?.pais ? user.direccion.pais : "País"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>Provincia</h4>
-                        <p class="casil">provincia</p>
+                        <p class="casil"><%= user.direccion?.province ? user.direccion.province : "Provincia"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>localidad</h4>
-                        <p class="casil">localidad</p>
+                        <p class="casil"><%= user.direccion?.localidad ? user.direccion.localidad : "Localidad"%></p>
                     </div>
                     <div class="confirm-contra">
                         <h4>Codigo postal</h4>
-                        <p class="casil">codigo postal</p>
+                        <p class="casil"><%= user.direccion?.cp ? user.direccion.cp : "Codigo postal"%></p>
                     </div>
                 </section>
         <section class="button-crear">
-            <button type="submit" class="edit-profile"><i class="far fa-edit"></i>Editar perfil</button>                         
+            <a href="/accounts/editProfile"><button class="edit-profile"><i class="far fa-edit"></i>Editar perfil</button></a>                         
         </section>
         </section>
-    </form>
 </main>
     <%- include("partials/footer.ejs") %> 
 </body>

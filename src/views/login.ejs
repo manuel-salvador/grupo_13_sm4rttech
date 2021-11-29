@@ -7,11 +7,11 @@
         
         <section class="caja-central">
             <h2>bienvenido</h2>
-            <form action="/accounts/login" method="POST">
+            <form  id="formLogin" action="/accounts/login" method="POST">
             <div class="ingreso">
                 <div class="mail">
                     <h4>E-mail</h4>
-                    <input type="text"  name="email" placeholder="Ingresa E-mail">
+                    <input id="email" type="text" name="email" placeholder="Ingresa E-mail">
                     <% if (locals.errors && errors.email) { %>
                         <small class="text-danger"><%= errors.email.msg %> </small>
                     <% } %>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="contraseña contra">
                     <h4>contraseña</h4>
-                    <input type="password" name="pass" placeholder="Ingresa contraseña">
+                    <input id="password" type="password" name="pass" placeholder="Ingresa contraseña">
                     <a role="button" class="password-view" >
                         <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
                         <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
@@ -38,6 +38,7 @@
                 <label for="recordarme">Recordarme</label>
             </div>
             <div class="botones">
+                <small id="submitErrors" class="text-danger"></small>
                 <button class="boton-ingreso">ingresar</button>
                 <p>0</p>
                 <button type="submit" class="boton-cuenta"><a href="/accounts/register">crear una cuenta</a></button>
@@ -47,5 +48,6 @@
     </form>
     </main>
         <%- include("partials/footer.ejs") %> 
+        <script src="/javaScripts/loginValidatorFront.js"></script>
 </body>
 </html>

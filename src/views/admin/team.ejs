@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sm4rtTech</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>   
+</head>
+<body id="admin" class="admin">
+    <%- include('./partials/headerAdmin.ejs') %> 
+    <main class="admin">
+        <% if (encontro == "no") { %>
+            <script>alert("No se encontró ningun usuario")</script>
+        <% } %> 
+        <%- include('./partials/navAdmin.ejs') %>
+        <section class="team">
+            <form action="/admin/team/filterUsers" method="POST">
+                <input type="text" name="name" placeholder="Nombre" autocomplete="off">
+                <input type="text" name="lastName" placeholder="Apellido" autocomplete="off">
+                <button type="submit" class="button-filter">Buscar usuario</button>
+            </form>
+            <table class="tabla-editar">
+                <thead>
+                    <th scope="colum-mobile">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <% if(user.rol == 3){ %> 
+                        <th scope="col">Rol</th><!-- tablet y desktop -->
+                        <th  scope="col"></th>
+                    <% } %> 
+                </thead>
+                <tbody>
+                    <% usersTeam.forEach(user => {%>
+                        <% if(hayFiltro == "no") {%>
+                            <% if(user.rol != 1) { %> 
+                                <tr>
+                                    <td><%= user.name %> </td>    
+                                    <td><%= user.last_name %></td>
+                                    <td style="text-transform: lowercase;"><a href="mailto:<%= user.email %>" style="color:#fff"><%= user.email %></a></td>
+                                    <% if(locals.user.rol == 3){ %>
+                                        <td><%= user.rol == 2 ? "Admin" : user.rol == 3 ? "Jefe" : "Común"%></td>
+                                        <% if (user.rol != 3) {%> 
+                                            <td class="edit-rol">Editar permisos</td>
+                                            <td style="display: none;">
+                                                <form class="editFormulario" action="/admin/team/editPermissions?_method=PUT" method="POST">
+                                                    <input type="hidden" name="email" value="<%= user.email %> ">
+                                                    <select name="editRol" id="editRol">
+                                                        <option value="2" <%= user.rol == 2 ? "selected" : "" %>>Si</option>
+                                                        <option value="1" <%= user.rol == 1 ? "selected" : "" %>>No</option>
+                                                    </select>
+                                                    <button type="submit">Editar</button>
+                                                    <span class="edit-cancel" style="cursor:pointer">Cancelar</span>
+                                                </form>
+                                            </td>
+                                        <% } %> 
+                                    <% } %> 
+                                </tr>
+                            <% } %> 
+                        <% } else { %>
+                            <tr>
+                                <td><%= user.name %> </td>    
+                                <td><%= user.last_name %></td>
+                                <td style="text-transform: lowercase;"><a href="mailto:<%= user.email %>" style="color:#fff"><%= user.email %></a></td>
+                                <% if(locals.user.rol == 3){ %>
+                                    <td><%= user.rol == 2 ? "Admin" : user.rol == 3 ? "Jefe" : "Común"%></td>
+                                    <% if (user.rol != 3) {%> 
+                                        <td class="edit-rol">Editar permisos</td>
+                                        <td style="display: none;">
+                                            <form class="editFormulario" action="/admin/team/editPermissions?_method=PUT" method="POST">
+                                                <input type="hidden" name="email" value="<%= user.email %> ">
+                                                <select name="editRol" id="editRol">
+                                                    <option value="2" <%= user.rol == 2 ? "selected" : "" %>>Si</option>
+                                                    <option value="1" <%= user.rol == 1 ? "selected" : "" %>>No</option>
+                                                </select>
+                                                <button type="submit">Editar</button>
+                                                <span class="edit-cancel" style="cursor:pointer">Cancelar</span>
+                                            </form>
+                                        </td>
+                                    <% } %> 
+                                <% } %> 
+                            </tr>
+                        <% } %>  
+                    <% }) %>
+                </tbody>
+                
+            </table>
+            
+        </section>
+    </main>
+    <script src="/javaScripts/team.js"></script>
+</body>
+</html>

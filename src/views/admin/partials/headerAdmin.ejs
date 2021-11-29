@@ -8,19 +8,20 @@
     <div class="right">
         <div class="hello">
             <p>Admin,</p>
-            <p>user name</p>
+            <p><%= `${locals.user.name} ${locals.user.last_name}` %></p>
         </div>
         <ul>
             <li class="messages"><i class="far fa-envelope"></i></li>
             <li class="notifications"><i class="far fa-bell"></i></li>
             <li class="avatar-profile"><i class="far fa-user"></i></li>
+            <a class="go-to-home" href="/">Ir a la página</a>
         </ul>
     </div>
     <nav class="opcion-cat" id="barra-lat">
         <ul>
             <li onclick="subCategoryMenu()">
                 <i class="fas fa-border-all"></i>
-                <p class="title-item"><a href="/" class="nav-link">Inicio</a></p>
+                <p class="title-item"><a href="/admin" class="nav-link">Inicio</a></p>
             </li>
             <li onclick="subCategoryMenu()">
                 <i class="fas fa-cart-plus"></i>
@@ -39,7 +40,7 @@
             <li onclick="subCategoryMenu()">
                
                         <i class="fas fa-users"></i>
-                    <p class="title-item"><a href="/admin">Equipo</a></p>
+                    <p class="title-item"><a href="/admin/team">Equipo</a></p>
             </li>
         </ul>
     </nav>

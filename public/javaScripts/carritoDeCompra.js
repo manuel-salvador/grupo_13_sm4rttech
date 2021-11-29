@@ -1,5 +1,5 @@
 let counter = 1
-let $count = document.getElementById('count');
+let $count = document.getElementsByClassName("count")
 
   function add () {
     if(counter <= 10) {

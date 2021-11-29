@@ -9,9 +9,15 @@ const { admin,
     filtrarEditar, 
     editar,
     actualizar,
-    destroy } = require('../controllers/adminController');
-const agregarValidator =require('../validations/agregarValidator')
+    destroy,
+    team,
+    deleteProduct,
+    filterUsers,
+    editPermissions } = require('../controllers/adminController');
+const agregarValidator = require('../validations/agregarValidator')
 const usersAdminCheck = require('../midlewares/usersAdminCheck')
+const superAdminCheck = require('../midlewares/superAdminCheck')
+
 
 router.use(function (req, res, next) {
     res.locals.user = req.session.user ? req.session.user : "";
@@ -30,16 +36,26 @@ router.get('/agregar', usersAdminCheck, agregar),
 router.post('/agregar', multer.single('image'), agregarValidator, store)
 
 
-
 /* get muestra form. de edit*/ 
 router.get('/editar', usersAdminCheck, filtroEditar)
-router.post('/editar', filtrarEditar)
+router.post('/editar', usersAdminCheck, filtrarEditar)
 
 
-router.get('/editar/:id',usersAdminCheck, editar)
-router.put('/editar/:id',multer.single('image'), agregarValidator, actualizar)
+router.get('/editar/:id', usersAdminCheck, editar)
+router.put('/editar/:id', multer.single('image'), agregarValidator, actualizar)
 
 /*delete */
-router.delete('/delete/:id', destroy);
+router.get('/delete/:id', usersAdminCheck, deleteProduct)
+
+/* Rutas Team, Equipo*/
+router.get('/team', usersAdminCheck, team)
+
+
+// filtrar usuarios
+router.post('/team/filterUsers', usersAdminCheck, filterUsers)
+
+// editar permisos
+router.put('/team/editPermissions', superAdminCheck, editPermissions)
+
 
 module.exports = router;
