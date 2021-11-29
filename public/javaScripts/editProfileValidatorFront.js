@@ -8,7 +8,7 @@ window.onload = () => {
           
             validateEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(input.value)
   
-            validatePass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-ZÀ-ÿ\d\u00f1\u00d1]{8,}$/.test(input.value)
+            validatePass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-ZÀ-ÿ\d\u00f1\u00d1\W]{8,}$/.test(input.value)
             
             validateAddress= /^([a-zA-Z0-9_-\s]){1,16}$/.test(input.value)
            
