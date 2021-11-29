@@ -12,6 +12,7 @@
 .formulario-reg {
     display: flex;
     justify-content: center;
+    min-height: 40rem;
 }
 .img-avatar{
     display: flex;
@@ -105,9 +106,9 @@ span.error-message{
 width: 75%;
 }    
 
-.button-crear {
+.button-eliminar-profile {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     font-weight: bold;
     margin: 1rem 0;
@@ -124,25 +125,78 @@ width: 75%;
     width: 100%;
     cursor: pointer;
 }
+.modal-background{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+}
+.modal {
+    background-color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#form{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+}
 
 .button-eliminar {
-    position: absolute;
-    background-color: red;
+    background-color: rgb(200, 0, 0);
     color: white;
     text-decoration: none;
-    border: 2px solid #000;
+    border: 1.5px solid darkred;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 15px;
-    max-width: 100px;
+    font-size: 1rem;
+    height: 40px;
     width: 100%;
-    margin: 0 auto;
-    right: 100px;
-    top: 175px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 5px;
+}
+#cancel{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    max-width: 150px;
+    height: 40px;
+    padding: 2px;
     cursor: pointer;
     text-align: center;
 }
-
+.delete-profile{
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
+}
+#borrar{
+    background-color: rgb(200, 0, 0);
+    color: white;
+    text-decoration: none;
+    border: 1.5px solid darkred;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 1rem;
+}
 .vuelta-login{
     text-align: center;
     text-transform: uppercase;

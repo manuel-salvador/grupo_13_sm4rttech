@@ -395,7 +395,7 @@ module.exports = {
                     where: { id: req.params.id }
                 })
                     .then(producto => {
-                        return res.redirect('/')
+                        return res.redirect('/admin/editar')
                     })
 
             })
