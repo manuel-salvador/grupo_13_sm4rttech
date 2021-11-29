@@ -45,24 +45,15 @@ module.exports = {
         let rams = db.Ram.findAll()
         let colores = db.Color.findAll()
 
-<<<<<<< HEAD
-        Promise.all([categorias, marcas, tamaños, capacidades, rams])
-            .then(([categorias, marcas, tamaños, capacidades, rams]) => {
-                res.render('admin/agregar', { categorias, marcas, tamaños, capacidades, rams })
-=======
         Promise.all([categorias, marcas, tamaños, capacidades, colores, rams])
             .then(([categorias, marcas, tamaños, capacidades, colores, rams]) => {
                 res.render('admin/agregar', { categorias, marcas, tamaños, capacidades, colores, rams })
->>>>>>> master
             })
     },
 
     store: (req, res) => {
         let errors = validationResult(req)
-<<<<<<< HEAD
-=======
         let imagen = req.file?.filename
->>>>>>> master
         if (errors.isEmpty()) {
             let descripcion = req.body.description;
             let descriptionReplaced = descripcion.replace(/\r\n/gi, '-r-n');
@@ -75,24 +66,6 @@ module.exports = {
                 smart,
                 capacity,
                 ram,
-<<<<<<< HEAD
-                image,
-                description = descriptionReplaced
-            } = req.body
-
-
-
-            db.Product.create({
-                category_id: Number(category),
-                name,
-                price: Number(price),
-                brand_id: Number(marca),
-                smart: Number(smart),
-                description
-            })
-                .then(product => {
-                    console.log(product.id);
-=======
                 color,
                 description = descriptionReplaced
             } = req.body
@@ -107,7 +80,6 @@ module.exports = {
                 description: description.trim()
             })
                 .then(product => {
->>>>>>> master
 
                     if (product && tamaño) {
                         db.Size_Product.create({
@@ -115,29 +87,18 @@ module.exports = {
                             product_id: Number(product.id)
                         })
                     }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
                     if (product && capacity) {
                         db.Capacity_Product.create({
                             capacity_id: Number(capacity),
                             product_id: Number(product.id)
                         })
                     }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
                     if (product && ram) {
                         db.Ram_Product.create({
                             ram_id: Number(ram),
                             product_id: Number(product.id)
                         })
                     }
-<<<<<<< HEAD
-                    if (product && !image) {
-=======
 
                     if (product && color) {
                         db.Color_Product.create({
@@ -147,16 +108,10 @@ module.exports = {
                     }
 
                     if (product && !imagen) {
->>>>>>> master
                         db.Product_Image.create({
                             image: 'logo-sm4rttech.png',
                             product_id: product.id
                         })
-<<<<<<< HEAD
-                    }
-
-                    res.redirect(`/products/detalleDeProducto/${product.id}`)
-=======
                     } else {
                         db.Product_Image.create({
                             image: imagen,
@@ -168,7 +123,6 @@ module.exports = {
                     res.redirect(`/products/detalleDeProducto/${product.id}`)
                     }, 1000)
 
->>>>>>> master
 
                     /* if(arrayImages.length > 0){
                         let images = arrayImages.map(image => {
@@ -192,17 +146,10 @@ module.exports = {
             let rams = db.Ram.findAll()
             let colores = db.Color.findAll()
 
-<<<<<<< HEAD
-            Promise.all([categorias, marcas, tamaños, capacidades, rams])
-                .then(([categorias, marcas, tamaños, capacidades, rams]) => {
-                    res.render('admin/agregar',
-                        { categorias, marcas, tamaños, capacidades, rams, errors: errors.mapped(), old: req.body })
-=======
             Promise.all([categorias, marcas, tamaños, capacidades, rams, colores])
                 .then(([categorias, marcas, tamaños, capacidades, rams, colores]) => {
                     res.render('admin/agregar',
                         { categorias, marcas, tamaños, capacidades, rams, colores, errors: errors.mapped(), old: req.body })
->>>>>>> master
                 })
 
         }
@@ -214,9 +161,6 @@ module.exports = {
 
     filtroEditar: (req, res) => {
         let lista = ["error"]
-<<<<<<< HEAD
-        res.render('admin/filtroEditar', { lista })
-=======
 
         let categorias = db.Category.findAll()
         let marcas = db.Brand.findAll()
@@ -225,7 +169,6 @@ module.exports = {
             .then(([categorias, marcas]) => {
                 res.render('admin/filtroEditar', { categorias, marcas, lista})
             })
->>>>>>> master
     },
 
     filtrarEditar: (req, res) => {
@@ -251,22 +194,12 @@ module.exports = {
             let categorias = db.Category.findAll()
             let marcas = db.Brand.findAll()
 
-<<<<<<< HEAD
-            // Filtrando los filtros vacios
-            filtrosFiltrados = {}
-            for ([key, value] of Object.entries(filtros)) {
-                if (value != false) {
-                    filtrosFiltrados[key] = value
-                }
-            }
-=======
             Promise.all([categorias, marcas])
             .then(([categorias, marcas]) => {
                 res.render('admin/filtroEditar', { categorias, marcas, lista})
             })
         })
     },
->>>>>>> master
 
     /*traer la vista con el producto a editar*/
     editar: (req, res) => {
@@ -292,123 +225,6 @@ module.exports = {
                     })
             })
 
-<<<<<<< HEAD
-            // Comente por si no se quieren listar todos sin filtro
-
-            /* if(0 == Object.keys(filtrosFiltrados).length){
-                return productsFiltered = []
-            }else{ */
-            productsFiltered = db.filter(product => {
-                for (var filtro in filtrosFiltrados) {
-                    if ([product[filtro]].toString().toLowerCase().includes(filtrosFiltrados[filtro].toLowerCase())) {
-
-                    } else {
-                        return false;
-                    }
-                }
-                return true;
-            });
-
-            return (productsFiltered);
-            //  }
-        }
-
-        filtrar(filtrosForm, products)
-
-        res.render('admin/filtroEditar', {
-            lista: productsFiltered,
-        })
-    },
-
-    /*traer la vista con el producto a editar*/
-    editar: (req, res) => {
-        let product = db.Product.findOne({
-            where: {
-                id: req.params.id,
-            }, include: [{ association: "category" }, { association: "colores" }, { association: "brand" },
-            { association: "capacities" }, { association: "images" }, { association: "rams" },
-            { association: "sizes" }]
-        },
-        )
-        let categorias = db.Category.findAll()
-        let marcas = db.Brand.findAll()
-        let tamaños = db.Size.findAll()
-        let capacidades = db.Capacity.findAll()
-        let rams = db.Ram.findAll()
-
-        Promise.all([product, categorias, marcas, tamaños, capacidades, rams])
-            .then(([product, categorias, marcas, tamaños, capacidades, rams]) => {
-                res.render('admin/editar', { product, categorias, marcas, tamaños, capacidades, rams })
-            })
-    },
-    actualizar: (req, res) => {
-        db.Product.update({
-            name: req.body.name,
-            price: req.body.price,
-            marca: req.body.marca,
-            smart: req.body.smart,
-            category_id: req.body.category,
-            description: req.body.description
-    },{
-        where: {
-            id:req.params.id
-        }
-    });
-    res.redirect(`/products/detalleDeProducto/${req.params.id}`)
-    },
-
-    //eliminar un producto
-    destroy: function (req, res) {
-        let productId = req.params.id;
-        db.product.destroy({ where: { id: productId }, force: true }) // force: true es para asegurar que se ejecute la acción
-            .then((result) => {
-                return res.redirect('/')
-            })
-            .catch(error => res.send(error))
-    }
-
-
-
-
-    /* destroy: (req, res) => {
-        db.ProductImage.findAll({
-          where: {
-            product_id: req.params.id,
-          },
-        }).then((result) => {
-          result.forEach((image) => {
-            fs.existsSync("./public/images/products/", image.image)
-              ? fs.unlinkSync("./public/images/products/" + image.image)
-              : console.log("-- No se encontró");
-          });
-          db.ProductImage.destroy({
-            where: {
-              product_id: req.params.id,
-            },
-          }).then((result) => {
-            db.Product.destroy({
-              where: {
-                id: req.params.id,
-              },
-            }).then(
-                res.redirect("/admin/products"));
-          });
-        });
-      }, */
-
-
-
-    /* destroy:(req,res)=>{
-        let product= products.find(product => product.id === +req.params.id)
-        products.forEach(product =>{
-            if(product.id === +req.params.id){
-                let productToDestroy = products.indexOf(product);
-                products.splice(productToDestroy, 1)
-     
-            }
-        })
-        writeJson(products)
-=======
     },
     actualizar: (req, res) => {
         let errors = validationResult(req);
@@ -556,7 +372,6 @@ module.exports = {
                     db.Product_Image.destroy({
                         where: { product_id: product.id }
                     })
->>>>>>> master
 
                 }
 
@@ -642,12 +457,5 @@ module.exports = {
                 res.redirect('/admin/team')
             })
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-         */
-=======
 
->>>>>>> master
-=======
->>>>>>> dac58b7c11b8e6627943c9d41b9ffca2f796c516
 }

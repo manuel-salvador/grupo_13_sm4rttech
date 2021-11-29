@@ -42,11 +42,7 @@ router.post('/editar', usersAdminCheck, filtrarEditar)
 
 
 router.get('/editar/:id', usersAdminCheck, editar)
-<<<<<<< HEAD
-router.put('/editar/:id', agregarValidator, actualizar)
-=======
 router.put('/editar/:id', multer.single('image'), agregarValidator, actualizar)
->>>>>>> master
 
 /*delete */
 router.get('/delete/:id', usersAdminCheck, deleteProduct)
