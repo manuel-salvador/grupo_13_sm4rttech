@@ -187,11 +187,26 @@
     }
     .productos-recomendados {
         display: inline-block;
-
         width: 30%;
+    }
+
+    .productos-recomendados a {
+        text-decoration: none;
+        color: black;
     }
     .productos-recomendados img {
         width: 100%;
+    }
+
+    .ver-mas a{
+        text-decoration: none;
+        color: var(--lightBlue);
+        cursor: pointer;
+    }
+
+    .ver-mas a:hover{
+        transition: all 0.2s ease;
+        border-bottom: 2px solid var(--lightBlue);
     }
     
 }

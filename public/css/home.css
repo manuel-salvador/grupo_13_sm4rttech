@@ -9,7 +9,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body{
-    background-image: url('/images/M4-background.jpeg');
+    background-image: url('/images/M4-background.jpg');
 }
 
 
@@ -667,7 +667,10 @@ main .info-final hr {
         margin-right: 1rem;
     }
 
-
+    .ver-todas p:hover {
+        transition: all 0.2s ease;
+        border-bottom: 2px solid var(--lightBlue);
+    }
 
 
 

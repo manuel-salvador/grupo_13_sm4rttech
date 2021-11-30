@@ -56,7 +56,6 @@ module.exports = {
       })
   },
   detalleDeProducto: (req, res) => {
-
     db.Product.findOne({
       where: {
         id: req.params.id
@@ -65,10 +64,23 @@ module.exports = {
       { association: "capacities" }, { association: "images" }, { association: "rams" },
       { association: "sizes" }]
     })
-      .then(product => {
-        res.render('detalleDeProducto', { product })
-      })
-  },
+      .then((product) => {
+        db.Product.findAll({
+          where: {
+            category_id: product.category.id,
+          },
+          include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+          {association: "capacities"}, {association: "images"}, {association:"rams"},
+          {association: "sizes"}]
+        }).then((products) => {
+          res.render('detalleDeProducto', {
+            product,
+            products
+          }) 
+        });
+  });
+},
+
   buscar: (req, res) => {
     let busqueda = req.query.buscar
 
@@ -150,13 +162,7 @@ module.exports = {
     }
 
 
-    // Renderizo vista sin nada filtrado
-    /* res.render('listadoProductos', {
-      lista,
-      busqueda,
-      claves: [],
-      listado: "search"
-    }) */
+   
   },
   categoria: (req, res) => {
     let categoria = req.params.categoria
