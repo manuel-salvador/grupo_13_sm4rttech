@@ -29,7 +29,11 @@ footer {
     width: 100%;
     color: white;
 }
-
+.listas a{
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
 .listas li {
     padding: 10px;
 }
@@ -48,8 +52,10 @@ footer {
 
 
 }
-.redes i a:hover {
-    background-color: white;
+.redes a{
+    text-decoration: none;
+    color: white;
+    background-color: black;
     padding: 6px;
     border-radius: 100%;
     width: 10px;
