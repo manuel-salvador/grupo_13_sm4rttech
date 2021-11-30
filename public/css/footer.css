@@ -45,14 +45,16 @@ footer {
     justify-content: space-around;
     font-size: x-large;
     margin: 10px 0;
+
+
+}
+.redes i a:hover {
+    background-color: white;
+    padding: 6px;
+    border-radius: 100%;
+    width: 10px;
 }
 
-.redes i {
-    background-color: black;
-    padding: 8px;
-    border-radius: 100%;
-    width: 40px;
-}
 
 .copyright {
     text-align: center;
