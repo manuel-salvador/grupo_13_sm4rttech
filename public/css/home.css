@@ -9,9 +9,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 body{
-    background-image: url('/images/M4-background.jpg');
+<<<<<<< HEAD
+    background-image: url('/images/M4-background2.jpg');
 }
-
+button{
+    cursor: pointer;
+=======
+    background-image: url('/images/M4-background.jpg');
+>>>>>>> mercedes
+}
 
 /* ------------- Slider ------------- */
 

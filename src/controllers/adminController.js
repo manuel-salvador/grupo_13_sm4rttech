@@ -395,9 +395,8 @@ module.exports = {
                     where: { id: req.params.id }
                 })
                     .then(producto => {
-                        return res.redirect('/admin/editar')
+                        res.redirect('/admin/editar')
                     })
-
             })
     },
     team: (req, res) => {
@@ -460,3 +459,5 @@ module.exports = {
             })
     }
 }
+
+

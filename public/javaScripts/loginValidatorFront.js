@@ -6,7 +6,6 @@ window.onload=function() {
             
             emailValidate = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(input.value)
 
-          
                 if(emailValidate){
                 input.style.border = '3px rgba(14, 185, 90, 0.66) solid'
                     input.removeAttribute("error")
