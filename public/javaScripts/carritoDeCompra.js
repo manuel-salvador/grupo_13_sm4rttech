@@ -1,5 +1,5 @@
 let counter = 1
-let $count = document.getElementById('count');
+let $count = document.getElementById("count")
 
 
 let $menos = document.querySelector(".btn-subtract");
