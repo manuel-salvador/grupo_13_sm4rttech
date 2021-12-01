@@ -4,10 +4,24 @@
 
     <body>
         <%- include("partials/header-formularios.ejs") %>
-            <main class="formulario-reg">
-           
+        <main class="formulario-reg">
+            
+            <div class="modal-background">
+                <div class="modal">
+                    <h2>¿ESTAS SEGURO QUE DESEAS ELIMINAR TU CUENTA?</h2>
+            <form id="form" action="/accounts/deleteProfile/<%= locals.user.id %>?_method=DELETE" method="POST">
+                <section class="button-eliminar-profile">
+                    <button type="submit" id="delete" class="button-eliminar">Eliminar cuenta</button>
+                </section>
+            </form>
+            <button id="cancel">Cancelar</button> 
+        </div>
+        </div>
                 <section class="caja-central-form">
                     <h2>COMPLETA TUS DATOS</h2>
+                    <div class="delete-profile">
+                    <button type="submit" id="borrar">eliminar perfil</button>
+                </div>
                     <form id="formedit" action="/accounts/updateProfile/<%= locals.user.id %>?_method=PUT" method="POST">                    <!-- se aplicara el metodo POST una vezque esten realizados los procesos en el controlador -->
                             <section class="img-avatar">
                             <h4>Agregar foto de perfil</h4>
@@ -76,7 +90,7 @@
                                     value="<%= locals.old ? old.pass2:locals.user.pass2 %>">
                                     <a role="button" class="password-view">
                                         <span class="eye-open" style="display: none;"><i class="far fa-eye"></i></span>
-                                        <span class="eye-closed"><i class="far fa-eye-slash"></i>"</span>
+                                        <span class="eye-closed"><i class="far fa-eye-slash"></i></span>
                                     </a>
                                     <small class="text-danger"></small>
                                      <% if (locals.errors && errors.pass2) { %>
@@ -148,16 +162,12 @@
                         
                     </section>
                 </form>
-                <form action="/accounts/deleteProfile/<%= locals.user.id %>?_method=DELETE" method="POST">
-                    <section class="button-crear">
-                        <button type="submit" class="button-eliminar">Eliminar cuenta</button>
-                           <span class="error-message"></span> 
-                  
-                    </section>
-                </form>
+               
             </main>
             <%- include("partials/footer.ejs") %>
             <script src="/javaScripts/editProfileValidatorFront.js"></script>
+            <script src="/javaScripts/editProfileEliminar.js"></script>
+
             <!-- <script src="http://momentjs.com/dowloads/moment.min.js"></script> -->
     </body>
 

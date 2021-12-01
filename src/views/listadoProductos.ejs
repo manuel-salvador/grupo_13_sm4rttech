@@ -15,7 +15,7 @@
             <aside class="filtros">
                 <h1 class="buscado"><%= busqueda %> </h1>
                 <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
-                <button class="boton1" onclick="dropFiltros()">FILTROS</button>
+                <button class="botonFilter" onclick="dropFiltros()">FILTROS</button>
                 <section class="lista-filtro" id="filter">
                     <% if (claves.length != 0) {%> 
                         <% claves.forEach(clavePrincipal => { %>
