@@ -150,19 +150,6 @@
     "description": ""
   },
   {
-    "id": 15,
-    "name": "prueba de validaciones",
-    "category": "televisores",
-    "marca": "Aorus",
-    "tamaño": "",
-    "smart": "",
-    "capacity": "",
-    "ram": "",
-    "price": "331",
-    "description": "Producto de prueba de validaciones ",
-    "image": "1630596073827_img_.jpg"
-  },
-  {
     "id": 17,
     "name": "televisor ",
     "category": "",
