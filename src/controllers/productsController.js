@@ -66,7 +66,11 @@ module.exports = {
       { association: "sizes" }]
     })
       .then(product => {
-        res.render('detalleDeProducto', { product })
+        if(product){
+          res.render('detalleDeProducto', { product })
+        } else {
+          res.redirect('/producto-no-encontrado')
+        }
       })
   },
   buscar: (req, res) => {
