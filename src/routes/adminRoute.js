@@ -48,7 +48,7 @@ router.put('/editar/:id', multer.single('image'), agregarValidator, actualizar)
 router.get('/delete/:id', usersAdminCheck, deleteProduct)
 
 /* Rutas Team, Equipo*/
-router.get('/team', usersAdminCheck, team)
+
 
 
 // filtrar usuarios

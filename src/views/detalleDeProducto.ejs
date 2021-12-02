@@ -116,33 +116,35 @@
 
             </div>
         </section>
+        <%function random(min, max) { return Math.floor((Math.random() * (max - min + 1)) + min) } %>
         <section class="recomendaciones">
             <h2>Personas interesadas en este producto tambien vieron</h2>
            <div class="productos-finales">
-               <article class="productos-recomendados">
-                <img src="/images/detalleProducto/tv-eNova.jpg" alt="">
-                <div class="nombre"><p> Smart TV eNova 50 " 4K Ultra HD 50D1U/2</p>
-                <p>$58.999</p>
-                </div>
-            </article>
-            <article class="productos-recomendados">
-
-                <img src="/images/detalleProducto/tv-hitachi.jpg" alt="">
-               <div class="nombre"><p>Smart TV HITACHI 50 " HD CDH-LE504KSMART20</p>
-                <p>$59.999</p>
-            </div> 
-            </article>
-
-            <article class="productos-recomendados">
-
-                <img src="/images/detalleProducto/tv-philips.jpg" alt="">
-               <div class="nombre"><p>Smart TV Philips 43 " Full HD 43PFD6825/77.</p>
-                <p>$39.999</p>
-               </div>
-            </article>
+            <% for(i=0; i < 3; i++) {%>
+                <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
+                    <article class="productos-recomendados">
+                        <a href="/products/detalleDeProducto/<%= product.id %> ">
+                            <div class="img-recomendado">
+                                <img src="/images/products/<%= product.images[0].image %>"
+                                    alt="<%= product.images[0].image %>">
+                                </div>
+                            <div class="nombre">
+                                <h3>
+                                    <%= product.name %>
+                                </h3>
+                                <p>$ <%= product.price %>
+                                </p>
+                            </div>
+                        </a>
+                    </article>
+                    <% } %>
+             
             </div>
             <div class="ver-mas">
-            <a>ver mas publicaciones ></a>
+                <h4><a href="/products/category/<%= product.category.id %>">
+                    ver mas publicaciones >
+                </a>
+            </h4>
         </div>
 
 

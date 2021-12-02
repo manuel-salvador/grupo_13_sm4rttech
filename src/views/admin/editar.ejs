@@ -17,7 +17,7 @@
 
 <body class="admin">
     <%- include('./partials/headerAdmin.ejs') %>
-        <main class="admin">
+        <main class="admin">  
             <%- include('./partials/navAdmin.ejs') %>
                 <section class="formAdmin">
 
@@ -33,12 +33,6 @@
                                             <option value="<%= categoria.id %>" <%= locals.old && old.categoria == categoria.id ? "selected" : product.category.id == categoria.id ? "selected" : "" %>><%= categoria.category %></option>
                                         <% }) %> 
                                     </select>
-                                    <% if (locals.errors && errors.category) { %>
-                                        <!-- busca en las variables de nuestra aplicacion -->
-                                        <small class="text-danger">
-                                            <%= errors.category.msg %>
-                                        </small>
-                                        <% } %>
                                 </div>
                                 <div>
                                     <h4>Marcas</h4>
