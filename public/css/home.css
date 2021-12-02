@@ -573,6 +573,9 @@ main .info-final hr {
 
 .articulos-destacados .arriba,
 .articulos-destacados .abajo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width: 30%;
 }
 
@@ -607,6 +610,9 @@ main .info-final hr {
     max-height: 200px;
     max-width: 100%;
     border-radius: 5px;
+}
+.destacados .arriba .description h3, .destacados .abajo .description h3{
+    font-size: larger;
 }
 
    /*  main .destacados h2 {
@@ -676,6 +682,8 @@ main .info-final hr {
     }
 
     */ 
+    
+    
     /* ------------- Fin Destacados ------------- */
     /* ------------------------------------------ */
 

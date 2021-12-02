@@ -124,8 +124,10 @@
                 <% var numeroRandom=random(0, products.length-1); var product=products[numeroRandom] %>
                     <article class="productos-recomendados">
                         <a href="/products/detalleDeProducto/<%= product.id %> ">
+                            <div class="img-recomendado">
                                 <img src="/images/products/<%= product.images[0].image %>"
                                     alt="<%= product.images[0].image %>">
+                                </div>
                             <div class="nombre">
                                 <h3>
                                     <%= product.name %>
