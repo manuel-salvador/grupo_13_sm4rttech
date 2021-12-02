@@ -349,7 +349,7 @@ main .ofertas a .description div{
     width: 75%;
 }
 
-main .ofertas a.ver-todas {
+a.ver-todas {
     display: flex;
     flex-direction: row;
     width: 100%;
