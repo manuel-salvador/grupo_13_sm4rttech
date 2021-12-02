@@ -136,7 +136,7 @@
 .productos-recomendados a {
     width: 100%;
     display: flex;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     margin-bottom: 1rem;
     border-radius: 0.6rem;
     min-height: 125px;

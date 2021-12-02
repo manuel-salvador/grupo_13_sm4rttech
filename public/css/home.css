@@ -29,6 +29,10 @@ main .carousel ul.slider {
     animation: cambio 30s infinite ease-in-out;
 } 
 
+.slider .inferior .description .description-carrousel{
+    height: 75px;
+    overflow: hidden;
+}
 /* #slide1 {
     background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
 }
@@ -149,7 +153,7 @@ main div.top-sales .articulos {
 }
 
 main div.top-sales article {
-    background-color: #c4c4c4;
+    background-color: var(--greenWater);
     height: 250px;
     border-radius: 1rem;
     padding: 1rem;
@@ -210,7 +214,7 @@ main .destacados h2 {
 .destacados .arriba a,
 .destacados .abajo a {
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     margin-bottom: 1rem;
     border-radius: 0.6rem;
     min-height: 100px;
@@ -260,7 +264,7 @@ main .destacados article a {
 .destacados .producto-principal a{
     display: inline-block;
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     margin-bottom: 1rem;
     border-radius: 0.6rem;
 }
@@ -313,7 +317,7 @@ main .ofertas a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    background-color: #eee;
+    background-color:var(--greenWater);
     height: 100%;
     border-radius: 10px;
     padding: 5px 0;
