@@ -67,8 +67,10 @@ module.exports = {
                 capacity,
                 ram,
                 color,
-                description = descriptionReplaced
+                description = descriptionReplaced,
+                redireccion
             } = req.body
+
 
 
             db.Product.create({
@@ -119,9 +121,17 @@ module.exports = {
                         })
                     }
 
-                    setTimeout(function () {
-                    res.redirect(`/products/detalleDeProducto/${product.id}`)
-                    }, 1000)
+                    if(redireccion == 'seguir'){
+                        setTimeout(function () {
+                            res.redirect(`/admin/agregar`)
+                        }, 1000)
+                    }else if (redireccion == 'detalle'){
+                        setTimeout(function () {
+                            res.redirect(`/products/detalleDeProducto/${product.id}`)
+                        }, 1000)
+                    }
+
+                    
 
 
                     /* if(arrayImages.length > 0){

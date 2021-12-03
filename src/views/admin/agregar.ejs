@@ -110,7 +110,7 @@
                     </div>
                     <section class="img-coment">
                     <div>
-                        <h4>Imagenes</h4>
+                        <h4>Imágenes</h4>
                         <input class="input-file" type="file" name="image" id="image" multiple>
                     </div>
                     <h4>Descripción</h4>
@@ -119,6 +119,13 @@
                             <small class="text-danger"><%= errors.description.msg %></small>
                        <% } %>
             </section>
+            <div id="darken" style="display: none;">
+                <div id="redireccion">
+                    <input type="text" name="redireccion" id="redireccionar" value="" style="display: none;">
+                    <button class="redirect" name="ignorar" value="detalle">Ir al detalle de producto</button>
+                    <button class="redirect" name="ignorar" value="seguir">Seguir agregando productos</button>
+                </div>
+            </div>
             <div class="botones-confirm">
                 <section class="button-crear">
                     <small id="submitErrors" class="text-danger"></small>
