@@ -369,8 +369,7 @@ header {
         text-align: right;
         cursor: pointer;
         width: fit-content;
-        margin-left: auto;
-        margin-right: 3.5rem ;
+        margin:10px auto;
     }
     
     
@@ -512,7 +511,5 @@ header {
         color: white;
         display:flex;
         justify-content: space-evenly;
-
-        margin-top: 1rem;
     }
 }
