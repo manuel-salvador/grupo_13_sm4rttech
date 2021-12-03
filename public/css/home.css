@@ -30,7 +30,7 @@ main .carousel ul.slider {
 } 
 
 .slider .inferior .description .description-carrousel{
-    height: 75px;
+    height: 68px;
     overflow: hidden;
 }
 /* #slide1 {
@@ -351,6 +351,13 @@ main .ofertas a .description h3{
 
 main .ofertas a .description div{
     width: 75%;
+}
+
+.ofertas a .description label{
+    color: var(--lightBlue);
+    background-color: white;
+    border-radius: 20%;
+    padding: 2px;
 }
 
 a.ver-todas {
