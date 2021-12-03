@@ -9,7 +9,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body{
-    background-image: url('/images/M4-background2.jpg');
+    background-image: url('/images/M4-background.jpg');
 }
 button{
     cursor: pointer;
