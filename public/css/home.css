@@ -353,6 +353,13 @@ main .ofertas a .description div{
     width: 75%;
 }
 
+.ofertas a .description label{
+    color: var(--lightBlue);
+    background-color: white;
+    border-radius: 20%;
+    padding: 2px;
+}
+
 a.ver-todas {
     display: flex;
     flex-direction: row;
