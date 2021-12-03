@@ -1,8 +1,12 @@
 .detalle {
-    width: fit-content;
     margin: 10px;
-    border-bottom: 2px solid #00A99D;
     padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detalle p {
+    border-bottom: 2px solid #00A99D;
 }
 
 .detalle a {
@@ -11,6 +15,19 @@
   text-decoration: none;
   text-transform: capitalize;
   margin: 0 0.5rem;
+}
+
+.detalle .editDetalle {
+    background-color: var(--greenWater);
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    transition: all .3s;
+}
+
+.detalle .editDetalle:hover {
+    background-color: #019086;
+    border: 1px solid black;
 }
 
 .imagen-principal {
