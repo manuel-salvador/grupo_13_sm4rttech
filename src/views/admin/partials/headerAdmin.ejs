@@ -8,7 +8,7 @@
     <div class="right">
         <div class="hello">
             <p>Admin,</p>
-            <p><%= `${locals.user.name} ${locals.user.last_name}` %></p>
+            <p><%= `${locals.user.name} ${locals.user.last_name? locals.user.last_name : ""}` %></p>
         </div>
         <ul>
             <li class="messages"><i class="far fa-envelope"></i></li>

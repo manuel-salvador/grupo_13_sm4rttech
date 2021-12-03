@@ -67,8 +67,10 @@ module.exports = {
                 capacity,
                 ram,
                 color,
-                description = descriptionReplaced
+                description = descriptionReplaced,
+                redireccion
             } = req.body
+
 
 
             db.Product.create({
@@ -87,14 +89,12 @@ module.exports = {
                             product_id: Number(product.id)
                         })
                     }
-
                     if (product && capacity) {
                         db.Capacity_Product.create({
                             capacity_id: Number(capacity),
                             product_id: Number(product.id)
                         })
                     }
-
                     if (product && ram) {
                         db.Ram_Product.create({
                             ram_id: Number(ram),
@@ -121,9 +121,17 @@ module.exports = {
                         })
                     }
 
-                    setTimeout(function () {
-                    res.redirect(`/products/detalleDeProducto/${product.id}`)
-                    }, 1000)
+                    if(redireccion == 'seguir'){
+                        setTimeout(function () {
+                            res.redirect(`/admin/agregar`)
+                        }, 1000)
+                    }else if (redireccion == 'detalle'){
+                        setTimeout(function () {
+                            res.redirect(`/products/detalleDeProducto/${product.id}`)
+                        }, 1000)
+                    }
+
+                    
 
 
                     /* if(arrayImages.length > 0){
@@ -268,7 +276,6 @@ module.exports = {
                             })
                         }
                     }
-
                     if (capacity) {
                         if (producto.capacities[0]) {
                             db.Capacity_Product.update({
@@ -283,7 +290,6 @@ module.exports = {
                             })
                         }
                     }
-
                     if (ram) {
                         if (producto.rams[0]) {
                             db.Ram_Product.update({
@@ -298,7 +304,6 @@ module.exports = {
                             })
                         }
                     }
-
                     if (color) {
                         if (producto.colores[0]) {
                             db.Color_Product.update({
@@ -330,7 +335,7 @@ module.exports = {
                         where: { id: producto.id }
                     })
                         .then(() => {
-                            res.redirect(`/admin/editar/${producto.id}`)
+                            res.redirect(`/products/detalleDeProducto/${producto.id}`)
                         })
                 })
         }
@@ -459,5 +464,3 @@ module.exports = {
             })
     }
 }
-
-

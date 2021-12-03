@@ -388,9 +388,6 @@
     .lista3{
         display: block;
     }
-    .redes{
-        width: 40%;
-    }
     
     .redes i {
         margin: 0 2px;
@@ -423,6 +420,7 @@
     
     .productos-desktop {
         display: flex;
+        flex-direction: column;
         width: 100%;
     }
     

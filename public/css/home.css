@@ -9,14 +9,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 body{
-<<<<<<< HEAD
     background-image: url('/images/M4-background2.jpg');
 }
 button{
     cursor: pointer;
-=======
-    background-image: url('/images/M4-background.jpg');
->>>>>>> mercedes
 }
 
 /* ------------- Slider ------------- */
@@ -33,6 +29,10 @@ main .carousel ul.slider {
     animation: cambio 30s infinite ease-in-out;
 } 
 
+.slider .inferior .description .description-carrousel{
+    height: 75px;
+    overflow: hidden;
+}
 /* #slide1 {
     background-image: url(/images/carousel/lenovo-tablet-m7.jpg);
 }
@@ -139,7 +139,6 @@ main div.top-sales {
     width: 100%;
     padding: 1.2rem 1rem 0;
     flex-direction: column;
-    overflow: hidden;
 }
 
 main div.top-sales h2 {
@@ -149,11 +148,12 @@ main div.top-sales h2 {
 
 main div.top-sales .articulos {
     display: flex;
-    width: 400%;
+    width: 100%;
+    overflow-x: auto;
 }
 
 main div.top-sales article {
-    background-color: #c4c4c4;
+    background-color: var(--greenWater);
     height: 250px;
     border-radius: 1rem;
     padding: 1rem;
@@ -214,7 +214,7 @@ main .destacados h2 {
 .destacados .arriba a,
 .destacados .abajo a {
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     margin-bottom: 1rem;
     border-radius: 0.6rem;
     min-height: 100px;
@@ -264,7 +264,7 @@ main .destacados article a {
 .destacados .producto-principal a{
     display: inline-block;
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     margin-bottom: 1rem;
     border-radius: 0.6rem;
 }
@@ -317,7 +317,7 @@ main .ofertas a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    background-color: #eee;
+    background-color:var(--greenWater);
     height: 100%;
     border-radius: 10px;
     padding: 5px 0;
@@ -353,7 +353,7 @@ main .ofertas a .description div{
     width: 75%;
 }
 
-main .ofertas a.ver-todas {
+a.ver-todas {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -579,6 +579,9 @@ main .info-final hr {
 
 .articulos-destacados .arriba,
 .articulos-destacados .abajo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width: 30%;
 }
 
@@ -613,6 +616,9 @@ main .info-final hr {
     max-height: 200px;
     max-width: 100%;
     border-radius: 5px;
+}
+.destacados .arriba .description h3, .destacados .abajo .description h3{
+    font-size: larger;
 }
 
    /*  main .destacados h2 {
@@ -682,6 +688,8 @@ main .info-final hr {
     }
 
     */ 
+    
+    
     /* ------------- Fin Destacados ------------- */
     /* ------------------------------------------ */
 

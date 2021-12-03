@@ -112,7 +112,7 @@ main#listado-productos .filtros h1{
     display: flex;
     flex-wrap: wrap;
     height: fit-content;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .listado article.hide {
@@ -123,29 +123,32 @@ main#listado-productos .filtros h1{
     display: block;
 }
 
-.listado .producto {
-    min-width: 284px;
-    max-width: 284px;
-    border-radius: .5rem;
-    margin-bottom: 1rem;
-    margin-left: 1.2rem;
-    box-shadow: 0px 0px 0px 0px rgba(141, 141, 141, 0.400);
-    transition: box-shadow .3s ease;
-    max-height: 400px;
+.listado .producto{
+    display: flex;
 }
 
-.listado .producto:hover{
+.listado .producto a:hover{
     box-shadow: 0px 0px 20px 4px rgba(141, 141, 141, 0.450);
 }
 
 .listado .producto a {
+    padding: 0.5rem;
+    background-color: var(--greenWater);
+    justify-content: center;
+    min-width: 250px;
+    max-width: 250px;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 0px 0px rgba(141, 141, 141, 0.400);
+    transition: box-shadow .3s ease;
+    max-height: 400px;
     text-decoration: none;
     color: black;
 }
 
 .listado .producto .product-img{
-    width: 252px;
-    height: 252px;
+    width: 235px;
+    height: 235px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,7 +160,7 @@ main#listado-productos .filtros h1{
 }
 
 .listado .producto .description {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 @media (min-width: 768px){
@@ -167,6 +170,7 @@ main#listado-productos .filtros h1{
     main#listado-productos-desktop{
         display: flex;
         margin: 2rem 0;
+        justify-content: space-around;
     }
 
     main#listado-productos-desktop .filtros{
@@ -185,12 +189,14 @@ main#listado-productos .filtros h1{
         max-width: 250px;
         border-radius: .5rem;
         margin-bottom: 1rem;
+        margin-right: 1rem;
         box-shadow: 0px 0px 0px 0px rgba(141, 141, 141, 0.400);
         transition: box-shadow .3s ease;
         max-height: 400px;
     }
 
     .listado{
+        width: 100%;
         justify-content: space-evenly;
     }
     .lista-filtro{
