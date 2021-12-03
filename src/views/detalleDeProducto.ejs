@@ -11,7 +11,9 @@
                         </a>><a>
                             <%= product.brand.brand%>
                         </a></p>
-
+                        <% if(locals.user.rol == 3 || locals.user.rol == 2){ %> 
+                            <a href="/admin/editar/<%= product.id %>" class="editDetalle" target="_blank">Editar producto</a>
+                        <% } %> 
                 </div>
                 <article class="imagenes">
                     <div class="imagen-principal">
