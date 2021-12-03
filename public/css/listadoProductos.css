@@ -120,7 +120,7 @@ main#listado-productos .filtros h1{
 }
 
 .listado article.active {
-    display: block;
+    display: flex;
 }
 
 .listado .producto{

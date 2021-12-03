@@ -65,19 +65,24 @@ module.exports = {
       { association: "sizes" }]
     })
       .then((product) => {
-        db.Product.findAll({
-          where: {
-            category_id: product.category.id,
-          },
-          include: [{association: "category"}, {association: "colores"}, {association: "brand"},
-          {association: "capacities"}, {association: "images"}, {association:"rams"},
-          {association: "sizes"}]
-        }).then((products) => {
-          res.render('detalleDeProducto', {
-            product,
-            products
-          }) 
-        });
+
+        if(product){
+          db.Product.findAll({
+            where: {
+              category_id: product.category.id,
+            },
+            include: [{association: "category"}, {association: "colores"}, {association: "brand"},
+            {association: "capacities"}, {association: "images"}, {association:"rams"},
+            {association: "sizes"}]
+          }).then((products) => {
+            res.render('detalleDeProducto', {
+              product,
+              products
+            }) 
+          });
+        } else {
+          res.redirect('/producto-no-encontrado')
+        }
   });
 },
 
