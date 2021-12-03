@@ -91,9 +91,9 @@
                 <span class="numero-resultados"><%= lista.length %> <%= lista.length == 1 ?  'resultado' : 'resultados' %></span>
                 <section class="lista-filtro" id="filter">
                     <% if (claves.length != 0) {%> 
+                        <h3>Filtros</h3>
                         <% claves.forEach(clavePrincipal => { %>
                             <dl class="filtro">
-                                <h3>Filtros</h3>
                                 <dt class="nombre-filtro"><%= clavePrincipal %></dt>
                                 <% let count = [] %>
                                 <% lista.forEach(producto => { %> 
