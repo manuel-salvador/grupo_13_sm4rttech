@@ -133,7 +133,7 @@ main#listado-productos .filtros h1{
 
 .listado .producto a {
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--greenWater);
     justify-content: center;
     min-width: 250px;
     max-width: 250px;
