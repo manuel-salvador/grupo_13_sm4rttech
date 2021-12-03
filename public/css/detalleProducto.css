@@ -23,6 +23,7 @@
     padding: 5px 10px;
     border: 1px solid transparent;
     transition: all .3s;
+    text-transform: uppercase;
 }
 
 .detalle .editDetalle:hover {
