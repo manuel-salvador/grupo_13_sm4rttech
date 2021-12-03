@@ -14,6 +14,10 @@ module.exports = {
         .then( products => {
             res.render('index', {products}) 
         })
+    },
+
+    nosotros: (req, res) =>{
+        res.render('sobreNosotros')
     }
     
 }

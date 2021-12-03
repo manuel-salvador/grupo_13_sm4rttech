@@ -1,0 +1,26 @@
+.main-sobre-nosotros{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.box-sobre-nosotros{
+    background-color: var(--darkWaterGreen);
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 1000px;
+    box-shadow: 0px 0px 20px 5px var(--greenWater);
+}
+
+.box-sobre-nosotros h2 {
+    margin-bottom: 1rem;
+    border-bottom: solid 5px var(--lightBlue);
+    width: 70%;
+    color: white;
+}
+.box-sobre-nosotros p {
+    text-indent: 10px;
+    font-size: 20px;
+    line-height: 30px;
+    
+    color: white;
+}

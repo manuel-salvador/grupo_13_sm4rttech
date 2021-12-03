@@ -10,5 +10,7 @@ router.use(function (req, res, next) {
 /* GET - Home */
 router.get('/', controller.index)
 
+/* get - Sobre nosotros */
+router.get('/sobreNosotros', controller.nosotros)
 
 module.exports = router;
