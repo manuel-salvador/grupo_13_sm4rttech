@@ -27,6 +27,11 @@
     border-radius: 1rem;
 }
 
+.sectionInicio .row .cardAdmin a{
+    text-decoration: none;
+    color: black;
+}
+
 .sectionInicio .row .indicadores {
     width: 100%;
 }
