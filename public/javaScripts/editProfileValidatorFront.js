@@ -96,7 +96,7 @@ window.onload = () => {
             let elementosForm = form.elements
   
             for (let index = 0; index < elementosForm.length-1; index++) {
-                if(elementosForm[index].value == "" && elementosForm[index].name!="date" && elementosForm[index].name!="avatar" && elementosForm[index].name!="pais" && elementosForm[index].name!="address" && elementosForm[index].name!="province" && elementosForm[index].name!="localidad" && elementosForm[index].name!="cp" && elementosForm[index].name!="pass1" && elementosForm[index].name!="pass2"||elementosForm[index].error){
+                if(elementosForm[index].value == "" && elementosForm[index].name!="redireccion" && elementosForm[index].name!="date" && elementosForm[index].name!="avatar" && elementosForm[index].name!="pais" && elementosForm[index].name!="address" && elementosForm[index].name!="province" && elementosForm[index].name!="localidad" && elementosForm[index].name!="cp" && elementosForm[index].name!="pass1" && elementosForm[index].name!="pass2"||elementosForm[index].error){
                     elementosForm[index].style.border = '3px solid rgba(185, 14, 14, 0.66)'
                     elementosForm[index].setAttribute("error", "error")
                     document.getElementById("submitErrors").innerHTML = "Los campos son obligatorios *";

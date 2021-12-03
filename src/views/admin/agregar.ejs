@@ -112,6 +112,9 @@
                     <div>
                         <h4>Imágenes</h4>
                         <input class="input-file" type="file" name="image" id="image" multiple>
+                        <div class="imagePrev-box">
+                            <img id="imagenPrevisualizacion">
+                        </div>
                     </div>
                     <h4>Descripción</h4>
                     <textarea name="description" id="description" cols="30" rows="10"><%= locals.old && old.description %></textarea>
@@ -136,7 +139,7 @@
     </form>
     </main>
 
-    <script src="/javaScripts/addProductValidatorFront.js"></script>
-    <script src="/javaScripts/editProfileEliminar.js" defer></script>
+    <script src="/javaScripts/imagenPrev.js" defer></script>
+    <script src="/javaScripts/addProductValidatorFront.js" defer></script>
 </body>
 </html>

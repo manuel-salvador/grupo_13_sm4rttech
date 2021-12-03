@@ -56,7 +56,7 @@ window.onload = () => {
 
                 let modalRedirect = document.getElementById('darken')
 
-                modalRedirect.style.display = 'flex'
+                modalRedirect.style.display = 'flex';
 
                 let inputRedirect = document.getElementById('redireccionar')
 

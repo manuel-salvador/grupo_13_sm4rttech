@@ -1,3 +1,19 @@
+main.admin .imagePrev-box {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main.admin .imagePrev-box img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .second-bar-admin {
     background-color: var(--darkWaterGreen);
     color: white;

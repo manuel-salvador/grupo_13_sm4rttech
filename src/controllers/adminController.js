@@ -71,8 +71,7 @@ module.exports = {
                 redireccion
             } = req.body
 
-
-
+            
             db.Product.create({
                 category_id: Number(category),
                 name: name.trim(),
@@ -111,7 +110,7 @@ module.exports = {
 
                     if (product && !imagen) {
                         db.Product_Image.create({
-                            image: 'logo-sm4rttech.png',
+                            image: 'logo-sm4rttech-default.jpg',
                             product_id: product.id
                         })
                     } else {
@@ -130,23 +129,22 @@ module.exports = {
                             res.redirect(`/products/detalleDeProducto/${product.id}`)
                         }, 1000)
                     }
+                })
 
-                    
 
 
                     /* if(arrayImages.length > 0){
-                        let images = arrayImages.map(image => {
-                            return {
-                                image: image,
-                                productId: product.id
-                            }
-                        })
-                        db.ProductImage.bulkCreate(images)
-                        .then(() => res.redirect('/admin/products'))
-                        .catch(err => console.log(err))
-                    } */
+                let images = arrayImages.map(image => {
+                    return {
+                        image: image,
+                        productId: product.id
+                    }
                 })
-
+                db.ProductImage.bulkCreate(images)
+                .then(() => res.redirect('/admin/products'))
+                .catch(err => console.log(err))
+            } */
+                    
 
         } else {
             let categorias = db.Category.findAll()
@@ -164,11 +162,7 @@ module.exports = {
 
         }
     },
-
-    /* agregar: (req, res) => {
-        res.render('admin/agregar')
-    }, */
-
+    
     filtroEditar: (req, res) => {
         let lista = ["error"]
 
@@ -238,6 +232,7 @@ module.exports = {
     },
     actualizar: (req, res) => {
         let errors = validationResult(req);
+        let imagen = req.file?.filename
 
         if (errors.isEmpty()) {
 
@@ -246,7 +241,9 @@ module.exports = {
                 price,
                 marca,
                 smart,
-                description } = req.body;
+                description,
+                redireccion
+            } = req.body;
 
             let { tamaño,
                 capacity,
@@ -261,6 +258,21 @@ module.exports = {
                 { association: "sizes" }]
             })
                 .then(producto => {
+
+                    if(imagen) {
+                        if(producto.images[0]) {
+                            db.Product_Image.update({
+                                image: imagen
+                            }, {
+                                where: { product_id: producto.id }
+                            })
+                        } else {
+                            db.Product_Image.create({
+                                product_id: Number(producto.id),
+                                image: imagen
+                            })
+                        }
+                    }
 
                     if (tamaño) {
                         if (producto.sizes[0]) {
@@ -335,7 +347,15 @@ module.exports = {
                         where: { id: producto.id }
                     })
                         .then(() => {
-                            res.redirect(`/products/detalleDeProducto/${producto.id}`)
+                            if(redireccion == 'seguir'){
+                                setTimeout(function () {
+                                    res.redirect(`/admin/editar`)
+                                }, 1000)
+                            }else if (redireccion == 'detalle'){
+                                setTimeout(function () {
+                                    res.redirect(`/products/detalleDeProducto/${product.id}`)
+                                }, 1000)
+                            }
                         })
                 })
         }

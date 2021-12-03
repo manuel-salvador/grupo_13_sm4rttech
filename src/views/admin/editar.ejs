@@ -117,7 +117,10 @@
                                     <div>
                                         <h4>Imagenes</h4>
                                         <input class="input-file" type="file" multiple="" name="image" id="image">
-                                    </div>
+                                        <div class="imagePrev-box">
+                                            <img id="imagenPrevisualizacion" src="/images/products/<%= product.images[0]?.image %>">
+                                        </div>
+                                </div>
                                     <h4>descripción</h4>
                                     <textarea name="description" id="description" cols="30" rows="10"><%= locals.old ? old.description : product.description %></textarea>
                                     <% if (locals.errors && errors.description) { %>
@@ -129,6 +132,13 @@
                                 </section>
 
                             </section>
+                            <div id="darken" style="display: none;">
+                                <div id="redireccion">
+                                    <input type="text" name="redireccion" id="redireccionar" value="" style="display: none;">
+                                    <button class="redirect" name="ignorar" value="detalle">Ir al detalle de producto</button>
+                                    <button class="redirect" name="ignorar" value="seguir">Seguir editando productos</button>
+                                </div>
+                            </div>
                             <div class="botones-confirm">
                                 <section class="button-crear">
                                     <button type="submit" class="guardar" cursor="pointer">guardar</button>
@@ -158,7 +168,8 @@
                     </section>
         </main>
      
-        <script src="/javaScripts/editProductValidatorFront.js"></script>
+        <script src="/javaScripts/imagenPrev.js" defer></script>
+        <script src="/javaScripts/editProductValidatorFront.js" defer></script>
         <script src="/javaScripts/editProfileEliminar.js" defer></script>
 </body>
 

@@ -63,7 +63,6 @@
                             <th scope="colum-mobile">ID</th>
                             <th scope="colum-mobile" >Nomb. producto</th>
                             <th  class="column" scope="col">Categoria</th><!-- tablet y desktop -->
-                            <th  scope="col">Stock</th>
                             <th  scope="col"></th>
                         </thead>
                         <tbody>
@@ -73,7 +72,6 @@
                                     <td><%= producto.id %> </td>    
                                     <td><%= producto.name %></td>
                                     <td><%= producto.category.category%></td>
-                                    <td>"aca va el stock"</td>
                                     <td>
                                         <button><a href="/admin/editar/<%= producto.id %>"><i class="far fa-edit"></i></a></button>
                                     </td>
