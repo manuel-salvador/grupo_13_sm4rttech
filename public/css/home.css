@@ -139,7 +139,6 @@ main div.top-sales {
     width: 100%;
     padding: 1.2rem 1rem 0;
     flex-direction: column;
-    overflow: hidden;
 }
 
 main div.top-sales h2 {
@@ -149,7 +148,8 @@ main div.top-sales h2 {
 
 main div.top-sales .articulos {
     display: flex;
-    width: 400%;
+    width: 100%;
+    overflow-x: auto;
 }
 
 main div.top-sales article {
